@@ -1,0 +1,59 @@
+
+* {
+    font-family: 'Times New Roman', Arial, sans-serif;
+}
+
+div {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    background-color:#FDFBF7
+}
+
+#index {
+    margin-top: 100px;
+}
+
+#company_logo {
+    width: 500px;
+    height: auto;
+}
+
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 40px;
+    margin: 30px 30px 30px;
+    margin-top: 70px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background-color:rgb(203, 198, 198)
+} 
+
+#slogan1 {
+    margin-left: 120px;
+    font-size: 80px;
+    color:white
+}
+
+#slogan2 {
+    margin-left: 70px;
+    font-size: 60px;
+    color:white
+}
+
+.slogan {
+    margin-top: 20px;
+}
+
+.background {
+    background-image: url("background_image.jpg");
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1;
+}
