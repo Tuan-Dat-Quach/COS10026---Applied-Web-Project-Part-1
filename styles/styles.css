@@ -3,9 +3,13 @@
     font-family: 'Times New Roman', Arial, sans-serif;
 }
 
+h1, h2 {
+    margin-bottom: 10px;
+} 
+
 .navigation {
     display: grid;
-    grid-template-columns: 45% 55%;
+    grid-template-columns: 35% 65%;
     background-color:#f3eee4
 }
 
@@ -55,7 +59,6 @@ nav a:hover {
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 1;
 }
 
 .company-information {
@@ -88,14 +91,34 @@ figcaption {
 }
 
 #company-details {
-    font-size: 24px;
+    font-size: 30px;
+}
+
+ol {
+    list-style-type: none;
+}
+
+ul li {
+    list-style-type: square;
 }
 
 .table {
     text-align: center;
+    border: 1px solid;
     border-collapse: collapse;
 }
 
-td, th {
-    padding: 50px;
+td:hover {
+    background-color:rgb(215, 231, 172);
+    cursor: pointer;
+}
+
+th {
+    padding: 20px;
+    background-color: #07d086
+}
+
+td {
+    padding: 10px;
+    background-color:rgb(243, 232, 232)
 }
