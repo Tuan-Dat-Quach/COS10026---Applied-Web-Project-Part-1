@@ -8,7 +8,7 @@ h1, h2 {
 } 
 
 main {
-    background-image:linear-gradient(rgb(224, 238, 224), rgb(150, 234, 150));
+    background-image:linear-gradient(rgb(233, 240, 233), rgb(187, 238, 187));
 }
 .navigation {
     display: grid;
@@ -136,18 +136,16 @@ td {
 }
 
 .footer {
-    color: white;
     text-align: center;
     font-size: 25px;
-    background-color:#007F66;
 }
 
 footer p a {
     text-decoration: none;
-    color: yellow;
+    color: red;
 }
 
 footer p a:hover {
-    background-color: rgb(203, 203, 203)
+    background-color: rgb(215, 211, 211);
 }
 
