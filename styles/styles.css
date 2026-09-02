@@ -90,3 +90,12 @@ figcaption {
 #company-details {
     font-size: 24px;
 }
+
+.table {
+    text-align: center;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 50px;
+}
