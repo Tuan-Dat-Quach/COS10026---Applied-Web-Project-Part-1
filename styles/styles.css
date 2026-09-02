@@ -121,5 +121,22 @@ th {
 
 td {
     padding: 10px;
-    background-color:rgb(243, 232, 232)
+    background-color:rgb(243, 232, 232);
 }
+
+.recruit {
+    text-align: center;
+    font-size: 25px;
+}
+
+.recruit ul li {
+    list-style-type: none;
+}
+
+.footer {
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    background-color:#007F66;
+}
+
