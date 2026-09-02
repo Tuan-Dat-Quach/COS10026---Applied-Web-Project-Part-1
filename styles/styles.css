@@ -7,6 +7,9 @@ h1, h2 {
     margin-bottom: 10px;
 } 
 
+main {
+    background-image:linear-gradient(rgb(224, 238, 224), rgb(150, 234, 150));
+}
 .navigation {
     display: grid;
     grid-template-columns: 40% 60%;
@@ -63,7 +66,6 @@ nav a:hover {
 }
 
 .company-information {
-    background-color: rgba(232, 249, 229, 0.866);
     display: grid;
     grid-template-columns: 3fr 2fr;
 }
@@ -138,5 +140,14 @@ td {
     text-align: center;
     font-size: 25px;
     background-color:#007F66;
+}
+
+footer p a {
+    text-decoration: none;
+    color: yellow;
+}
+
+footer p a:hover {
+    background-color: rgb(203, 203, 203)
 }
 
