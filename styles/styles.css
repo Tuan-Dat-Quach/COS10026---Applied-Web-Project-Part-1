@@ -3,7 +3,7 @@
     font-family: 'Times New Roman', Arial, sans-serif;
 }
 
-div {
+.navigation {
     display: grid;
     grid-template-columns: 45% 55%;
     background-color:#f3eee4
@@ -58,18 +58,31 @@ nav a:hover {
     opacity: 1;
 }
 
+.company-information {
+    background-color: rgba(232, 249, 229, 0.866);
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    padding: 20px;
+}
+
 .description {
-    background-color: rgba(202, 232, 196, 0.866);
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
-#image1 {
-    display: inline-block;
-    width: 100px;
-    height: 50px;
+.illustration {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
 }
 
-#image2 {
-    display: inline-block;
-    width: 100px;
-    height: 50px;
+.illustration img {
+    width: 100%;
+    height: auto;
 }
+    
+figcaption {
+    text-align: center;
+    font-size: 20px;
+}
+
