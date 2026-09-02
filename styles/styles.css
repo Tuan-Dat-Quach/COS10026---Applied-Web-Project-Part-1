@@ -62,12 +62,12 @@ nav a:hover {
     background-color: rgba(232, 249, 229, 0.866);
     display: grid;
     grid-template-columns: 3fr 2fr;
-    padding: 20px;
 }
 
 .description {
     display: grid;
     grid-template-columns: 1fr;
+    margin: 10px 10px;
 }
 
 .illustration {
@@ -77,6 +77,7 @@ nav a:hover {
 }
 
 .illustration img {
+    margin-top: 40px;
     width: 100%;
     height: auto;
 }
@@ -86,3 +87,6 @@ figcaption {
     font-size: 20px;
 }
 
+#company-details {
+    font-size: 24px;
+}
