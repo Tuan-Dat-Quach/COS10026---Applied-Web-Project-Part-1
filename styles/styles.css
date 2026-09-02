@@ -135,6 +135,14 @@ td {
     list-style-type: none;
 }
 
+.recruit ul li a {
+    color: purple;
+}
+
+.recruit ul li a:hover {
+    background-color: rgb(215, 211, 211);
+}
+
 .footer {
     text-align: center;
     font-size: 25px;
