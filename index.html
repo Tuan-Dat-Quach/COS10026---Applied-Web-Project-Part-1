@@ -17,7 +17,9 @@
         <div>
             <!-- This is the official logo for the company, used throughout the page -->
             <!-- The image for Company Logo was generated using Gemini (Google, using 3.6 Flash Model, August 2026) -->
-            <img id="company_logo" src="Images/Official_Company_Logo.png" alt="Greener_Society_Company_Logo" loading="lazy">
+            <figure>
+                <img id="company_logo" src="Images/Official_Company_Logo.png" alt="Greener_Society_Company_Logo" loading="lazy">
+            </figure>
             <!-- This is the consistent navigation bar, offering accessibility to users -->
             <nav>
                 <a href="index.html"> Home </a>
@@ -38,7 +40,7 @@
             <br><br><br>
             </section>
 
-            <section>
+            <div class="description">
                 <!-- This is the header for the company description -->
                 <!-- The Company Description was mostly generated using Gemini (Google, using 3.6 Flash Model, August 2026)
                  All AI-generated information was reviewed and modified by the author before use. -->
@@ -98,13 +100,18 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
 
+            <div class="illustration">
                 <!-- This is an image used to illustrate the company description -->
-                <!-- The source of the image used: "https://www.linkedin.com/pulse/environmental-conservation-our-responsibility-future-maxkamov-vjyhe"-->
-                <img src="Images/Description_Image.jpeg" alt="Nature_Protection_for_the_Earth_protection" loading="lazy">
-            </section>
-
-            <section>
+                <!-- The source of the image used: -->
+                <figure id="image1">
+                    <img src="styles/description_image1.jpg" alt="Tree Planting Activities" loading="lazy">
+                </figure>
+                <figure id="image2">
+                    <img src="styles/description_image2.jpg" alt="Local Cleanup Activities" loading="lazy">
+                </figure>
+            </div>
                 <!-- This is the encouragement for applying to Greener Society, including the element of acknowledging and supporting 
                  Aboriginal and Torres Strait Islander peoples -->
                 <h2> Interested in our Environmental Conservation Campaign ? </h2> 

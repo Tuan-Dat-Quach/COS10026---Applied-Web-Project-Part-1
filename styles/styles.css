@@ -6,7 +6,7 @@
 div {
     display: grid;
     grid-template-columns: 45% 55%;
-    background-color:#FDFBF7
+    background-color:#f3eee4
 }
 
 #index {
@@ -56,4 +56,20 @@ nav a:hover {
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 1;
+}
+
+.description {
+    background-color: rgba(202, 232, 196, 0.866);
+}
+
+#image1 {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+}
+
+#image2 {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
 }
