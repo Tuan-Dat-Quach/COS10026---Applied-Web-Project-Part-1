@@ -58,13 +58,6 @@ nav a:hover {
     margin-top: 20px;
 }
 
-.background {
-    background-image: url("background_image.jpg");
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 .company-information {
     display: grid;
     grid-template-columns: 3fr 2fr;
