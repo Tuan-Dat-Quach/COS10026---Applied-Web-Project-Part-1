@@ -16,12 +16,8 @@ main {
     background-color:#f3eee4
 }
 
-#index {
-    margin-top: 100px;
-}
-
 #company_logo {
-    width: 450px;
+    width: 100%;
     height: auto;
 }
 
