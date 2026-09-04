@@ -8,7 +8,7 @@ h1, h2 {
 } 
 
 main {
-    background-image:linear-gradient(rgb(233, 240, 233), rgb(187, 238, 187));
+    background-color:#fff3ec;
 }
 .navigation {
     display: grid;
@@ -86,6 +86,10 @@ figcaption {
     font-size: 30px;
 }
 
+#overview {
+    color: #065747;
+    font-size: 50px;
+}
 ol {
     list-style-type: none;
 }
