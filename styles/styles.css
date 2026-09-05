@@ -1,5 +1,6 @@
-/* This*/
+/* This is the section for general CSS, applied for all pages */
 
+/* This sets the font-family for all pages*/
 * {
     font-family: 'Times New Roman', Arial, sans-serif;
 }
@@ -8,55 +9,62 @@ h1, h2 {
     margin-bottom: 10px;
 } 
 
+/* This sets the background colour for all pages*/
 main {
     background-color:#fff3ec;
 }
 
-.navigation {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 10px 2%;
-  background-color: #f3eee4;
-  box-sizing: border-box;
-  gap: 40px; 
-}
-
+/* This sets the maximum width for the company logo */
 #company_logo {
-  max-width: 500px;
+  max-width: 80%;
   height: auto;
 }
 
-.navigation nav {
-  flex: 1;
+/* This is the setup for the whole navigation bar across pages. */
+.navigation {
+  display: flex; /* This indicates the flexbox layout for the navigation bar */
+  align-items: center; /* This helps to align the texts in the center */
+  width: 100%; /* This helps the navigation bar to fully cover the row */
+  padding: 10px; 
+  background-color: #f3eee4;
+  box-sizing: border-box; /* This effectively keeps the width of navigation exactly as 100%, preventing overflow of the bar */
+  gap: 30px; /* This creates the gap between the logo and the texts */
 }
 
+/* This helps the navigation text cover the remaining space on the right */
+.navigation nav {
+  flex: 1; 
+}
+
+/* This is to edit only the navigation text */
 #menu {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around; 
-  list-style-type: none;
-  margin: 0;
+  flex-wrap: wrap; /* This allows the text to move down a row when the screen is shrinking, preventing unexpected disappearance */
+  justify-content: space-around; /* This sets equal space between the texts */
+  list-style-type: none; /* This eliminates the bullet points of <ul> */
+  /* These two lines remove the default margin and padding of the <ul> list */
+  margin: 0; 
   padding: 0;
 }
 
 #menu a {
-  text-decoration: none;
-  white-space: nowrap;
+  text-decoration: none; /* This removes the default underline of links */
+  white-space: nowrap; /* This keeps the text attached to the icon, even if they move down */
   color: black;
   font-weight: bold;
   font-size: 55px;
 }
 
+/* This sets the hover effects for navigation bar */
 nav a:hover {
     background-color:rgb(166, 217, 181);
-    padding: 5px 10px;
-    border-radius: 8px;
+    border-radius: 8px; /* This allows the border corners to be curving */
 } 
 
+/* This is CSS for Media queries, applying additional styles depending on the device's characteristics */
 @media only screen and (max-width: 768px) {
   .navigation {
-    flex-direction: column; 
+    flex-direction: column; /* This moves the text under the company logo when screen-width < 768px */
     gap: 15px;
     padding: 15px;
   }
@@ -75,6 +83,8 @@ nav a:hover {
     padding: 6px 10px;
   }
 }
+
+/* This is the section for CSS applied to index.html */
 
 #slogan1 {
     margin-top: 120px;
