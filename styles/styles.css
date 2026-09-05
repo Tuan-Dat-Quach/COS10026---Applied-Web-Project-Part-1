@@ -1,3 +1,4 @@
+/* This*/
 
 * {
     font-family: 'Times New Roman', Arial, sans-serif;
@@ -162,8 +163,12 @@ td {
     font-size: 25px;
 }
 
+.recruit p {
+    font-size: 30px;
+}
 .recruit ul li {
     list-style-type: none;
+    font-size: 30px;
 }
 
 .recruit ul li a {
