@@ -86,6 +86,7 @@ nav a:hover {
 
 /* This is the section for CSS applied to index.html */
 
+/* This is the CSS for the first row of company slogan */
 #slogan1 {
     margin-top: 120px;
     margin-left: 120px;
@@ -93,79 +94,95 @@ nav a:hover {
     color:white
 }
 
+/* This is the CSS for the second row of company slogan */
 #slogan2 {
     margin-left: 70px;
     font-size: 100px;
     color:white
 }
 
+/* This helps create gap between two rows of slogan */
 .slogan {
     margin-top: 20px;
 }
 
+/* This is the setup for grid layout of the main content for index.html */
 .company-information {
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 3fr 2fr; /* This creates two grid columns, accounting for 60% and 40% width respectively */
 }
 
+/* This is the grid layout for the left column - Text-based content */
 .description {
     display: grid;
     grid-template-columns: 1fr;
     margin: 10px 10px;
 }
 
+/* This is the grid layout for the right column - Image-based content */
 .illustration {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 20px; /* This creates gap between the two illustrative images */
 }
 
+/* This is CSS for the illustrative images only */
 .illustration img {
     margin-top: 40px;
     width: 100%;
     height: auto;
 }
-    
+
+/* This sets a caption under the illustrative images */
 figcaption {
     text-align: center;
     font-size: 25px;
 }
 
+/* This sets the font-size for the texts in the table */
 #company-details {
     font-size: 30px;
 }
 
+/* This sets a different color and font-size for the titles of company description */
 #overview {
     color: #065747;
     font-size: 50px;
 }
+
+/* This removes the number for <ol> in company description */
 .description ol {
     list-style-type: none;
 }
 
+/* This changes the bullet points to squares for <ul> in company description */
 .description ul li {
     list-style-type: square;
 }
 
+/* This is the CSS for the table itself */
 .table {
     text-align: center;
     border: 1px solid;
-    border-collapse: collapse;
+    border-collapse: collapse; /* This allows single-line border for the table */
 }
 
-td:hover {
-    background-color:rgb(215, 231, 172);
-    cursor: pointer;
-}
-
+/* This is the CSS for the table header, or the first row */
 th {
     padding: 20px;
     background-color: #07d086
 }
 
+/* This is the CSS for table cells */
 td {
     padding: 10px;
     background-color:rgb(243, 232, 232);
+}
+
+/* This creates hover effecrts for table cells */
+td:hover {
+    background-color:rgb(215, 231, 172);
+    cursor: pointer; 
 }
 
 .recruit {
