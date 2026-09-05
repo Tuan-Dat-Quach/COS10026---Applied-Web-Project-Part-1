@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- This is <meta> tags including charset, viewport, description, keywords, author of the webpage -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Recruitment Website for Greener Society! Here you can find out about the company's details,
+        and of course, the opportunity to participate with us in conserving the environment!">
+        <meta name="keywords" content="Environmental Conservation, GS, Greener Society, Protect Environment, Recruitment">
+        <meta name="author" content="TideTech Group">
+        <!-- This is the official title for our webpage -->
+        <title>Greener Society - Recruitment Website</title>
+        <link rel="stylesheet" href="styles/styles.css">
+        <!-- This is the internal CSS to change the background color of the recruitment line and add background image to the slogan -->
+        <style>
+        #promotion {
+             border:solid;
+             background-color: rgb(221, 221, 145);
+        }
+
+        .background {
+            background-image: url("images/background_image.jpg");
+            width: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        </style>
+    </head>
+
+    <body>
+        <div class="navigation">
+            <!-- This is the official logo for the company, used throughout the page -->
+            <!-- The image for Company Logo was generated using Gemini (Google, using 3.6 Flash Model, August 2026) -->
+            <figure>
+                <img id="company_logo" src="Images/Official_Company_Logo.png" alt="Greener_Society_Company_Logo" loading="lazy">
+            </figure>
+            <!-- This is the consistent navigation bar, offering accessibility to users -->
+            <nav>
+                <a href="index.html"> 🪴 Home </a>
+                <a href="jobs.html"> 📝 Jobs </a>
+                <a href="apply.html"> 📄 Apply </a>
+                <a href="about.html"> 🧾 About </a>
+            </nav>
+        </div>
+        
+        <main>
+            <form action="http://mercury.swin.edu.au/it000000/formtest.php" method="post">
+                <label for="Job Reference Number">Job Reference Number</label>
+                <br><br>
+                <fieldset>
+                    <legend>Your details</legend>
+                    <br>
+
+                    <label for="First Name">First Name</label>
+                    <input type="text" id="First Name" name="First Name" maxlength="20" pattern="[A-Za-z]" required>
+                    <br><br>
+
+                    <label for="Last Name">Last Name</label>
+                    <input type="text" id="Last Name" name="Last Name" maxlength="20" pattern="[A-Za-z]" required>
+                    <br><br>
+
+                    <label for="Date of Birth">Date of Birth</label>
+                    <input type="date" id="Date of Birth" name="Date of Birth" required>
+                    <br><br>
+
+                    <label for="Gender">Gender</label>
+                    <br>
+                    <input type="radio" id="Male" name="Gender" value="Male" required>
+                    <label for="Male">Male</label>
+                    <br>
+                    <input type="radio" id="Female" name="Gender" value="Female">
+                    <label for="Female">Female</label>
+                    <br>
+                    <input type="radio" id="Rather Not Say" name="Gender" value="Rather Not Say">
+                    <label for="Rather Not Say">Rather Not Say</label>
+
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Your Address</legend>
+                    <br>
+
+                    <label for="Street Address">Street Address</label>
+                    <input type="text" id="Street Address" name="Street Address" maxlength="40" required>
+                    <br><br>
+
+                    <label for="Suburb/Town">Suburb/Town</label>
+                    <input type="text" id="Suburb/Town" name="Suburb/Town" maxlength="40" required>
+                    <br><br>
+
+                    <label for="State">State</label>
+                    <select id="State" name="State" required>
+                        <option value="">Please Select</option>
+                        <option value="VIC">VIC</option>
+                        <option value="NSW">NSW</option>
+                        <option value="QLD">QLD</option>
+                        <option value="NT">NT</option>
+                        <option value="WA">WA</option>
+                        <option value="SA">SA</option>
+                        <option value="TAS">TAS</option>
+                        <option value="ACT">ACT</option>
+                    </select>
+                    <br><br>
+
+                    <label for="Postcode">Postcode</label>
+                    <input type="number" id="Postcode" name="Postcode" minlength="4" maxlength="4" required>
+                    
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Your Contacts</legend>
+                    <br>
+
+                    <label for="Email">Email</label>
+                    <input type="email" id="Email" name="Email" required>
+                    <br><br>
+
+                    <label for="Phone Number">Phone Number</label>
+                    <input type="number" id="Phone Number" name="Phone Number" minlength="8" maxlength="12" required>
+                    
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Your Skills</legend>
+                    <br>
+
+                    <label for="Skill List">Skill List</label>
+                    <br>
+                    <label><input type="checkbox" id="Loves Our Environment" name="Skills[]" value="Loves Our Environment" checked="checked">Loves Our Environment</label>
+                    <br>
+                    <label><input type="checkbox" id="Organization" name="Skills[]" value="Organization">Organzation</label>
+                    <br>
+                    <label><input type="checkbox" id="Punctuality" name="Skills[]" value="Punctuality">Punctuality</label>
+                    <br>
+                    <label><input type="checkbox" id="Hard Working" name="Skills[]" value="Hard Working">Hard Working</label>
+                    <br>
+                    <label><input type="checkbox" id="Resilience" name="Skills[]" value="Resilience">Resilience</label>
+                    <br>
+                    <label><input type="checkbox" id="Team Player" name="Skills[]" value="Team Player">Team Player</label>
+                    <br>
+                    <label><input type="checkbox" id="Passionate" name="Skills[]" value="Passionate">Passionate</label>
+                    <br><br>
+
+                    <label for="Other Skills">Other Skills</label>
+                    <br>
+                    <textarea id="Other Skills" name="Other Skills" rows="5" cols="30" placeholder="Have more skills we didn't list? Tell us about them here!"></textarea>
+
+                </fieldset>
+            </form>
+        </main>
