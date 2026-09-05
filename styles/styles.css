@@ -8,7 +8,7 @@ h1, h2 {
 } 
 
 main {
-    background-image:linear-gradient(rgb(233, 240, 233), rgb(187, 238, 187));
+    background-color:#fff3ec;
 }
 .navigation {
     display: grid;
@@ -86,11 +86,15 @@ figcaption {
     font-size: 30px;
 }
 
-ol {
+#overview {
+    color: #065747;
+    font-size: 50px;
+}
+.description ol {
     list-style-type: none;
 }
 
-ul li {
+.description ul li {
     list-style-type: square;
 }
 
