@@ -239,11 +239,12 @@ footer p a:hover {
     color:#065747;
     font-size: 80px;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .about-us {
     display: grid;
-    grid-template-columns: 2fr 2fr;
+    grid-template-columns: repeat(2,1fr);
     align-items: center;
 }
 
@@ -276,7 +277,7 @@ footer p a:hover {
 
 .member-contributions {
     display: grid;
-    grid-template-columns: 2fr 2fr;
+    grid-template-columns: repeat(2,1fr);
     align-items: center;
     background-color: rgb(231, 221, 200);
 }
@@ -301,4 +302,23 @@ footer p a:hover {
 #member-name {
     margin-top: 15px;
     font-weight: bold;
+}
+
+.individual-quotes {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+}
+
+.inspiration {
+    display: grid;
+    grid-template-columns: 1fr;
+    font-size: 40px;
+    margin-left: 100px;
+    margin-top: 0px;
+}
+
+.inspirative-image {
+    display: grid;
+    grid-template-columns: 1fr;
 }
