@@ -299,7 +299,7 @@ footer p a:hover {
     margin: 0px 40px 100px 50px;
 }
 
-#member-name {
+#member-name1 {
     margin-top: 15px;
     font-weight: bold;
 }
@@ -321,4 +321,15 @@ footer p a:hover {
 .inspirative-image {
     display: grid;
     grid-template-columns: 1fr;
+}
+
+.inspirative-image img {
+    width: 100%;
+    height: auto;
+}
+
+#member-name2 {
+    font-weight: bold;
+    font-size: 50px;
+    margin: 15px;
 }
