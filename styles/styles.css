@@ -237,20 +237,26 @@ footer p a:hover {
 
 #about-titles {
     color:#065747;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 80px;
+    text-align: center;
 }
 
 .about-us {
     display: grid;
     grid-template-columns: 3fr 2fr;
+    align-items: center;
 }
 
 .about-group {
     display: grid;
     grid-template-columns: 1fr;
     font-size: 40px;
-    margin: 100px 100px
+    margin: 100px 40px 100px 100px;
+}
+
+#epic-name {
+    color:rgb(12, 12, 210);
+    font-size: 50px;
 }
 
 .group-photo {
@@ -259,5 +265,11 @@ footer p a:hover {
 }
 
 .group-photo img {
-    max-width: 80%;
+    max-width: 95%;
+}
+
+#about-caption1 {
+    margin-top: 10px;
+    margin-left: 100px;
+    font-size: 40px;
 }
