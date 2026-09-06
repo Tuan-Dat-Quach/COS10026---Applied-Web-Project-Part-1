@@ -273,3 +273,24 @@ footer p a:hover {
     margin-left: 100px;
     font-size: 40px;
 }
+
+.member-contributions {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    align-items: center;
+}
+
+.contribution-image {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.contribution-image img{
+    max-width: 95%;
+}
+
+.individual-tasks {
+    display: grid;
+    grid-template-columns: 1fr;
+    font-size: 50px;
+}
