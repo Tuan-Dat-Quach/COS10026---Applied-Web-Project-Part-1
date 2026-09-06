@@ -137,7 +137,7 @@ nav a:hover {
 }
 
 /* This sets a caption under the illustrative images */
-figcaption {
+#index-caption {
     text-align: center;
     font-size: 25px;
 }
