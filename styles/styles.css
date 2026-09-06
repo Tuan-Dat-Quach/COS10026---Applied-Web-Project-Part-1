@@ -1,5 +1,6 @@
 /* This is the section for general CSS, applied for all pages */
 
+
 /* This sets the font-family for all pages*/
 * {
     font-family: 'Times New Roman', Arial, sans-serif;
@@ -84,7 +85,9 @@ nav a:hover {
   }
 }
 
+
 /* This is the section for CSS applied to index.html */
+
 
 /* This is the CSS for the first row of company slogan */
 #slogan1 {
@@ -147,7 +150,7 @@ figcaption {
 /* This sets a different color and font-size for the titles of company description */
 #overview {
     color: #065747;
-    font-size: 50px;
+    font-size: 60px;
 }
 
 /* This removes the number for <ol> in company description */
@@ -185,6 +188,7 @@ td:hover {
     cursor: pointer; 
 }
 
+/* These 4 sections are the CSS for the recruitment line*/
 .recruit {
     text-align: center;
     font-size: 25px;
@@ -206,6 +210,7 @@ td:hover {
     background-color: rgb(215, 211, 211);
 }
 
+/* These 3 sections are CSS for the footer */
 .footer {
     text-align: center;
     font-size: 25px;
@@ -219,3 +224,12 @@ footer p a {
 footer p a:hover {
     background-color: rgb(215, 211, 211);
 }
+
+
+/* This is the section for CSS applied to jobs.html */
+
+
+/* This is the section for CSS applied to apply.html */
+
+
+/* This is the section for CSS applied to about.html */
