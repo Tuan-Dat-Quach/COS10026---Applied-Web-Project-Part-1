@@ -233,3 +233,31 @@ footer p a:hover {
 
 
 /* This is the section for CSS applied to about.html */
+
+
+#about-titles {
+    color:#065747;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 80px;
+}
+
+.about-us {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+}
+
+.about-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    font-size: 40px;
+    margin: 100px 100px
+}
+
+.group-photo {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.group-photo img {
+    max-width: 80%;
+}
