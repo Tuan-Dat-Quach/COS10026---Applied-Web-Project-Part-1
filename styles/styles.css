@@ -286,12 +286,18 @@ footer p a:hover {
 }
 
 .contribution-image img{
-    max-width: 95%;
+    width: 100%;
+    height: auto;
 }
 
 .individual-tasks {
     display: grid;
     grid-template-columns: 1fr;
-    font-size: 50px;
-    margin: 0px 40px 100px 100px;
+    font-size: 40px;
+    margin: 0px 40px 100px 50px;
+}
+
+#member-name {
+    margin-top: 15px;
+    font-weight: bold;
 }
