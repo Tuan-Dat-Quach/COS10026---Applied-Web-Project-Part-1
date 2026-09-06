@@ -12,7 +12,7 @@ h1, h2 {
 
 /* This sets the background colour for all pages*/
 main {
-    background-color:#fff3ec;
+    background-color: #f6e5db;
 }
 
 /* This sets the maximum width for the company logo */
@@ -27,7 +27,7 @@ main {
   align-items: center; /* This helps to align the texts in the center */
   width: 100%; /* This helps the navigation bar to fully cover the row */
   padding: 10px; 
-  background-color: #f3eee4;
+  background-color: #DCE7E1;
   box-sizing: border-box; /* This effectively keeps the width of navigation exactly as 100%, preventing overflow of the bar */
   gap: 30px; /* This creates the gap between the logo and the texts */
 }
@@ -243,7 +243,7 @@ footer p a:hover {
 
 .about-us {
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 2fr 2fr;
     align-items: center;
 }
 
@@ -251,7 +251,7 @@ footer p a:hover {
     display: grid;
     grid-template-columns: 1fr;
     font-size: 40px;
-    margin: 0px 40px 100px 100px;
+    margin: 0px 60px 100px 100px;
 }
 
 #epic-name {
@@ -265,19 +265,20 @@ footer p a:hover {
 }
 
 .group-photo img {
-    max-width: 95%;
+    max-width: 100%;
 }
 
 #about-caption1 {
     margin-top: 10px;
-    margin-left: 100px;
+    margin-left: 80px;
     font-size: 40px;
 }
 
 .member-contributions {
     display: grid;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 2fr 2fr;
     align-items: center;
+    background-color: rgb(231, 221, 200);
 }
 
 .contribution-image {
