@@ -85,23 +85,24 @@ nav a:hover {
   }
 }
 
-
 /* This is the section for CSS applied to index.html */
 
 
 /* This is the CSS for the first row of company slogan */
 #slogan1 {
-    margin-top: 120px;
-    margin-left: 120px;
-    font-size: 120px;
-    color:white
+  font-family: cursive;
+  color: white;     
+  font-size: 8vw; 
+  line-height: 1.2;
+  margin: 0;
 }
 
 /* This is the CSS for the second row of company slogan */
 #slogan2 {
-    margin-left: 70px;
-    font-size: 100px;
-    color:white
+  font-family: cursive;
+  margin-top: 4vw; 
+  font-size: 8vw; 
+  color: white;
 }
 
 /* This helps create gap between two rows of slogan */
