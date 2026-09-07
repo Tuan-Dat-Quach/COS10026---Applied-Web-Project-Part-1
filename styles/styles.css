@@ -173,13 +173,15 @@ nav a:hover {
 /* This is the CSS for the table header, or the first row */
 th {
     padding: 20px;
-    background-color: #07d086
+    background-color: #07d086;
+    border: 1px solid;
 }
 
 /* This is the CSS for table cells */
 td {
     padding: 10px;
     background-color:rgb(243, 232, 232);
+    border: 1px solid;
 }
 
 /* This creates hover effecrts for table cells */
@@ -208,6 +210,10 @@ td:hover {
 
 .recruit ul li a:hover {
     background-color: rgb(215, 211, 211);
+}
+
+hr {
+    margin: 0px;
 }
 
 /* These 3 sections are CSS for the footer */
@@ -336,7 +342,7 @@ footer p a:hover {
 
 .funfact {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: 2fr 3fr;
     align-items: center;
     background-color: rgb(231, 221, 200);
 }
@@ -347,7 +353,7 @@ footer p a:hover {
 }
 
 .funfact-image img {
-    width: 70%;
+    width: 80%;
     height: auto;
     margin-left: 100px;
 }
@@ -360,8 +366,11 @@ footer p a:hover {
     text-align: center;
 }
 
-.member-secret table {
+.member-secret table, .member-secret th, .member-secret td {
     border: 1px solid;
+    border-collapse: collapse;
+    margin-left: 0px;
+    margin-bottom: 100px;
 }
 
 .member-secret ul li {
