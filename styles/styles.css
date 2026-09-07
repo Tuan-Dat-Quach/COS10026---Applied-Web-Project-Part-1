@@ -288,7 +288,7 @@ footer p a:hover {
 }
 
 .contribution-image img{
-    width: 100%;
+    width: 80%;
     height: auto;
 }
 
@@ -324,7 +324,7 @@ footer p a:hover {
 }
 
 .inspirative-image img {
-    width: 100%;
+    width: 80%;
     height: auto;
 }
 
@@ -332,4 +332,34 @@ footer p a:hover {
     font-weight: bold;
     font-size: 50px;
     margin: 15px;
+}
+
+.funfact {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    background-color: rgb(231, 221, 200);
+}
+
+.funfact-image {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.funfact-image img {
+    width: 70%;
+    height: auto;
+    margin-left: 100px;
+}
+
+.member-secret {
+    display: grid;
+    grid-template-columns: 1fr;
+    font-size: 40px;
+    margin-right: 100px;
+    text-align: center;
+}
+
+.member-secret ul li {
+    list-style-type: none;
 }
