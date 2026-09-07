@@ -22,96 +22,163 @@
             </figure>
             <!-- This is the consistent navigation bar, offering accessibility to users -->
             <nav>
-                <a href="index.html"> 🪴 Home </a>
-                <a href="jobs.html"> 📝 Jobs </a>
-                <a href="apply.html"> 📄 Apply </a>
-                <a href="about.html"> 🧾 About </a>
+                <ul id="menu"> 
+                    <li> <a href="index.html"> 🪴 Home </a> </li>
+                    <li> <a href="jobs.html"> 📝 Jobs </a> </li>
+                    <li> <a href="apply.html"> 📄 Apply </a> </li>
+                    <li> <a href="about.html"> 👥 About </a> </li>
+                </ul>
             </nav>
         </div>
 
         <main>
-            <section> 
-                <p> About Us </p>
-                <br>
+            <!-- This is the first section of about.html, including group name, tutorial class day and time and the group photo -->
+            <section class="about-us" aria-labelledby="section-title1">
+                <div class="about-group">
+                <p class="about-titles" id="section-title1"> <strong> About Us </strong> </p>
+                <!-- This is the nested list of <ul> and <ol> -->
                 <ul>
-                    <li> Our group's Super-duper cool name: <strong> TideTech </strong> </li>
+                    <li> Our group's super-duper cool name: <strong id="epic-name"> TideTech </strong> </li>
+                    <br>
                     <li> Our tutorial class day, time and location: </li>
                         <ol>
-                            <li> 📆 Day: Every Thursday (Except for Mid-term Break) </li>
-                            <li> ⏰ Time: 12:30 p.m to 14:30 p.m </li>
-                            <li> 📍 Location: Room BA513, Floor 5 at BA Building </li>
+                            <li> Day: Every Thursday (Except for Mid-term Break) 📆 </li>
+                            <li> Time: 12:30 p.m to 14:30 p.m ⏰ </li>
+                            <li> Location: Room BA513, Floor 5 at BA Building 📍 </li>
                         </ol>
+                        <br>
                     <li> Our group number: G05 </li>
+                    <br>
                     <li> Our scenario: An environmental organisation strengthening its online presence to promote conservation projects, community campaigns, 
                          educational resources, volunteer opportunities and public donations. </li>
                 </ul>
+                </div>
 
+                <!-- This is the group photo, along with a caption -->
+                <div class="group-photo">
                 <figure>
-                    <img>
-                    <figcaption> </figcaption>
+                    <img src=images/group_photo.png alt="Group photo of G05 - TideTech" loading="lazy">
+                    <figcaption id="about-caption1"> <strong> <em> 😎 Our epic group: Ravindu Nethsara, Johnathan Mey and Tuan Dat Quach </em> </strong> </figcaption>
                 </figure>
+                </div>
             </section>
 
-            <section>
+            <!-- This is the second section, displaying member contributions of our group-->
+            <section class="member-contributions" aria-labelledby="section-title2">
+                <div class="contribution-image">
+                <!-- Source of the image used: https://sparkstrategy.com.au/contribution-vs-attribution-intermediaries/ -->
                 <figure>
-                    <img>
+                    <img src="images/description_image3.png" alt="description image for coontribution" loading="lazy">
                 </figure>
-
-                <p> Member Contributions </p>
-                <br>
-                <p> 🖌️ Individual Responsibilities: </p>
+                </div>
+                
+                <div class="individual-tasks">
+                <p class="about-titles" id="section-title2"> <strong> Member Contributions </strong> </p>
+                <p style="font-size: 50px; color:blue; margin-bottom: 0px;"> <strong> 🖌️ Individual Responsibilities: </strong> </p>
+                <!-- This is a description list used to present member contributions -->
                 <dl>
-                    <dt> Tuan Dat Quach </dt>
+                    <dt id="member-name1"> 📌 Tuan Dat Quach </dt>
                         <dd> - Main content for index.html and about.html </dd>
                         <dd> - General CSS for pages </dd>
-                    <dt> Ravindu Nethsara </dt>
+                    <dt id="member-name1"> 📌 Ravindu Nethsara </dt>
                         <dd> - Main content for jobs.html </dd>
-                    <dt> Johnathan Mey </dt>
+                    <dt id="member-name1"> 📌 Johnathan Mey </dt>
                         <dd> - Main content for apply.html </dd>
                         <dd> - Assignment Submission</dd>
                     <br>
-                    <dt> 🤝 Shared Responsibilities: </dt>
+                    <dt style="font-size: 50px; color: blue;"> <strong> 🤝 Shared Responsibilities: </strong> </dt> <br>
                         <dd> - CSS Style for each individual page </dd>
                         <dd> - Suggesting ideas </dd>
                         <dd> - Re-evaluation and finalisation </dd>
                 </dl>
+                </div>
             </section>
             <br>
 
-            <section> 
-                <p> What Inspires Us </p>
+            <!-- This is the third section, stating individual quotes that inspire each of us -->
+            <section class="individual-quotes" aria-labelledby="section-title3"> 
+                <div class="inspiration">
+                <p class="about-titles" id="section-title3"> <strong> What Inspires Us </strong> </p>
                 <br>
-                <p> Tuan Dat Quach </p>
-                <figure>
-                    <img src="images/Tuan_Dat_Quach_speechbubble.png" alt="Quote of Tuan Dat Quach" loading="lazy">
-                </figure>
-                <p> 🙋‍♂️ </p>
-                <p> English Translation: "Deep from my heart lies a profound passion for numbers, principles and coherent logics." </p>
-                <br>
-                <p> Ravindu Nethsara </p>
-                <figure>
-                    <img>
-                </figure>
-                <p> 🙋‍♂️ </p>
-                <p> English Translation: </p>
-                <br>
-                <p> Johnathan Mey </p>
-                <figure>
-                    <img>
-                </figure>
-                <p> 🙋‍♂️ </p>
+                    <div class="TDQ-Quote">
+                    <p id="member-name2"> 👤 Tuan Dat Quach: </p>
+                    <p> "🇻🇳 Sâu thẳm trong tim tôi là một niềm đam mê mãnh liệt với những con số, những quy luật và tính logic chặt chẽ."
+                    <p> => English Translation: "Deep from my heart lies a profound passion for numbers, principles and coherent logics." </p>
+                    </div>
+                    <br>
+                    <div class="RN-Quote">
+                    <p id="member-name2"> 👤 Ravindu Nethsara: </p>
+                    <p> ....... </p>
+                    <p> => English Translation: </p>
+                    </div>
+                    <br>
+                    <div class="JM-Quote">
+                    <p id="member-name2"> 👤 Johnathan Mey:  </p>
+                    <p> ....... </p>
+                    <p> => English Translation: </p>
+                    </div>
+                    <br><br>
+                </div>
 
+                <div class="inspirative-image">
+                <!-- Source of the image used: https://www.socialmediabutterflyblog.com/2019/11/17-ways-to-find-more-inspiration-and-meaning-in-your-daily-life/ -->
                 <figure>
-                    <img>
+                    <img src=images/description_image4.png alt="description image for inspiration" loading="lazy"> 
                 </figure>
+                </div>
             </section>
-            <br>
 
-            <section>
-                <p> And... We've got even more to show everybody! </p>
+            <!-- This is the final section, revealing some fun facts about the group members -->
+            <section class="funfact" aria-labelledby="section-title4">
+                <div class="funfact-image">
+                <!-- Source of the image used: https://stock.adobe.com/search?k=fun+fact&asset_id=194933763 -->
+                <figure>
+                    <img src="images/description_image5.png" alt="description image for fun facts" loading="lazy">
+                </figure>
+                </div>
+
+                <!-- This is a table used to present fun facts about the team members -->
+                <div class="member-secret">
+                <p class="about-titles" id="section-title4"> <strong> Finally... Our thrilling secrets! </strong> </p> <br>
                 <table>
-                    
+                    <caption> 🧐 These are things that help you to know more about us </caption>
+                    <thead>
+                        <tr>
+                            <th colspan="3"> 🔍 FUN FACTS ABOUT EACH MEMBER </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> <strong> Tuan Dat Quach </strong> </td>
+                            <td> <strong> Ravindu Nethsara </strong> </td>
+                            <td> <strong> Johnathan Mey </strong> </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul style="text-align: left;">
+                                    <li> - His favourite subject is Maths, especially when it comes to Probability and Statistics </li> <br>
+                                    <li> - He likes solving puzzles or IQ games, including Minesweeper, Sudoku and match-3 games </li> <br>
+                                    <li> - He loves playing kalimba, as the only instrument that he's keen on </li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="text-align: left;">
+                                    <li> - His favourite subject is Maths, especially when it comes to Probability and Statistics </li> <br>
+                                    <li> - He likes solving puzzles or IQ games, including Minesweeper, Sudoku and match-3 games </li> <br>
+                                    <li> - He loves playing kalimba, as the only instrument that he's keen on </li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="text-align: left;">
+                                    <li> - His favourite subject is Maths, especially when it comes to Probability and Statistics </li> <br>
+                                    <li> - He likes solving puzzles or IQ games, including Minesweeper, Sudoku and match-3 games </li> <br>
+                                    <li> - He loves playing kalimba, as the only instrument that he's keen on </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
+                </div>
             </section>
         </main>
     </body>

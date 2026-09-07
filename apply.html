@@ -36,16 +36,20 @@
             </figure>
             <!-- This is the consistent navigation bar, offering accessibility to users -->
             <nav>
-                <a href="index.html"> 🪴 Home </a>
-                <a href="jobs.html"> 📝 Jobs </a>
-                <a href="apply.html"> 📄 Apply </a>
-                <a href="about.html"> 🧾 About </a>
+                <ul id="menu"> 
+                    <li> <a href="index.html"> 🪴 Home </a> </li>
+                    <li> <a href="jobs.html"> 📝 Jobs </a> </li>
+                    <li> <a href="apply.html"> 📄 Apply </a> </li>
+                    <li> <a href="about.html"> 👥 About </a> </li>
+                </ul>
             </nav>
         </div>
         
         <main>
             <form action="http://mercury.swin.edu.au/it000000/formtest.php" method="post">
+                <br>
                 <label for="Job Reference Number">Job Reference Number</label>
+                <input type="text" id="Job Reference Number" name="Job Reference Number" minlength="6" maxlength="6" pattern="GS102A|GS204B|GS305C" required>
                 <br><br>
                 <fieldset>
                     <legend>Your details</legend>
@@ -139,6 +143,10 @@
                     <label><input type="checkbox" id="Team Player" name="Skills[]" value="Team Player">Team Player</label>
                     <br>
                     <label><input type="checkbox" id="Passionate" name="Skills[]" value="Passionate">Passionate</label>
+                    <br>
+                    <label><input type="checkbox" id="Leadership" name="Skills[]" value="Leadership">Leadership</label>
+                    <br>
+                    <label><input type="checkbox" id="Communication" name="Skills[]" value="Communication">Communication</label>
                     <br><br>
 
                     <label for="Other Skills">Other Skills</label>
