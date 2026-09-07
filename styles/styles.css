@@ -371,8 +371,17 @@ footer p a:hover {
     border-collapse: collapse;
     margin-left: 0px;
     margin-bottom: 100px;
+    padding: 15px 10px 15px 5px;
 }
 
+.member-secret table caption {
+    caption-side: bottom;
+    padding: 10px; 
+    font-weight: bold;
+    font-style: italic;
+    font-size: 36px;
+    color:rgb(12, 12, 210)
+}
 .member-secret ul li {
     list-style-type: none;
 }
