@@ -27,7 +27,7 @@ main {
   align-items: center; /* This helps to align the texts in the center */
   width: 100%; /* This helps the navigation bar to fully cover the row */
   padding: 10px; 
-  background-color: #DCE7E1;
+  background-color: #edf3ef;
   box-sizing: border-box; /* This effectively keeps the width of navigation exactly as 100%, preventing overflow of the bar */
   gap: 30px; /* This creates the gap between the logo and the texts */
 }
@@ -168,18 +168,19 @@ nav a:hover {
     text-align: center;
     border: 1px solid;
     border-collapse: collapse; /* This allows single-line border for the table */
+    margin-left: 50px;
 }
 
 /* This is the CSS for the table header, or the first row */
 th {
-    padding: 20px;
+    padding: 30px;
     background-color: #07d086;
     border: 1px solid;
 }
 
 /* This is the CSS for table cells */
 td {
-    padding: 10px;
+    padding: 30px;
     background-color:rgb(243, 232, 232);
     border: 1px solid;
 }
@@ -384,7 +385,6 @@ footer p a:hover {
 .funfact-image img {
     width: 80%;
     height: auto;
-    margin-left: 100px;
 }
 
 .member-secret {
