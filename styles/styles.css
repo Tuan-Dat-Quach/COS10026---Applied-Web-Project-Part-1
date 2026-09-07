@@ -242,7 +242,7 @@ footer p a:hover {
 
 
 /* This is the CSS applied to the 4 headings in about.html */
-#about-titles { 
+.about-titles { 
     color:#065747;
     font-size: 80px;
     text-align: center;
