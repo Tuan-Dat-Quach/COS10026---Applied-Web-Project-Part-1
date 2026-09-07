@@ -241,16 +241,19 @@ footer p a:hover {
 /* This is the section for CSS applied to about.html */
 
 
-#about-titles {
+/* This is the CSS applied to the 4 headings in about.html */
+#about-titles { 
     color:#065747;
     font-size: 80px;
     text-align: center;
     margin-bottom: 10px;
 }
 
+/* These are the CSS for the first section */
+
 .about-us {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2,1fr); /* This sets a grid layout, dividing the screen into two equal columns */
     align-items: center;
 }
 
@@ -261,6 +264,7 @@ footer p a:hover {
     margin: 0px 60px 100px 100px;
 }
 
+/* This helps to hightlight the group name */
 #epic-name {
     color:rgb(12, 12, 210);
     font-size: 50px;
@@ -271,15 +275,19 @@ footer p a:hover {
     grid-template-columns: 1fr;
 }
 
+/* This allows the group photo to cover the column */
 .group-photo img {
     max-width: 100%;
 }
 
+/* This is for the group photo's caption */
 #about-caption1 {
     margin-top: 10px;
-    margin-left: 80px;
+    margin-left: 20px;
     font-size: 40px;
 }
+
+/* These are the CSS for the second section */
 
 .member-contributions {
     display: grid;
@@ -293,6 +301,7 @@ footer p a:hover {
     grid-template-columns: 1fr;
 }
 
+/* This is for the illustrative image of the second section */
 .contribution-image img{
     width: 80%;
     height: auto;
@@ -305,10 +314,13 @@ footer p a:hover {
     margin: 0px 40px 100px 50px;
 }
 
+/* This helps to highlight the team members' name in this section */
 #member-name1 {
     margin-top: 15px;
     font-weight: bold;
 }
+
+/* These are the CSS for the third section */
 
 .individual-quotes {
     display: grid;
@@ -324,12 +336,14 @@ footer p a:hover {
     margin-top: 0px;
 }
 
+/* These CSS set the border and background color for the quotes */
 .TDQ-Quote, .RN-Quote, .JM-Quote {
     border: 5px solid;
     background-color: white;
     border-radius: 10px;
 }
 
+/* These CSS set the padding particularly for the quotes */
 .TDQ-Quote p, .RN-Quote p, .JM-Quote p {
     padding: 10px 15px;
 }
@@ -339,16 +353,20 @@ footer p a:hover {
     grid-template-columns: 1fr;
 }
 
+/* This is for the illustrative image of the third section */
 .inspirative-image img {
     width: 80%;
     height: auto;
 }
 
+/* This helps to highlight the members' name in this section */
 #member-name2 {
     font-weight: bold;
     font-size: 50px;
     margin: 15px;
 }
+
+/* These are the CSS for the final section */
 
 .funfact {
     display: grid;
@@ -362,6 +380,7 @@ footer p a:hover {
     grid-template-columns: 1fr;
 }
 
+/* This is for the illustrative image of the final section */
 .funfact-image img {
     width: 80%;
     height: auto;
@@ -376,6 +395,7 @@ footer p a:hover {
     text-align: center;
 }
 
+/* These CSS set the table's border and the text inside */
 .member-secret table, .member-secret th, .member-secret td {
     border: 1px solid;
     border-collapse: collapse;
@@ -384,6 +404,7 @@ footer p a:hover {
     padding: 15px 10px 15px 5px;
 }
 
+/* These CSS positions the caption under the table and highlight it */
 .member-secret table caption {
     caption-side: bottom;
     padding: 10px; 
@@ -392,6 +413,7 @@ footer p a:hover {
     font-size: 36px;
     color:rgb(12, 12, 210)
 }
+
 .member-secret ul li {
     list-style-type: none;
 }
