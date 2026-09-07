@@ -324,6 +324,16 @@ footer p a:hover {
     margin-top: 0px;
 }
 
+.TDQ-Quote, .RN-Quote, .JM-Quote {
+    border: 5px solid;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.TDQ-Quote p, .RN-Quote p, .JM-Quote p {
+    padding: 10px 15px;
+}
+
 .inspirative-image {
     display: grid;
     grid-template-columns: 1fr;
