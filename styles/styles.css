@@ -360,6 +360,10 @@ footer p a:hover {
     text-align: center;
 }
 
+.member-secret table {
+    border: 1px solid;
+}
+
 .member-secret ul li {
     list-style-type: none;
 }
