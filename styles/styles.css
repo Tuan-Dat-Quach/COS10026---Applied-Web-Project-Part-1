@@ -93,29 +93,39 @@ nav a:hover {
     margin-top: 20px;
 }
 
-/* This is the setup for grid layout of the main content for index.html */
-.company-information {
-    display: grid;
-    grid-template-columns: 3fr 2fr; /* This creates two grid columns, accounting for 60% and 40% width respectively */
-}
-
-/* This is the grid layout for the left column - Text-based content */
+/* This is the grid layout for the first section of company description */
 .description {
     display: grid;
-    grid-template-columns: 1fr;
-    margin: 10px 10px;
+    grid-template-columns: 3fr 2fr;
+    align-items: center;
 }
 
-/* This is the grid layout for the right column - Image-based content */
+.text-description {
+    margin-left: 20px;
+}
+.planting-image img {
+    width: 100%;
+    height: auto;
+}
+/* This is the grid layout for the second section of company description */
 .illustration {
     display: grid;
+    grid-template-columns: 3fr 2fr;
+    align-items: center;
+}
+
+.table-description {
+    display: grid;
     grid-template-columns: 1fr;
-    gap: 20px; /* This creates gap between the two illustrative images */
+}
+
+.cleanup-image {
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
 /* This is CSS for the illustrative images only */
-.illustration img {
-    margin-top: 0.5vw;
+.cleanup-image img {
     width: 100%;
     height: auto;
 }
@@ -140,11 +150,15 @@ nav a:hover {
 /* This removes the number for <ol> in company description */
 .description ol {
     list-style-type: none;
+    margin: 0 0 0 20px;
+    padding: 0;
 }
 
 /* This changes the bullet points to squares for <ul> in company description */
 .description ul li {
-    list-style-type: square;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* This is the CSS for the table itself */
@@ -152,19 +166,20 @@ nav a:hover {
     text-align: center;
     border: 1px solid;
     border-collapse: collapse; /* This allows single-line border for the table */
-    margin-left: 50px;
+    margin-left: 20px;
+    margin-top: 50px;
 }
 
 /* This is the CSS for the table header, or the first row */
 th {
-    padding: 30px;
+    padding: 1vw;
     background-color: #07d086;
     border: 1px solid;
 }
 
 /* This is the CSS for table cells */
 td {
-    padding: 30px;
+    padding: 1vw;
     background-color:rgb(243, 232, 232);
     border: 1px solid;
 }
