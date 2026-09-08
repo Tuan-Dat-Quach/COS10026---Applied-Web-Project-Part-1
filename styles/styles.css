@@ -16,9 +16,8 @@ main {
 }
 
 /* This sets the maximum width for the company logo */
-#company_logo {
+.navigation img {
   width: 30vw;
-  height: auto;
 }
 
 /* This is the setup for the whole navigation bar across pages. */
@@ -29,7 +28,6 @@ main {
   padding: 10px; 
   background-color: #edf3ef;
   box-sizing: border-box; /* This effectively keeps the width of navigation exactly as 100%, preventing overflow of the bar */
-  gap: 30px; /* This creates the gap between the logo and the texts */
 }
 
 /* This helps the navigation text cover the remaining space on the right */
@@ -41,7 +39,7 @@ main {
 #menu {
   display: flex;
   flex-wrap: wrap; /* This allows the text to move down a row when the screen is shrinking, preventing unexpected disappearance */
-  justify-content: space-around; /* This sets equal space between the texts */
+  justify-content: space-between; /* This sets equal space between the texts */
   list-style-type: none; /* This eliminates the bullet points of <ul> */
   /* These two lines remove the default margin and padding of the <ul> list */
   margin: 0; 
@@ -54,6 +52,7 @@ main {
   color: black;
   font-weight: bold;
   font-size: 2.5vw;
+  margin-right: 1vw;
 }
 
 /* This sets the hover effects for navigation bar */
@@ -63,25 +62,9 @@ nav a:hover {
 } 
 
 /* This is CSS for Media queries, applying additional styles depending on the device's characteristics */
-@media only screen and (max-width: 768px) {
-  .navigation {
-    flex-direction: column; /* This moves the text under the company logo when screen-width < 768px */
-    gap: 15px;
-    padding: 15px;
-  }
-
-  #company_logo {
-    max-width: 200px; 
-  }
-
-  #menu {
-    width: 100%;
-    justify-content: space-between; 
-  }
-
+@media only screen and (min-width: 1500px) {
   #menu a {
-    font-size: 16px; 
-    padding: 6px 10px;
+    font-size: 5.5vw;
   }
 }
 
@@ -92,7 +75,7 @@ nav a:hover {
 #slogan1 {
   font-family: cursive;
   color: white;     
-  font-size: 8vw; 
+  font-size: 6vw; 
   line-height: 1.2;
   margin: 0;
 }
@@ -101,7 +84,7 @@ nav a:hover {
 #slogan2 {
   font-family: cursive;
   margin-top: 4vw; 
-  font-size: 8vw; 
+  font-size: 4vw; 
   color: white;
 }
 
@@ -132,7 +115,7 @@ nav a:hover {
 
 /* This is CSS for the illustrative images only */
 .illustration img {
-    margin-top: 40px;
+    margin-top: 0.5vw;
     width: 100%;
     height: auto;
 }
@@ -140,18 +123,18 @@ nav a:hover {
 /* This sets a caption under the illustrative images */
 #index-caption {
     text-align: center;
-    font-size: 25px;
+    font-size: 2vw;
 }
 
 /* This sets the font-size for the texts in the table */
 #company-details {
-    font-size: 30px;
+    font-size: 2vw;
 }
 
 /* This sets a different color and font-size for the titles of company description */
 #overview {
     color: #065747;
-    font-size: 60px;
+    font-size: 3vw;
 }
 
 /* This removes the number for <ol> in company description */
