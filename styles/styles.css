@@ -64,7 +64,13 @@ nav a:hover {
 /* This is CSS for Media queries, applying additional styles depending on the device's characteristics */
 @media only screen and (min-width: 1500px) {
   #menu a {
-    font-size: 5.5vw;
+    font-size: 6vw;
+  }
+  #slogan1 {
+    font-size: 10vw !important;
+  }
+  #slogan2 {
+    font-size: 8vw !important;
   }
 }
 
@@ -107,21 +113,12 @@ nav a:hover {
     width: 100%;
     height: auto;
 }
+
 /* This is the grid layout for the second section of company description */
 .illustration {
     display: grid;
     grid-template-columns: 3fr 2fr;
     align-items: center;
-}
-
-.table-description {
-    display: grid;
-    grid-template-columns: 1fr;
-}
-
-.cleanup-image {
-    display: grid;
-    grid-template-columns: 1fr;
 }
 
 /* This is CSS for the illustrative images only */
@@ -138,7 +135,7 @@ nav a:hover {
 
 /* This sets the font-size for the texts in the table */
 #company-details {
-    font-size: 2vw;
+    font-size: 2.5vw;
 }
 
 /* This sets a different color and font-size for the titles of company description */
@@ -192,16 +189,22 @@ td:hover {
 
 /* These 4 sections are the CSS for the recruitment line*/
 .recruit {
+    font-size: 3vw;
+}
+
+.recruit h2 {
+    margin: 20px 30px;
     text-align: center;
-    font-size: 25px;
 }
 
 .recruit p {
-    font-size: 30px;
+    font-size: 2.5vw;
+    margin: 20px 30px;
 }
 .recruit ul li {
     list-style-type: none;
-    font-size: 30px;
+    font-size: 2.5vw;
+    margin: 20px 0px;
 }
 
 .recruit ul li a {
@@ -219,7 +222,7 @@ hr {
 /* These 3 sections are CSS for the footer */
 .footer {
     text-align: center;
-    font-size: 25px;
+    font-size: 2vw;
 }
 
 footer p a {
