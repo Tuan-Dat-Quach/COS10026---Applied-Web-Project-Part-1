@@ -17,7 +17,7 @@ main {
 
 /* This sets the maximum width for the company logo */
 #company_logo {
-  max-width: 80%;
+  width: 30vw;
   height: auto;
 }
 
@@ -53,7 +53,7 @@ main {
   white-space: nowrap; /* This keeps the text attached to the icon, even if they move down */
   color: black;
   font-weight: bold;
-  font-size: 55px;
+  font-size: 2.5vw;
 }
 
 /* This sets the hover effects for navigation bar */
