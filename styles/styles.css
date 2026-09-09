@@ -15,7 +15,7 @@ main {
     background-color: #f6e5db;
 }
 
-/* This sets the maximum width for the company logo */
+/* This sets the width for the company logo */
 .navigation img {
   width: 25vw;
 }
@@ -25,7 +25,7 @@ main {
   display: flex; /* This indicates the flexbox layout for the navigation bar */
   align-items: center; /* This helps to align the texts in the center */
   width: 100%; /* This helps the navigation bar to fully cover the row */
-  padding: 10px; 
+  padding: 0px 10px; 
   background-color: #edf3ef;
   box-sizing: border-box; /* This effectively keeps the width of navigation exactly as 100%, preventing overflow of the bar */
 }
