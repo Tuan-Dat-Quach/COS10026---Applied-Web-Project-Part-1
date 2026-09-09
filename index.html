@@ -11,7 +11,7 @@
         <!-- This is the official title for our webpage -->
         <title>Greener Society - Recruitment Website</title>
         <link rel="stylesheet" href="styles/styles.css">
-        <!-- This is the internal CSS to change the background color of the recruitment line and add background image to the slogan -->
+        <!-- This is the internal CSS to change the background color of the recruitment line and the image containing company sloan -->
         <style>
         #promotion {
              border:solid;
@@ -20,15 +20,12 @@
 
         .slogan img {
             width: 100%;
-            box-sizing: border-bo;
-            background-repeat: no-repeat;
-            background-size: cover;
         }
 
+        /* This allows the image to actually cover the whole width of browser */
+        /* This is because the <figure> tags have default margin of 40px of left and right side */
         .slogan {
-            width: 100%;
-            margin: 0;
-            padding: 0;
+            margin: 0; 
         }
         </style>
     </head>
@@ -82,11 +79,8 @@
                 </section>
                 
 
-                <!-- This is image and gif used to illustrate the company description -->
-                <!-- The source of the image and gif used: 
-                + Gif: https://giphy.com/gifs/lazoo-green-earth-4QFBn7Or4Qw43x6qVs
-                + Image: https://www.norwestcommunity.com.au/event/clean-up-the-world-start-with-your-community-ever-wondered-how-you-can-be-the-one-to-bring-change-to-the-neighbourhood/
-                -->
+                <!-- This is a gif used to illustrate the company description -->
+                <!-- The source of the gif used: https://giphy.com/gifs/lazoo-green-earth-4QFBn7Or4Qw43x6qVs -->
                 <div class="planting-image">
                 <figure>
                     <img src="images/tree-planting.gif" alt="Tree Planting Activities" loading="lazy">
@@ -139,6 +133,8 @@
                 <br>
                 </section>
                 
+                <!-- This is an image used to illustrate company description -->
+                <!-- Source of the image used: https://www.norwestcommunity.com.au/event/clean-up-the-world-start-with-your-community-ever-wondered-how-you-can-be-the-one-to-bring-change-to-the-neighbourhood/ -->
                 <div class="cleanup-image">
                 <figure>
                     <img src="images/description_image2.jpg" alt="Local Cleanup Activities" loading="lazy">

@@ -227,14 +227,6 @@ footer p a:hover {
 /* This is the section for CSS applied to about.html */
 
 
-/* This is the CSS applied to the 4 headings in about.html */
-.about-titles { 
-    color:#065747;
-    font-size: 4vw;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
 /* These are the CSS for the first section */
 
 .about-us {
