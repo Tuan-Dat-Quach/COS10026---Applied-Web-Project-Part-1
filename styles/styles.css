@@ -302,10 +302,8 @@ footer p a:hover {
 }
 
 .inspiration {
-    display: grid;
-    grid-template-columns: 1fr;
-    font-size: 40px;
-    margin-left: 100px;
+    font-size: 2vw;
+    margin-left: 5vw;
     margin-top: 0px;
 }
 
@@ -318,24 +316,19 @@ footer p a:hover {
 
 /* These CSS set the padding particularly for the quotes */
 .TDQ-Quote p, .RN-Quote p, .JM-Quote p {
-    padding: 10px 15px;
-}
-
-.inspirative-image {
-    display: grid;
-    grid-template-columns: 1fr;
+    padding: 1vw;
 }
 
 /* This is for the illustrative image of the third section */
 .inspirative-image img {
-    width: 80%;
+    width: 100%;
     height: auto;
 }
 
 /* This helps to highlight the members' name in this section */
 #member-name2 {
     font-weight: bold;
-    font-size: 50px;
+    font-size: 2.5vw;
     margin: 15px;
 }
 
