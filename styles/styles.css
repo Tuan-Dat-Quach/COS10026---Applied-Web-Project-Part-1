@@ -17,7 +17,7 @@ main {
 
 /* This sets the maximum width for the company logo */
 .navigation img {
-  width: 30vw;
+  width: 25vw;
 }
 
 /* This is the setup for the whole navigation bar across pages. */
@@ -76,31 +76,8 @@ nav a:hover {
 
 /* This is the section for CSS applied to index.html */
 
-
-/* This is the CSS for the first row of company slogan */
-#slogan1 {
-  font-family: cursive;
-  color: white;     
-  font-size: 6vw; 
-  line-height: 1.2;
-  margin: 0;
-}
-
-/* This is the CSS for the second row of company slogan */
-#slogan2 {
-  font-family: cursive;
-  margin-top: 4vw; 
-  font-size: 4vw; 
-  color: white;
-}
-
-/* This helps create gap between two rows of slogan */
-.slogan {
-    margin-top: 20px;
-}
-
 /* This is the grid layout for the first section of company description */
-.description {
+.description1 {
     display: grid;
     grid-template-columns: 3fr 2fr;
     align-items: center;
@@ -115,7 +92,7 @@ nav a:hover {
 }
 
 /* This is the grid layout for the second section of company description */
-.illustration {
+.description2 {
     display: grid;
     grid-template-columns: 3fr 2fr;
     align-items: center;
@@ -135,7 +112,7 @@ nav a:hover {
 
 /* This sets the font-size for the texts in the table */
 #company-details {
-    font-size: 2.5vw;
+    font-size: 2vw;
 }
 
 /* This sets a different color and font-size for the titles of company description */
@@ -145,14 +122,14 @@ nav a:hover {
 }
 
 /* This removes the number for <ol> in company description */
-.description ol {
+.description1 ol {
     list-style-type: none;
-    margin: 0 0 0 20px;
+    margin: 0;
     padding: 0;
 }
 
 /* This changes the bullet points to squares for <ul> in company description */
-.description ul li {
+.description1 ul li {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -187,24 +164,24 @@ td:hover {
     cursor: pointer; 
 }
 
-/* These 4 sections are the CSS for the recruitment line*/
+/* These sections are the CSS for the recruitment line*/
 .recruit {
-    font-size: 3vw;
+    font-size: 2vw;
 }
 
 .recruit h2 {
-    margin: 20px 30px;
-    text-align: center;
+    margin: 10px 20px;
+    
 }
 
 .recruit p {
-    font-size: 2.5vw;
+    font-size: 2vw;
     margin: 20px 20px;
 }
 .recruit ul li {
     list-style-type: none;
-    font-size: 2.5vw;
-    margin: 20px 0px;
+    font-size: 2vw;
+    margin: 0;
 }
 
 .recruit ul li a {
