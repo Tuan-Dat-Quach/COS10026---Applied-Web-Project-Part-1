@@ -341,22 +341,15 @@ footer p a:hover {
     background-color: rgb(231, 221, 200);
 }
 
-.funfact-image {
-    display: grid;
-    grid-template-columns: 1fr;
-}
-
 /* This is for the illustrative image of the final section */
 .funfact-image img {
-    width: 80%;
+    width: 100%;
     height: auto;
 }
 
 .member-secret {
-    display: grid;
-    grid-template-columns: 1fr;
-    font-size: 40px;
-    margin-right: 100px;
+    font-size: 1.5vw;
+    margin-right: 10px;
     text-align: center;
 }
 
@@ -365,8 +358,7 @@ footer p a:hover {
     border: 1px solid;
     border-collapse: collapse;
     margin-left: 0px;
-    margin-bottom: 100px;
-    padding: 15px 10px 15px 5px;
+    padding: 1vw;
 }
 
 /* These CSS positions the caption under the table and highlight it */
@@ -374,9 +366,12 @@ footer p a:hover {
     caption-side: bottom;
     padding: 10px; 
     font-weight: bold;
-    font-style: italic;
-    font-size: 36px;
+    font-size: 2vw;
     color:rgb(12, 12, 210)
+}
+
+.member-secret ul {
+    padding: 5px;
 }
 
 .member-secret ul li {
