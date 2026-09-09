@@ -260,8 +260,7 @@ footer p a:hover {
 
 /* This is for the group photo's caption */
 #about-caption1 {
-    margin-top: 10px;
-    margin-left: 20px;
+    margin: 0;
     font-size: 2vw;
 }
 
@@ -274,22 +273,18 @@ footer p a:hover {
     background-color: rgb(231, 221, 200);
 }
 
-.contribution-image {
-    display: grid;
-    grid-template-columns: 1fr;
-}
-
 /* This is for the illustrative image of the second section */
 .contribution-image img{
-    width: 80%;
+    width: 100%;
     height: auto;
 }
 
 .individual-tasks {
-    display: grid;
-    grid-template-columns: 1fr;
     font-size: 2vw;
-    margin: 0px 40px 100px 50px;
+}
+
+.individual-tasks dd {
+    margin-left: 2.5vw;
 }
 
 /* This helps to highlight the team members' name in this section */
