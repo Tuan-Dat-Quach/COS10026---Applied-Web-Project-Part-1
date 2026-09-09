@@ -167,6 +167,8 @@ td:hover {
 /* These sections are the CSS for the recruitment line*/
 .recruit {
     font-size: 2vw;
+    margin: 0;
+    padding: 0;
 }
 
 .recruit h2 {
@@ -177,6 +179,10 @@ td:hover {
 .recruit p {
     font-size: 2vw;
     margin: 20px 20px;
+}
+
+.recruit ul {
+    padding: 1vw 2vw;
 }
 .recruit ul li {
     list-style-type: none;
