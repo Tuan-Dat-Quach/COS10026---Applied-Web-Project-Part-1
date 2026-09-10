@@ -141,14 +141,14 @@ nav a:hover {
 th {
     padding: 1vw;
     background-color: #07d086;
-    border: 1px solid;
+    border: 2px solid;
 }
 
 /* This is the CSS for table cells */
 td {
     padding: 1vw;
     background-color:rgb(243, 232, 232);
-    border: 1px solid;
+    border: 2px solid;
 }
 
 /* This creates hover effecrts for table cells */
@@ -350,7 +350,7 @@ footer p a:hover {
 
 /* These CSS set the table's border and the text inside */
 .member-secret table, .member-secret th, .member-secret td {
-    border: 1px solid;
+    border: 2px solid;
     border-collapse: collapse;
     margin-left: 0px;
     padding: 1vw;
