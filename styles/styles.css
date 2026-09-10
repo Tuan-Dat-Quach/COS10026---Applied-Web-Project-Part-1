@@ -98,7 +98,7 @@ nav a:hover {
 }
 
 /* This sets a caption under the illustrative images */
-#index-caption {
+.index-caption {
     text-align: center;
     font-size: 2vw;
 }
@@ -210,7 +210,9 @@ footer p a:hover {
     background-color: rgb(215, 211, 211);
 }
 
-
+hr {
+    border: 1px solid;
+}
 
 /* This is the section for CSS applied to jobs.html */
 
