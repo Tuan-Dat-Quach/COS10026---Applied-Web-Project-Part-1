@@ -104,12 +104,12 @@ nav a:hover {
 }
 
 /* This sets the font-size for the texts in the table */
-#company-details {
+.company-details {
     font-size: 2vw;
 }
 
 /* This sets a different color and font-size for the titles of company description */
-#overview {
+.overview {
     color: #065747;
     font-size: 3vw;
 }
@@ -131,7 +131,7 @@ nav a:hover {
 /* This is the CSS for the table itself */
 .table {
     text-align: center;
-    border: 1px solid;
+    border: 2px solid;
     border-collapse: collapse; /* This allows single-line border for the table */
     margin-left: 20px;
     margin-top: 50px;
@@ -359,7 +359,7 @@ textarea {font-size: 20px;}
     border: 2px solid;
     border-collapse: collapse;
     margin-left: 0px;
-    padding: 2vw;
+    padding: 2vw 1vw;
 }
 
 /* These CSS positions the caption under the table and highlight it */
@@ -367,7 +367,7 @@ textarea {font-size: 20px;}
     caption-side: bottom;
     padding: 10px; 
     font-weight: bold;
-    font-size: 2vw;
+    font-size: 1.5vw;
     color:rgb(12, 12, 210)
 }
 
