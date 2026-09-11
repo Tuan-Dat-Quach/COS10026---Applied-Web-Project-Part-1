@@ -24,6 +24,29 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+
+        /*flexbox code*/
+
+        .form {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+
+        }
+
+        #form .form-item {
+            font-size: 30px;
+            width: fit-content ;
+            margin: 0px auto;
+            border: 1px solid;
+            padding: 20px 50px;
+            border-color: black;
+        }
+
+
         </style>
     </head>
 
@@ -45,43 +68,53 @@
             </nav>
         </div>
         
-        <main>
-            <form action="http://mercury.swin.edu.au/it000000/formtest.php" method="post">
+        <main style="text-align: center;">
+            <!--code for the top sentences-->
+            <div style="background-color: lightgoldenrodyellow;">
+                <hr>
+                <h1>🌲Thank you for considering a job at Greener Society!🌲</h1>
+                <h2>🌏We look forward to your application and love your enthusiasm towards protecting our environment!🌏</h2>
+                <hr>
+            </div>
+            <form id="form" action="http://mercury.swin.edu.au/it000000/formtest.php" method="post">
+                <!--Form code, split into fieldsets-->
+                <!--Each label is allocated its own respective input, with inline styling when needed-->
                 <br>
-               <label for="job-reference">Job Reference Number</label>
-<input type="text" id="job-reference" name="job-reference" minlength="6" maxlength="6" pattern="GS102A|GS204B|GS305C" required>
+                <label style="font-size: 30px;" for="Job Reference Number"><strong>Job Reference Number</strong></label>
+                <input type="text" id="Job Reference Number" name="Job Reference Number" minlength="6" maxlength="6" pattern="GS102A|GS204B|GS305C" required>
                 <br><br>
-                <fieldset>
-                    <legend>Your details</legend>
+                <fieldset style="display: flex; background-color: lightgreen; " class="form-item">
+                    <legend style="text-align: center;"><strong>Your details</strong></legend>
                     <br>
+                    <div>
+                        <label for="First Name">First Name</label>
+                        <input type="text"  id="First Name" name="First Name" maxlength="20" pattern="[A-Za-z -]+" required>
+                        <br><br>
 
-                    <label for="First Name">First Name</label>
-                    <input type="text" id="First Name" name="First Name" maxlength="20" pattern="[A-Za-z -]+" required>
-                    <br><br>
+                        <label for="Last Name">Last Name</label>
+                        <input type="text" id="Last Name" name="Last Name" maxlength="20" pattern="[A-Za-z -]+" required>
+                        <br><br>
 
-                    <label for="Last Name">Last Name</label>
-                    <input type="text" id="Last Name" name="Last Name" maxlength="20" pattern="[A-Za-z -]+" required>
-                    <br><br>
-
-                    <label for="Date of Birth">Date of Birth</label>
-                    <input type="date" id="Date of Birth" name="Date of Birth" required>
-                    <br><br>
-
-                    <label for="Gender">Gender</label>
-                    <br>
-                    <input type="radio" id="Male" name="Gender" value="Male" required>
-                    <label for="Male">Male</label>
-                    <br>
-                    <input type="radio" id="Female" name="Gender" value="Female">
-                    <label for="Female">Female</label>
-                    <br>
-                    <input type="radio" id="Rather Not Say" name="Gender" value="Rather Not Say">
-                    <label for="Rather Not Say">Rather Not Say</label>
-
+                        <label for="Date of Birth">Date of Birth</label>
+                        <input type="date" id="Date of Birth" name="Date of Birth" required>
+                        <br><br>
+                    </div>
+                    <div>
+                        <label for="Gender"> <strong>Gender</strong> </label>
+                        <br>
+                        <input type="radio" id="Male" name="Gender" value="Male" required>
+                        <label for="Male">Male</label>
+                        <br>
+                        <input type="radio" id="Female" name="Gender" value="Female">
+                        <label for="Female">Female</label>
+                        <br>
+                        <input type="radio" id="Rather Not Say" name="Gender" value="Rather Not Say">
+                        <label for="Rather Not Say">Rather Not Say</label>
+                    </div>
                 </fieldset>
                 <br>
-                <fieldset>
-                    <legend>Your Address</legend>
+                <fieldset style="background-color: lightpink;" class="form-item">
+                    <legend style="text-align: center;"><strong>Your Address</strong></legend>
                     <br>
 
                     <label for="Street Address">Street Address</label>
@@ -111,8 +144,8 @@
                     
                 </fieldset>
                 <br>
-                <fieldset>
-                    <legend>Your Contacts</legend>
+                <fieldset style="background-color: lightskyblue;" class="form-item">
+                    <legend style="text-align: center;"><strong>Contacts</strong></legend>
                     <br>
 
                     <label for="Email">Email</label>
@@ -124,12 +157,13 @@
                     
                 </fieldset>
                 <br>
-                <fieldset>
-                    <legend>Your Skills</legend>
+                <fieldset style="background-color: lightcyan;" class="form-item">
+                    <legend style="text-align: center;"><strong>Your Skills</strong></legend>
                     <br>
 
-                    <label for="Skill List">Skill List</label>
+                    <label for="Skill List"><strong>Skill List</strong></label>
                     <br>
+                    <div>
                     <label><input type="checkbox" id="Loves The Environment" name="Skills[]" value="Loves The Environment" checked="checked">Loves The Environment</label>
                     <br>
                     <label><input type="checkbox" id="Organization" name="Skills[]" value="Organization">Organzation</label>
@@ -138,6 +172,8 @@
                     <br>
                     <label><input type="checkbox" id="Hard Working" name="Skills[]" value="Hard Working">Hard Working</label>
                     <br>
+                    </div>
+                    <div>
                     <label><input type="checkbox" id="Resilience" name="Skills[]" value="Resilience">Resilience</label>
                     <br>
                     <label><input type="checkbox" id="Team Player" name="Skills[]" value="Team Player">Team Player</label>
@@ -148,13 +184,15 @@
                     <br>
                     <label><input type="checkbox" id="Communication" name="Skills[]" value="Communication">Communication</label>
                     <br><br>
+                    </div>
 
-                    <label for="Other Skills">Other Skills</label>
+                    <label for="Other Skills"><strong>Other Skills</strong></label>
                     <br>
-                    <textarea id="Other Skills" name="Other Skills" rows="5" cols="30" placeholder="Have more skills we didn't list? Tell us about them here!"></textarea>
+                    <textarea id="Other Skills" name="Other Skills" rows="8" cols="50" placeholder="Have more skills we didn't list? Tell us about them here!"></textarea>
 
                 </fieldset>
                 <br>
+                <!--Buttons necessary for the form submission/reset-->
                 <input type="submit" id="submit" name="submit" value="Submit Application">
                 <input type="reset" id="reset" name="reset" value="Reset Application">
             </form>

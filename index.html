@@ -11,87 +11,91 @@
         <!-- This is the official title for our webpage -->
         <title>Greener Society - Recruitment Website</title>
         <link rel="stylesheet" href="styles/styles.css">
-        <!-- This is the internal CSS to change the background color of the recruitment line and add background image to the slogan -->
+        <!-- This is the internal CSS to change the background color of the recruitment line and the image containing company sloan -->
         <style>
         #promotion {
              border:solid;
              background-color: rgb(187, 233, 152);
         }
 
-        .background {
-            background-image: url("images/background_image.jpg");
+        .slogan img {
             width: 100%;
-            box-sizing: border-box;
-            padding-top: 8vw;    /* Lề trên tự co giãn theo màn hình */
-            padding-left: 5vw;   /* Lề trái tự co giãn theo màn hình */
-            padding-bottom: 8vw;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: top center;
+        }
+
+        /* This allows the image to actually cover the whole width of browser */
+        /* This is because the <figure> tags have default margin of 40px of left and right side */
+        .slogan {
+            margin: 0; 
         }
         </style>
     </head>
 
     <body>
-        <div class="navigation">
-            <!-- This is the official logo for the company, used throughout the page -->
-            <!-- The image for Company Logo was generated using Gemini (Google, using 3.6 Flash Model, August 2026) -->
-            <figure>
-                <img id="company_logo" src="Images/Official_Company_Logo.png" alt="Greener_Society_Company_Logo" loading="lazy">
-            </figure>
-            <!-- This is the consistent navigation bar, offering accessibility to users -->
-            <nav>
-                <ul id="menu"> 
-                    <li> <a href="index.html"> 🪴 Home </a> </li>
-                    <li> <a href="jobs.html"> 📝 Jobs </a> </li>
-                    <li> <a href="apply.html"> 📄 Apply </a> </li>
-                    <li> <a href="about.html"> 👥 About </a> </li>
-                </ul>
-            </nav>
-        </div>
+        <header>
+            <div class="navigation">
+                <!-- This is the official logo for the company, used throughout the page -->
+                <!-- The image for Company Logo was generated using Gemini (Google, using 3.6 Flash Model, August 2026) -->
+                <figure>
+                    <img id="company_logo" src="Images/Official_Company_Logo.png" alt="Greener_Society_Company_Logo" loading="lazy">
+                </figure>
+                <!-- This is the consistent navigation bar, offering accessibility to users -->
+                <nav>
+                    <ul id="menu"> 
+                        <li> <a href="index.html"> 🪴 Home </a> </li>
+                        <li> <a href="jobs.html"> 📝 Jobs </a> </li>
+                        <li> <a href="apply.html"> 📄 Apply </a> </li>
+                        <li> <a href="about.html"> 👥 About </a> </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
         <main>
-            <section class="background">
-            <!-- This is the slogan for the company -->
-            <header>
-                <h1 class="slogan" id="slogan1"> Saving the trees, </h1>
-                <h2 class="slogan" id="slogan2"> Safeguarding your future. </h2>
-                <br><br><br>
-             </header>
-            </section>
-
-          <div class="company-information">
-            <div class="description">
+            <figure class="slogan">
+                <img src="images/background-image.jpg" alt="Background including company slogan: Saving the trees, Safeguarding your future" loading="lazy">
+            </figure>
+          
+            <div class="description1">
                 <!-- This is the header for the company description -->
                 <!-- The Company Description was mostly generated using Gemini (Google, using 3.6 Flash Model, August 2026)
                 All AI-generated information was reviewed and modified by the author before use. -->
-                <section aria-labelledby="home-title1">
-                <h2 style="font-size: 50px; text-align: center;" id="home-title1"> 🌱 A quick overview about us ? 🌱 </h2>
-                <ol id="company-details">
+                <section aria-labelledby="home-title1" class="text-description">
+                <h1 style="font-size: 3vw; text-align: center;" id="home-title1"> 🌱 A quick overview about us ? 🌱 </h1>
+                <div class="company-details">
+                <ol>
                     <!-- These are some fundamentals about Greener Society, using nested lists -->
-                    <li id="overview"> <strong> 💁🏻‍♂️ Who we are: </strong> </li>
+                    <li class="overview"> <strong> 💁🏻‍♂️ Who we are: </strong> </li>
                     <li> A non-profit organisation dedicated to tree conservation, habitat restoration, and environmental education.</li>
-                    <br><br>
-                    <li id="overview"> <strong> 🏹 Core Missions: </strong> </li>
-                        <ul>
-                            <li> Planting trees in urban and regional areas to rebuild green spaces.</li>
-                            <li> Organizing local cleanup and conservation workshops.</li>
-                            <li> Connecting passionate volunteers with meaningful environmental projects.</li>
-                        </ul>
-                    <br><br>
-                    <li id="overview"> <strong> 🏆 Core Values: </strong> </li>
-                        <ul>
-                            <li><em> 🕒 Action: </em> Starting small to create big, lasting impacts.</li>
-                            <li><em> 🤝 Community: </em> Bringing people together for a common green goal.</li>
-                            <li><em> ♻️ Sustainability: </em> Protecting ecosystems for future generations.</li>
-                        </ul>
+                <br><br>
+                    <li class="overview"> <strong> 🏹 Core Missions: </strong> </li>
+                    <li> - Planting trees in urban and regional areas to rebuild green spaces.</li> <br>
+                    <li> - Organizing local cleanup and conservation workshops.</li> <br>
+                    <li> - Connecting passionate volunteers with meaningful environmental projects.</li>
+                <br><br>
+                    <li class="overview"> <strong> 🏆 Core Values: </strong> </li>
+                    <li> <strong> <em> 🕒 Action: </em> </strong> small to create big, lasting impacts.</li> <br>
+                    <li> <strong> <em> 🤝 Community: </em> </strong> people together for a common green goal.</li> <br>
+                    <li> <strong> <em> ♻️ Sustainability: </em> </strong> ecosystems for future generations.</li>
                 </ol>
+                </div>
                 </section>
-                <br>
+                
 
-                <section aria-labelledby="home-title2">
+                <!-- This is a gif used to illustrate the company description -->
+                <!-- The source of the gif used: https://giphy.com/gifs/lazoo-green-earth-4QFBn7Or4Qw43x6qVs -->
+                <div class="planting-image">
+                <figure>
+                    <img src="images/tree-planting.gif" alt="Tree Planting Activities" loading="lazy">
+                    <figcaption class="index-caption"> <em> <strong> Tree-planting activities are organized on a regular basis. </strong> </em> </figcaption>
+                </figure>
+                </div>
+            </div>
+
+            <div class="description2">
+                <section aria-labelledby="home-title2" class="table-description">
                 <!-- These are more particular details of the company, presented in table with merged columns and rows -->
-                <table border="5" id="company-details" class="table">
+                <div class="company-details">
+                <table class="table">
                     <thead>
                         <tr>
                             <!-- This code merges 3 columns of the table header -->
@@ -129,26 +133,20 @@
                         </tr>
                     </tbody>
                 </table>
+                </div>
                 <br>
                 </section>
-            </div>
-
-            <div class="illustration">
-                <!-- This is image and gif used to illustrate the company description -->
-                <!-- The source of the image and gif used: 
-                + Gif: https://giphy.com/gifs/lazoo-green-earth-4QFBn7Or4Qw43x6qVs
-                + Image: https://www.norwestcommunity.com.au/event/clean-up-the-world-start-with-your-community-ever-wondered-how-you-can-be-the-one-to-bring-change-to-the-neighbourhood/
-                -->
-                <figure>
-                    <img src="images/tree-planting.gif" alt="Tree Planting Activities" loading="lazy">
-                    <figcaption id="index-caption"> <em> <strong> Tree-planting activities are organized on a regular basis. </strong> </em> </figcaption>
-                </figure>
+                
+                <!-- This is an image used to illustrate company description -->
+                <!-- Source of the image used: https://www.norwestcommunity.com.au/event/clean-up-the-world-start-with-your-community-ever-wondered-how-you-can-be-the-one-to-bring-change-to-the-neighbourhood/ -->
+                <div class="cleanup-image">
                 <figure>
                     <img src="images/description_image2.jpg" alt="Local Cleanup Activities" loading="lazy">
-                    <figcaption id="index-caption"> <em> <strong> Local cleanup activities are also a key part of our initiatives. </strong> </em> </figcaption>
+                    <figcaption class="index-caption"> <em> <strong> Local cleanup activities are also a key part of our initiatives. </strong> </em> </figcaption>
                 </figure>
+                </div>
             </div>
-          </div>
+          
             
             <section aria-labelledby="home-title3">
             <div class="recruit">
@@ -156,9 +154,9 @@
               Aboriginal and Torres Strait Islander peoples -->
                 <div id="promotion">
                 <h2 id="home-title3"> 🌎 Interested in our Environmental Conservation Campaign ? 🌎 </h2> 
-                <h2> 🤜 Join with us now and together contribute to a greener world! 🤛</h2>
-                <p> ✅ Greener Society is committed to creating a diverse and inclusive workplace. </p>
-                <p> ✅ We respectfully acknowledge the Wurundjeri People of the Kulin Nation, who are the Traditional Owners of the land on which Swinburne’s Australian campuses
+                <h2> 🤜 Join with us now and together contribute to a greener world! 🤛</h2> <br>
+                <p> ☑️ Greener Society is committed to creating a diverse and inclusive workplace. </p>
+                <p> ☑️ We respectfully acknowledge the Wurundjeri People of the Kulin Nation, who are the Traditional Owners of the land on which Swinburne’s Australian campuses
                      are located in Melbourne’s east and outer-east, and pay our respect to their Elders past, present and emerging. We are honoured to recognise our connection 
                      to Wurundjeri Country, history, culture and spirituality through these locations, and strive to ensure that we operate in a manner that respects and honours 
                      the Elders and Ancestors of these lands. We also respectfully acknowledge Swinburne’s Aboriginal and Torres Strait Islander staff, students, alumni, partners 
@@ -173,16 +171,17 @@
                 </ul>
             </div>
             </section>
+            <hr>
         </main>
     </body>
-    <hr>
+    
     <!-- This is the page footer, consisting of links to Jira and Github, the company's email and the copyright notice -->
     <footer class="footer">
         <p> <strong> Jira project link: </strong> <a target="_blank" href="https://cos10026assignmentpart1.atlassian.net/jira/software/projects/SCRUM/summary"> 
             <strong> https://cos10026assignmentpart1.atlassian.net </strong> </a> </p>
         <p> <strong> Github Repository link: </strong> <a target="_blank" href="https://github.com/Tuan-Dat-Quach/COS10026---Applied-Web-Project-Part-1"> 
             <strong> https://github.com/Tuan-Dat-Quach/COS10026---Applied-Web-Project-Part-1 </strong> </a> </p>
-        <p> <strong> Another way to Contact us ? </strong> Please mail to: <a href="mailto:info@greenersociety.org"> <strong> info@greenersociety.org </strong> </a> </p>
+        <p> <strong> Another way to Contact us ? </strong> Please mail to: <a href="mailto:info@greenersociety.org"> <strong> info@greenersociety.org </strong> </a> </p> <br>
         <p> &copy; 2026 Greener Society. All rights reserved.</p>
     </footer>
 </html>

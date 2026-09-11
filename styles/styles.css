@@ -6,30 +6,23 @@
     font-family: 'Times New Roman', Arial, sans-serif;
 }
 
-h1, h2 {
-    margin-bottom: 10px;
-} 
-
 /* This sets the background colour for all pages*/
 main {
     background-color: #f6e5db;
 }
 
-/* This sets the maximum width for the company logo */
-#company_logo {
-  max-width: 80%;
-  height: auto;
+/* This sets the width for the company logo */
+.navigation img {
+  width: 25vw;
 }
 
 /* This is the setup for the whole navigation bar across pages. */
 .navigation {
   display: flex; /* This indicates the flexbox layout for the navigation bar */
   align-items: center; /* This helps to align the texts in the center */
-  width: 100%; /* This helps the navigation bar to fully cover the row */
-  padding: 10px; 
+  padding: 0px 10px; 
   background-color: #edf3ef;
   box-sizing: border-box; /* This effectively keeps the width of navigation exactly as 100%, preventing overflow of the bar */
-  gap: 30px; /* This creates the gap between the logo and the texts */
 }
 
 /* This helps the navigation text cover the remaining space on the right */
@@ -41,7 +34,7 @@ main {
 #menu {
   display: flex;
   flex-wrap: wrap; /* This allows the text to move down a row when the screen is shrinking, preventing unexpected disappearance */
-  justify-content: space-around; /* This sets equal space between the texts */
+  justify-content: space-between; /* This sets equal space between the texts */
   list-style-type: none; /* This eliminates the bullet points of <ul> */
   /* These two lines remove the default margin and padding of the <ul> list */
   margin: 0; 
@@ -53,7 +46,8 @@ main {
   white-space: nowrap; /* This keeps the text attached to the icon, even if they move down */
   color: black;
   font-weight: bold;
-  font-size: 55px;
+  font-size: 2.5vw;
+  margin-right: 1vw;
 }
 
 /* This sets the hover effects for navigation bar */
@@ -63,127 +57,98 @@ nav a:hover {
 } 
 
 /* This is CSS for Media queries, applying additional styles depending on the device's characteristics */
-@media only screen and (max-width: 768px) {
-  .navigation {
-    flex-direction: column; /* This moves the text under the company logo when screen-width < 768px */
-    gap: 15px;
-    padding: 15px;
-  }
-
-  #company_logo {
-    max-width: 200px; 
-  }
-
-  #menu {
-    width: 100%;
-    justify-content: space-between; 
-  }
-
+@media only screen and (min-width: 1500px) {
   #menu a {
-    font-size: 16px; 
-    padding: 6px 10px;
+    font-size: 6vw;
   }
 }
+
+
 
 /* This is the section for CSS applied to index.html */
 
 
-/* This is the CSS for the first row of company slogan */
-#slogan1 {
-  font-family: cursive;
-  color: white;     
-  font-size: 8vw; 
-  line-height: 1.2;
-  margin: 0;
-}
 
-/* This is the CSS for the second row of company slogan */
-#slogan2 {
-  font-family: cursive;
-  margin-top: 4vw; 
-  font-size: 8vw; 
-  color: white;
-}
-
-/* This helps create gap between two rows of slogan */
-.slogan {
-    margin-top: 20px;
-}
-
-/* This is the setup for grid layout of the main content for index.html */
-.company-information {
+/* This is the grid layout for the first section of company description */
+.description1 {
     display: grid;
-    grid-template-columns: 3fr 2fr; /* This creates two grid columns, accounting for 60% and 40% width respectively */
+    grid-template-columns: 3fr 2fr;
+    align-items: center;
 }
 
-/* This is the grid layout for the left column - Text-based content */
-.description {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin: 10px 10px;
+.text-description {
+    margin-left: 20px;
+}
+.planting-image img {
+    width: 100%;
+    height: auto;
 }
 
-/* This is the grid layout for the right column - Image-based content */
-.illustration {
+/* This is the grid layout for the second section of company description */
+.description2 {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px; /* This creates gap between the two illustrative images */
+    grid-template-columns: 3fr 2fr;
+    align-items: center;
 }
 
 /* This is CSS for the illustrative images only */
-.illustration img {
-    margin-top: 40px;
+.cleanup-image img {
     width: 100%;
     height: auto;
 }
 
 /* This sets a caption under the illustrative images */
-#index-caption {
+.index-caption {
     text-align: center;
-    font-size: 25px;
+    font-size: 2vw;
 }
 
 /* This sets the font-size for the texts in the table */
-#company-details {
-    font-size: 30px;
+.company-details {
+    font-size: 2vw;
 }
 
 /* This sets a different color and font-size for the titles of company description */
-#overview {
+.overview {
     color: #065747;
-    font-size: 60px;
+    font-size: 3vw;
 }
 
 /* This removes the number for <ol> in company description */
-.description ol {
+.description1 ol {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* This changes the bullet points to squares for <ul> in company description */
-.description ul li {
-    list-style-type: square;
+.description1 ul li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* This is the CSS for the table itself */
 .table {
     text-align: center;
-    border: 1px solid;
+    border: 2px solid;
     border-collapse: collapse; /* This allows single-line border for the table */
-    margin-left: 50px;
+    margin-left: 20px;
+    margin-top: 50px;
 }
 
 /* This is the CSS for the table header, or the first row */
 th {
-    padding: 30px;
+    padding: 1vw;
     background-color: #07d086;
-    border: 1px solid;
+    border: 2px solid;
 }
 
 /* This is the CSS for table cells */
 td {
-    padding: 30px;
+    padding: 1vw;
     background-color:rgb(243, 232, 232);
-    border: 1px solid;
+    border: 2px solid;
 }
 
 /* This creates hover effecrts for table cells */
@@ -192,22 +157,34 @@ td:hover {
     cursor: pointer; 
 }
 
-/* These 4 sections are the CSS for the recruitment line*/
+/* These sections are the CSS for the recruitment line*/
 .recruit {
-    text-align: center;
-    font-size: 25px;
+    font-size: 2vw;
+    margin: 0;
+    padding: 0;
+}
+
+.recruit h2 {
+    margin: 10px 20px;
+    
 }
 
 .recruit p {
-    font-size: 30px;
+    font-size: 2vw;
+    margin: 20px 20px;
+}
+
+.recruit ul {
+    padding: 1vw 2vw;
 }
 .recruit ul li {
     list-style-type: none;
-    font-size: 30px;
+    font-size: 2vw;
+    margin: 0;
 }
 
 .recruit ul li a {
-    color: purple;
+    color: rgb(47, 17, 218);
 }
 
 .recruit ul li a:hover {
@@ -221,7 +198,7 @@ hr {
 /* These 3 sections are CSS for the footer */
 .footer {
     text-align: center;
-    font-size: 25px;
+    font-size: 2vw;
 }
 
 footer p a {
@@ -233,23 +210,31 @@ footer p a:hover {
     background-color: rgb(215, 211, 211);
 }
 
+hr {
+    border: 1px solid;
+}
 
 /* This is the section for CSS applied to jobs.html */
+
 
 
 /* This is the section for CSS applied to apply.html */
 
 
+
+input {font-size: 20px;}
+
+select {font-size: 20px;}
+
+option {font-size: 20px;}
+
+textarea {font-size: 20px;}
+
+
+
 /* This is the section for CSS applied to about.html */
 
 
-/* This is the CSS applied to the 4 headings in about.html */
-.about-titles { 
-    color:#065747;
-    font-size: 80px;
-    text-align: center;
-    margin-bottom: 10px;
-}
 
 /* These are the CSS for the first section */
 
@@ -260,21 +245,19 @@ footer p a:hover {
 }
 
 .about-group {
-    display: grid;
-    grid-template-columns: 1fr;
-    font-size: 40px;
-    margin: 0px 60px 100px 100px;
+    font-size: 2vw;
+    margin-left: 2.5vw;
+}
+
+.about-group ol {
+    margin: 0;
+    padding-left: 2.5vw;
 }
 
 /* This helps to hightlight the group name */
 #epic-name {
     color:rgb(12, 12, 210);
-    font-size: 50px;
-}
-
-.group-photo {
-    display: grid;
-    grid-template-columns: 1fr;
+    font-size: 2.5vw;
 }
 
 /* This allows the group photo to cover the column */
@@ -284,9 +267,8 @@ footer p a:hover {
 
 /* This is for the group photo's caption */
 #about-caption1 {
-    margin-top: 10px;
-    margin-left: 20px;
-    font-size: 40px;
+    margin: 0;
+    font-size: 2vw;
 }
 
 /* These are the CSS for the second section */
@@ -298,26 +280,22 @@ footer p a:hover {
     background-color: rgb(231, 221, 200);
 }
 
-.contribution-image {
-    display: grid;
-    grid-template-columns: 1fr;
-}
-
 /* This is for the illustrative image of the second section */
 .contribution-image img{
-    width: 80%;
+    width: 100%;
     height: auto;
 }
 
 .individual-tasks {
-    display: grid;
-    grid-template-columns: 1fr;
-    font-size: 40px;
-    margin: 0px 40px 100px 50px;
+    font-size: 2vw;
+}
+
+.individual-tasks dd {
+    margin-left: 2.5vw;
 }
 
 /* This helps to highlight the team members' name in this section */
-#member-name1 {
+.member-name1 {
     margin-top: 15px;
     font-weight: bold;
 }
@@ -331,10 +309,8 @@ footer p a:hover {
 }
 
 .inspiration {
-    display: grid;
-    grid-template-columns: 1fr;
-    font-size: 40px;
-    margin-left: 100px;
+    font-size: 2vw;
+    margin-left: 5vw;
     margin-top: 0px;
 }
 
@@ -347,24 +323,19 @@ footer p a:hover {
 
 /* These CSS set the padding particularly for the quotes */
 .TDQ-Quote p, .RN-Quote p, .JM-Quote p {
-    padding: 10px 15px;
-}
-
-.inspirative-image {
-    display: grid;
-    grid-template-columns: 1fr;
+    padding: 1vw;
 }
 
 /* This is for the illustrative image of the third section */
 .inspirative-image img {
-    width: 80%;
+    width: 100%;
     height: auto;
 }
 
 /* This helps to highlight the members' name in this section */
-#member-name2 {
+.member-name2 {
     font-weight: bold;
-    font-size: 50px;
+    font-size: 2.5vw;
     margin: 15px;
 }
 
@@ -377,32 +348,24 @@ footer p a:hover {
     background-color: rgb(231, 221, 200);
 }
 
-.funfact-image {
-    display: grid;
-    grid-template-columns: 1fr;
-}
-
 /* This is for the illustrative image of the final section */
 .funfact-image img {
-    width: 80%;
+    width: 100%;
     height: auto;
 }
 
 .member-secret {
-    display: grid;
-    grid-template-columns: 1fr;
-    font-size: 40px;
-    margin-right: 100px;
+    font-size: 2vw;
+    margin-right: 10px;
     text-align: center;
 }
 
 /* These CSS set the table's border and the text inside */
 .member-secret table, .member-secret th, .member-secret td {
-    border: 1px solid;
+    border: 2px solid;
     border-collapse: collapse;
     margin-left: 0px;
-    margin-bottom: 100px;
-    padding: 15px 10px 15px 5px;
+    padding: 2vw 1vw;
 }
 
 /* These CSS positions the caption under the table and highlight it */
@@ -410,11 +373,19 @@ footer p a:hover {
     caption-side: bottom;
     padding: 10px; 
     font-weight: bold;
-    font-style: italic;
-    font-size: 36px;
+    font-size: 1.5vw;
     color:rgb(12, 12, 210)
 }
 
-.member-secret ul li {
-    list-style-type: none;
+.first-row {
+    border-bottom: none;
+}
+
+.second-row {
+    border-bottom: none;
+    border-top: none;
+}
+
+.third-row {
+    border-top: none;
 }
