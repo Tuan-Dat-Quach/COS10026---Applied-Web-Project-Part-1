@@ -149,12 +149,12 @@ nav a:hover {
 /* This is the CSS for the table header, or the first row */
 th {
     padding: 1rem;
-    background-color: #07d086;
+    background-color: #03e491;
     border: 2px solid;
 }
 
 /* This is the CSS for table cells */
-td {
+td, th:not(#home-title2) {
     padding: 1vw;
     background-color:rgb(243, 232, 232);
     border: 2px solid;
@@ -165,7 +165,11 @@ td:hover {
     background-color:rgb(215, 231, 172);
     cursor: pointer; 
 }
-
+ 
+th:not(#home-title2):hover {
+    background-color:rgb(215, 231, 172);
+    cursor: pointer; 
+}
 @media (max-width: 768px) {
     .description1, .description2 {
         grid-template-columns: 1fr;
@@ -180,36 +184,57 @@ td:hover {
 
 /* These sections are the CSS for the recruitment line*/
 .recruit {
-    font-size: 2vw;
+    background-color: rgb(184, 232, 144);
+    max-width: 75rem;
+    margin: 2rem auto 0;
+    padding: 1rem 2rem 2rem;
+    box-sizing: border-box;
+}
+
+/* Recruitment heading */
+.recruit h2 {
+    font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+    line-height: 1.2;
+    text-align: center;
+    padding-top: 2rem;
+    margin: 0 0 1.5rem;
+}
+
+/* Intro sentence */
+.recruit p {
+    text-align: center;
+    font-size: clamp(1rem, 1.5rem, 2rem);
+    line-height: 1.6;
+    margin: 0 0 2.5rem;
+}
+
+/* Recruitment list */
+.recruit ul {
+    list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.recruit h2 {
-    margin: 10px 20px;
-    
-}
-
-.recruit p {
-    font-size: 2vw;
-    margin: 20px 20px;
-}
-
-.recruit ul {
-    padding: 1vw 2vw;
-}
+/* Each recruitment item */
 .recruit ul li {
-    list-style-type: none;
-    font-size: 2vw;
-    margin: 0;
+    font-size: clamp(1rem, 1.5rem, 2rem);
+    line-height: 1.55;
+    margin-bottom: 1.2rem;
 }
 
+/* Don't leave unnecessary space after last item */
+.recruit ul li:last-child {
+    margin-bottom: 0;
+}
+
+/* Links */
 .recruit ul li a {
     color: rgb(47, 17, 218);
 }
 
 .recruit ul li a:hover {
-    background-color: rgb(215, 211, 211);
+    text-decoration: underline;
+    background-color: rgb(183, 183, 183);
 }
 
 hr {
