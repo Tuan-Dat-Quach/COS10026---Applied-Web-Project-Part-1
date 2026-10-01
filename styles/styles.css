@@ -100,32 +100,41 @@ nav a:hover {
 /* This sets a caption under the illustrative images */
 .index-caption {
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.25rem;
+}
+
+#home-title1 {
+    font-size: clamp(2rem, 2.2rem, 3.5rem);
+    line-height: 1.15;
+    margin-bottom: 3rem;
 }
 
 /* This sets the font-size for the texts in the table */
 .company-details {
-    font-size: 2vw;
+    font-size: 1.1rem;
 }
 
 /* This sets a different color and font-size for the titles of company description */
 .overview {
     color: #065747;
-    font-size: 3vw;
+    font-size: 1.25rem;
+    padding-left: 0;
 }
 
-/* This removes the number for <ol> in company description */
-.description1 ol {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.company-details ul li:not(.overview){
+    margin-left: 1.5rem;
+}
+
+.company-details ul {
+    padding-left: 0;
+    list-style: none;
 }
 
 /* This changes the bullet points to squares for <ul> in company description */
 .description1 ul li {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    margin-bottom: 0.75rem;
+    padding-left: 1.25 rem;
 }
 
 /* This is the CSS for the table itself */
@@ -133,13 +142,13 @@ nav a:hover {
     text-align: center;
     border: 2px solid;
     border-collapse: collapse; /* This allows single-line border for the table */
-    margin-left: 20px;
-    margin-top: 50px;
+    margin-left: 1.25rem;
+    margin-top: 3rem;
 }
 
 /* This is the CSS for the table header, or the first row */
 th {
-    padding: 1vw;
+    padding: 1rem;
     background-color: #07d086;
     border: 2px solid;
 }
@@ -155,6 +164,18 @@ td {
 td:hover {
     background-color:rgb(215, 231, 172);
     cursor: pointer; 
+}
+
+@media (max-width: 768px) {
+    .description1, .description2 {
+        grid-template-columns: 1fr;
+    }
+    .planting-image img, .cleanup-image img {
+        display: block;
+        margin: 0 auto;
+        width: 60%;
+        height: auto;
+    }
 }
 
 /* These sections are the CSS for the recruitment line*/
