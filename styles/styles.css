@@ -2,7 +2,7 @@
 
 
 /* This sets the font-family for all pages*/
-* {
+body {
     font-family: 'Times New Roman', Arial, sans-serif;
 }
 
