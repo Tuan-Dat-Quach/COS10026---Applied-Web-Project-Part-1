@@ -48,6 +48,7 @@ main {
   font-weight: bold;
   font-size: 2rem;
   margin-right: 1.5vw;
+  padding-bottom: 0.1rem;
 }
 
 /* This sets the hover effects for navigation bar */
@@ -57,15 +58,23 @@ nav a:hover {
 } 
 
 /* This is CSS for Media queries, applying additional styles depending on the device's characteristics */
-@media only screen and (max-width: 765px) {
+@media only screen and (max-width: 540px) {
   #menu a {
     font-size: 1rem;
   }
 }
 
+.index-page nav a[href="index.html"],
+.jobs-page nav a[href="jobs.html"],
+.apply-page nav a[href="apply.html"],
+.about-page nav a[href="about.html"] {
+    border-bottom: 3px solid #276249;
+}
+
 
 
 /* This is the section for CSS applied to index.html */
+
 
 
 /* This is the CSS for company slogan */
