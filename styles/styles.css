@@ -79,7 +79,7 @@ nav a:hover {
 
 /* This is the CSS for company slogan */
 .slogan {
-    background-image: url("../images/background_image.jpg");
+    background-image: url("../styles/images/background_image.jpg");
     height: 45vw;
     min-height: 22rem;
 
