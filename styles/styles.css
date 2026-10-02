@@ -534,7 +534,8 @@ textarea {font-size: 20px;}
 
 .about-group {
     font-size: 1.6rem;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .about-group ol {
@@ -544,7 +545,7 @@ textarea {font-size: 20px;}
 
 /* This helps to hightlight the group name */
 #epic-name {
-    color:rgb(12, 12, 210);
+    color:#0C0CD2;
     font-size: 2rem;
 }
 
@@ -565,7 +566,7 @@ textarea {font-size: 20px;}
     display: grid;
     grid-template-columns: repeat(2,1fr);
     align-items: center;
-    background-color: rgb(231, 221, 200);
+    background-color: #E7DDC8;
 }
 
 /* This is for the illustrative image of the second section */
@@ -576,6 +577,7 @@ textarea {font-size: 20px;}
 
 .individual-tasks {
     font-size: 1.6rem;
+    margin-left: 0.5rem;
 }
 
 .individual-tasks dd {
@@ -598,14 +600,15 @@ textarea {font-size: 20px;}
 
 .inspiration {
     font-size: 1.6rem;
-    margin-left: 5vw;
+    margin-left: 10px;
+    margin-right: 10px;
     margin-top: 0px;
 }
 
 /* These CSS set the border and background color for the quotes */
 .TDQ-Quote, .RN-Quote, .JM-Quote {
     border: 5px solid;
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 10px;
 }
 
@@ -653,7 +656,7 @@ textarea {font-size: 20px;}
     border: 2px solid;
     border-collapse: collapse;
     margin-left: 10px;
-    padding: 2vw 1vw;
+    padding: 1rem 0.5rem;
 }
 
 /* These CSS positions the caption under the table and highlight it */
@@ -696,7 +699,7 @@ textarea {font-size: 20px;}
         margin: 0 auto;
     }
     .contribution-image img, .inspirative-image img, .funfact-image img {
-    max-width: 70%;
+    max-width: 90%;
     height: auto;
     display: block;
     margin: 0 auto;
