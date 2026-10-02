@@ -294,12 +294,11 @@ hr {
 /* These 3 sections are CSS for the footer */
 .footer {
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.5rem;
 }
 
 footer p a {
-    text-decoration: none;
-    color: red;
+    color: #c00000;
 }
 
 footer p a:hover {
