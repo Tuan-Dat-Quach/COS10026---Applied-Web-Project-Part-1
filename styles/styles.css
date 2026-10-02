@@ -543,6 +543,18 @@ textarea {font-size: 20px;}
     padding-left: 1rem;
 }
 
+.about-group ul li {
+    margin-top: 1rem;
+}
+
+.student-id li {
+    background: white;
+    padding: 1rem 1rem;
+    border-radius: 15px;
+    border: 2px solid #d2e7ce;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
 /* This helps to hightlight the group name */
 #epic-name {
     color:#0C0CD2;
@@ -552,6 +564,9 @@ textarea {font-size: 20px;}
 /* This allows the group photo to cover the column */
 .group-photo img {
     max-width: 100%;
+    border-radius: 18px;
+    border: 6px solid white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
 }
 
 /* This is for the group photo's caption */
@@ -664,7 +679,7 @@ textarea {font-size: 20px;}
     caption-side: bottom;
     padding: 10px; 
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color:rgb(12, 12, 210)
 }
 
