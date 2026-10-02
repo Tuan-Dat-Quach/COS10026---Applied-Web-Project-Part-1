@@ -533,19 +533,19 @@ textarea {font-size: 20px;}
 }
 
 .about-group {
-    font-size: 2vw;
-    margin-left: 2.5vw;
+    font-size: 1.6rem;
+    margin-left: 1rem;
 }
 
 .about-group ol {
     margin: 0;
-    padding-left: 2.5vw;
+    padding-left: 1rem;
 }
 
 /* This helps to hightlight the group name */
 #epic-name {
     color:rgb(12, 12, 210);
-    font-size: 2.5vw;
+    font-size: 2rem;
 }
 
 /* This allows the group photo to cover the column */
@@ -556,7 +556,7 @@ textarea {font-size: 20px;}
 /* This is for the group photo's caption */
 #about-caption1 {
     margin: 0;
-    font-size: 2vw;
+    font-size: 1.6rem;
 }
 
 /* These are the CSS for the second section */
@@ -575,7 +575,7 @@ textarea {font-size: 20px;}
 }
 
 .individual-tasks {
-    font-size: 2vw;
+    font-size: 1.6rem;
 }
 
 .individual-tasks dd {
@@ -597,7 +597,7 @@ textarea {font-size: 20px;}
 }
 
 .inspiration {
-    font-size: 2vw;
+    font-size: 1.6rem;
     margin-left: 5vw;
     margin-top: 0px;
 }
@@ -623,7 +623,7 @@ textarea {font-size: 20px;}
 /* This helps to highlight the members' name in this section */
 .member-name2 {
     font-weight: bold;
-    font-size: 2.5vw;
+    font-size: 2.5rem;
     margin: 15px;
 }
 
@@ -643,7 +643,7 @@ textarea {font-size: 20px;}
 }
 
 .member-secret {
-    font-size: 2vw;
+    font-size: 1.6rem;
     margin-right: 10px;
     text-align: center;
 }
@@ -652,7 +652,7 @@ textarea {font-size: 20px;}
 .member-secret table, .member-secret th, .member-secret td {
     border: 2px solid;
     border-collapse: collapse;
-    margin-left: 0px;
+    margin-left: 10px;
     padding: 2vw 1vw;
 }
 
@@ -661,7 +661,7 @@ textarea {font-size: 20px;}
     caption-side: bottom;
     padding: 10px; 
     font-weight: bold;
-    font-size: 1.5vw;
+    font-size: 1.2rem;
     color:rgb(12, 12, 210)
 }
 
@@ -676,4 +676,36 @@ textarea {font-size: 20px;}
 
 .third-row {
     border-top: none;
+}
+
+/* This is media queries for sections */
+@media (max-width: 800px) {
+    .about-us, .member-contributions, .individual-quotes, .funfact {
+        grid-template-columns: 1fr; /* This allows the sections to be stacked vertically on smaller screens */
+    }
+    .inspiration {
+        order: 2;
+    }
+    .inspirative-image img {
+        order: 1;
+    }
+    .group-photo img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+    .contribution-image img, .inspirative-image img, .funfact-image img {
+    max-width: 70%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    }
+    #about-caption1 {
+    margin: 0;
+    font-size: 1.2rem;
+    }
+    .member-secret {
+    font-size: 1.2rem;
+    }
 }
