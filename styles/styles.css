@@ -13,7 +13,7 @@ main {
 
 /* This sets the width for the company logo */
 .navigation img {
-  width: 25vw;
+  width: 30vw;
 }
 
 /* This is the setup for the whole navigation bar across pages. */
@@ -46,8 +46,8 @@ main {
   white-space: nowrap; /* This keeps the text attached to the icon, even if they move down */
   color: black;
   font-weight: bold;
-  font-size: 2.5vw;
-  margin-right: 1vw;
+  font-size: 2rem;
+  margin-right: 1.5vw;
 }
 
 /* This sets the hover effects for navigation bar */
@@ -57,9 +57,9 @@ nav a:hover {
 } 
 
 /* This is CSS for Media queries, applying additional styles depending on the device's characteristics */
-@media only screen and (min-width: 1500px) {
+@media only screen and (max-width: 765px) {
   #menu a {
-    font-size: 6vw;
+    font-size: 1rem;
   }
 }
 
@@ -68,6 +68,47 @@ nav a:hover {
 /* This is the section for CSS applied to index.html */
 
 
+/* This is the CSS for company slogan */
+.slogan {
+    background-image: url("../images/background_image.jpg");
+    height: 45vw;
+    min-height: 22rem;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 3rem;
+    box-sizing: border-box;
+    margin: 0;
+
+    gap: 1rem;
+}
+
+.slogan p {
+    color: white;
+
+    font-size: clamp(1.8rem, 4vw, 5rem);
+    font-family: cursive;
+    font-weight: bold;
+
+    line-height: 1.1;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+@media (max-width: 765px) {
+    .slogan p {
+        max-width: 50%;
+        font-size: clamp(1.5rem, 3vw, 4rem);
+    }
+}
 
 /* This is the grid layout for the first section of company description */
 .description1 {
