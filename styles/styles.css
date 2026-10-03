@@ -57,11 +57,32 @@ nav a:hover {
     border-radius: 8px; /* This allows the border corners to be curving */
 } 
 
-/* This is CSS for Media queries, applying additional styles depending on the device's characteristics */
-@media only screen and (max-width: 540px) {
+/* This is Media query for the Navigation*/
+@media only screen and (max-width: 600px) {
   #menu a {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
+}
+
+@media only screen and (max-width: 600px) {
+    .navigation {
+        flex-direction: column;
+        align-items: center;
+    }
+    .navigation img {
+        width: 18rem;
+        max-width: 80%;
+    }
+    .navigation nav {
+        width: 100%;
+    }
+    #menu {
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    #menu a {
+        margin-right: 1rem;
+    }
 }
 
 .index-page nav a[href="index.html"],
@@ -169,10 +190,12 @@ nav a:hover {
     color: #065747;
     font-size: 1.25rem;
     padding-left: 0;
+    margin-left: 0;
 }
 
 .company-details ul li:not(.overview){
-    margin-left: 1.5rem;
+    margin-left: 0rem;
+    margin-right: 0.5rem;
 }
 
 .company-details ul {
@@ -224,6 +247,7 @@ th:not(.table-header):hover {
     background-color:rgb(215, 231, 172);
     cursor: pointer; 
 }
+
 @media (max-width: 768px) {
     .description1, .description2 {
         grid-template-columns: 1fr;
