@@ -14,45 +14,33 @@
         <!-- This is the internal CSS to change the background color of the recruitment line and the image containing company sloan -->
         <style>
         #promotion {
-             border:solid;
              background-color: rgb(187, 233, 152);
-        }
-
-        .slogan img {
-            width: 100%;
-        }
-
-        /* This allows the image to actually cover the whole width of browser */
-        /* This is because the <figure> tags have default margin of 40px of left and right side */
-        .slogan {
-            margin: 0; 
         }
         </style>
     </head>
 
-    <body>
-        <header>
-            <div class="navigation">
-                <!-- This is the official logo for the company, used throughout the page -->
-                <!-- The image for Company Logo was generated using Gemini (Google, using 3.6 Flash Model, August 2026) -->
-                <figure>
-                    <img id="company_logo" src="Images/Official_Company_Logo.png" alt="Greener_Society_Company_Logo" loading="lazy">
-                </figure>
-                <!-- This is the consistent navigation bar, offering accessibility to users -->
-                <nav>
-                    <ul id="menu"> 
-                        <li> <a href="index.html"> 🪴 Home </a> </li>
-                        <li> <a href="jobs.html"> 📝 Jobs </a> </li>
-                        <li> <a href="apply.html"> 📄 Apply </a> </li>
-                        <li> <a href="about.html"> 👥 About </a> </li>
-                    </ul>
-                </nav>
-            </div>
+    <body class="index-page">
+        <header class="navigation">
+            <!-- This is the official logo for the company, used throughout the page -->
+            <!-- The image for Company Logo was generated using Gemini (Google, using 3.6 Flash Model, August 2026) -->
+             <figure>
+                <img id="company_logo" src="Images/Official_Company_Logo.png" alt="Greener Society's Company Logo">
+             </figure>
+             <!-- This is the consistent navigation bar, offering accessibility to users -->
+             <nav>
+                <ul id="menu"> 
+                    <li> <a href="index.html"> <span aria-hidden="true"> 🪴 </span> Home </a> </li>
+                    <li> <a href="jobs.html"> <span aria-hidden="true"> 📝 </span> Jobs </a> </li>
+                    <li> <a href="apply.html"> <span aria-hidden="true"> 📄 </span> Apply </a> </li>
+                    <li> <a href="about.html"> <span aria-hidden="true"> 👥 </span> About </a> </li>
+                </ul>
+             </nav>
         </header>
 
         <main>
             <figure class="slogan">
-                <img src="images/background-image.jpg" alt="Background including company slogan: Saving the trees, Safeguarding your future" loading="lazy">
+                <p> Saving the trees, </p>
+                <p> Safeguarding your future. </p>
             </figure>
           
             <div class="description1">
@@ -60,23 +48,23 @@
                 <!-- The Company Description was mostly generated using Gemini (Google, using 3.6 Flash Model, August 2026)
                 All AI-generated information was reviewed and modified by the author before use. -->
                 <section aria-labelledby="home-title1" class="text-description">
-                <h1 style="font-size: 3vw; text-align: center;" id="home-title1"> 🌱 A quick overview about us ? 🌱 </h1>
+                <h1 style="text-align: center;" id="home-title1"> <span aria-hidden="true"> 🌱 </span> A quick overview about us ? </h1>
                 <div class="company-details">
-                <ol>
-                    <!-- These are some fundamentals about Greener Society, using nested lists -->
-                    <li class="overview"> <strong> 💁🏻‍♂️ Who we are: </strong> </li>
+                <ul>
+                    <!-- These are some fundamentals about Greener Society, using unordered list -->
+                    <li class="overview"> <h2> <span aria-hidden="true"> 💁🏻‍♂️ </span> Who we are: </h2> </li>
                     <li> A non-profit organisation dedicated to tree conservation, habitat restoration, and environmental education.</li>
-                <br><br>
-                    <li class="overview"> <strong> 🏹 Core Missions: </strong> </li>
-                    <li> - Planting trees in urban and regional areas to rebuild green spaces.</li> <br>
-                    <li> - Organizing local cleanup and conservation workshops.</li> <br>
-                    <li> - Connecting passionate volunteers with meaningful environmental projects.</li>
-                <br><br>
-                    <li class="overview"> <strong> 🏆 Core Values: </strong> </li>
-                    <li> <strong> <em> 🕒 Action: </em> </strong> small to create big, lasting impacts.</li> <br>
-                    <li> <strong> <em> 🤝 Community: </em> </strong> people together for a common green goal.</li> <br>
-                    <li> <strong> <em> ♻️ Sustainability: </em> </strong> ecosystems for future generations.</li>
-                </ol>
+                
+                    <li class="overview"> <h2> <span aria-hidden="true"> 🏹 </span> Core Missions: </h2> </li>
+                    <li> Planting trees in urban and regional areas to rebuild green spaces.</li> 
+                    <li> Organizing local cleanup and conservation workshops.</li> 
+                    <li> Connecting passionate volunteers with meaningful environmental projects.</li>
+                
+                    <li class="overview"> <h2> <span aria-hidden="true"> 🏆 </span> Core Values: </h2> </li>
+                    <li> <strong> <em> <span aria-hidden="true"> 🕒 </span> Action: </em> </strong> small to create big, lasting impacts.</li> 
+                    <li> <strong> <em> <span aria-hidden="true"> 🤝 </span> Community: </em> </strong> people together for a common green goal.</li> 
+                    <li> <strong> <em> <span aria-hidden="true"> ♻️ </span> Sustainability: </em> </strong> ecosystems for future generations.</li>
+                </ul>
                 </div>
                 </section>
                 
@@ -85,7 +73,7 @@
                 <!-- The source of the gif used: https://giphy.com/gifs/lazoo-green-earth-4QFBn7Or4Qw43x6qVs -->
                 <div class="planting-image">
                 <figure>
-                    <img src="images/tree-planting.gif" alt="Tree Planting Activities" loading="lazy">
+                    <img src="Images/tree-planting.gif" alt="Tree Planting Activities">
                     <figcaption class="index-caption"> <em> <strong> Tree-planting activities are organized on a regular basis. </strong> </em> </figcaption>
                 </figure>
                 </div>
@@ -93,19 +81,20 @@
 
             <div class="description2">
                 <section aria-labelledby="home-title2" class="table-description">
+                <h2 id="home-title2"> <span aria-hidden="true"> 🔍 </span> Contact Info, Focus Area and Scale </h2>
                 <!-- These are more particular details of the company, presented in table with merged columns and rows -->
                 <div class="company-details">
                 <table class="table">
                     <thead>
                         <tr>
                             <!-- This code merges 3 columns of the table header -->
-                            <th colspan="3" id="home-title2"> Further details about Greener Society </th>
+                            <th colspan="3" class="table-header"> Further details about Greener Society </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <!-- This code merges 2 rows in a single column -->
-                            <td rowspan="2"> <strong> Our Contact Info </strong> </td>
+                            <th rowspan="2"> Our Contact Info </th>
                             <td> Location </td>
                             <td> Melbourne, Victoria, Australia </td>
                         </tr>
@@ -114,7 +103,7 @@
                             <td> (+61) 4 1189 0779 </td>
                         </tr>
                         <tr>
-                            <td rowspan="2"> <strong> Focus Area </strong> </td>
+                            <th rowspan="2"> Focus Area </th>
                             <td> Primary Focus </td>
                             <td> Urban Tree Planting & Bushland Restoration </td>
                         </tr>
@@ -123,7 +112,7 @@
                             <td> Environmental Education & Volunteer Recruitment </td>
                         </tr>
                         <tr>
-                            <td rowspan="2"> <strong> Scale </strong> </td>
+                            <th rowspan="2"> Scale </th>
                             <td> Operations </td>
                             <td> Community-led Non-Profit Projects across Victoria </td>
                         </tr>
@@ -141,7 +130,7 @@
                 <!-- Source of the image used: https://www.norwestcommunity.com.au/event/clean-up-the-world-start-with-your-community-ever-wondered-how-you-can-be-the-one-to-bring-change-to-the-neighbourhood/ -->
                 <div class="cleanup-image">
                 <figure>
-                    <img src="images/description_image2.jpg" alt="Local Cleanup Activities" loading="lazy">
+                    <img src="Images/description_image2.jpg" alt="Local Cleanup Activities">
                     <figcaption class="index-caption"> <em> <strong> Local cleanup activities are also a key part of our initiatives. </strong> </em> </figcaption>
                 </figure>
                 </div>
@@ -153,35 +142,36 @@
             <!-- This is the encouragement for applying to Greener Society, including the element of acknowledging and supporting 
               Aboriginal and Torres Strait Islander peoples -->
                 <div id="promotion">
-                <h2 id="home-title3"> 🌎 Interested in our Environmental Conservation Campaign ? 🌎 </h2> 
-                <h2> 🤜 Join with us now and together contribute to a greener world! 🤛</h2> <br>
-                <p> ☑️ Greener Society is committed to creating a diverse and inclusive workplace. </p>
-                <p> ☑️ We respectfully acknowledge the Wurundjeri People of the Kulin Nation, who are the Traditional Owners of the land on which Swinburne’s Australian campuses
-                     are located in Melbourne’s east and outer-east, and pay our respect to their Elders past, present and emerging. We are honoured to recognise our connection 
-                     to Wurundjeri Country, history, culture and spirituality through these locations, and strive to ensure that we operate in a manner that respects and honours 
-                     the Elders and Ancestors of these lands. We also respectfully acknowledge Swinburne’s Aboriginal and Torres Strait Islander staff, students, alumni, partners 
-                     and visitors. We also acknowledge and respect the Traditional Owners of lands across Australia, their Elders, Ancestors, cultures and heritage, and recognise 
-                     the continuing sovereignties of all Aboriginal and Torres Strait Islander Nations.</p>
+                <h2 id="home-title3"> <span aria-hidden="true"> 🌎 </span> Interested in our Environmental Conservation Campaign ? <span aria-hidden="true"> 🌎 </span> </h2> 
+                <p> <span aria-hidden="true"> 🤜 </span> <strong> Join with us now and together contribute to a greener world! </strong> <span aria-hidden="true"> 🤛 </span> </p> <br>
+                <p> <span aria-hidden="true"> ☑️ </span> Greener Society is committed to creating a diverse and inclusive workplace. </p>
+                <p> <span aria-hidden="true"> ☑️ </span> Greener Society respectfully acknowledges the Wurundjeri People of the Kulin Nation, the Traditional Custodians of the lands on which we live, learn and carry out our environmental work in Melbourne. 
+                    We pay our respects to their Elders past and present, and honour their continuing connection to Country, culture, knowledge and community. <br><br>
+                       We recognise that caring for the environment is deeply connected to the knowledge, traditions and responsibilities that Aboriginal and Torres Strait Islander peoples have maintained across these lands for 
+                    generations. As an organisation committed to tree conservation, habitat restoration and environmental education, we acknowledge the importance of learning from and respecting the enduring relationships between First 
+                    Nations peoples and Country. <br><br>
+                       We also respectfully acknowledge all Aboriginal and Torres Strait Islander peoples across Australia, their Elders past and present, and recognise their continuing connection to Country, lands, waters, cultures and heritage.</p>
                 </div>
                 <!-- This is extra navigation part, improving the webpage accessibility -->
-                <ul>
-                    <li> 👉 To learn about our currently available Job Positions and their requirements, visit <a href="jobs.html"> Position Description Page </a> </li>
-                    <li> 👉 Ready to get involved with our projects? Visit <a href="apply.html"> Job Application Page </a> </li>
-                    <li> 👉 For more details about our organization members, visit <a href="about.html"> About Team Page </a> </li>
+                <ul class="extra-navigation">
+                    <li> <span aria-hidden="true"> 👉 </span> <strong> To learn about our currently available Job Positions and their requirements, visit </strong> <a href="jobs.html"> Position Description Page </a> </li>
+                    <li> <span aria-hidden="true"> 👉 </span> <strong> Ready to get involved with our projects? Visit </strong> <a href="apply.html"> Job Application Page </a> </li>
+                    <li> <span aria-hidden="true"> 👉 </span> <strong> For more details about our organization members, visit </strong> <a href="about.html"> About Team Page </a> </li>
                 </ul>
             </div>
             </section>
             <hr>
         </main>
+
+          <!-- This is the page footer, consisting of links to Jira and Github, the company's email and the copyright notice -->
+        <footer class="footer">
+            <p> <strong> Jira project link: </strong> <a target="_blank" href="https://cos10026assignmentpart1.atlassian.net/jira/software/projects/SCRUM/summary"> 
+                <strong> https://cos10026assignmentpart1.atlassian.net </strong> </a> </p>
+            <p> <strong> Github Repository link: </strong> <a target="_blank" href="https://github.com/Tuan-Dat-Quach/COS10026---Applied-Web-Project-Part-1"> 
+                <strong> https://github.com/Tuan-Dat-Quach/COS10026---Applied-Web-Project-Part-1 </strong> </a> </p>
+            <p> <strong> Another way to Contact us ? </strong> Please mail to: <a href="mailto:info@greenersociety.org"> <strong> info@greenersociety.org </strong> </a> </p> <br>
+            <p> &copy; 2026 Greener Society. All rights reserved.</p>
+        </footer>
+
     </body>
-    
-    <!-- This is the page footer, consisting of links to Jira and Github, the company's email and the copyright notice -->
-    <footer class="footer">
-        <p> <strong> Jira project link: </strong> <a target="_blank" href="https://cos10026assignmentpart1.atlassian.net/jira/software/projects/SCRUM/summary"> 
-            <strong> https://cos10026assignmentpart1.atlassian.net </strong> </a> </p>
-        <p> <strong> Github Repository link: </strong> <a target="_blank" href="https://github.com/Tuan-Dat-Quach/COS10026---Applied-Web-Project-Part-1"> 
-            <strong> https://github.com/Tuan-Dat-Quach/COS10026---Applied-Web-Project-Part-1 </strong> </a> </p>
-        <p> <strong> Another way to Contact us ? </strong> Please mail to: <a href="mailto:info@greenersociety.org"> <strong> info@greenersociety.org </strong> </a> </p> <br>
-        <p> &copy; 2026 Greener Society. All rights reserved.</p>
-    </footer>
 </html>

@@ -2,7 +2,7 @@
 
 
 /* This sets the font-family for all pages*/
-* {
+body {
     font-family: 'Times New Roman', Arial, sans-serif;
 }
 
@@ -13,7 +13,7 @@ main {
 
 /* This sets the width for the company logo */
 .navigation img {
-  width: 25vw;
+  width: 30vw;
 }
 
 /* This is the setup for the whole navigation bar across pages. */
@@ -46,8 +46,9 @@ main {
   white-space: nowrap; /* This keeps the text attached to the icon, even if they move down */
   color: black;
   font-weight: bold;
-  font-size: 2.5vw;
-  margin-right: 1vw;
+  font-size: 2rem;
+  margin-right: 1.5vw;
+  padding-bottom: 0.1rem;
 }
 
 /* This sets the hover effects for navigation bar */
@@ -56,11 +57,39 @@ nav a:hover {
     border-radius: 8px; /* This allows the border corners to be curving */
 } 
 
-/* This is CSS for Media queries, applying additional styles depending on the device's characteristics */
-@media only screen and (min-width: 1500px) {
+/* This is Media query for the Navigation*/
+@media only screen and (max-width: 600px) {
   #menu a {
-    font-size: 6vw;
+    font-size: 1.5rem;
   }
+}
+
+@media only screen and (max-width: 600px) {
+    .navigation {
+        flex-direction: column;
+        align-items: center;
+    }
+    .navigation img {
+        width: 18rem;
+        max-width: 80%;
+    }
+    .navigation nav {
+        width: 100%;
+    }
+    #menu {
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    #menu a {
+        margin-right: 1rem;
+    }
+}
+
+.index-page nav a[href="index.html"],
+.jobs-page nav a[href="jobs.html"],
+.apply-page nav a[href="apply.html"],
+.about-page nav a[href="about.html"] {
+    border-bottom: 3px solid #276249;
 }
 
 
@@ -68,6 +97,48 @@ nav a:hover {
 /* This is the section for CSS applied to index.html */
 
 
+
+/* This is the CSS for company slogan */
+.slogan {
+    background-image: url("../styles/images/background_image.jpg");
+    height: 45vw;
+    min-height: 22rem;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 3rem;
+    box-sizing: border-box;
+    margin: 0;
+
+    gap: 1rem;
+}
+
+.slogan p {
+    color: white;
+
+    font-size: clamp(1.8rem, 4vw, 5rem);
+    font-family: cursive;
+    font-weight: bold;
+
+    line-height: 1.1;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+@media (max-width: 765px) {
+    .slogan p {
+        max-width: 50%;
+        font-size: clamp(1.5rem, 3vw, 4rem);
+    }
+}
 
 /* This is the grid layout for the first section of company description */
 .description1 {
@@ -100,52 +171,67 @@ nav a:hover {
 /* This sets a caption under the illustrative images */
 .index-caption {
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.25rem;
+}
+
+#home-title1 {
+    font-size: clamp(2rem, 2.2rem, 3.5rem);
+    line-height: 1.15;
+    margin-bottom: 3rem;
 }
 
 /* This sets the font-size for the texts in the table */
 .company-details {
-    font-size: 2vw;
+    font-size: 1.1rem;
 }
 
 /* This sets a different color and font-size for the titles of company description */
 .overview {
     color: #065747;
-    font-size: 3vw;
+    font-size: 1.25rem;
+    padding-left: 0;
+    margin-left: 0;
 }
 
-/* This removes the number for <ol> in company description */
-.description1 ol {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.company-details ul li:not(.overview){
+    margin-left: 0rem;
+    margin-right: 0.5rem;
+}
+
+.company-details ul {
+    padding-left: 0;
+    list-style: none;
 }
 
 /* This changes the bullet points to squares for <ul> in company description */
 .description1 ul li {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    margin-bottom: 0.75rem;
+    padding-left: 1.25rem;
 }
 
+#home-title2 {
+    text-align: center;
+    font-size: 2rem;
+}
 /* This is the CSS for the table itself */
 .table {
     text-align: center;
     border: 2px solid;
     border-collapse: collapse; /* This allows single-line border for the table */
-    margin-left: 20px;
-    margin-top: 50px;
+    margin-left: 1.25rem;
+    margin-top: 3rem;
 }
 
 /* This is the CSS for the table header, or the first row */
 th {
-    padding: 1vw;
-    background-color: #07d086;
+    padding: 1rem;
+    background-color: #03e491;
     border: 2px solid;
 }
 
 /* This is the CSS for table cells */
-td {
+td, th:not(.table-header) {
     padding: 1vw;
     background-color:rgb(243, 232, 232);
     border: 2px solid;
@@ -156,39 +242,77 @@ td:hover {
     background-color:rgb(215, 231, 172);
     cursor: pointer; 
 }
+ 
+th:not(.table-header):hover {
+    background-color:rgb(215, 231, 172);
+    cursor: pointer; 
+}
+
+@media (max-width: 768px) {
+    .description1, .description2 {
+        grid-template-columns: 1fr;
+    }
+    .planting-image img, .cleanup-image img {
+        display: block;
+        margin: 0 auto;
+        width: 60%;
+        height: auto;
+    }
+}
 
 /* These sections are the CSS for the recruitment line*/
 .recruit {
-    font-size: 2vw;
+    background-color: rgb(184, 232, 144);
+    max-width: 75rem;
+    margin: 2rem auto 0;
+    padding: 1rem 2rem 2rem;
+    box-sizing: border-box;
+}
+
+/* Recruitment heading */
+.recruit h2 {
+    font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+    line-height: 1.2;
+    text-align: center;
+    padding-top: 2rem;
+    margin: 0 0 1.5rem;
+}
+
+/* Intro sentence */
+.recruit p {
+    text-align: center;
+    font-size: clamp(1rem, 1.5rem, 2rem);
+    line-height: 1.6;
+    margin: 0 0 2.5rem;
+}
+
+/* Recruitment list */
+.recruit ul {
+    list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.recruit h2 {
-    margin: 10px 20px;
-    
-}
-
-.recruit p {
-    font-size: 2vw;
-    margin: 20px 20px;
-}
-
-.recruit ul {
-    padding: 1vw 2vw;
-}
+/* Each recruitment item */
 .recruit ul li {
-    list-style-type: none;
-    font-size: 2vw;
-    margin: 0;
+    font-size: clamp(1rem, 1.5rem, 2rem);
+    line-height: 1.55;
+    margin-bottom: 1.2rem;
 }
 
+/* Don't leave unnecessary space after last item */
+.recruit ul li:last-child {
+    margin-bottom: 0;
+}
+
+/* Links */
 .recruit ul li a {
     color: rgb(47, 17, 218);
 }
 
 .recruit ul li a:hover {
-    background-color: rgb(215, 211, 211);
+    text-decoration: underline;
+    background-color: rgb(183, 183, 183);
 }
 
 hr {
@@ -198,12 +322,11 @@ hr {
 /* These 3 sections are CSS for the footer */
 .footer {
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.5rem;
 }
 
 footer p a {
-    text-decoration: none;
-    color: red;
+    color: #c00000;
 }
 
 footer p a:hover {
@@ -215,6 +338,195 @@ hr {
 }
 
 /* This is the section for CSS applied to jobs.html */
+
+
+
+/* =========================================
+   JOBS PAGE - jobs.css
+   ========================================= */
+
+/* Main jobs container */
+.jobs-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 25px;
+}
+
+/* Page heading */
+.jobs-heading {
+    text-align: center;
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+/* Introduction text */
+.jobs-introduction {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+/* Individual job sections */
+.job-section {
+    background-color: #ffffff;
+    border: 1px solid #d9e6dc;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Job title */
+.job-section h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+/* Section headings */
+.job-section h3 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 21px;
+}
+
+/* Job description paragraphs */
+.job-section p {
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+/* Reference number */
+.job-reference {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Job information table */
+.job-details {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+/* Table cells */
+.job-details th,
+.job-details td {
+    border: 1px solid #cfded2;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+/* Table headings */
+.job-details th {
+    font-weight: bold;
+}
+
+/* Lists */
+.job-section ol,
+.job-section ul {
+    padding-left: 25px;
+    line-height: 1.8;
+}
+
+/* List items */
+.job-section li {
+    margin-bottom: 6px;
+}
+
+/* Apply link */
+.apply-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 22px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+/* Apply link hover */
+.apply-link:hover {
+    transform: translateY(-2px);
+}
+
+/* Why work with us section */
+.job-aside {
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 5px solid #4d8b5b;
+    background-color: #e8f5e9;
+}
+
+/* Aside heading */
+.job-aside h2 {
+    margin-top: 0;
+    font-size: 25px;
+}
+
+/* Aside paragraphs */
+.job-aside p {
+    line-height: 1.7;
+}
+
+/* Bottom navigation */
+.job-navigation {
+    text-align: center;
+    margin: 35px 0;
+    padding: 25px;
+}
+
+/* Bottom navigation text */
+.job-navigation p {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* Bottom navigation link */
+.job-navigation a {
+    display: inline-block;
+    padding: 12px 22px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+/* Mobile responsive design */
+@media (max-width: 768px) {
+
+    .jobs-container {
+        padding: 0 15px;
+        margin: 25px auto;
+    }
+
+    .jobs-heading {
+        font-size: 34px;
+    }
+
+    .jobs-introduction {
+        font-size: 17px;
+    }
+
+    .job-section {
+        padding: 20px;
+    }
+
+    .job-section h2 {
+        font-size: 24px;
+    }
+
+    .job-details {
+        font-size: 14px;
+    }
+
+
+    .job-details th,
+    .job-details td {
+        padding: 9px;
+    }
+}
 
 
 
@@ -245,30 +557,46 @@ textarea {font-size: 20px;}
 }
 
 .about-group {
-    font-size: 2vw;
-    margin-left: 2.5vw;
+    font-size: 1.6rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .about-group ol {
     margin: 0;
-    padding-left: 2.5vw;
+    padding-left: 1rem;
+}
+
+.about-group ul li {
+    margin-top: 1rem;
+}
+
+.student-id li {
+    background: white;
+    padding: 1rem 1rem;
+    border-radius: 15px;
+    border: 2px solid #d2e7ce;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
 }
 
 /* This helps to hightlight the group name */
 #epic-name {
-    color:rgb(12, 12, 210);
-    font-size: 2.5vw;
+    color:#0C0CD2;
+    font-size: 2rem;
 }
 
 /* This allows the group photo to cover the column */
 .group-photo img {
     max-width: 100%;
+    border-radius: 18px;
+    border: 6px solid white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
 }
 
 /* This is for the group photo's caption */
 #about-caption1 {
     margin: 0;
-    font-size: 2vw;
+    font-size: 1.6rem;
 }
 
 /* These are the CSS for the second section */
@@ -277,7 +605,7 @@ textarea {font-size: 20px;}
     display: grid;
     grid-template-columns: repeat(2,1fr);
     align-items: center;
-    background-color: rgb(231, 221, 200);
+    background-color: #E7DDC8;
 }
 
 /* This is for the illustrative image of the second section */
@@ -287,7 +615,8 @@ textarea {font-size: 20px;}
 }
 
 .individual-tasks {
-    font-size: 2vw;
+    font-size: 1.6rem;
+    margin-left: 0.5rem;
 }
 
 .individual-tasks dd {
@@ -309,15 +638,16 @@ textarea {font-size: 20px;}
 }
 
 .inspiration {
-    font-size: 2vw;
-    margin-left: 5vw;
+    font-size: 1.6rem;
+    margin-left: 10px;
+    margin-right: 10px;
     margin-top: 0px;
 }
 
 /* These CSS set the border and background color for the quotes */
 .TDQ-Quote, .RN-Quote, .JM-Quote {
     border: 5px solid;
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 10px;
 }
 
@@ -335,7 +665,7 @@ textarea {font-size: 20px;}
 /* This helps to highlight the members' name in this section */
 .member-name2 {
     font-weight: bold;
-    font-size: 2.5vw;
+    font-size: 2.5rem;
     margin: 15px;
 }
 
@@ -355,7 +685,7 @@ textarea {font-size: 20px;}
 }
 
 .member-secret {
-    font-size: 2vw;
+    font-size: 1.6rem;
     margin-right: 10px;
     text-align: center;
 }
@@ -364,8 +694,8 @@ textarea {font-size: 20px;}
 .member-secret table, .member-secret th, .member-secret td {
     border: 2px solid;
     border-collapse: collapse;
-    margin-left: 0px;
-    padding: 2vw 1vw;
+    margin-left: 10px;
+    padding: 1rem 0.5rem;
 }
 
 /* These CSS positions the caption under the table and highlight it */
@@ -373,7 +703,7 @@ textarea {font-size: 20px;}
     caption-side: bottom;
     padding: 10px; 
     font-weight: bold;
-    font-size: 1.5vw;
+    font-size: 1.4rem;
     color:rgb(12, 12, 210)
 }
 
@@ -388,4 +718,36 @@ textarea {font-size: 20px;}
 
 .third-row {
     border-top: none;
+}
+
+/* This is media queries for sections */
+@media (max-width: 800px) {
+    .about-us, .member-contributions, .individual-quotes, .funfact {
+        grid-template-columns: 1fr; /* This allows the sections to be stacked vertically on smaller screens */
+    }
+    .inspiration {
+        order: 2;
+    }
+    .inspirative-image img {
+        order: 1;
+    }
+    .group-photo img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+    .contribution-image img, .inspirative-image img, .funfact-image img {
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    }
+    #about-caption1 {
+    margin: 0;
+    font-size: 1.2rem;
+    }
+    .member-secret {
+    font-size: 1.2rem;
+    }
 }
