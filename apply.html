@@ -1,132 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- This is <meta> tags including charset, viewport, description, keywords, author of the webpage -->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Recruitment Website for Greener Society! Here you can find out about the company's details,
-        and of course, the opportunity to participate with us in conserving the environment!">
-        <meta name="keywords" content="Environmental Conservation, GS, Greener Society, Protect Environment, Recruitment">
-        <meta name="author" content="TideTech Group">
-        <!-- This is the official title for our webpage -->
-        <title>Greener Society - Recruitment Website</title>
-        <link rel="stylesheet" href="styles/styles.css">
-        <!-- This is the internal CSS to change the background color of the recruitment line and add background image to the slogan -->
-        <style>
-        #promotion {
-             border:solid;
-             background-color: rgb(221, 221, 145);
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Greener Society job application page where applicants can apply for environmental conservation positions.">
+
+    <meta name="keywords"
+        content="Greener Society, job application, environmental jobs, conservation jobs, recruitment">
+
+    <meta name="author" content="TideTech Group">
+
+    <title>Greener Society - Job Application</title>
+
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <style>
+        /* Embedded CSS example required for the assignment */
+        .application-banner {
+            background-color: lightgoldenrodyellow;
+            border: 1px solid #444;
         }
+    </style>
 
-        .background {
-            background-image: url("images/background_image.jpg");
-            width: 100%;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        /*flexbox code*/
-
-        .form {
-            display: flex;
-            align-content: center;
-            justify-content: center;
-            flex-direction: column;
-            flex-wrap: wrap;
-            align-items: center;
-
-        }
-
-        #form .form-item {
-            font-size: 30px;
-            width: fit-content ;
-            margin: 0px auto;
-            border: 1px solid;
-            padding: 20px 50px;
-            border-color: black;
-        }
+</head>
 
 
-        </style>
-    </head>
+<body>
 
-    <body>
-        <div class="navigation">
-            <!-- This is the official logo for the company, used throughout the page -->
-            <!-- The image for Company Logo was generated using Gemini (Google, using 3.6 Flash Model, August 2026) -->
-            <figure>
-                <img id="company_logo" src="Images/Official_Company_Logo.png" alt="Greener_Society_Company_Logo" loading="lazy">
-            </figure>
-            <!-- This is the consistent navigation bar, offering accessibility to users -->
-            <nav>
-                <ul id="menu"> 
-                    <li> <a href="index.html"> 🪴 Home </a> </li>
-                    <li> <a href="jobs.html"> 📝 Jobs </a> </li>
-                    <li> <a href="apply.html"> 📄 Apply </a> </li>
-                    <li> <a href="about.html"> 👥 About </a> </li>
-                </ul>
-            </nav>
+
+    <!-- Website header and navigation -->
+
+    <header class="navigation">
+
+        <figure>
+            <img id="company_logo"
+                src="Images/Official_Company_Logo.png"
+                alt="Greener Society company logo"
+                loading="lazy">
+        </figure>
+
+        <nav aria-label="Main navigation">
+
+            <ul id="menu">
+
+                <li>
+                    <a href="index.html">🪴 Home</a>
+                </li>
+
+                <li>
+                    <a href="jobs.html">📝 Jobs</a>
+                </li>
+
+                <li>
+                    <a href="apply.html">📄 Apply</a>
+                </li>
+
+                <li>
+                    <a href="about.html">👥 About</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- Application heading -->
+
+        <div class="application-banner">
+
+            <h1>Join Greener Society</h1>
+
+            <p>
+                Thank you for considering a career with Greener Society.
+                We look forward to receiving your application.
+            </p>
+
         </div>
-        
-        <main style="text-align: center;">
-            <!--code for the top sentences-->
-            <div style="background-color: lightgoldenrodyellow;">
-                <hr>
-                <h1>🌲Thank you for considering a job at Greener Society!🌲</h1>
-                <h2>🌏We look forward to your application and love your enthusiasm towards protecting our environment!🌏</h2>
-                <hr>
+
+
+        <form id="form"
+            action="http://mercury.swin.edu.au/it000000/formtest.php"
+            method="post">
+
+
+            <!-- Job Reference -->
+
+            <div class="job-reference-form">
+
+                <label for="job-reference">
+                    <strong>Job Reference Number</strong>
+                </label>
+
+                <input
+                    type="text"
+                    id="job-reference"
+                    name="Job Reference Number"
+                    minlength="6"
+                    maxlength="6"
+                    pattern="GS102A|GS204B|GS305C"
+                    placeholder="e.g. GS102A"
+                    title="Enter GS102A, GS204B or GS305C."
+                    required>
+
             </div>
-            <form id="form" action="http://mercury.swin.edu.au/it000000/formtest.php" method="post">
-                <!--Form code, split into fieldsets-->
-                <!--Each label is allocated its own respective input, with inline styling when needed-->
-                <br>
-                <label style="font-size: 30px;" for="Job Reference Number"><strong>Job Reference Number</strong></label>
-                <input type="text" id="Job Reference Number" name="Job Reference Number" minlength="6" maxlength="6" pattern="GS102A|GS204B|GS305C" required>
-                <br><br>
-                <fieldset style="display: flex; background-color: lightgreen; " class="form-item">
-                    <legend style="text-align: center;"><strong>Your details</strong></legend>
-                    <br>
-                    <div>
-                        <label for="First Name">First Name</label>
-                        <input type="text"  id="First Name" name="First Name" maxlength="20" pattern="[A-Za-z -]+" required>
-                        <br><br>
 
-                        <label for="Last Name">Last Name</label>
-                        <input type="text" id="Last Name" name="Last Name" maxlength="20" pattern="[A-Za-z -]+" required>
-                        <br><br>
 
-                        <label for="Date of Birth">Date of Birth</label>
-                        <input type="date" id="Date of Birth" name="Date of Birth" required>
-                        <br><br>
-                    </div>
-                    <div>
-                        <label for="Gender"> <strong>Gender</strong> </label>
-                        <br>
-                        <input type="radio" id="Male" name="Gender" value="Male" required>
-                        <label for="Male">Male</label>
-                        <br>
-                        <input type="radio" id="Female" name="Gender" value="Female">
-                        <label for="Female">Female</label>
-                        <br>
-                        <input type="radio" id="Rather Not Say" name="Gender" value="Rather Not Say">
-                        <label for="Rather Not Say">Rather Not Say</label>
-                    </div>
+            <!-- Two-column form layout -->
+
+            <div class="application-grid">
+
+
+                <!-- YOUR DETAILS -->
+
+                <fieldset class="form-item details-fieldset">
+
+                    <legend>
+                        <strong>Your Details</strong>
+                    </legend>
+
+
+                    <label for="first-name">
+                        First Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="first-name"
+                        name="First Name"
+                        maxlength="20"
+                        pattern="[A-Za-z '\-]+"
+                        placeholder="Enter your first name"
+                        title="Use letters, spaces, apostrophes and hyphens only."
+                        required>
+
+
+                    <label for="last-name">
+                        Last Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="last-name"
+                        name="Last Name"
+                        maxlength="20"
+                        pattern="[A-Za-z '\-]+"
+                        placeholder="Enter your last name"
+                        title="Use letters, spaces, apostrophes and hyphens only."
+                        required>
+
+
+                    <label for="date-of-birth">
+                        Date of Birth
+                    </label>
+
+                    <input
+                        type="date"
+                        id="date-of-birth"
+                        name="Date of Birth"
+                        required>
+
                 </fieldset>
-                <br>
-                <fieldset style="background-color: lightpink;" class="form-item">
-                    <legend style="text-align: center;"><strong>Your Address</strong></legend>
-                    <br>
 
-                    <label for="Street Address">Street Address</label>
-                    <input type="text" id="Street Address" name="Street Address" maxlength="40" required>
-                    <br><br>
 
-                    <label for="Suburb/Town">Suburb/Town</label>
-                    <input type="text" id="Suburb/Town" name="Suburb/Town" maxlength="40" required>
-                    <br><br>
+                <!-- GENDER -->
 
-                    <label for="State">State</label>
-                    <select id="State" name="State" required>
+                <fieldset class="form-item gender-fieldset">
+
+                    <legend>
+                        <strong>Gender</strong>
+                    </legend>
+
+                    <label>
+                        <input
+                            type="radio"
+                            id="male"
+                            name="Gender"
+                            value="Male"
+                            required>
+                        Male
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            id="female"
+                            name="Gender"
+                            value="Female">
+                        Female
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            id="rather-not-say"
+                            name="Gender"
+                            value="Rather Not Say">
+                        Rather Not Say
+                    </label>
+
+                </fieldset>
+
+
+                <!-- ADDRESS -->
+
+                <fieldset class="form-item address-fieldset">
+
+                    <legend>
+                        <strong>Your Address</strong>
+                    </legend>
+
+
+                    <label for="street-address">
+                        Street Address
+                    </label>
+
+                    <input
+                        type="text"
+                        id="street-address"
+                        name="Street Address"
+                        maxlength="40"
+                        placeholder="Enter your street address"
+                        required>
+
+
+                    <label for="suburb-town">
+                        Suburb/Town
+                    </label>
+
+                    <input
+                        type="text"
+                        id="suburb-town"
+                        name="Suburb/Town"
+                        maxlength="40"
+                        placeholder="Enter your suburb or town"
+                        required>
+
+
+                    <label for="state">
+                        State
+                    </label>
+
+                    <select
+                        id="state"
+                        name="State"
+                        required>
+
                         <option value="">Please Select</option>
                         <option value="VIC">VIC</option>
                         <option value="NSW">NSW</option>
@@ -136,64 +263,249 @@
                         <option value="SA">SA</option>
                         <option value="TAS">TAS</option>
                         <option value="ACT">ACT</option>
+
                     </select>
-                    <br><br>
 
-                    <label for="Postcode">Postcode</label>
-                    <input type="number" id="Postcode" name="Postcode" minlength="4" maxlength="4" required>
-                    
+
+                    <label for="postcode">
+                        Postcode
+                    </label>
+
+                    <input
+                        type="text"
+                        id="postcode"
+                        name="Postcode"
+                        pattern="[0-9]{4}"
+                        placeholder="e.g. 3000"
+                        title="Enter exactly 4 digits."
+                        required>
+
                 </fieldset>
-                <br>
-                <fieldset style="background-color: lightskyblue;" class="form-item">
-                    <legend style="text-align: center;"><strong>Contacts</strong></legend>
-                    <br>
 
-                    <label for="Email">Email</label>
-                    <input type="email" id="Email" name="Email" required>
-                    <br><br>
 
-                    <label for="Phone Number">Phone Number</label>
-                    <input type="number" id="Phone Number" name="Phone Number" minlength="8" maxlength="12" required>
-                    
+                <!-- CONTACTS -->
+
+                <fieldset class="form-item contacts-fieldset">
+
+                    <legend>
+                        <strong>Contacts</strong>
+                    </legend>
+
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="Email"
+                        placeholder="e.g. example@email.com"
+                        title="Enter a valid email address."
+                        required>
+
+
+                    <label for="phone-number">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone-number"
+                        name="Phone Number"
+                        pattern="[0-9]{8,12}"
+                        placeholder="e.g. 0412345678"
+                        title="Enter a phone number containing 8 to 12 digits."
+                        required>
+
                 </fieldset>
-                <br>
-                <fieldset style="background-color: lightcyan;" class="form-item">
-                    <legend style="text-align: center;"><strong>Your Skills</strong></legend>
-                    <br>
 
-                    <label for="Skill List"><strong>Skill List</strong></label>
-                    <br>
-                    <div>
-                    <label><input type="checkbox" id="Loves The Environment" name="Skills[]" value="Loves The Environment" checked="checked">Loves The Environment</label>
-                    <br>
-                    <label><input type="checkbox" id="Organization" name="Skills[]" value="Organization">Organzation</label>
-                    <br>
-                    <label><input type="checkbox" id="Punctuality" name="Skills[]" value="Punctuality">Punctuality</label>
-                    <br>
-                    <label><input type="checkbox" id="Hard Working" name="Skills[]" value="Hard Working">Hard Working</label>
-                    <br>
+
+                <!-- SKILLS -->
+
+                <fieldset class="form-item skills-fieldset">
+
+                    <legend>
+                        <strong>Your Skills</strong>
+                    </legend>
+
+
+                    <p>
+                        <strong>Skill List</strong>
+                    </p>
+
+
+                    <div class="skills-grid">
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                id="loves-environment"
+                                name="Skills[]"
+                                value="Loves The Environment"
+                                required>
+                            Loves The Environment
+                        </label>
+
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                id="organization"
+                                name="Skills[]"
+                                value="Organization">
+                            Organization
+                        </label>
+
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                id="punctuality"
+                                name="Skills[]"
+                                value="Punctuality">
+                            Punctuality
+                        </label>
+
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                id="hard-working"
+                                name="Skills[]"
+                                value="Hard Working">
+                            Hard Working
+                        </label>
+
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                id="resilience"
+                                name="Skills[]"
+                                value="Resilience">
+                            Resilience
+                        </label>
+
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                id="team-player"
+                                name="Skills[]"
+                                value="Team Player">
+                            Team Player
+                        </label>
+
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                id="passionate"
+                                name="Skills[]"
+                                value="Passionate">
+                            Passionate
+                        </label>
+
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                id="leadership"
+                                name="Skills[]"
+                                value="Leadership">
+                            Leadership
+                        </label>
+
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                id="communication"
+                                name="Skills[]"
+                                value="Communication">
+                            Communication
+                        </label>
+
                     </div>
-                    <div>
-                    <label><input type="checkbox" id="Resilience" name="Skills[]" value="Resilience">Resilience</label>
-                    <br>
-                    <label><input type="checkbox" id="Team Player" name="Skills[]" value="Team Player">Team Player</label>
-                    <br>
-                    <label><input type="checkbox" id="Passionate" name="Skills[]" value="Passionate">Passionate</label>
-                    <br>
-                    <label><input type="checkbox" id="Leadership" name="Skills[]" value="Leadership">Leadership</label>
-                    <br>
-                    <label><input type="checkbox" id="Communication" name="Skills[]" value="Communication">Communication</label>
-                    <br><br>
-                    </div>
 
-                    <label for="Other Skills"><strong>Other Skills</strong></label>
-                    <br>
-                    <textarea id="Other Skills" name="Other Skills" rows="8" cols="50" placeholder="Have more skills we didn't list? Tell us about them here!"></textarea>
+
+                    <label for="other-skills">
+                        <strong>Other Skills</strong>
+                    </label>
+
+                    <textarea
+                        id="other-skills"
+                        name="Other Skills"
+                        rows="6"
+                        placeholder="Tell us about any other skills you have."></textarea>
 
                 </fieldset>
-                <br>
-                <!--Buttons necessary for the form submission/reset-->
-                <input type="submit" id="submit" name="submit" value="Submit Application">
-                <input type="reset" id="reset" name="reset" value="Reset Application">
-            </form>
-        </main>
+
+            </div>
+
+
+            <!-- FORM BUTTONS -->
+
+            <div class="form-buttons">
+
+                <input
+                    type="submit"
+                    id="submit"
+                    name="submit"
+                    value="Submit Application">
+
+                <input
+                    type="reset"
+                    id="reset"
+                    name="reset"
+                    value="Reset Application">
+
+            </div>
+
+
+        </form>
+
+    </main>
+
+
+    <!-- Footer copied from index.html -->
+
+    <footer class="footer">
+
+        <p>
+            <strong>Jira project link:</strong>
+            <a target="_blank"
+                href="https://cos10026assignmentpart1.atlassian.net/jira/software/projects/SCRUM/summary">
+                <strong>https://cos10026assignmentpart1.atlassian.net</strong>
+            </a>
+        </p>
+
+        <p>
+            <strong>Github Repository link:</strong>
+            <a target="_blank"
+                href="https://github.com/Tuan-Dat-Quach/COS10026---Applied-Web-Project-Part-1">
+                <strong>https://github.com/Tuan-Dat-Quach/COS10026---Applied-Web-Project-Part-1</strong>
+            </a>
+        </p>
+
+        <p>
+            <strong>Another way to Contact us?</strong>
+            Please mail to:
+            <a href="mailto:info@greenersociety.org">
+                <strong>info@greenersociety.org</strong>
+            </a>
+        </p>
+
+        <br>
+
+        <p>
+            &copy; 2026 Greener Society. All rights reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

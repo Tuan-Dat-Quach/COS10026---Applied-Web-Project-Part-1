@@ -7,20 +7,27 @@
     max-width: 1100px;
     margin: 40px auto;
     padding: 0 25px;
+
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 30px;
+    align-items: start;
 }
 
 /* Page heading */
 .jobs-heading {
+    grid-column: 1 / -1;
     text-align: center;
-    font-size: 45px;
+    font-size: 2.8rem;
     margin-bottom: 15px;
 }
 
 /* Introduction text */
 .jobs-introduction {
+    grid-column: 1 / -1;
     text-align: center;
-    font-size: 20px;
-    margin-bottom: 35px;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
     line-height: 1.6;
 }
 
@@ -32,26 +39,37 @@
     padding: 30px;
     margin-bottom: 30px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    grid-column: 1;
 }
 
 /* Job title */
 .job-section h2 {
     margin-top: 0;
     margin-bottom: 10px;
-    font-size: 28px;
+    font-size: 1.75rem;
 }
 
 /* Section headings */
 .job-section h3 {
     margin-top: 25px;
     margin-bottom: 10px;
-    font-size: 21px;
+    font-size: 1.3rem;
 }
 
 /* Job description paragraphs */
 .job-section p {
     line-height: 1.7;
-    font-size: 16px;
+    font-size: 1rem;
+}
+
+/* Job image */
+.job-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
 }
 
 /* Reference number */
@@ -73,6 +91,7 @@
     border: 1px solid #cfded2;
     padding: 12px 15px;
     text-align: left;
+    vertical-align: top;
 }
 
 /* Table headings */
@@ -110,7 +129,10 @@
 
 /* Why work with us section */
 .job-aside {
-    margin-top: 30px;
+    grid-column: 2;
+    grid-row: 3 / span 3;
+
+    margin-top: 0;
     padding: 25px;
     border-radius: 15px;
     border-left: 5px solid #4d8b5b;
@@ -120,7 +142,7 @@
 /* Aside heading */
 .job-aside h2 {
     margin-top: 0;
-    font-size: 25px;
+    font-size: 1.55rem;
 }
 
 /* Aside paragraphs */
@@ -130,14 +152,15 @@
 
 /* Bottom navigation */
 .job-navigation {
+    grid-column: 1 / -1;
     text-align: center;
-    margin: 35px 0;
+    margin: 5px 0 35px;
     padding: 25px;
 }
 
 /* Bottom navigation text */
 .job-navigation p {
-    font-size: 40px;
+    font-size: 2rem;
     font-weight: bold;
 }
 
@@ -154,16 +177,30 @@
 @media (max-width: 768px) {
 
     .jobs-container {
+        grid-template-columns: 1fr;
         padding: 0 15px;
         margin: 25px auto;
     }
 
+    .jobs-heading,
+    .jobs-introduction,
+    .job-section,
+    .job-aside,
+    .job-navigation {
+        grid-column: 1;
+    }
+
+    .job-aside {
+        grid-row: auto;
+        margin-top: 0;
+    }
+
     .jobs-heading {
-        font-size: 34px;
+        font-size: 2.1rem;
     }
 
     .jobs-introduction {
-        font-size: 17px;
+        font-size: 1.05rem;
     }
 
     .job-section {
@@ -171,16 +208,25 @@
     }
 
     .job-section h2 {
-        font-size: 24px;
+        font-size: 1.5rem;
+    }
+
+    .job-section h3 {
+        font-size: 1.2rem;
     }
 
     .job-details {
-        font-size: 14px;
+        font-size: 0.9rem;
+        display: block;
+        overflow-x: auto;
     }
-
 
     .job-details th,
     .job-details td {
         padding: 9px;
+    }
+
+    .job-navigation p {
+        font-size: 1.5rem;
     }
 }
