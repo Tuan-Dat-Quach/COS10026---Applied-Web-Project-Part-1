@@ -545,7 +545,12 @@ textarea {font-size: 20px;}
 
 .form-buttons input {margin: 0 8px;}
 
+.application-grid {display: grid;
+                   grid-template-columns: auto auto;
+                   gap: 10px;
+                }
 
+.form-item-skills-fieldset {grid-column: 1 / span 2;}
 
 /* This is the section for CSS applied to about.html */
 
