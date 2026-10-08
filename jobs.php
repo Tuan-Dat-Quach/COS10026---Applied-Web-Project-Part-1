@@ -10,7 +10,7 @@
     <meta name="keywords"
         content="Greener Society, environmental jobs, conservation jobs, recruitment, sustainability">
 
-    <meta name="author" content="TideTech Group">
+    <meta name="author" content="TechTide Group">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -30,23 +30,22 @@
     </style>
 </head>
 
-<body>
+<body class="jobs-page">
 
     <header class="navigation">
 
         <figure>
             <img id="company_logo"
                 src="Images/Official_Company_Logo.png"
-                alt="Greener Society company logo"
-                loading="lazy">
+                alt="Greener Society company logo">
         </figure>
 
         <nav aria-label="Main navigation">
             <ul id="menu">
-                <li><a href="index.html">🪴 Home</a></li>
-                <li><a href="jobs.html">📝 Jobs</a></li>
-                <li><a href="apply.html">📄 Apply</a></li>
-                <li><a href="about.html">👥 About</a></li>
+                <li> <a href="index.html"> <span aria-hidden="true"> 🪴 </span> Home </a> </li>
+                <li> <a href="jobs.html"> <span aria-hidden="true"> 📝 </span> Jobs </a> </li>
+                <li> <a href="apply.html"> <span aria-hidden="true"> 📄 </span> Apply </a> </li>
+                <li> <a href="about.html"> <span aria-hidden="true"> 👥 </span> About </a> </li>
             </ul>
         </nav>
 
@@ -59,7 +58,7 @@
 
             <header>
                 <h1 class="jobs-heading">
-                    🌱 Position Descriptions
+                    <span aria-hidden="true"> 🌱 </span> Position Descriptions
                 </h1>
 
                 <p class="jobs-introduction">
@@ -79,7 +78,7 @@
                     <section class="job-section" aria-labelledby="job1-title">
 
                         <img class="job-image"
-                            src="images/project officer.jpg"
+                            src="images/project_officer.jpg"
                             alt="Environmental conservation project">
 
                         <header>
@@ -169,7 +168,7 @@
                     <section class="job-section" aria-labelledby="job2-title">
 
                         <img class="job-image"
-                            src="images/community management.jpg"
+                            src="images/community_management.jpg"
                             alt="Community engagement event">
 
                         <header>
@@ -350,7 +349,8 @@
                 <aside class="job-aside">
 
                     <h2>
-                        🌿 Why Work With Greener Society?
+                        <span aria-hidden="true"> 🌿 </span> Why Work With Greener Society?
+                        
                     </h2>
 
                     <p>

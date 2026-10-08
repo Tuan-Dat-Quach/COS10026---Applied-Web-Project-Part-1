@@ -13,7 +13,7 @@
     <meta name="keywords"
         content="Greener Society, job application, environmental jobs, conservation jobs, recruitment">
 
-    <meta name="author" content="TideTech Group">
+    <meta name="author" content="TechTide Group">
 
     <title>Greener Society - Job Application</title>
 
@@ -24,13 +24,15 @@
         .application-banner {
             background-color: lightgoldenrodyellow;
             border: 1px solid #444;
+            text-align: center;
+            font-size: 20px;
         }
     </style>
 
 </head>
 
 
-<body>
+<body class="apply-page">
 
 
     <!-- Website header and navigation -->
@@ -40,29 +42,17 @@
         <figure>
             <img id="company_logo"
                 src="Images/Official_Company_Logo.png"
-                alt="Greener Society company logo"
-                loading="lazy">
+                alt="Greener Society company logo">
         </figure>
 
         <nav aria-label="Main navigation">
 
             <ul id="menu">
 
-                <li>
-                    <a href="index.html">🪴 Home</a>
-                </li>
-
-                <li>
-                    <a href="jobs.html">📝 Jobs</a>
-                </li>
-
-                <li>
-                    <a href="apply.html">📄 Apply</a>
-                </li>
-
-                <li>
-                    <a href="about.html">👥 About</a>
-                </li>
+                <li> <a href="index.html"> <span aria-hidden="true"> 🪴 </span> Home </a> </li>
+                <li> <a href="jobs.html"> <span aria-hidden="true"> 📝 </span> Jobs </a> </li>
+                <li> <a href="apply.html"> <span aria-hidden="true"> 📄 </span> Apply </a> </li>
+                <li> <a href="about.html"> <span aria-hidden="true"> 👥 </span> About </a> </li>
 
             </ul>
 
@@ -104,8 +94,6 @@
                     type="text"
                     id="job-reference"
                     name="Job Reference Number"
-                    minlength="6"
-                    maxlength="6"
                     pattern="GS102A|GS204B|GS305C"
                     placeholder="e.g. GS102A"
                     title="Enter GS102A, GS204B or GS305C."
@@ -323,7 +311,7 @@
 
                 <!-- SKILLS -->
 
-                <fieldset class="form-item skills-fieldset">
+                <fieldset class="form-item-skills-fieldset">
 
                     <legend>
                         <strong>Your Skills</strong>
