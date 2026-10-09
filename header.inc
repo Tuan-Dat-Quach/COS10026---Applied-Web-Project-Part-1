@@ -13,7 +13,7 @@
         content="Environmental Conservation, GS, Greener Society, Protect Environment, Recruitment">
 
     <meta name="author"
-        content="TideTech Group">
+        content="TechTideGroup">
 
     <title>Greener Society - Recruitment Website</title>
 
