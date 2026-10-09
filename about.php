@@ -1,44 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <!-- This is <meta> tags including charset, viewport, description, keywords, author of the webpage -->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Recruitment Website for Greener Society! Here you can find out about the company's details,
-        and of course, the opportunity to participate with us in conserving the environment!">
-        <meta name="keywords" content="Environmental Conservation, GS, Greener Society, Protect Environment, Recruitment">
-        <meta name="author" content="TechTide Group">
-        <!-- This is the official title for our webpage -->
-        <title>Greener Society - Recruitment Website</title>
-        <link rel="stylesheet" href="styles/styles.css">
-        <style>
-        /* This is the CSS applied to the 4 headings in about.html */
-        .about-titles { 
-            color:#065747;
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        </style>
-    </head>
-
-    <body class="about-page">
-        <header class="navigation">
-            <!-- This is the official logo for the company, used throughout the page -->
-            <!-- The image for Company Logo was generated using Gemini (Google, using 3.6 Flash Model, August 2026) -->
-             <figure>
-                <img id="company_logo" src="Images/Official_Company_Logo.png" alt="Greener Society's Company Logo">
-             </figure>
-             <!-- This is the consistent navigation bar, offering accessibility to users -->
-             <nav>
-                <ul id="menu"> 
-                    <li> <a href="index.html"> <span aria-hidden="true"> 🪴 </span> Home </a> </li>
-                    <li> <a href="jobs.html"> <span aria-hidden="true"> 📝 </span> Jobs </a> </li>
-                    <li> <a href="apply.html"> <span aria-hidden="true"> 📄 </span> Apply </a> </li>
-                    <li> <a href="about.html"> <span aria-hidden="true"> 👥 </span> About </a> </li>
-                </ul>
-             </nav>
-        </header>
+<?php include 'header.inc'; ?>
 
         <main>
             <!-- This is the first section of about.html, including group name, tutorial class day and time and the group photo -->
@@ -186,5 +146,5 @@
                 </div>
             </section>
         </main>
-    </body>
-</html>
+   
+        <?php include 'footer.inc'; ?>

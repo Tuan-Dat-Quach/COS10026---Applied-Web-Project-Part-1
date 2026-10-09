@@ -1,41 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <!-- This is <meta> tags including charset, viewport, description, keywords, author of the webpage -->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Recruitment Website for Greener Society! Here you can find out about the company's details,
-        and of course, the opportunity to participate with us in conserving the environment!">
-        <meta name="keywords" content="Environmental Conservation, GS, Greener Society, Protect Environment, Recruitment">
-        <meta name="author" content="TechTide Group">
-        <!-- This is the official title for our webpage -->
-        <title>Greener Society - Recruitment Website</title>
-        <link rel="stylesheet" href="styles/styles.css">
-        <!-- This is the internal CSS to change the background color of the recruitment line and the image containing company sloan -->
-        <style>
-        #promotion {
-             background-color: rgb(187, 233, 152);
-        }
-        </style>
-    </head>
-
-    <body class="index-page">
-        <header class="navigation">
-            <!-- This is the official logo for the company, used throughout the page -->
-            <!-- The image for Company Logo was generated using Gemini (Google, using 3.6 Flash Model, August 2026) -->
-             <figure>
-                <img id="company_logo" src="Images/Official_Company_Logo.png" alt="Greener Society's Company Logo">
-             </figure>
-             <!-- This is the consistent navigation bar, offering accessibility to users -->
-             <nav>
-                <ul id="menu"> 
-                    <li> <a href="index.html"> <span aria-hidden="true"> 🪴 </span> Home </a> </li>
-                    <li> <a href="jobs.html"> <span aria-hidden="true"> 📝 </span> Jobs </a> </li>
-                    <li> <a href="apply.html"> <span aria-hidden="true"> 📄 </span> Apply </a> </li>
-                    <li> <a href="about.html"> <span aria-hidden="true"> 👥 </span> About </a> </li>
-                </ul>
-             </nav>
-        </header>
+<?php include 'header.inc'; ?>
 
         <main>
             <figure class="slogan">
@@ -163,15 +126,4 @@
             <hr>
         </main>
 
-          <!-- This is the page footer, consisting of links to Jira and Github, the company's email and the copyright notice -->
-        <footer class="footer">
-            <p> <strong> Jira project link: </strong> <a target="_blank" href="https://cos10026assignmentpart1.atlassian.net/jira/software/projects/SCRUM/summary"> 
-                <strong> https://cos10026assignmentpart1.atlassian.net </strong> </a> </p>
-            <p> <strong> Github Repository link: </strong> <a target="_blank" href="https://github.com/Tuan-Dat-Quach/COS10026---Applied-Web-Project-Part-1"> 
-                <strong> https://github.com/Tuan-Dat-Quach/COS10026---Applied-Web-Project-Part-1 </strong> </a> </p>
-            <p> <strong> Another way to Contact us ? </strong> Please mail to: <a href="mailto:info@greenersociety.org"> <strong> info@greenersociety.org </strong> </a> </p> <br>
-            <p> &copy; 2026 Greener Society. All rights reserved.</p>
-        </footer>
-
-    </body>
-</html>
+       <?php include 'footer.inc'; ?>
