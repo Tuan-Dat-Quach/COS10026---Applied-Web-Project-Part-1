@@ -1,4 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Greener Society job application page where applicants can apply for environmental conservation positions.">
+    <meta name="keywords" content="Greener Society, job application, environmental jobs, conservation jobs, recruitment">
+    <meta name="author" content="TechTide Group">
+
+    <title>Greener Society - Job Application</title>
+
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <style>
+        /* Embedded CSS example required for the assignment */
+        .application-banner {
+            background-color: lightgoldenrodyellow;
+            border: 1px solid #444;
+            text-align: center;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body class="apply-page">
+
 <?php include 'header.inc'; ?>
+
 
     <main>
 
@@ -396,3 +425,6 @@
     </main>
 
     <?php include 'footer.inc'; ?>
+
+    </body>
+</html>

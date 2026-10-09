@@ -1,3 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Recruitment Website for Greener Society! Here you can find out about the company's details, and the opportunity to participate in conserving the environment.">
+    <meta name="keywords" content="Environmental Conservation, GS, Greener Society, Protect Environment, Recruitment">
+    <meta name="author" content="TechTide Group">
+
+    <title>Greener Society - Recruitment Website</title>
+
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <style>
+        /* This is the CSS applied to the 4 headings in about.html */
+        .about-titles {
+            color: #065747;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body class="about-page">
+
 <?php include 'header.inc'; ?>
 
         <main>
@@ -148,3 +176,6 @@
         </main>
    
         <?php include 'footer.inc'; ?>
+
+        </body>
+</html>

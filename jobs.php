@@ -1,4 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Greener Society position description page featuring current environmental conservation employment opportunities.">
+    <meta name="keywords" content="Greener Society, environmental jobs, conservation jobs, recruitment, sustainability">
+    <meta name="author" content="TechTide Group">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Greener Society - Position Descriptions</title>
+
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <style>
+        .job-image {
+            display: block;
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body class="jobs-page">
+
 <?php include 'header.inc'; ?>
+
 
     <main>
 
@@ -335,3 +364,6 @@
 
 
  <?php include 'footer.inc'; ?>
+
+ </body>
+</html>
