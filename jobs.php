@@ -28,6 +28,14 @@
 
 <?php include 'header.inc'; ?>
 
+<?php
+  $connect = mysqli_connect("localhost", "root", "", "greener_society");
+  if (!$connect) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+  $sql = "SELECT * FROM jobs";
+  $result = mysqli_query($connect, $sql);
+?>
 
     <main>
 
@@ -48,279 +56,59 @@
             <div class="jobs-layout">
 
                 <div class="jobs-list">
-
-
-                    <!-- JOB 1 -->
-
-                    <section class="job-section" aria-labelledby="job1-title">
-
-                        <img class="job-image"
-                            src="images/project_officer.jpg"
-                            alt="Environmental conservation project">
-
-                        <header>
-                            <h2 id="job1-title">
-                                Environmental Project Officer
-                            </h2>
-                        </header>
-
-                        <p class="job-reference">
-                            Reference Number: GS102A
-                        </p>
-
-                        <p>
-                            The Environmental Project Officer supports the planning,
-                            coordination and delivery of environmental conservation
-                            projects including tree planting, habitat restoration
-                            and community sustainability programs.
-                        </p>
-
-                        <table class="job-details">
-
-                            <tr>
-                                <th>Salary</th>
-                                <td>$75,000 - $85,000 per year</td>
-                            </tr>
-
-                            <tr>
-                                <th>Employment Type</th>
-                                <td>Full-time</td>
-                            </tr>
-
-                            <tr>
-                                <th>Reporting Line</th>
-                                <td>Environmental Programs Manager</td>
-                            </tr>
-
-                        </table>
-
-
-                        <section>
-                            <h3>Key Responsibilities</h3>
-
-                            <ol>
-                                <li>Coordinate environmental conservation projects.</li>
-                                <li>Organise tree planting and habitat restoration activities.</li>
-                                <li>Work with volunteers and community organisations.</li>
-                                <li>Monitor project progress and prepare reports.</li>
-                                <li>Assist with environmental education programs.</li>
-                            </ol>
-                        </section>
-
-
-                        <section>
-                            <h3>Essential Requirements</h3>
-
-                            <ul>
-                                <li>Relevant qualification or experience in environmental conservation.</li>
-                                <li>Strong communication and teamwork skills.</li>
-                                <li>Good organisational and time-management skills.</li>
-                                <li>Ability to work outdoors when required.</li>
-                                <li>Commitment to environmental sustainability.</li>
-                            </ul>
-                        </section>
-
-
-                        <section>
-                            <h3>Preferable Requirements</h3>
-
-                            <ul>
-                                <li>Project management experience.</li>
-                                <li>Experience working with volunteers.</li>
-                                <li>Knowledge of local environmental issues.</li>
-                                <li>Experience working with community organisations.</li>
-                            </ul>
-                        </section>
-
-
-                        <a class="apply-link" href="apply.html">
-                            Apply for this position
-                        </a>
-
-                    </section>
-
-
-                    <!-- JOB 2 -->
-
-                    <section class="job-section" aria-labelledby="job2-title">
-
-                        <img class="job-image"
-                            src="images/community_management.jpg"
-                            alt="Community engagement event">
-
-                        <header>
-                            <h2 id="job2-title">
-                                Community Engagement Coordinator
-                            </h2>
-                        </header>
-
-                        <p class="job-reference">
-                            Reference Number: GS204B
-                        </p>
-
-                        <p>
-                            The Community Engagement Coordinator develops relationships
-                            with volunteers, schools, local councils and community
-                            groups to promote Greener Society's environmental programs.
-                        </p>
-
-                        <table class="job-details">
-
-                            <tr>
-                                <th>Salary</th>
-                                <td>$65,000 - $75,000 per year</td>
-                            </tr>
-
-                            <tr>
-                                <th>Employment Type</th>
-                                <td>Full-time</td>
-                            </tr>
-
-                            <tr>
-                                <th>Reporting Line</th>
-                                <td>Community Programs Manager</td>
-                            </tr>
-
-                        </table>
-
-
-                        <section>
-                            <h3>Key Responsibilities</h3>
-
-                            <ol>
-                                <li>Recruit and coordinate environmental volunteers.</li>
-                                <li>Organise community conservation events.</li>
-                                <li>Develop relationships with schools and community groups.</li>
-                                <li>Promote Greener Society programs and campaigns.</li>
-                                <li>Support community communication activities.</li>
-                            </ol>
-                        </section>
-
-
-                        <section>
-                            <h3>Essential Requirements</h3>
-
-                            <ul>
-                                <li>Excellent written and verbal communication skills.</li>
-                                <li>Strong interpersonal skills.</li>
-                                <li>Good event organisation skills.</li>
-                                <li>Ability to work effectively with diverse communities.</li>
-                                <li>Interest in environmental sustainability.</li>
-                            </ul>
-                        </section>
-
-
-                        <section>
-                            <h3>Preferable Requirements</h3>
-
-                            <ul>
-                                <li>Previous community engagement experience.</li>
-                                <li>Social media or digital communication experience.</li>
-                                <li>Event coordination experience.</li>
-                                <li>Experience managing volunteers.</li>
-                            </ul>
-                        </section>
-
-
-                        <a class="apply-link" href="apply.html">
-                            Apply for this position
-                        </a>
-
-                    </section>
-
-
-                    <!-- JOB 3 -->
-
-                    <section class="job-section" aria-labelledby="job3-title">
-
-                        <img class="job-image"
-                            src="images/educator.jpg"
-                            alt="Environmental education workshop">
-
-                        <header>
-                            <h2 id="job3-title">
-                                Environmental Education Officer
-                            </h2>
-                        </header>
-
-                        <p class="job-reference">
-                            Reference Number: GS305C
-                        </p>
-
-                        <p>
-                            The Environmental Education Officer delivers educational
-                            activities and workshops that help schools and communities
-                            understand sustainability, conservation and protection
-                            of local ecosystems.
-                        </p>
-
-                        <table class="job-details">
-
-                            <tr>
-                                <th>Salary</th>
-                                <td>$70,000 - $80,000 per year</td>
-                            </tr>
-
-                            <tr>
-                                <th>Employment Type</th>
-                                <td>Full-time</td>
-                            </tr>
-
-                            <tr>
-                                <th>Reporting Line</th>
-                                <td>Environmental Education Manager</td>
-                            </tr>
-
-                        </table>
-
-
-                        <section>
-                            <h3>Key Responsibilities</h3>
-
-                            <ol>
-                                <li>Develop and deliver environmental education workshops.</li>
-                                <li>Conduct presentations for schools and community groups.</li>
-                                <li>Prepare educational resources and activities.</li>
-                                <li>Support tree planting and conservation events.</li>
-                                <li>Evaluate the effectiveness of educational programs.</li>
-                            </ol>
-                        </section>
-
-
-                        <section>
-                            <h3>Essential Requirements</h3>
-
-                            <ul>
-                                <li>Relevant education, environmental or community qualification.</li>
-                                <li>Excellent presentation and communication skills.</li>
-                                <li>Ability to work with students and community members.</li>
-                                <li>Strong teamwork skills.</li>
-                                <li>Commitment to environmental education.</li>
-                            </ul>
-                        </section>
-
-
-                        <section>
-                            <h3>Preferable Requirements</h3>
-
-                            <ul>
-                                <li>Teaching or training experience.</li>
-                                <li>Environmental science knowledge.</li>
-                                <li>Experience developing educational resources.</li>
-                                <li>Public speaking experience.</li>
-                            </ul>
-                        </section>
-
-
-                        <a class="apply-link" href="apply.html">
-                            Apply for this position
-                        </a>
-
-                    </section>
-
-                </div>
-
-
+                
+                <!-- 3 MAIN JOB POSITIONS -->
+                <?php
+                  if($result) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                      echo "<section class='job-section' aria-labelledby='" . $row['job_title'] . "'>";
+                      echo "<img class='job-image' src='" . $row['image_src'] . "'" . " alt='" . $row['image_alt'] . "'>";
+                      echo "<h2 id='" . $row['job_title'] . "'>" . $row['job_title'] . "</h2>";
+                      echo "<p class='job-reference'> Reference Number: " . $row['job_reference'] . "</p>";
+                      echo "<p>" . $row['short_description'] . "</p>";
+                      echo "<table class='job-details'>";
+                      echo "<tr>";
+                      echo "<th> Salary </th>";
+                      echo "<td>" . $row['salary'] . "</td>";
+                      echo "</tr>";
+                      echo "<tr>";
+                      echo "<th> Employment Type </th>";
+                      echo "<td>" . $row['employment_type'] . "</td>";
+                      echo "</tr>";
+                      echo "<tr>";
+                      echo "<th> Reporting Line </th>";
+                      echo "<td>" . $row['reporting_line'] . "</td>";
+                      echo "</tr>";
+                      echo "</table>";
+                      echo "<h3> Key Responsibilities </h3>";
+                      echo "<ol>";
+                      $responsibilities = explode("\n", $row['responsibilities']);
+                      foreach ($responsibilities as $single_res) {
+                        echo "<li>" . $single_res . "</li>";
+                      }
+                      echo "</ol>";
+                      echo "<h3> Essential Requirements </h3>";
+                      echo "<ul>";
+                      $ess_requirements = explode("\n", $row['essential_requirements']);
+                      foreach ($ess_requirements as $single_ess_req) {
+                        echo "<li>" . $single_ess_req . "</li>";
+                      }
+                      echo "</ul>";
+                      echo "<h3> Preferable Requirements </h3>";
+                      echo "<ul>";
+                      $pref_requirements = explode("\n", $row['preferable_requirements']);
+                      foreach ($pref_requirements as $single_pref_req) {
+                        echo "<li>" . $single_pref_req . "</li>";
+                      }
+                      echo "</ul>";
+                      echo "<a class='apply-link' href='apply.php'> Apply for this position </a>";
+                      echo "</section>";
+                    }
+                  } else {
+                    echo "<p> There is currently no job position to show. Stay tune for Updates! </p>";
+                  }
+
+                ?>
                 <!-- ASIDE -->
 
                 <aside class="job-aside">
