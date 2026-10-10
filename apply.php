@@ -426,5 +426,5 @@
 
     <?php include 'footer.inc'; ?>
 
-    </body>
+</body>
 </html>
