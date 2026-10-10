@@ -61,44 +61,44 @@
                 <?php
                   if($result) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                      echo "<section class='job-section' aria-labelledby='" . $row['job_title'] . "'>";
-                      echo "<img class='job-image' src='" . $row['image_src'] . "'" . " alt='" . $row['image_alt'] . "'>";
-                      echo "<h2 id='" . $row['job_title'] . "'>" . $row['job_title'] . "</h2>";
-                      echo "<p class='job-reference'> Reference Number: " . $row['job_reference'] . "</p>";
-                      echo "<p>" . $row['short_description'] . "</p>";
+                      echo "<section class='job-section' aria-labelledby='" . htmlspecialchars($row['job_reference']) . "'>";
+                      echo "<img class='job-image' src='" . htmlspecialchars($row['image_src']) . "'" . " alt='" . htmlspecialchars($row['image_alt']) . "'>";
+                      echo "<h2 id='" . htmlspecialchars($row['job_reference']) . "'>" . htmlspecialchars($row['job_title']) . "</h2>";
+                      echo "<p class='job-reference'> Reference Number: " . htmlspecialchars($row['job_reference']) . "</p>";
+                      echo "<p>" . htmlspecialchars($row['short_description']) . "</p>";
                       echo "<table class='job-details'>";
                       echo "<tr>";
                       echo "<th> Salary </th>";
-                      echo "<td>" . $row['salary'] . "</td>";
+                      echo "<td>" . htmlspecialchars($row['salary']) . "</td>";
                       echo "</tr>";
                       echo "<tr>";
                       echo "<th> Employment Type </th>";
-                      echo "<td>" . $row['employment_type'] . "</td>";
+                      echo "<td>" . htmlspecialchars($row['employment_type']) . "</td>";
                       echo "</tr>";
                       echo "<tr>";
                       echo "<th> Reporting Line </th>";
-                      echo "<td>" . $row['reporting_line'] . "</td>";
+                      echo "<td>" . htmlspecialchars($row['reporting_line']) . "</td>";
                       echo "</tr>";
                       echo "</table>";
                       echo "<h3> Key Responsibilities </h3>";
                       echo "<ol>";
                       $responsibilities = explode("\n", $row['responsibilities']);
                       foreach ($responsibilities as $single_res) {
-                        echo "<li>" . $single_res . "</li>";
+                        echo "<li>" . htmlspecialchars($single_res) . "</li>";
                       }
                       echo "</ol>";
                       echo "<h3> Essential Requirements </h3>";
                       echo "<ul>";
                       $ess_requirements = explode("\n", $row['essential_requirements']);
                       foreach ($ess_requirements as $single_ess_req) {
-                        echo "<li>" . $single_ess_req . "</li>";
+                        echo "<li>" . htmlspecialchars($single_ess_req) . "</li>";
                       }
                       echo "</ul>";
                       echo "<h3> Preferable Requirements </h3>";
                       echo "<ul>";
                       $pref_requirements = explode("\n", $row['preferable_requirements']);
                       foreach ($pref_requirements as $single_pref_req) {
-                        echo "<li>" . $single_pref_req . "</li>";
+                        echo "<li>" . htmlspecialchars($single_pref_req) . "</li>";
                       }
                       echo "</ul>";
                       echo "<a class='apply-link' href='apply.php'> Apply for this position </a>";
