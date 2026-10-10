@@ -85,10 +85,10 @@ nav a:hover {
     }
 }
 
-.index-page nav a[href="index.html"],
-.jobs-page nav a[href="jobs.html"],
-.apply-page nav a[href="apply.html"],
-.about-page nav a[href="about.html"] {
+.index-page nav a[href="index.php"],
+.jobs-page nav a[href="jobs.php"],
+.apply-page nav a[href="apply.php"],
+.about-page nav a[href="about.php"] {
     border-bottom: 3px solid #276249;
 }
 
