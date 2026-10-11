@@ -24,8 +24,7 @@
 
 <body class="index-page">
 
-<?php include 'header.inc'; ?>
-
+    <?php include 'header.inc'; ?>
 
         <main>
             <figure class="slogan">
@@ -153,8 +152,8 @@
             <hr>
         </main>
 
-       <?php include 'footer.inc'; ?>
+    <?php include 'footer.inc'; ?>
 
-                </body>
-             </html>
+</body>
+</html>
             
