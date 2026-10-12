@@ -352,7 +352,7 @@ hr {
     padding: 0.4rem;
     margin: 0 auto;
     margin-bottom: 2rem;
-    background: white;
+    background-color: #d0ddfa;
     border: 1px solid #cccccc;
     border-radius: 15px;
     box-sizing: border-box;
@@ -372,7 +372,7 @@ hr {
 
 .search_bar input[type="submit"] {
     padding: 0.5rem 1.2rem;
-    background: #2e7d32;
+    background-color: #2e7d32;
     border-radius: 8px;
     text-align: center;
     color: white;
