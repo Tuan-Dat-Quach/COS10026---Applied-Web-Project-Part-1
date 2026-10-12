@@ -29,7 +29,7 @@
 <?php include 'header.inc'; ?>
 
 <?php
-  $connect = mysqli_connect("localhost", "root", "", "greener_society");
+  $connect = mysqli_connect($host, $user, $pwd, $sql_db);
   if (!$connect) {
     die("Connection failed: " . mysqli_connect_error());
   }
