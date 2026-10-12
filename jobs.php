@@ -53,14 +53,13 @@
             </header>
 
             <div class="search_bar">
+                <h2> Find your next opportunity </h2>
                 <form action="search_result.php" method="GET">
-                    <fieldset>
-                        <h2> Find your next opportunity </h2>
-                        <label for="search"> <span aria-hidden="true"> 🔍 </span> </label>
-	                    <input type="text" name="search" id="search" placeholder="Search a job by title, reference number or keywords:">
-
-                        <input type="submit" value="Search">
-                    </fieldset>
+                    <label for="search">
+                        <span aria-hidden="true"> 🔍 </span>
+                    </label>
+                    <input type="text" name="search" id="search" placeholder="Search jobs by title, reference number or keywords...">
+                    <input type="submit" value="Search">
                 </form>
             </div>
 

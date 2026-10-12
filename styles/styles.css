@@ -343,9 +343,41 @@ hr {
    JOBS PAGE 
    ===========*/
 
-.search_bar #search {
+/* Search bar */
+.search_bar {
     width: 100%;
+    padding: 0.4rem;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    background: white;
+    border: 1px solid #cccccc;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.search_bar label {
     font-size: 2rem;
+}
+
+.search_bar input[type="text"] {
+    width: 80%;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+}
+
+.search_bar input[type="submit"] {
+    padding: 0.5rem 1.2rem;
+    background: #2e7d32;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+.search_bar h2 {
+    text-align: center;
 }
 
 /* Main jobs container */
