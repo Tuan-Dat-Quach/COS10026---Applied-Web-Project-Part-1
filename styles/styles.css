@@ -92,7 +92,7 @@ nav a:hover {
     border-bottom: 3px solid #276249;
 }
 
-/* This is the section for CSS applied to index.html */
+/* This is the section for CSS applied to index.php */
 
 
 
@@ -335,7 +335,10 @@ hr {
     border: 1px solid;
 }
 
-/* This is the section for CSS applied to jobs.html */
+
+
+
+/* This is the section for CSS applied to jobs.php */
 
 
 
@@ -383,7 +386,7 @@ hr {
 /* Main jobs container */
 .jobs-container {
     max-width: 1100px;
-    margin: 40px auto;
+    margin: 0 auto;
     padding: 0 25px;
 }
 
@@ -392,6 +395,7 @@ hr {
     text-align: center;
     font-size: 45px;
     margin-bottom: 15px;
+    margin-top: 0;
 }
 
 /* Introduction text */
@@ -564,7 +568,7 @@ hr {
 
 
 
-/* This is the section for CSS applied to apply.html */
+/* This is the section for CSS applied to apply.php */
 
 
 
@@ -587,7 +591,9 @@ textarea {font-size: 20px;}
 
 .form-item-skills-fieldset {grid-column: 1 / span 2;}
 
-/* This is the section for CSS applied to about.html */
+
+
+/* This is the section for CSS applied to about.php */
 
 
 
@@ -793,4 +799,25 @@ textarea {font-size: 20px;}
     .member-secret {
     font-size: 1.2rem;
     }
+}
+
+
+
+/* This is the section for CSS applied to search_result.php */
+
+
+
+.jobs-unfound {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.display-result {
+    margin: 0 auto;
+    max-width: 85%;
+}
+
+.search-page main {
+    padding-top: 2rem;
 }
