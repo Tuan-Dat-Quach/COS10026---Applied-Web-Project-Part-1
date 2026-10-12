@@ -807,7 +807,7 @@ textarea {font-size: 20px;}
 
 
 
-.jobs-unfound {
+.jobs-unfound, .jobs-found {
     font-size: 2rem;
     text-align: center;
     font-weight: bold;
@@ -820,4 +820,11 @@ textarea {font-size: 20px;}
 
 .search-page main {
     padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+mark {
+    background: #fff3a3;
+    padding: 0 2px;
+    border-radius: 3px;
 }

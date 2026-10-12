@@ -43,6 +43,15 @@
         </div>
 
         <?php
+          function highlight($text, $search) {
+          $safe_text = htmlspecialchars($text);
+          if ($search === "") {
+           return $safe_text;
+          }
+          $safe_search = preg_quote(htmlspecialchars($search), '/');
+          return preg_replace("/($safe_search)/i", "<mark>$1</mark>", $safe_text);
+          }
+
           require_once "settings.php";
           $connect = mysqli_connect($host, $user, $pwd, $sql_db);
           if (!$connect) {
@@ -56,14 +65,16 @@
                     OR job_reference LIKE '%$search%'
                     OR short_description LIKE '%$search%'";
             $result = mysqli_query($connect, $sql);
+            $job_count = mysqli_num_rows($result);
             
-            if($result && mysqli_num_rows($result) > 0) {
+            if($result && $job_count > 0) {
+              echo "<p class='jobs-found'> There are " . $job_count . " jobs matched with your search !";
               while ($row = mysqli_fetch_assoc($result)) {
                 echo "<section class='job-section' aria-labelledby='" . htmlspecialchars($row['job_reference']) . "'>";
                 echo "<img class='job-image' src='" . htmlspecialchars($row['image_src']) . "'" . " alt='" . htmlspecialchars($row['image_alt']) . "'>";
-                echo "<h2 id='" . htmlspecialchars($row['job_reference']) . "'>" . htmlspecialchars($row['job_title']) . "</h2>";
-                echo "<p class='job-reference'> Reference Number: " . htmlspecialchars($row['job_reference']) . "</p>";
-                echo "<p>" . htmlspecialchars($row['short_description']) . "</p>";
+                echo "<h2 id='" . htmlspecialchars($row['job_reference']) . "'>" . highlight($row['job_title'], $search) . "</h2>";
+                echo "<p class='job-reference'> Reference Number: " . highlight($row['job_reference'], $search) . "</p>";
+                echo "<p>" . highlight($row['short_description'], $search) . "</p>";
                 echo "<table class='job-details'>";
                 echo "<tr>";
                 echo "<th> Salary </th>";
