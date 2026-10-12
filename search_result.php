@@ -29,6 +29,28 @@
                 <input type="submit" value="Search">
             </form>
         </div>
+
+        <?php
+          require_once "settings.php";
+          $connect = mysqli_connect($host, $user, $pwd, $sql_db);
+          if (!$connect) {
+           die("Connection failed: " . mysqli_connect_error());
+          }
+          $result = mysqli_query($connect, $sql);
+
+          if (isset($_GET['search'])) {
+            $search = mysqli_real_escape_string($connect, trim($_GET['search']))
+            $sql = "SELECT * FROM jobs
+                    WHERE job_title LIKE '%$search%'
+                    OR job_reference LIKE '%$search%'
+                    OR short_description LIKE '%$search%'";
+            $result = mysqli_query($connect, $sql);
+            
+             if (mysqli_num_rows($result) > 0) {
+
+             }
+          }
+        ?>
     </main>
 </body>
 </html>

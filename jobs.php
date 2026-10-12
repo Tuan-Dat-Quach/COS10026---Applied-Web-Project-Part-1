@@ -29,6 +29,7 @@
 <?php include 'header.inc'; ?>
 
 <?php
+  require_once "settings.php";
   $connect = mysqli_connect($host, $user, $pwd, $sql_db);
   if (!$connect) {
     die("Connection failed: " . mysqli_connect_error());
@@ -69,7 +70,7 @@
                 
                 <!-- 3 MAIN JOB POSITIONS -->
                 <?php
-                  if($result) {
+                  if($result && mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                       echo "<section class='job-section' aria-labelledby='" . htmlspecialchars($row['job_reference']) . "'>";
                       echo "<img class='job-image' src='" . htmlspecialchars($row['image_src']) . "'" . " alt='" . htmlspecialchars($row['image_alt']) . "'>";
@@ -94,30 +95,39 @@
                       echo "<ol>";
                       $responsibilities = explode("\n", $row['responsibilities']);
                       foreach ($responsibilities as $single_res) {
-                        echo "<li>" . htmlspecialchars($single_res) . "</li>";
+                        $single_res = trim($single_res);
+                        if ($single_res !== "") {
+                          echo "<li>" . htmlspecialchars($single_res) . "</li>";
+                        }
                       }
                       echo "</ol>";
                       echo "<h3> Essential Requirements </h3>";
                       echo "<ul>";
                       $ess_requirements = explode("\n", $row['essential_requirements']);
                       foreach ($ess_requirements as $single_ess_req) {
-                        echo "<li>" . htmlspecialchars($single_ess_req) . "</li>";
+                        $single_ess_req = trim($single_ess_req);
+                        if ($single_ess_req !== "") {
+                          echo "<li>" . htmlspecialchars($single_ess_req) . "</li>";
+                        }
                       }
                       echo "</ul>";
                       echo "<h3> Preferable Requirements </h3>";
                       echo "<ul>";
                       $pref_requirements = explode("\n", $row['preferable_requirements']);
                       foreach ($pref_requirements as $single_pref_req) {
-                        echo "<li>" . htmlspecialchars($single_pref_req) . "</li>";
+                        $single_pref_req = trim($single_pref_req);
+                        if ($single_pref_req !== "") {
+                          echo "<li>" . htmlspecialchars($single_pref_req) . "</li>";
+                        }
                       }
                       echo "</ul>";
                       echo "<a class='apply-link' href='apply.php'> Apply for this position </a>";
                       echo "</section>";
                     }
                   } else {
-                    echo "<p> There is currently no job position to show. Stay tune for Updates! </p>";
+                    echo "<p> There is currently no job position to show. Stay tuned for Updates! </p>";
                   }
-
+                mysqli_close($connect);
                 ?>
                 <!-- ASIDE -->
 
