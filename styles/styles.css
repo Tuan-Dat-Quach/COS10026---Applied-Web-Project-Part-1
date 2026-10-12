@@ -339,9 +339,14 @@ hr {
 
 
 
-/* =========================================
-   JOBS PAGE - jobs.css
-   ========================================= */
+/* ============
+   JOBS PAGE 
+   ===========*/
+
+.search_bar #search {
+    width: 100%;
+    font-size: 2rem;
+}
 
 /* Main jobs container */
 .jobs-container {

@@ -54,7 +54,7 @@
 
             <div class="search_bar">
                 <form action="search_result.php" method="GET">
-                    <fieldset id="search">
+                    <fieldset>
                         <h2> Find your next opportunity </h2>
                         <label for="search"> <span aria-hidden="true"> 🔍 </span> </label>
 	                    <input type="text" name="search" id="search" placeholder="Search a job by title, reference number or keywords:">
