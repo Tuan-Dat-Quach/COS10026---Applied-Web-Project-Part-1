@@ -32,7 +32,7 @@
     <main>
     <div class="display-result">
         <div class="search_bar">
-            <h2> Find your next opportunity </h2>
+            <h1> Find your next opportunity </h1>
             <form action="search_result.php" method="GET">
                 <label for="search">
                     <span aria-hidden="true"> 🔍 </span>
@@ -57,13 +57,17 @@
 
             if (isset($_GET['search'])) {
               $search = mysqli_real_escape_string($connect, trim($_GET['search']));
-              $sql = "SELECT * FROM jobs
-                      WHERE job_title LIKE '%$search%'
-                      OR job_reference LIKE '%$search%'
-                      OR short_description LIKE '%$search%'";
-              $result = mysqli_query($connect, $sql);
-              $job_count = mysqli_num_rows($result);
-            
+              if ($search === '') {
+                echo "<p class='no-keyword'> Please enter some keywords to find your jobs ! </p>";
+              } else {
+                $sql = "SELECT * FROM jobs
+                        WHERE job_title LIKE '%$search%'
+                        OR job_reference LIKE '%$search%'
+                        OR short_description LIKE '%$search%'";
+                $result = mysqli_query($connect, $sql);
+                $job_count = mysqli_num_rows($result);
+              }
+
               if($result && $job_count > 0) {
                 echo "<p class='jobs-found'> There are " . $job_count . " jobs matched with your search !";
                 while ($row = mysqli_fetch_assoc($result)) {

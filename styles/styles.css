@@ -352,7 +352,7 @@ hr {
     padding: 0.4rem;
     margin: 0 auto;
     margin-bottom: 2rem;
-    background-color: #d0ddfa;
+    background-color: #c0fdc0;
     border: 1px solid #cccccc;
     border-radius: 15px;
     box-sizing: border-box;
@@ -807,7 +807,7 @@ textarea {font-size: 20px;}
 
 
 
-.jobs-unfound, .jobs-found {
+.jobs-unfound, .jobs-found, .no-keyword {
     font-size: 2rem;
     text-align: center;
     font-weight: bold;
@@ -827,4 +827,8 @@ mark {
     background: #fff3a3;
     padding: 0 2px;
     border-radius: 3px;
+}
+
+.search_bar h1 {
+    text-align: center;
 }
