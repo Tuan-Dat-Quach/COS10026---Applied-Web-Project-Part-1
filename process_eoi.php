@@ -39,7 +39,7 @@
 
         if (empty($job_reference_number)) {
             echo "Please enter the Job Reference Number of the position you plan to apply for. <br>";
-        }  elseif (!preg_match(/^GS102A$/ | /^GS204B$/ | /^GS305C$/, $job_reference_number)) {
+        }  elseif (!preg_match("/^GS102A$/ | /^GS204B$/ | /^GS305C$/", $job_reference_number)) {
             echo "Please enter the correct Job Reference Number of the position you plan to apply for. <br>";
         } else {
             $jrn_input = true
