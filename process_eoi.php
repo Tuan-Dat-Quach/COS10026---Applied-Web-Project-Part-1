@@ -1,17 +1,4 @@
 <?php
-    
-    $jrn_input
-    $fn_input
-    $ln_input
-    $dob_input
-    $gender_input
-    $sa_input
-    $suburb_input
-    $state_input
-    $postcode_input
-    $email_input
-    $pn_input
-    $skills_input
 
     function sanitize_input($data){
          $data = trim($data);
@@ -36,7 +23,18 @@
         $other_skills = sanitize_input($_POST["Other_Skills"]);
 
 
-        
+        $jrn_input = false;
+        $fn_input = false;
+        $ln_input = false;
+        $dob_input = false;
+        $gender_input = false;
+        $sa_input = false;
+        $suburb_input = false;
+        $state_input = false;
+        $postcode_input = false;
+        $email_input = false;
+        $pn_input = false;
+        $skills_input = false;
 
 
         if (empty($job_reference_number)) {
