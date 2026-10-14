@@ -42,14 +42,15 @@
         }  elseif (!preg_match("/^GS102A$/ | /^GS204B$/ | /^GS305C$/", $job_reference_number)) {
             echo "Please enter the correct Job Reference Number of the position you plan to apply for. <br>";
         } else {
-            $jrn_input = true }
+            $jrn_input = true;
+        }
         
         if (empty($first_name)) {
             echo "Please enter your First Name. <br>";
         }  elseif (!preg_match("/^[a-zA-z-' ]{1, 20}$/",$first_name)) {
             echo "Please enter a valid First Name. <br>";
         } else {
-            $fn_input = true
+            $fn_input = true;
         }
 
         if (empty($last_name)) {
@@ -57,19 +58,19 @@
         }  elseif (!preg_match("/^[a-zA-z-' ]{1, 20}$/",$last_name)) {
             echo "Please enter a valid Last Name. <br>";
         } else {
-            $ln_input = true
+            $ln_input = true;
         }
 
         if (empty($date_of_birth)) {
             echo "Please enter your Date of Birth. <br>";
         } else {
-            $dob_input = true
+            $dob_input = true;
         }
 
         if (empty($gender)) {
             echo "Please select your preferred Gender. <br>";
         } else {
-            $gender_input = true
+            $gender_input = true;
         }
 
         if (empty($street_address)) {
@@ -77,7 +78,7 @@
         }  elseif (!preg_match("/^.{1, 40}$/",$street_address)) {
             echo "Please enter a valid Street Address. <br>";
         } else {
-            $sa_input = true
+            $sa_input = true;
         }
 
         if (empty($suburb)) {
@@ -85,13 +86,13 @@
         }  elseif (!preg_match("/^.{1, 40}$/",$suburb)) {
             echo "Please enter a valid Suburb. <br>";
         } else {
-            $suburb_input = true
+            $suburb_input = true;
         }
 
         if (empty($state)) {
             echo "Please select your State. <br>";
         } else {
-            $state_input = true
+            $state_input = true;
         }
 
         if (empty($postcode)) {
@@ -99,7 +100,7 @@
         }  elseif (!preg_match("/^[0-9]{4}*$/",$postcode)) {
             echo "Please enter a valid Postcode. <br>";
         } else {
-            $postcode_input = true
+            $postcode_input = true;
         }
 
         if (empty($email)) {
@@ -107,7 +108,7 @@
         }  elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             echo "Please enter a valid Email. <br>";
         } else {
-            $email_input = true
+            $email_input = true;
         }
 
         if (empty($phone_number)) {
@@ -115,13 +116,13 @@
         }  elseif (!preg_match("/^[0-9]{8, 12}$/",$phone_number)) {
             echo "Please enter a valid Phone Number. <br>";
         } else {
-            $pn_input = true
+            $pn_input = true;
         }
 
         if (empty($skills)) {
             echo "Please select the skills you think defines you. <br>";
         } else {
-            $skills_input = true
+            $skills_input = true;
         }
 
         if ($jrn_input = true && $fn_input = true && $ln_input = true && $dob_input = true && $gender_input = true && $sa_input = true
@@ -141,7 +142,7 @@
             echo "<p><strong>Skills:</strong> " . implode(", ", $skills) . "</p>";
             echo "<p><strong>Other Skills:</strong> $other_skills</p>";
         } else {
-            echo "<p><strong>Please go back in fix all errors.</strong></p>"
+            echo "<p><strong>Please go back in fix all errors.</strong></p>";
         }
 
     }
