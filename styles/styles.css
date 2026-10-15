@@ -807,7 +807,7 @@ textarea {font-size: 20px;}
 
 
 
-.jobs-unfound, .jobs-found, .no-keyword {
+.jobs-unfound, .jobs-found, .no-keyword, .failed-stmt {
     font-size: 2rem;
     text-align: center;
     font-weight: bold;

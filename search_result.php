@@ -31,6 +31,7 @@
 
     <main>
     <div class="display-result">
+        <!-- This is the search bar -->
         <div class="search_bar">
             <h1> Find your next opportunity </h1>
             <form action="search_result.php" method="GET">
@@ -43,42 +44,54 @@
         </div>
 
         <?php
+          // This is the function to highlight searched keywords
           function highlight($text, $search) {
+            // Sanitise the searched keywords
             $safe_text = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+            // If the user enters nothing, simply return the words with no highlight
             if ($search === '') {
               return $safe_text ;
             }
-            $safe_search = preg_quote($search, '/');
-            return preg_replace("/($safe_search)/iu", "<mark>$1</mark>", $safe_text);
+            // Replace the matched words with their marked version
+            return preg_replace("/($search)/iu", "<mark>$1</mark>", $safe_text);
           }
 
+          // Connect to the database
           require_once "settings.php";
           $connect = mysqli_connect($host, $user, $pwd, $sql_db);
           if (!$connect) {
            die("Connection failed: " . mysqli_connect_error());
           }
-
+            // Start displaying in search_result.php when the user enters search button
             if (isset($_GET['search'])) {
               $search = trim($_GET['search']);
-            
+              // Check if user enters nothing
               if ($search === '') {
                 echo "<p class='no-keyword'> Please enter some keywords to find your jobs ! </p>";
+              // Using prepared statement when searching for keywords in job title, reference number and description
               } else {
+                
                 $sql = "SELECT * FROM jobs
                         WHERE job_title LIKE ?
                         OR job_reference LIKE ?
                         OR short_description LIKE ?";
-
+                // Prepare SQL query with placeholder (?)
                 if ($stmt = $connect->prepare($sql)) {
+                  // Format the ? in sql, using % wildcard to represent any number of characters
                   $keyword = "%" . $search . "%";
+                  // Bind values into the placeholders, here with 3 strings
                   $stmt->bind_param("sss", $keyword, $keyword, $keyword);
+                  // Send safe SQL query to the database to run
                   $stmt->execute();
+                  // Retrieve the result set from the executed query
                   $result = $stmt->get_result();
               
                   if($result) {
+                    // Count the number of jobs found
                     $job_count = mysqli_num_rows($result);
+                    // Start displaying if there is at least 1 job found
                     if ($job_count > 0) {
-                      echo "<p class='jobs-found'> There are " . $job_count . " jobs matched with your search ! </p>";
+                      echo "<p class='jobs-found'> There are " . $job_count . " results for '" . htmlspecialchars($search, ENT_QUOTES, 'UTF-8') . "' ! </p>";
                       while ($row = mysqli_fetch_assoc($result)) {
                         echo "<section class='job-section' aria-labelledby='" . htmlspecialchars($row['job_reference'], ENT_QUOTES, 'UTF-8') . "'>";
                         echo "<img class='job-image' src='" . htmlspecialchars($row['image_src'], ENT_QUOTES, 'UTF-8') . "'" . " alt='" . htmlspecialchars($row['image_alt'], ENT_QUOTES, 'UTF-8') . "'>";
@@ -136,9 +149,11 @@
                       echo "<p class='jobs-unfound'> We cannot find any job like that. Try searching other words ... </p>";
                     }
                   }
+                // Close the prepared statement
                 mysqli_stmt_close($stmt);
+                // Print out error if failed to prepare SQL statement
                 } else {
-                  echo "Error: " . $sql . "<br>" . $connect->error;
+                  echo "<p class='failed-stmt'> Sorry, something went wrong. Please try again later. <p>";
                 }
               }
             }
