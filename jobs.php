@@ -53,6 +53,7 @@
                 </p>
             </header>
 
+            <!-- THIS IS SEARCH BAR -->
             <div class="search_bar">
                 <h2> Find your next opportunity </h2>
                 <form action="search_result.php" method="GET">
@@ -70,34 +71,41 @@
                 
                 <!-- 3 MAIN JOB POSITIONS -->
                 <?php
+                  // Check if there is at least 1 job in the table to display
                   if($result && mysqli_num_rows($result) > 0) {
+                    // Take each row from the table
                     while ($row = mysqli_fetch_assoc($result)) {
-                      echo "<section class='job-section' aria-labelledby='" . htmlspecialchars($row['job_reference']) . "'>";
-                      echo "<img class='job-image' src='" . htmlspecialchars($row['image_src']) . "'" . " alt='" . htmlspecialchars($row['image_alt']) . "'>";
-                      echo "<h2 id='" . htmlspecialchars($row['job_reference']) . "'>" . htmlspecialchars($row['job_title']) . "</h2>";
+                      /* Sanitise data with htmlspecialchars, converting HTML characters into HTML entities
+                         ENT_QUOTES ensures that both double and single quotations are converted into HTML entities
+                         UTF-8 specifies the character encoding used by htmlspecialchars
+                      */
+                      echo "<section class='job-section' aria-labelledby='" . htmlspecialchars($row['job_reference'], ENT_QUOTES, 'UTF-8') . "'>";
+                      echo "<img class='job-image' src='" . htmlspecialchars($row['image_src'], ENT_QUOTES, 'UTF-8') . "'" . " alt='" . htmlspecialchars($row['image_alt'], ENT_QUOTES, 'UTF-8') . "'>";
+                      echo "<h2 id='" . htmlspecialchars($row['job_reference'], ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($row['job_title'], ENT_QUOTES, 'UTF-8') . "</h2>";
                       echo "<p class='job-reference'> Reference Number: " . htmlspecialchars($row['job_reference']) . "</p>";
-                      echo "<p>" . htmlspecialchars($row['short_description']) . "</p>";
+                      echo "<p>" . htmlspecialchars($row['short_description'], ENT_QUOTES, 'UTF-8') . "</p>";
                       echo "<table class='job-details'>";
                       echo "<tr>";
                       echo "<th> Salary </th>";
-                      echo "<td>" . htmlspecialchars($row['salary']) . "</td>";
+                      echo "<td>" . htmlspecialchars($row['salary'], ENT_QUOTES, 'UTF-8') . "</td>";
                       echo "</tr>";
                       echo "<tr>";
                       echo "<th> Employment Type </th>";
-                      echo "<td>" . htmlspecialchars($row['employment_type']) . "</td>";
+                      echo "<td>" . htmlspecialchars($row['employment_type'], ENT_QUOTES, 'UTF-8') . "</td>";
                       echo "</tr>";
                       echo "<tr>";
                       echo "<th> Reporting Line </th>";
-                      echo "<td>" . htmlspecialchars($row['reporting_line']) . "</td>";
+                      echo "<td>" . htmlspecialchars($row['reporting_line'], ENT_QUOTES, 'UTF-8') . "</td>";
                       echo "</tr>";
                       echo "</table>";
                       echo "<h3> Key Responsibilities </h3>";
                       echo "<ol>";
+                      // Using "explode" to break the string into an array based on newline character in the table
                       $responsibilities = explode("\n", $row['responsibilities']);
                       foreach ($responsibilities as $single_res) {
                         $single_res = trim($single_res);
                         if ($single_res !== "") {
-                          echo "<li>" . htmlspecialchars($single_res) . "</li>";
+                          echo "<li>" . htmlspecialchars($single_res, ENT_QUOTES, 'UTF-8') . "</li>";
                         }
                       }
                       echo "</ol>";
@@ -107,7 +115,7 @@
                       foreach ($ess_requirements as $single_ess_req) {
                         $single_ess_req = trim($single_ess_req);
                         if ($single_ess_req !== "") {
-                          echo "<li>" . htmlspecialchars($single_ess_req) . "</li>";
+                          echo "<li>" . htmlspecialchars($single_ess_req, ENT_QUOTES, 'UTF-8') . "</li>";
                         }
                       }
                       echo "</ul>";
@@ -117,7 +125,7 @@
                       foreach ($pref_requirements as $single_pref_req) {
                         $single_pref_req = trim($single_pref_req);
                         if ($single_pref_req !== "") {
-                          echo "<li>" . htmlspecialchars($single_pref_req) . "</li>";
+                          echo "<li>" . htmlspecialchars($single_pref_req, ENT_QUOTES, 'UTF-8') . "</li>";
                         }
                       }
                       echo "</ul>";

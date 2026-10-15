@@ -44,11 +44,11 @@
 
         <?php
           function highlight($text, $search) {
-            $safe_text = htmlspecialchars($text);
+            $safe_text = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
             if ($search === '') {
               return $safe_text ;
             }
-            $safe_search = preg_quote(htmlspecialchars($search), '/');
+            $safe_search = preg_quote($search, '/');
             return preg_replace("/($safe_search)/iu", "<mark>$1</mark>", $safe_text);
           }
 
@@ -59,80 +59,89 @@
           }
 
             if (isset($_GET['search'])) {
-              $search = mysqli_real_escape_string($connect, trim($_GET['search']));
+              $search = trim($_GET['search']);
+            
               if ($search === '') {
                 echo "<p class='no-keyword'> Please enter some keywords to find your jobs ! </p>";
               } else {
                 $sql = "SELECT * FROM jobs
-                        WHERE job_title LIKE '%$search%'
-                        OR job_reference LIKE '%$search%'
-                        OR short_description LIKE '%$search%'";
-                $result = mysqli_query($connect, $sql);
-                
+                        WHERE job_title LIKE ?
+                        OR job_reference LIKE ?
+                        OR short_description LIKE ?";
 
-              if($result) {
-                $job_count = mysqli_num_rows($result);
-                if ($job_count > 0) {
-                  echo "<p class='jobs-found'> There are " . $job_count . " jobs matched with your search ! </p>";
-                  while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<section class='job-section' aria-labelledby='" . htmlspecialchars($row['job_reference']) . "'>";
-                    echo "<img class='job-image' src='" . htmlspecialchars($row['image_src']) . "'" . " alt='" . htmlspecialchars($row['image_alt']) . "'>";
-                    echo "<h2 id='" . htmlspecialchars($row['job_reference']) . "'>" . highlight($row['job_title'], $search) . "</h2>";
-                    echo "<p class='job-reference'> Reference Number: " . highlight($row['job_reference'], $search) . "</p>";
-                    echo "<p>" . highlight($row['short_description'], $search) . "</p>";
-                    echo "<table class='job-details'>";
-                    echo "<tr>";
-                    echo "<th> Salary </th>";
-                    echo "<td>" . htmlspecialchars($row['salary']) . "</td>";
-                    echo "</tr>";
-                    echo "<tr>";
-                    echo "<th> Employment Type </th>";
-                    echo "<td>" . htmlspecialchars($row['employment_type']) . "</td>";
-                    echo "</tr>";
-                    echo "<tr>";
-                    echo "<th> Reporting Line </th>";
-                    echo "<td>" . htmlspecialchars($row['reporting_line']) . "</td>";
-                    echo "</tr>";
-                    echo "</table>";
-                    echo "<h3> Key Responsibilities </h3>";
-                    echo "<ol>";
-                    $responsibilities = explode("\n", $row['responsibilities']);
-                    foreach ($responsibilities as $single_res) {
-                    $single_res = trim($single_res);
-                    if ($single_res !== "") {
-                      echo "<li>" . htmlspecialchars($single_res) . "</li>";
+                if ($stmt = $connect->prepare($sql)) {
+                  $keyword = "%" . $search . "%";
+                  $stmt->bind_param("sss", $keyword, $keyword, $keyword);
+                  $stmt->execute();
+                  $result = $stmt->get_result();
+              
+                  if($result) {
+                    $job_count = mysqli_num_rows($result);
+                    if ($job_count > 0) {
+                      echo "<p class='jobs-found'> There are " . $job_count . " jobs matched with your search ! </p>";
+                      while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<section class='job-section' aria-labelledby='" . htmlspecialchars($row['job_reference'], ENT_QUOTES, 'UTF-8') . "'>";
+                        echo "<img class='job-image' src='" . htmlspecialchars($row['image_src'], ENT_QUOTES, 'UTF-8') . "'" . " alt='" . htmlspecialchars($row['image_alt'], ENT_QUOTES, 'UTF-8') . "'>";
+                        echo "<h2 id='" . htmlspecialchars($row['job_reference'], ENT_QUOTES, 'UTF-8') . "'>" . highlight($row['job_title'], $search) . "</h2>";
+                        echo "<p class='job-reference'> Reference Number: " . highlight($row['job_reference'], $search) . "</p>";
+                        echo "<p>" . highlight($row['short_description'], $search) . "</p>";
+                        echo "<table class='job-details'>";
+                        echo "<tr>";
+                        echo "<th> Salary </th>";
+                        echo "<td>" . htmlspecialchars($row['salary'], ENT_QUOTES, 'UTF-8') . "</td>";
+                        echo "</tr>";
+                        echo "<tr>";
+                        echo "<th> Employment Type </th>";
+                        echo "<td>" . htmlspecialchars($row['employment_type'], ENT_QUOTES, 'UTF-8') . "</td>";
+                        echo "</tr>";
+                        echo "<tr>";
+                        echo "<th> Reporting Line </th>";
+                        echo "<td>" . htmlspecialchars($row['reporting_line'], ENT_QUOTES, 'UTF-8') . "</td>";
+                        echo "</tr>";
+                        echo "</table>";
+                        echo "<h3> Key Responsibilities </h3>";
+                        echo "<ol>";
+                        $responsibilities = explode("\n", $row['responsibilities']);
+                        foreach ($responsibilities as $single_res) {
+                        $single_res = trim($single_res);
+                        if ($single_res !== "") {
+                          echo "<li>" . htmlspecialchars($single_res, ENT_QUOTES, 'UTF-8') . "</li>";
+                        }
+                        }
+                        echo "</ol>";
+                        echo "<h3> Essential Requirements </h3>";
+                        echo "<ul>";
+                        $ess_requirements = explode("\n", $row['essential_requirements']);
+                        foreach ($ess_requirements as $single_ess_req) {
+                        $single_ess_req = trim($single_ess_req);
+                        if ($single_ess_req !== "") {
+                          echo "<li>" . htmlspecialchars($single_ess_req, ENT_QUOTES, 'UTF-8') . "</li>";
+                        }
+                        }
+                        echo "</ul>";
+                        echo "<h3> Preferable Requirements </h3>";
+                        echo "<ul>";
+                        $pref_requirements = explode("\n", $row['preferable_requirements']);
+                        foreach ($pref_requirements as $single_pref_req) {
+                        $single_pref_req = trim($single_pref_req);
+                        if ($single_pref_req !== "") {
+                          echo "<li>" . htmlspecialchars($single_pref_req, ENT_QUOTES, 'UTF-8') . "</li>";
+                        }
+                        }
+                        echo "</ul>";
+                        echo "<a class='apply-link' href='apply.php'> Apply for this position </a>";
+                        echo "</section>";
+                      }
+                    } else {
+                      echo "<p class='jobs-unfound'> We cannot find any job like that. Try searching other words ... </p>";
                     }
-                    }
-                    echo "</ol>";
-                    echo "<h3> Essential Requirements </h3>";
-                    echo "<ul>";
-                    $ess_requirements = explode("\n", $row['essential_requirements']);
-                    foreach ($ess_requirements as $single_ess_req) {
-                    $single_ess_req = trim($single_ess_req);
-                    if ($single_ess_req !== "") {
-                      echo "<li>" . htmlspecialchars($single_ess_req) . "</li>";
-                    }
-                    }
-                    echo "</ul>";
-                    echo "<h3> Preferable Requirements </h3>";
-                    echo "<ul>";
-                    $pref_requirements = explode("\n", $row['preferable_requirements']);
-                    foreach ($pref_requirements as $single_pref_req) {
-                    $single_pref_req = trim($single_pref_req);
-                    if ($single_pref_req !== "") {
-                      echo "<li>" . htmlspecialchars($single_pref_req) . "</li>";
-                    }
-                    }
-                    echo "</ul>";
-                    echo "<a class='apply-link' href='apply.php'> Apply for this position </a>";
-                    echo "</section>";
                   }
+                mysqli_stmt_close($stmt);
                 } else {
-                  echo "<p class='jobs-unfound'> We cannot find any job like that. Try searching other words ... </p>";
+                  echo "Error: " . $sql . "<br>" . $connect->error;
                 }
               }
             }
-          }
           mysqli_close($connect);
         ?>
     </div>
