@@ -44,9 +44,12 @@
 
         <?php
           function highlight($text, $search) {
-          $safe_text = htmlspecialchars($text);
-          $safe_search = preg_quote(htmlspecialchars($search), '/');
-          return preg_replace("/($safe_search)/i", "<mark>$1</mark>", $safe_text);
+            $safe_text = htmlspecialchars($text);
+            if ($search === '') {
+              return $safe_text ;
+            }
+            $safe_search = preg_quote(htmlspecialchars($search), '/');
+            return preg_replace("/($safe_search)/iu", "<mark>$1</mark>", $safe_text);
           }
 
           require_once "settings.php";
@@ -65,10 +68,12 @@
                         OR job_reference LIKE '%$search%'
                         OR short_description LIKE '%$search%'";
                 $result = mysqli_query($connect, $sql);
-                $job_count = mysqli_num_rows($result);
+                
 
-                if($result && $job_count > 0) {
-                  echo "<p class='jobs-found'> There are " . $job_count . " jobs matched with your search !";
+              if($result) {
+                $job_count = mysqli_num_rows($result);
+                if ($job_count > 0) {
+                  echo "<p class='jobs-found'> There are " . $job_count . " jobs matched with your search ! </p>";
                   while ($row = mysqli_fetch_assoc($result)) {
                     echo "<section class='job-section' aria-labelledby='" . htmlspecialchars($row['job_reference']) . "'>";
                     echo "<img class='job-image' src='" . htmlspecialchars($row['image_src']) . "'" . " alt='" . htmlspecialchars($row['image_alt']) . "'>";
@@ -127,8 +132,8 @@
                 }
               }
             }
-            mysqli_close($connect);
-          
+          }
+          mysqli_close($connect);
         ?>
     </div>
     </main>
