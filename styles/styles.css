@@ -901,3 +901,25 @@ mark {
     }
 }
 
+.eoi-list {
+    font-size: 1.2rem;
+    margin-left: 1rem;
+}
+
+.manager-page input {
+    padding: 0.5rem 1rem;
+    background-color: #2e7d32;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+.manager-page select {
+    height: 2rem;
+}
+
+.sort-form {
+    margin-bottom: 2rem;
+}
