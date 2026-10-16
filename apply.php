@@ -46,7 +46,7 @@
 
 
         <form id="form"
-            action="http://mercury.swin.edu.au/it000000/formtest.php"
+            action="process_eoi.php"
             method="post">
 
 
@@ -61,7 +61,7 @@
                 <input
                     type="text"
                     id="job-reference"
-                    name="Job Reference Number"
+                    name="Job_Reference_Number"
                     pattern="GS102A|GS204B|GS305C"
                     placeholder="e.g. GS102A"
                     title="Enter GS102A, GS204B or GS305C."
@@ -91,7 +91,7 @@
                     <input
                         type="text"
                         id="first-name"
-                        name="First Name"
+                        name="First_Name"
                         maxlength="20"
                         pattern="[A-Za-z '\-]+"
                         placeholder="Enter your first name"
@@ -106,7 +106,7 @@
                     <input
                         type="text"
                         id="last-name"
-                        name="Last Name"
+                        name="Last_Name"
                         maxlength="20"
                         pattern="[A-Za-z '\-]+"
                         placeholder="Enter your last name"
@@ -121,7 +121,7 @@
                     <input
                         type="date"
                         id="date-of-birth"
-                        name="Date of Birth"
+                        name="Date_of_Birth"
                         required>
 
                 </fieldset>
@@ -182,7 +182,7 @@
                     <input
                         type="text"
                         id="street-address"
-                        name="Street Address"
+                        name="Street_Address"
                         maxlength="40"
                         placeholder="Enter your street address"
                         required>
@@ -268,7 +268,7 @@
                     <input
                         type="tel"
                         id="phone-number"
-                        name="Phone Number"
+                        name="Phone_Number"
                         pattern="[0-9]{8,12}"
                         placeholder="e.g. 0412345678"
                         title="Enter a phone number containing 8 to 12 digits."
@@ -392,7 +392,7 @@
 
                     <textarea
                         id="other-skills"
-                        name="Other Skills"
+                        name="Other_Skills"
                         rows="6"
                         placeholder="Tell us about any other skills you have."></textarea>
 

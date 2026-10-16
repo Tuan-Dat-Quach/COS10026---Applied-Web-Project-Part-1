@@ -92,7 +92,7 @@ nav a:hover {
     border-bottom: 3px solid #276249;
 }
 
-/* This is the section for CSS applied to index.html */
+/* This is the section for CSS applied to index.php */
 
 
 
@@ -335,18 +335,58 @@ hr {
     border: 1px solid;
 }
 
-/* This is the section for CSS applied to jobs.html */
 
 
 
-/* =========================================
-   JOBS PAGE - jobs.css
-   ========================================= */
+/* This is the section for CSS applied to jobs.php */
+
+
+
+/* ============
+   JOBS PAGE 
+   ===========*/
+
+/* Search bar */
+.search_bar {
+    width: 100%;
+    padding: 0.4rem;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    background-color: #c0fdc0;
+    border: 1px solid #cccccc;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.search_bar label {
+    font-size: 2rem;
+}
+
+.search_bar input[type="text"] {
+    width: 80%;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+}
+
+.search_bar input[type="submit"] {
+    padding: 0.5rem 1.2rem;
+    background-color: #2e7d32;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+.search_bar h2 {
+    text-align: center;
+}
 
 /* Main jobs container */
 .jobs-container {
     max-width: 1100px;
-    margin: 40px auto;
+    margin: 0 auto;
     padding: 0 25px;
 }
 
@@ -355,6 +395,7 @@ hr {
     text-align: center;
     font-size: 45px;
     margin-bottom: 15px;
+    margin-top: 0;
 }
 
 /* Introduction text */
@@ -527,7 +568,7 @@ hr {
 
 
 
-/* This is the section for CSS applied to apply.html */
+/* This is the section for CSS applied to apply.php */
 
 
 
@@ -550,7 +591,9 @@ textarea {font-size: 20px;}
 
 .form-item-skills-fieldset {grid-column: 1 / span 2;}
 
-/* This is the section for CSS applied to about.html */
+
+
+/* This is the section for CSS applied to about.php */
 
 
 
@@ -757,3 +800,104 @@ textarea {font-size: 20px;}
     font-size: 1.2rem;
     }
 }
+
+
+
+/* This is the section for CSS applied to search_result.php */
+
+
+
+.jobs-unfound, .jobs-found, .no-keyword, .failed-stmt {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.display-result {
+    margin: 0 auto;
+    max-width: 85%;
+}
+
+.search-page main {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+mark {
+    background: #fff3a3;
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+.search_bar h1 {
+    text-align: center;
+}
+
+
+
+/* This is the section for CSS applied to manager.php */
+
+
+
+.manager-page h1 {
+    text-align: center;
+    margin-top: 0;
+    font-size: 3rem;
+}
+
+.manager-page h2 {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+}
+
+.manager-page h3 {
+    font-size: 1.5rem;
+    margin-top: 0.8rem;
+    margin-bottom: 0;
+}
+
+.manager-page p {
+    font-size: 2rem;
+    margin-top: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.statistic {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+    font-weight: bold;
+    margin: 1rem;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+.total, .new, .available-positions {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 1rem;
+    border: 2px solid;
+    border-radius: 16px;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.total {
+    background-color: #d0f9ef;
+}
+
+.new {
+    background-color: #edeeaf;
+}
+
+.available-positions {
+    background-color: #bfdbf6;
+}
+
+@media (max-width: 768px) {
+    .statistic {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
