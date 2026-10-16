@@ -47,7 +47,7 @@
         
         if (empty($first_name)) {
             echo "Please enter your First Name. <br>";
-        }  elseif (!preg_match("/^[a-zA-z-' ]{1, 20}$/",$first_name)) {
+        }  elseif (!preg_match("/^[a-zA-z-' ]{1,20}$/",$first_name)) {
             echo "Please enter a valid First Name. <br>";
         } else {
             $fn_input = true;
@@ -55,7 +55,7 @@
 
         if (empty($last_name)) {
             echo "Please enter your Last Name. <br>";
-        }  elseif (!preg_match("/^[a-zA-z-' ]{1, 20}$/",$last_name)) {
+        }  elseif (!preg_match("/^[a-zA-z-' ]{1,20}$/",$last_name)) {
             echo "Please enter a valid Last Name. <br>";
         } else {
             $ln_input = true;
@@ -75,7 +75,7 @@
 
         if (empty($street_address)) {
             echo "Please enter your Street Address. <br>";
-        }  elseif (!preg_match("/^.{1, 40}$/",$street_address)) {
+        }  elseif (!preg_match("/^.{1,40}$/",$street_address)) {
             echo "Please enter a valid Street Address. <br>";
         } else {
             $sa_input = true;
@@ -83,7 +83,7 @@
 
         if (empty($suburb)) {
             echo "Please enter your Suburb. <br>";
-        }  elseif (!preg_match("/^.{1, 40}$/",$suburb)) {
+        }  elseif (!preg_match("/^.{1,40}$/",$suburb)) {
             echo "Please enter a valid Suburb. <br>";
         } else {
             $suburb_input = true;
