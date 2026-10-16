@@ -97,7 +97,7 @@
 
         if (empty($postcode)) {
             echo "Please enter your Postcode. <br>";
-        }  elseif (!preg_match("/^[0-9]{4}*$/",$postcode)) {
+        }  elseif (!preg_match("/^[0-9]{4}$/",$postcode)) {
             echo "Please enter a valid Postcode. <br>";
         } else {
             $postcode_input = true;
