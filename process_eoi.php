@@ -113,7 +113,7 @@
 
         if (empty($phone_number)) {
             echo "Please enter your Phone Number. <br>";
-        }  elseif (!preg_match("/^[0-9]{8, 12}$/",$phone_number)) {
+        }  elseif (!preg_match("/^[0-9]{8,12}$/",$phone_number)) {
             echo "Please enter a valid Phone Number. <br>";
         } else {
             $pn_input = true;
