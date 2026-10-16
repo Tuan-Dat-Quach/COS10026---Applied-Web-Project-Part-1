@@ -832,3 +832,72 @@ mark {
 .search_bar h1 {
     text-align: center;
 }
+
+
+
+/* This is the section for CSS applied to manager.php */
+
+
+
+.manager-page h1 {
+    text-align: center;
+    margin-top: 0;
+    font-size: 3rem;
+}
+
+.manager-page h2 {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+}
+
+.manager-page h3 {
+    font-size: 1.5rem;
+    margin-top: 0.8rem;
+    margin-bottom: 0;
+}
+
+.manager-page p {
+    font-size: 2rem;
+    margin-top: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.statistic {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+    font-weight: bold;
+    margin: 1rem;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+.total, .new, .available-positions {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 1rem;
+    border: 2px solid;
+    border-radius: 16px;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.total {
+    background-color: #d0f9ef;
+}
+
+.new {
+    background-color: #edeeaf;
+}
+
+.available-positions {
+    background-color: #bfdbf6;
+}
+
+@media (max-width: 768px) {
+    .statistic {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
