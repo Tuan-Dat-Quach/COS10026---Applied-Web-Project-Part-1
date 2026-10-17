@@ -966,7 +966,7 @@ mark {
     margin-left: 1rem;
 }
 
-.manager-page input {
+.manager-page input:not(.change-status, .delete-eoi) {
     padding: 0.5rem 1rem;
     background-color: #2e7d32;
     border-radius: 8px;
@@ -1043,6 +1043,26 @@ mark {
         font-size: 0.9rem;
         padding: 0.4rem 0.6rem;
     }
+}
+
+.change-status {
+    background-color: #0C0CD2;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+.delete-eoi {
+    background-color: #c00000;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    margin-left: 0.5rem;
 }
 
 
