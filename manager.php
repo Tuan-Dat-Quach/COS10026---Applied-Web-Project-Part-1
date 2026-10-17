@@ -71,6 +71,14 @@
           <label for="sort" class="eoi-list"> Sort by: </label>
 
           <select name="sort" id="sort">
+            <option value="user_id"
+            <?php
+            if (isset($_GET['sort']) && $_GET['sort'] === 'user_id') {
+              echo 'selected';
+            }
+            ?>> User ID
+            </option>
+
             <option value="eoi_number"
             <?php
             if (isset($_GET['sort']) && $_GET['sort'] === 'eoi_number') {
@@ -115,7 +123,9 @@
           <input type="submit" value="Sort">
         </form>
 
-        <form action="manager.php" method="GET">
+      <div class="eoi-manage"> 
+        <div class="choose-method">
+          <form action="manager.php" method="GET">
             <input type="hidden" name="sort"
                    value="<?php echo htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
             <label for="list_eoi" class="eoi-list"> List EOIs: </label>
@@ -140,11 +150,13 @@
             </select>
            
             <input type="submit" value="Go">
-        </form>
+          </form>
+        </div>
 
+        <div class="choose-job-ref">
         <?php
         if ((isset($_GET['list_eoi']) && $_GET['list_eoi'] === 'job_reference')) {
-          echo "<form action='manager.php' method='GET'>";
+          echo "<form action='manager.php' method='GET' class='choose-job-ref'>";
           echo "<input type='hidden' name='list_eoi' value='job_reference'>";
           $sort_value = htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8');
           echo "<input type='hidden' name='sort' value='$sort_value'>";
@@ -173,6 +185,11 @@
           echo "</form>";
         }
         ?>
+        </div>
+      </div>
+
+      <?php
+
     </main>
 
 <?php include 'footer.inc'; ?>

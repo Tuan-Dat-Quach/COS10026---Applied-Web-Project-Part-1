@@ -923,3 +923,20 @@ mark {
 .sort-form {
     margin-bottom: 2rem;
 }
+
+.eoi-manage {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.eoi-manage form {
+    flex: 1;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .eoi-manage {
+        flex-direction: column;
+    }
+}
