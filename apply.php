@@ -47,7 +47,8 @@
 
         <form id="form"
             action="process_eoi.php"
-            method="post">
+            method="post"
+            novalidate>
 
 
             <!-- Job Reference -->
