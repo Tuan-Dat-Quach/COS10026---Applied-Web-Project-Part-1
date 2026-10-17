@@ -5,7 +5,7 @@
   if (!$connect) {
     die("Connection failed: " . mysqli_connect_error());
   }
-  $sql_eoi = "SELECT * FROM eoi";
+  $sql_eoi = "SELECT user_id, eoi_number, first_name, last_name, job_reference, status FROM eoi";
   $all_eoi = mysqli_query($connect, $sql_eoi);
   $sql_jobs = "SELECT * FROM jobs";
   $all_jobs = mysqli_query($connect, $sql_jobs);
@@ -36,7 +36,7 @@
             <div class="total">
             <?php
               $eoi_count = mysqli_num_rows($all_eoi);
-              echo "<h3> <span aria-hidden='true'> 📋 </span> Total EOIs <h3>";
+              echo "<h3> <span aria-hidden='true'> 📋 </span> Total EOIs </h3>";
               echo "<p> $eoi_count </p>";
             ?>
             </div>
@@ -46,7 +46,7 @@
               $sql_new_eoi = "SELECT * FROM eoi WHERE status = 'NEW'";
               $new_eoi = mysqli_query($connect, $sql_new_eoi);
               $new_eoi_count = mysqli_num_rows($new_eoi);
-              echo "<h3> <span aria-hidden='true'> 🆕 </span> New EOIs <h3>";
+              echo "<h3> <span aria-hidden='true'> 🆕 </span> New EOIs </h3>";
               echo "<p> $new_eoi_count </p>";
             ?>
             </div>
@@ -54,7 +54,7 @@
             <div class="available-positions">
             <?php
               $job_count = mysqli_num_rows($all_jobs);
-              echo "<h3> <span aria-hidden='true'> 💼 </span> Available Positions <h3>";
+              echo "<h3> <span aria-hidden='true'> 💼 </span> Available Positions </h3>";
               echo "<p> $job_count </p>";
             ?>
             </div>
@@ -188,8 +188,51 @@
         </div>
       </div>
 
-      <?php
-
+    <?php
+    if ($_GET['list_eoi'] === 'all' && $all_eoi && mysqli_num_rows($all_eoi) > 0) {
+      echo "<div class='table-wrapper'>";
+      echo "<table>";
+      echo "<tr>";
+      echo "<th> User ID </th>";
+      echo "<th> EOI number </th>";
+      echo "<th> Full name </th>";
+      echo "<th> Job Reference </th>";
+      echo "<th> Status </th>";
+      echo "<th> <span aria-hidden='true'> ✏️ </span> Action </th>";
+      echo "</tr>";
+      while ($single_eoi = mysqli_fetch_assoc($all_eoi)) {
+        echo "<tr>";
+        if ($single_eoi['user_id'] === NULL) {
+          echo "<td> Anonymous </td>";
+        } else {
+          echo "<td>" . htmlspecialchars($single_eoi['user_id'], ENT_QUOTES, 'UTF-8') . "</td>";
+        }
+        echo "<td>" . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "</td>";
+        echo "<td>" . htmlspecialchars($single_eoi['first_name'], ENT_QUOTES, 'UTF-8') . " " 
+                    . htmlspecialchars($single_eoi['last_name'], ENT_QUOTES, 'UTF-8') . "</td>";
+        echo "<td>" . htmlspecialchars($single_eoi['job_reference'], ENT_QUOTES, 'UTF-8') . "</td>";
+        echo "<td>" . htmlspecialchars($single_eoi['status'], ENT_QUOTES, 'UTF-8') . "</td>";
+        echo "<td>";
+        echo "<div class='eoi-action'>";
+        echo "<form action='eoi_details.php' method='GET'>";
+        echo "<input type='submit' value='View this EOI'>";
+        echo "</form>";
+        echo "<form action='manager.php' method='GET'>";
+        echo "<input type='submit' value='Change Status'>";
+        echo "</form>";
+        echo "<form action='manager.php' method='GET'>";
+        echo "<input type='submit' value='Delete this EOI'>";
+        echo "</form>";
+        echo "</div>";
+        echo "</td>";
+        echo "</tr>";
+      }
+      echo "</table>";
+      echo "</div>";
+    } else {
+      echo "<p class='no-eoi'> There is currently no EOI. Come back later, manager ! </p>";
+    }
+    ?>
     </main>
 
 <?php include 'footer.inc'; ?>

@@ -213,7 +213,7 @@ nav a:hover {
     font-size: 2rem;
 }
 /* This is the CSS for the table itself */
-.table {
+.index-page .table {
     text-align: center;
     border: 2px solid;
     border-collapse: collapse; /* This allows single-line border for the table */
@@ -222,26 +222,26 @@ nav a:hover {
 }
 
 /* This is the CSS for the table header, or the first row */
-th {
+.index-page th {
     padding: 1rem;
     background-color: #03e491;
     border: 2px solid;
 }
 
 /* This is the CSS for table cells */
-td, th:not(.table-header) {
+.index-page td, .index-page th:not(.table-header) {
     padding: 1vw;
     background-color:rgb(243, 232, 232);
     border: 2px solid;
 }
 
 /* This creates hover effecrts for table cells */
-td:hover {
+.index-page td:hover {
     background-color:rgb(215, 231, 172);
     cursor: pointer; 
 }
  
-th:not(.table-header):hover {
+.index-page th:not(.table-header):hover {
     background-color:rgb(215, 231, 172);
     cursor: pointer; 
 }
@@ -566,6 +566,36 @@ hr {
     }
 }
 
+.jobs-page .table {
+    text-align: center;
+    border: 2px solid;
+    border-collapse: collapse; 
+    margin-left: 1.25rem;
+    margin-top: 3rem;
+}
+
+.jobs-page th {
+    padding: 1rem;
+    background-color: #03e491;
+    border: 2px solid;
+}
+
+.jobs-page td, .jobs-page th:not(.table-header) {
+    padding: 1vw;
+    background-color:rgb(243, 232, 232);
+    border: 2px solid;
+}
+
+.jobs-page td:hover {
+    background-color:rgb(215, 231, 172);
+    cursor: pointer; 
+}
+ 
+.jobs-page th:not(.table-header):hover {
+    background-color:rgb(215, 231, 172);
+    cursor: pointer; 
+}
+
 
 
 /* This is the section for CSS applied to apply.php */
@@ -801,6 +831,36 @@ textarea {font-size: 20px;}
     }
 }
 
+.about-page .table {
+    text-align: center;
+    border: 2px solid;
+    border-collapse: collapse; 
+    margin-left: 1.25rem;
+    margin-top: 3rem;
+}
+
+.about-page th {
+    padding: 1rem;
+    background-color: #03e491;
+    border: 2px solid;
+}
+
+.about-page td, .about-page th:not(.table-header) {
+    padding: 1vw;
+    background-color:rgb(243, 232, 232);
+    border: 2px solid;
+}
+
+.about-page td:hover {
+    background-color:rgb(215, 231, 172);
+    cursor: pointer; 
+}
+ 
+.about-page th:not(.table-header):hover {
+    background-color:rgb(215, 231, 172);
+    cursor: pointer; 
+}
+
 
 
 /* This is the section for CSS applied to search_result.php */
@@ -938,5 +998,51 @@ mark {
 @media (max-width: 768px) {
     .eoi-manage {
         flex-direction: column;
+        align-items: flex-start;
     }
 }
+
+.no-eoi {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.manager-page table {
+    text-align: center;
+    border: 2px solid;
+    font-size: 1.5rem;
+    border-collapse: collapse;
+    margin: 1.5rem 1rem;
+}
+
+.manager-page th, .manager-page td {
+    border: 2px solid;
+    padding: 1.5rem 0.5rem;
+}
+
+.eoi-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+    .manager-page table {
+        font-size: 1rem;
+    }
+    .manager-page th, .manager-page td {
+        padding: 0.8rem 0.4rem;
+    }
+    .manager-page td input {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+    }
+}
+
+
