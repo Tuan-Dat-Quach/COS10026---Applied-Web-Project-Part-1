@@ -38,89 +38,89 @@
 
 
         if (empty($job_reference_number)) {
-            echo "Please enter the Job Reference Number of the position you plan to apply for. <br>";
+            echo "<p style='color:red;'>Please enter the Job Reference Number (either GS102A, GS204B, or GS305C).</p> <br>";
         }  elseif (!preg_match("/(GS102A|GS204B|GS305C)/",$job_reference_number)) {
-            echo "Please enter the correct Job Reference Number of the position you plan to apply for. <br>";
+            echo "<p style='color:red;'>Please enter the correct Job Reference Number (GS102A, GS204B, or GS305C, it is case sensitive.</p> <br>";
         } else {
             $jrn_input = true;
         }
         
         if (empty($first_name)) {
-            echo "Please enter your First Name. <br>";
+            echo "<p style='color:red;'>Please enter your First Name. <br>";
         }  elseif (!preg_match("/^[a-zA-z-' ]{1,20}$/",$first_name)) {
-            echo "Please enter a valid First Name. <br>";
+            echo "<p style='color:red;'>Please enter a valid First Name. It must only contain letters, spaces and/or ( ' - ). <br>";
         } else {
             $fn_input = true;
         }
 
         if (empty($last_name)) {
-            echo "Please enter your Last Name. <br>";
+            echo "<p style='color:red;'>Please enter your Last Name. <br>";
         }  elseif (!preg_match("/^[a-zA-z-' ]{1,20}$/",$last_name)) {
-            echo "Please enter a valid Last Name. <br>";
+            echo "<p style='color:red;'>Please enter a valid Last Name. It must only contain letters, spaces and/or ( ' - ).<br>";
         } else {
             $ln_input = true;
         }
 
         if (empty($date_of_birth)) {
-            echo "Please enter your Date of Birth. <br>";
+            echo "<p style='color:red;'>Please enter your Date of Birth. <br>";
         } else {
             $dob_input = true;
         }
 
         if (empty($gender)) {
-            echo "Please select your preferred Gender. <br>";
+            echo "<p style='color:red;'>Please select your preferred Gender. <br>";
         } else {
             $gender_input = true;
         }
 
         if (empty($street_address)) {
-            echo "Please enter your Street Address. <br>";
+            echo "<p style='color:red;'>Please enter your Street Address. <br>";
         }  elseif (!preg_match("/^.{1,40}$/",$street_address)) {
-            echo "Please enter a valid Street Address. <br>";
+            echo "<p style='color:red;'>Please enter a valid Street Address. <br>";
         } else {
             $sa_input = true;
         }
 
         if (empty($suburb)) {
-            echo "Please enter your Suburb. <br>";
+            echo "<p style='color:red;'>Please enter your Suburb. <br>";
         }  elseif (!preg_match("/^.{1,40}$/",$suburb)) {
-            echo "Please enter a valid Suburb. <br>";
+            echo "<p style='color:red;'>Please enter a valid Suburb. <br>";
         } else {
             $suburb_input = true;
         }
 
         if (empty($state)) {
-            echo "Please select your State. <br>";
+            echo "<p style='color:red;'>Please select your State. <br>";
         } else {
             $state_input = true;
         }
 
         if (empty($postcode)) {
-            echo "Please enter your Postcode. <br>";
+            echo "<p style='color:red;'>Please enter your Postcode. <br>";
         }  elseif (!preg_match("/^[0-9]{4}$/",$postcode)) {
-            echo "Please enter a valid Postcode. <br>";
+            echo "<p style='color:red;'>Please enter a valid Postcode. It must only contain numbers and be exactly 4 digits in length. <br>";
         } else {
             $postcode_input = true;
         }
 
         if (empty($email)) {
-            echo "Please enter your Email. <br>";
+            echo "<p style='color:red;'>Please enter your Email. <br>";
         }  elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "Please enter a valid Email. <br>";
+            echo "<p style='color:red;'>Please enter a valid Email. <br>";
         } else {
             $email_input = true;
         }
 
         if (empty($phone_number)) {
-            echo "Please enter your Phone Number. <br>";
+            echo "<p style='color:red;'>Please enter your Phone Number. <br>";
         }  elseif (!preg_match("/^[0-9]{8,12}$/",$phone_number)) {
-            echo "Please enter a valid Phone Number. <br>";
+            echo "<p style='color:red;'>Please enter a valid Phone Number. It must only contain numbers and be 8-12 digits in length. <br>";
         } else {
             $pn_input = true;
         }
 
         if (empty($skills)) {
-            echo "Please select the skills you think defines you. <br>";
+            echo "<p style='color:red;'>Please select the skills you think defines you. <br>";
         } else {
             $skills_input = true;
         }
@@ -142,7 +142,7 @@
             echo "<p><strong>Skills:</strong> " . implode(", ", $skills) . "</p>";
             echo "<p><strong>Other Skills:</strong> $other_skills</p>";
         } else {
-            echo "<p><strong>Please go back in fix all errors.</strong></p>";
+            echo "<p style='color:red;'><strong>Please go back in fix all errors.</strong></p>";
         }
 
     }
