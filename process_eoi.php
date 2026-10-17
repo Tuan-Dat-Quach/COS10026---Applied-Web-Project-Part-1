@@ -125,8 +125,8 @@
             $skills_input = true;
         }
 
-        if ($jrn_input = true && $fn_input = true && $ln_input = true && $dob_input = true && $gender_input = true && $sa_input = true
-        && $suburb_input = true && $state_input = true && $postcode_input = true && $email_input = true && $pn_input = true && $skills_input = true) {
+        if ($jrn_input == true && $fn_input == true && $ln_input == true && $dob_input == true && $gender_input == true && $sa_input == true
+        && $suburb_input == true && $state_input == true && $postcode_input == true && $email_input == true && $pn_input == true && $skills_input == true) {
             echo "<h2>Your application has been successfully submitted!</h2>";
             echo "<p><strong>Job Reference Number:</strong> $job_reference_number</p>";
             echo "<p><strong>First Name:</strong> $first_name</p>";
