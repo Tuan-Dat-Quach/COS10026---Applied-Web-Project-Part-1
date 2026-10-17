@@ -47,7 +47,8 @@
 
         <form id="form"
             action="process_eoi.php"
-            method="post">
+            method="post"
+            novalidate>
 
 
             <!-- Job Reference -->
@@ -65,7 +66,7 @@
                     pattern="GS102A|GS204B|GS305C"
                     placeholder="e.g. GS102A"
                     title="Enter GS102A, GS204B or GS305C."
-                    required>
+                    >
 
             </div>
 
@@ -96,7 +97,7 @@
                         pattern="[A-Za-z '\-]+"
                         placeholder="Enter your first name"
                         title="Use letters, spaces, apostrophes and hyphens only."
-                        required>
+                        >
 
 
                     <label for="last-name">
@@ -111,7 +112,7 @@
                         pattern="[A-Za-z '\-]+"
                         placeholder="Enter your last name"
                         title="Use letters, spaces, apostrophes and hyphens only."
-                        required>
+                        >
 
 
                     <label for="date-of-birth">
@@ -122,7 +123,7 @@
                         type="date"
                         id="date-of-birth"
                         name="Date_of_Birth"
-                        required>
+                        >
 
                 </fieldset>
 
@@ -141,7 +142,7 @@
                             id="male"
                             name="Gender"
                             value="Male"
-                            required>
+                            >
                         Male
                     </label>
 
@@ -185,7 +186,7 @@
                         name="Street_Address"
                         maxlength="40"
                         placeholder="Enter your street address"
-                        required>
+                        >
 
 
                     <label for="suburb-town">
@@ -198,7 +199,7 @@
                         name="Suburb/Town"
                         maxlength="40"
                         placeholder="Enter your suburb or town"
-                        required>
+                        >
 
 
                     <label for="state">
@@ -208,7 +209,7 @@
                     <select
                         id="state"
                         name="State"
-                        required>
+                        >
 
                         <option value="">Please Select</option>
                         <option value="VIC">VIC</option>
@@ -234,7 +235,7 @@
                         pattern="[0-9]{4}"
                         placeholder="e.g. 3000"
                         title="Enter exactly 4 digits."
-                        required>
+                        >
 
                 </fieldset>
 
@@ -258,7 +259,7 @@
                         name="Email"
                         placeholder="e.g. example@email.com"
                         title="Enter a valid email address."
-                        required>
+                        >
 
 
                     <label for="phone-number">
@@ -272,7 +273,7 @@
                         pattern="[0-9]{8,12}"
                         placeholder="e.g. 0412345678"
                         title="Enter a phone number containing 8 to 12 digits."
-                        required>
+                        >
 
                 </fieldset>
 
@@ -299,7 +300,7 @@
                                 id="loves-environment"
                                 name="Skills[]"
                                 value="Loves The Environment"
-                                required>
+                                >
                             Loves The Environment
                         </label>
 
