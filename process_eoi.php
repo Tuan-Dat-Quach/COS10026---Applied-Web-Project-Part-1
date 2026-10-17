@@ -40,7 +40,7 @@
         if (empty($job_reference_number)) {
             echo "<p style='color:red;'>Please enter the Job Reference Number (either GS102A, GS204B, or GS305C).</p> <br>";
         }  elseif (!preg_match("/(GS102A|GS204B|GS305C)/",$job_reference_number)) {
-            echo "<p style='color:red;'>Please enter the correct Job Reference Number (GS102A, GS204B, or GS305C, it is case sensitive.</p> <br>";
+            echo "<p style='color:red;'>Please enter the correct Job Reference Number (GS102A, GS204B, or GS305C, it is case sensitive).</p> <br>";
         } else {
             $jrn_input = true;
         }
@@ -48,7 +48,7 @@
         if (empty($first_name)) {
             echo "<p style='color:red;'>Please enter your First Name. <br>";
         }  elseif (!preg_match("/^[a-zA-z-' ]{1,20}$/",$first_name)) {
-            echo "<p style='color:red;'>Please enter a valid First Name. It must only contain letters, spaces and/or ( ' - ). <br>";
+            echo "<p style='color:red;'>Please enter a valid First Name. It must only contain letters, spaces and/or ' or -. <br>";
         } else {
             $fn_input = true;
         }
@@ -56,7 +56,7 @@
         if (empty($last_name)) {
             echo "<p style='color:red;'>Please enter your Last Name. <br>";
         }  elseif (!preg_match("/^[a-zA-z-' ]{1,20}$/",$last_name)) {
-            echo "<p style='color:red;'>Please enter a valid Last Name. It must only contain letters, spaces and/or ( ' - ).<br>";
+            echo "<p style='color:red;'>Please enter a valid Last Name. It must only contain letters, spaces and/or ' or -. <br>";
         } else {
             $ln_input = true;
         }
