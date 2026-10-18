@@ -21,7 +21,7 @@
 
 <?php include 'header.inc'; ?>
 
-    <main>
+    <main class="details-page">
     <?php
       if (isset($_GET['chosen_eoi_number'])) {
         $eoi_number = $_GET['chosen_eoi_number'] ?? '';
@@ -35,7 +35,7 @@
 
           if ($chosen_eoi) {
             echo "<h1> Details for EOI number: " . htmlspecialchars($chosen_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "</h1>";
-            echo "<div class='table-wrapper'>";
+            echo "<div class='table-wrapper-2'>";
             echo "<table>";
             echo "<tr>";
             echo "<th> User ID </th>";
@@ -84,7 +84,7 @@
             echo "</tr>";
 
             echo "<tr>";
-            echo "<th> Date of birth </th>";
+            echo "<th class='cell-3'> Date of birth </th>";
             echo "<td>" . htmlspecialchars($chosen_eoi['date_of_birth'], ENT_QUOTES, 'UTF-8') . "</td>";
             echo "</tr>";
 

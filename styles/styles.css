@@ -895,7 +895,7 @@ mark {
 
 
 
-/* This is the section for CSS applied to manager.php */
+/* This is the section for CSS applied to both manager.php and eoi_details.php */
 
 
 
@@ -903,6 +903,8 @@ mark {
     text-align: center;
     margin-top: 0;
     font-size: 3rem;
+    text-decoration: underline;
+    text-underline-offset: 1rem;
 }
 
 .manager-page h2 {
@@ -1016,6 +1018,10 @@ mark {
     margin: 1.5rem 1rem;
 }
 
+.table-wrapper-2 table {
+    margin: 1.5rem auto;
+}
+
 .manager-page th, .manager-page td {
     border: 2px solid;
     padding: 1.5rem 0.5rem;
@@ -1028,7 +1034,7 @@ mark {
     gap: 0.5rem;
 }
 
-.table-wrapper {
+.table-wrapper, .table-wrapper-2 {
     overflow-x: auto;
 }
 
@@ -1045,8 +1051,27 @@ mark {
     }
 }
 
+.manager-page button {
+    background-color: transparent;   
+    border: none;  
+    color: white;                                    
+    font-size: 1.2rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.view-eoi {
+    background-color: #2e7d32;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
 .change-status {
-    background-color: #0C0CD2;
+    background-color: #1565c0;
     padding: 0.5rem 1rem;
     border-radius: 8px;
     text-align: center;
@@ -1064,5 +1089,23 @@ mark {
     cursor: pointer;
     margin-left: 0.5rem;
 }
+
+.manager-page th {
+    background-color: #dbc382;
+}
+
+.manager-page tr:nth-child(even) td {
+    background-color: #fbf3e8;
+}
+
+.manager-page tr:nth-child(odd) td {
+    background-color: #f0e4d0;
+}
+
+.details-page td {
+    background-color: #f0e4d0 !important;
+}
+
+
 
 

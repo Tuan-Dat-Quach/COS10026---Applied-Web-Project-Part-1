@@ -2,7 +2,22 @@
   session_start();
   require_once "settings.php";
 
-  $sql_eoi = "SELECT user_id, eoi_number, first_name, last_name, job_reference, status FROM eoi";
+  // Associative array to prevent SQL injection
+  $sort_methods = [
+    'user_id'       => 'user_id',
+    'eoi_number'    => 'eoi_number',
+    'first_name'    => 'first_name',
+    'last_name'     => 'last_name',
+    'full_name'     => 'first_name, last_name',
+    'job_reference' => 'job_reference',
+    'status'        => 'status'
+  ];
+
+  $sort_key = $_GET['sort'] ?? '';
+  // Sort method is EOI number by default 
+  $order_by = $sort_methods[$sort_key] ?? 'eoi_number';
+
+  $sql_eoi = "SELECT user_id, eoi_number, first_name, last_name, job_reference, status FROM eoi ORDER BY $order_by";
   $all_eoi = mysqli_query($conn, $sql_eoi);
 
   $sql_jobs = "SELECT * FROM jobs";
@@ -24,6 +39,7 @@
     <title>Greener Society - Position Descriptions</title>
 
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body class="manager-page">
@@ -70,20 +86,20 @@
           <label for="sort" class="eoi-list"> Sort by: </label>
 
           <select name="sort" id="sort">
-            <option value="user_id"
-            <?php
-            if (isset($_GET['sort']) && $_GET['sort'] === 'user_id') {
-              echo 'selected';
-            }
-            ?>> User ID
-            </option>
-
             <option value="eoi_number"
             <?php
             if (isset($_GET['sort']) && $_GET['sort'] === 'eoi_number') {
               echo 'selected';
             }
             ?>> EOI number
+            </option>
+
+            <option value="user_id"
+            <?php
+            if (isset($_GET['sort']) && $_GET['sort'] === 'user_id') {
+              echo 'selected';
+            }
+            ?>> User ID
             </option>
 
             <option value="first_name"
@@ -108,6 +124,14 @@
               echo 'selected';
             }
             ?>> First name and Last name
+            </option>
+
+            <option value="job_reference"
+            <?php
+            if (isset($_GET['sort']) && $_GET['sort'] === 'job_reference') {
+              echo 'selected';
+            }
+            ?>> Job Reference
             </option>
 
             <option value="status"
@@ -192,12 +216,12 @@
       echo "<div class='table-wrapper'>";
       echo "<table>";
       echo "<tr>";
-      echo "<th> User ID </th>";
-      echo "<th> EOI number </th>";
-      echo "<th> Full name </th>";
-      echo "<th> Job Reference </th>";
-      echo "<th> Status </th>";
-      echo "<th> <span aria-hidden='true'> ✏️ </span> Action </th>";
+      echo "<th class='cell'> User ID </th>";
+      echo "<th class='cell'> EOI number </th>";
+      echo "<th class='cell'> Full name </th>";
+      echo "<th class='cell'> Job Reference </th>";
+      echo "<th class='cell'> Status </th>";
+      echo "<th class='cell'> <span aria-hidden='true'> ✏️ </span> Action </th>";
       echo "</tr>";
       while ($single_eoi = mysqli_fetch_assoc($all_eoi)) {
         echo "<tr>";
@@ -211,18 +235,27 @@
                     . htmlspecialchars($single_eoi['last_name'], ENT_QUOTES, 'UTF-8') . "</td>";
         echo "<td>" . htmlspecialchars($single_eoi['job_reference'], ENT_QUOTES, 'UTF-8') . "</td>";
         echo "<td>" . htmlspecialchars($single_eoi['status'], ENT_QUOTES, 'UTF-8') . "</td>";
+        // Action column
         echo "<td>";
         echo "<div class='eoi-action'>";
-        echo "<form action='eoi_details.php' method='GET'>";
+        // Button to view one EOI
+        echo "<form action='eoi_details.php' method='GET' class='view-eoi'>";
         echo "<input type='hidden' name='chosen_eoi_number' value='" . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "'>";
-        echo "<input type='submit' value='View this EOI'>";
+        echo "<button type='submit'> <i class='fa-solid fa-eye' aria-hidden='true'> </i> View </button>";
         echo "</form>";
-        echo "<form action='manager.php' method='GET'>";
-        echo "<input type='submit' value='Change Status' class='change-status'>";
+        // Button to change status of an EOI
+        echo "<form action='manager.php' method='GET' class='change-status'>";
+        echo "<button type='submit'> <i class='fa-solid fa-pen-to-square' aria-hidden='true'> </i> Change Status </button>";
         echo "</form>";
-        echo "<form action='manager.php' method='GET'>";
-        echo "<input type='submit' value='Delete this EOI' class='delete-eoi'>";
+        // Button to delete an EOI
+        echo "<form action='manager.php' method='GET' class='delete-eoi'>";
+        echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+        echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+        echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+        echo "<input type='hidden' name='confirm_delete' value='" . (int)$single_eoi['eoi_number'] . "'>";
+        echo "<button type='submit'> <i class='fa-solid fa-trash' aria-hidden='true'> </i> Delete this EOI </button>";
         echo "</form>";
+
         echo "</div>";
         echo "</td>";
         echo "</tr>";
@@ -231,10 +264,10 @@
       echo "</div>";
     } 
 
-    if (isset($_GET['job_reference']) && $_GET['job_reference'] !== '') {
+    if (($_GET['list_eoi'] ?? '') === 'job_reference' && isset($_GET['job_reference']) && $_GET['job_reference'] !== '') {
       $chosen_job_ref = $_GET['job_reference'];
       $sql_given_eoi = "SELECT user_id, eoi_number, first_name, last_name, job_reference, status FROM eoi
-                        WHERE job_reference = ?";
+                        WHERE job_reference = ? ORDER BY $order_by";
 
       if ($stmt = $conn->prepare($sql_given_eoi)) {
         $stmt->bind_param("s", $chosen_job_ref);
@@ -245,12 +278,12 @@
           echo "<div class='table-wrapper'>";
           echo "<table>";
           echo "<tr>";
-          echo "<th> User ID </th>";
-          echo "<th> EOI number </th>";
-          echo "<th> Full name </th>";
-          echo "<th> Job Reference </th>";
-          echo "<th> Status </th>";
-          echo "<th> <span aria-hidden='true'> ✏️ </span> Action </th>";
+          echo "<th class='cell'> User ID </th>";
+          echo "<th class='cell'> EOI number </th>";
+          echo "<th class='cell'> Full name </th>";
+          echo "<th class='cell'> Job Reference </th>";
+          echo "<th class='cell'> Status </th>";
+          echo "<th class='cell'> <span aria-hidden='true'> ✏️ </span> Action </th>";
           echo "</tr>";
           while ($single_given_eoi = mysqli_fetch_assoc($given_eoi)) {
             echo "<tr>";
@@ -264,18 +297,27 @@
                         . htmlspecialchars($single_given_eoi['last_name'], ENT_QUOTES, 'UTF-8') . "</td>";
             echo "<td>" . htmlspecialchars($single_given_eoi['job_reference'], ENT_QUOTES, 'UTF-8') . "</td>";
             echo "<td>" . htmlspecialchars($single_given_eoi['status'], ENT_QUOTES, 'UTF-8') . "</td>";
+            // Action column
             echo "<td>";
             echo "<div class='eoi-action'>";
-            echo "<form action='eoi_details.php' method='GET'>";
+            // Button to view one EOI
+            echo "<form action='eoi_details.php' method='GET' class='view-eoi'>";
             echo "<input type='hidden' name='chosen_eoi_number' value='" . htmlspecialchars($single_given_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "'>";
-            echo "<input type='submit' value='View this EOI'>";
+            echo "<button type='submit'> <i class='fa-solid fa-eye' aria-hidden='true'> </i> View </button>";
             echo "</form>";
-            echo "<form action='manager.php' method='GET'>";
-            echo "<input type='submit' value='Change Status' class='change-status'>";
+            // Button to change status of an EOI
+            echo "<form action='manager.php' method='GET' class='change-status'>";
+            echo "<button type='submit'> <i class='fa-solid fa-pen-to-square' aria-hidden='true'> </i> Change Status </button>";
             echo "</form>";
-            echo "<form action='manager.php' method='GET'>";
-            echo "<input type='submit' value='Delete this EOI' class='delete-eoi'>";
+            // Button to delete an EOI
+            echo "<form action='manager.php' method='GET' class='delete-eoi'>";
+            echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+            echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+            echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+            echo "<input type='hidden' name='confirm_delete' value='" . (int)$single_eoi['eoi_number'] . "'>";
+            echo "<button type='submit'> <i class='fa-solid fa-trash' aria-hidden='true'> </i> Delete this EOI </button>";
             echo "</form>";
+
             echo "</div>";
             echo "</td>";
             echo "</tr>";
@@ -284,7 +326,7 @@
           echo "</div>";
         }
       } else {
-        echo "<p class='failed-stmt'> Sorry, something went wrong. Please try again later. <p>";
+        echo "<p class='failed-stmt'> Sorry, something went wrong. Please try again later. </p>";
       }
     }
 
