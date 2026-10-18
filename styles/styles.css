@@ -1027,7 +1027,7 @@ mark {
     padding: 1.5rem 0.5rem;
 }
 
-.eoi-action {
+.eoi-action, .confirm-box {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -1080,8 +1080,18 @@ mark {
     margin-left: 0.5rem;
 }
 
-.delete-eoi {
+.delete-eoi, .confirm-yes {
     background-color: #c00000;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+.confirm-no {
+    background-color: #666;
     padding: 0.5rem 1rem;
     border-radius: 8px;
     text-align: center;

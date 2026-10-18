@@ -224,7 +224,7 @@
       echo "<th class='cell'> <span aria-hidden='true'> ✏️ </span> Action </th>";
       echo "</tr>";
       while ($single_eoi = mysqli_fetch_assoc($all_eoi)) {
-        echo "<tr>";
+        echo "<tr id='eoi-" . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "'>";
         if ($single_eoi['user_id'] === NULL) {
           echo "<td> Anonymous </td>";
         } else {
@@ -247,16 +247,38 @@
         echo "<form action='manager.php' method='GET' class='change-status'>";
         echo "<button type='submit'> <i class='fa-solid fa-pen-to-square' aria-hidden='true'> </i> Change Status </button>";
         echo "</form>";
-        // Button to delete an EOI
-        echo "<form action='manager.php' method='GET' class='delete-eoi'>";
+        // Button to delete an EOI, using anchor to maintain the current place
+        echo "<form action='manager.php#eoi-" . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "' method='GET' class='delete-eoi'>";
         echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
         echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
         echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
         echo "<input type='hidden' name='confirm_delete' value='" . (int)$single_eoi['eoi_number'] . "'>";
         echo "<button type='submit'> <i class='fa-solid fa-trash' aria-hidden='true'> </i> Delete this EOI </button>";
         echo "</form>";
-
         echo "</div>";
+
+        if (($_GET['confirm_delete'] ?? '') === (string)$single_eoi['eoi_number']) {
+          echo "<p> Delete EOI number " . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "? This action cannot be undone. </p>";
+          echo "<div class='confirm-box'>";
+          // Cancel deleting button
+          echo "<form action='manager.php#eoi-" . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "' method='GET' class='confirm-no'>";
+          echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+          echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+          echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+          echo "<button type='submit'> <i class='fa-solid fa-xmark' aria-hidden='true'> </i> Cancel </button>";
+          echo "</form>";
+          // Confirm deleting button
+          echo "<form action='manager.php' method='POST' class='confirm-yes'>";
+          echo "<input type='hidden' name='action' value='delete'>";
+          echo "<input type='hidden' name='eoi_number' value='" . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "'>";
+          echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+          echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+          echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+          echo "<button type='submit'> <i class='fa-solid fa-check' aria-hidden='true'> </i> Yes, delete it </button>";
+          echo "</form>";
+         
+          echo "</div>";
+        }
         echo "</td>";
         echo "</tr>";
       }
@@ -286,7 +308,7 @@
           echo "<th class='cell'> <span aria-hidden='true'> ✏️ </span> Action </th>";
           echo "</tr>";
           while ($single_given_eoi = mysqli_fetch_assoc($given_eoi)) {
-            echo "<tr>";
+            echo "<tr id='eoi-" . htmlspecialchars($single_given_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "'>";
             if ($single_given_eoi['user_id'] === NULL) {
               echo "<td> Anonymous </td>";
             } else {
@@ -310,15 +332,37 @@
             echo "<button type='submit'> <i class='fa-solid fa-pen-to-square' aria-hidden='true'> </i> Change Status </button>";
             echo "</form>";
             // Button to delete an EOI
-            echo "<form action='manager.php' method='GET' class='delete-eoi'>";
+            echo "<form action='manager.php#eoi-" . htmlspecialchars($single_given_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "' method='GET' class='delete-eoi'>";
             echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
             echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
             echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
-            echo "<input type='hidden' name='confirm_delete' value='" . (int)$single_eoi['eoi_number'] . "'>";
+            echo "<input type='hidden' name='confirm_delete' value='" . (int)$single_given_eoi['eoi_number'] . "'>";
             echo "<button type='submit'> <i class='fa-solid fa-trash' aria-hidden='true'> </i> Delete this EOI </button>";
             echo "</form>";
-
             echo "</div>";
+
+            if (($_GET['confirm_delete'] ?? '') === (string)$single_given_eoi['eoi_number']) {
+              echo "<p> Delete EOI number " . htmlspecialchars($single_given_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "? This action cannot be undone. </p>";
+              echo "<div class='confirm-box'>";
+              // Cancel deleting button
+              echo "<form action='manager.php#eoi-" . htmlspecialchars($single_given_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "' method='GET' class='confirm-no'>";
+              echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+              echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+              echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+              echo "<button type='submit'> <i class='fa-solid fa-xmark' aria-hidden='true'> </i> Cancel </button>";
+              echo "</form>";
+              // Confirm deleting button
+              echo "<form action='manager.php' method='POST' class='confirm-yes'>";
+              echo "<input type='hidden' name='action' value='delete'>";
+              echo "<input type='hidden' name='eoi_number' value='" . htmlspecialchars($single_given_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "'>";
+              echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+              echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+              echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+              echo "<button type='submit'> <i class='fa-solid fa-check' aria-hidden='true'> </i> Yes, delete it </button>";
+              echo "</form>";
+         
+              echo "</div>";
+            }
             echo "</td>";
             echo "</tr>";
           }
