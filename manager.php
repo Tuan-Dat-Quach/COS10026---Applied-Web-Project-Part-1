@@ -1,9 +1,7 @@
 <?php 
   session_start();
   require_once "settings.php";
-  if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-  }
+
   $sql_eoi = "SELECT user_id, eoi_number, first_name, last_name, job_reference, status FROM eoi";
   $all_eoi = mysqli_query($conn, $sql_eoi);
 

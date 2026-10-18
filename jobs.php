@@ -30,9 +30,7 @@
 
 <?php
   require_once "settings.php";
-  if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-  }
+ 
   $sql = "SELECT * FROM jobs";
   $result = mysqli_query($conn, $sql);
 ?>

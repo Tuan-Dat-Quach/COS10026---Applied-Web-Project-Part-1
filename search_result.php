@@ -58,9 +58,6 @@
 
           // Connect to the database
           require_once "settings.php";
-          if (!$conn) {
-           die("Connection failed: " . mysqli_connect_error());
-          }
             // Start displaying in search_result.php when the user enters search button
             if (isset($_GET['search'])) {
               $search = trim($_GET['search']);
