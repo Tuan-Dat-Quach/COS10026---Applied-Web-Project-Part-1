@@ -1,18 +1,17 @@
 <?php 
   session_start();
   require_once "settings.php";
-  $connect = mysqli_connect($host, $user, $pwd, $sql_db);
-  if (!$connect) {
+  if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
   }
   $sql_eoi = "SELECT user_id, eoi_number, first_name, last_name, job_reference, status FROM eoi";
-  $all_eoi = mysqli_query($connect, $sql_eoi);
+  $all_eoi = mysqli_query($conn, $sql_eoi);
 
   $sql_jobs = "SELECT * FROM jobs";
-  $all_jobs = mysqli_query($connect, $sql_jobs);
+  $all_jobs = mysqli_query($conn, $sql_jobs);
 
   $sql_new_eoi = "SELECT * FROM eoi WHERE status = 'NEW'";
-  $new_eoi = mysqli_query($connect, $sql_new_eoi);
+  $new_eoi = mysqli_query($conn, $sql_new_eoi);
 ?>
 
 <!DOCTYPE html>
@@ -169,7 +168,7 @@
 
           // Get job references from the jobs table
           $sql_job_reference = "SELECT job_reference FROM jobs";
-          $single_job_ref = mysqli_query($connect, $sql_job_reference);
+          $single_job_ref = mysqli_query($conn, $sql_job_reference);
 
           if ($single_job_ref) {
             while ($row = mysqli_fetch_assoc($single_job_ref)) {
@@ -217,6 +216,7 @@
         echo "<td>";
         echo "<div class='eoi-action'>";
         echo "<form action='eoi_details.php' method='GET'>";
+        echo "<input type='hidden' name='chosen_eoi_number' value='" . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "'>";
         echo "<input type='submit' value='View this EOI'>";
         echo "</form>";
         echo "<form action='manager.php' method='GET'>";
@@ -238,7 +238,7 @@
       $sql_given_eoi = "SELECT user_id, eoi_number, first_name, last_name, job_reference, status FROM eoi
                         WHERE job_reference = ?";
 
-      if ($stmt = $connect->prepare($sql_given_eoi)) {
+      if ($stmt = $conn->prepare($sql_given_eoi)) {
         $stmt->bind_param("s", $chosen_job_ref);
         $stmt->execute();
         $given_eoi = $stmt->get_result();
@@ -269,6 +269,7 @@
             echo "<td>";
             echo "<div class='eoi-action'>";
             echo "<form action='eoi_details.php' method='GET'>";
+            echo "<input type='hidden' name='chosen_eoi_number' value='" . htmlspecialchars($single_given_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "'>";
             echo "<input type='submit' value='View this EOI'>";
             echo "</form>";
             echo "<form action='manager.php' method='GET'>";
