@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2026 at 01:14 PM
+-- Generation Time: Oct 18, 2026 at 04:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `eoi` (
   `eoi_number` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL REFERENCES users(user_id),
   `job_reference` char(6) NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
@@ -39,7 +40,7 @@ CREATE TABLE `eoi` (
   `state` enum('VIC','NSW','QLD','NT','WA','SA','TAS','ACT') NOT NULL,
   `postcode` int(4) NOT NULL,
   `email` text NOT NULL,
-  `phone_number` int(11) NOT NULL,
+  `phone_number` varchar(12) NOT NULL,
   `skills` set('Loves The Environment','Organization','Punctuality','Hard Working','Resilience','Team Player','Passionate','Leadership','Communication') NOT NULL,
   `other_skills` text DEFAULT NULL,
   `status` enum('NEW','CURRENT','FINAL') NOT NULL
