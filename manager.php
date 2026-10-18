@@ -2,6 +2,25 @@
   session_start();
   require_once "settings.php";
 
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete') {
+    $deleted_eoi = (int)($_POST['eoi_number'] ?? 0);
+
+    if ($deleted_eoi > 0) {
+      $stmt = $conn->prepare("DELETE FROM eoi WHERE eoi_number = ?");
+      $stmt->bind_param("i", $deleted_eoi);
+      $stmt->execute();
+      $stmt->close();
+    }
+    /* Use urlencode to encode the parameters so they can be appropriate URL, and use the
+    URL to pass the parameters so that the page can maintain current state after 
+    deleting an EOI */
+    $turn_back = "manager.php?list_eoi=" . urlencode($_POST['list_eoi'] ?? '')
+          . "&sort=" . urlencode($_POST['sort'] ?? '')
+          . "&job_reference=" . urlencode($_POST['job_reference'] ?? '');
+    header("Location: " . $turn_back . "#eoi-table");
+    exit;
+  }
+
   // Associative array to prevent SQL injection
   $sort_methods = [
     'user_id'       => 'user_id',
@@ -213,7 +232,7 @@
 
     <?php
     if (($_GET['list_eoi'] ?? '')=== 'all' && $all_eoi && mysqli_num_rows($all_eoi) > 0) {
-      echo "<div class='table-wrapper'>";
+      echo "<div class='table-wrapper' id='eoi-table'>";
       echo "<table>";
       echo "<tr>";
       echo "<th class='cell'> User ID </th>";
@@ -297,7 +316,7 @@
         $given_eoi = $stmt->get_result();
 
         if ($given_eoi && mysqli_num_rows($given_eoi) > 0) {
-          echo "<div class='table-wrapper'>";
+          echo "<div class='table-wrapper' id='eoi-table'>";
           echo "<table>";
           echo "<tr>";
           echo "<th class='cell'> User ID </th>";
