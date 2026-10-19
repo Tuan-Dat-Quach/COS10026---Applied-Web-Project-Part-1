@@ -248,8 +248,47 @@
         }
         ?>
         </div>
+
+        <div class="delete-by-job-ref">
+        <?php
+          // Option to delete all EOIs by a job reference
+          if (($_GET['list_eoi'] ?? '') === 'job_reference' && ($_GET['job_reference'] ?? '') !== '') {
+            echo "<form action='manager.php#eoi-table' method='GET' class='delete-eoi'>";
+            echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'], ENT_QUOTES, 'UTF-8') . "'>";
+            echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+            echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'], ENT_QUOTES, 'UTF-8') . "'>";
+            echo "<input type='hidden' name='confirm_delete_all' value='1'>";
+            echo "<button type='submit'> <i class='fa-solid fa-trash' aria-hidden='true'> </i> Delete all EOIs of " . htmlspecialchars($_GET['job_reference'], ENT_QUOTES, 'UTF-8') . " </button>";
+            echo "</form>";
+           }
+        ?>
+        </div>
       </div>
 
+    <?php
+      if (($_GET['confirm_delete_all'] ?? '') === '1') {
+        echo "<div class='delete-all-confirm'>";
+        echo "<p> ⚠️ Delete <strong>ALL EOIs</strong> of " . htmlspecialchars($_GET['job_reference'], ENT_QUOTES, 'UTF-8') . "? This action cannot be undone. </p>";
+        echo "<div class='confirm-box'>";
+        // Cancel deleting all button
+        echo "<form action='manager.php#eoi-table' method='GET' class='confirm-no'>";
+        echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+        echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+        echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+        echo "<button type='submit'> <i class='fa-solid fa-xmark' aria-hidden='true'> </i> Cancel </button>";
+        echo "</form>";
+        // Confirm deleting all button
+        echo "<form action='manager.php' method='POST' class='confirm-yes'>";
+        echo "<input type='hidden' name='action' value='delete_all'>";
+        echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+        echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+        echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+        echo "<button type='submit'> <i class='fa-solid fa-check' aria-hidden='true'> </i> Yes, delete all </button>";
+        echo "</form>";
+        echo "</div>";
+        echo "</div>";
+      }
+    ?>
     <?php
     // Option to list all EOIs
     if (($_GET['list_eoi'] ?? '')=== 'all' && $all_eoi && mysqli_num_rows($all_eoi) > 0) {
@@ -310,7 +349,7 @@
         echo "</div>";
 
         if (($_GET['confirm_delete'] ?? '') === (string)$single_eoi['eoi_number']) {
-          echo "<p> Delete EOI number " . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "? This action cannot be undone. </p>";
+          echo "<p> ⚠️ Delete EOI number " . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "? This action cannot be undone. </p>";
           echo "<div class='confirm-box'>";
           // Cancel deleting button
           echo "<form action='manager.php#eoi-" . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "' method='GET' class='confirm-no'>";
@@ -436,7 +475,7 @@
             echo "</div>";
 
             if (($_GET['confirm_delete'] ?? '') === (string)$single_given_eoi['eoi_number']) {
-              echo "<p> Delete EOI number " . htmlspecialchars($single_given_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "? This action cannot be undone. </p>";
+              echo "<p> ⚠️  Delete EOI number " . htmlspecialchars($single_given_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "? This action cannot be undone. </p>";
               echo "<div class='confirm-box'>";
               // Cancel deleting button
               echo "<form action='manager.php#eoi-" . htmlspecialchars($single_given_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "' method='GET' class='confirm-no'>";

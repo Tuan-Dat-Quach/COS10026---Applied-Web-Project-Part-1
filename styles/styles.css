@@ -313,18 +313,20 @@ nav a:hover {
     background-color: rgb(183, 183, 183);
 }
 
-hr {
-    margin: 0px;
-}
-
 /* These 3 sections are CSS for the footer */
 .footer {
     text-align: center;
+}
+
+.footer p {
     font-size: 1.5rem;
 }
 
-footer p a {
+.footer p a {
     color: #c00000;
+    overflow-wrap: anywhere;
+    text-underline-offset: 0.5rem;
+    font-size: 1.5rem;
 }
 
 footer p a:hover {
@@ -333,6 +335,7 @@ footer p a:hover {
 
 hr {
     border: 1px solid;
+    margin: 0;
 }
 
 
@@ -918,7 +921,7 @@ mark {
     margin-bottom: 0;
 }
 
-.manager-page p {
+.manager-page p:not(.general-footer) {
     font-size: 2rem;
     margin-top: 0.8rem;
     margin-bottom: 1rem;
@@ -990,6 +993,7 @@ mark {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .eoi-manage form {
@@ -997,7 +1001,7 @@ mark {
     display: inline-block;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 9px) {
     .eoi-manage {
         flex-direction: column;
         align-items: flex-start;
@@ -1123,6 +1127,36 @@ mark {
     background-color: #f0e4d0 !important;
 }
 
+.delete-by-job-ref {
+    flex: 0 0 auto;
+    margin-left: 1rem;
+}
+
+.delete-by-job-ref form {
+    flex: none;
+}
+
+.delete-by-job-ref button {
+    margin-left: 0;
+}
+
+.delete-all-confirm {
+    text-align: center;
+    margin: 1rem;
+}
+
+.manager-page .delete-all-confirm p {
+    margin: 0.5rem 0 0.8rem;
+}
+
+.delete-all-confirm .confirm-box {
+    justify-content: center;
+    gap: 1rem;
+}
+
+.delete-all-confirm .confirm-box button {
+    margin-left: 0;
+}
 
 
 
