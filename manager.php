@@ -105,6 +105,7 @@
 
     <main>
         <h1> Manager Dashboard </h1>
+        <!-- An overview with some statistics: Total EOIs, New EOIs and Available job positions -->
         <h2> Overview </h2>
         <section class="statistic">
             <div class="total">
@@ -134,6 +135,7 @@
 
         <h2> Manage </h2>
 
+        <!-- Sort field options allowed for the manager, with hidden inputs of list_eoi and job_reference -->
         <form action="manager.php" method="GET" class="sort-form">
           <input type="hidden" name="list_eoi" 
                  value="<?php echo htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
@@ -143,6 +145,7 @@
           <label for="sort" class="eoi-list"> Sort by: </label>
 
           <select name="sort" id="sort">
+            <!-- Sort by EOI number - Default method -->
             <option value="eoi_number"
             <?php
             if (isset($_GET['sort']) && $_GET['sort'] === 'eoi_number') {
@@ -150,7 +153,7 @@
             }
             ?>> EOI number
             </option>
-
+            <!-- Sort by User ID -->
             <option value="user_id"
             <?php
             if (isset($_GET['sort']) && $_GET['sort'] === 'user_id') {
@@ -158,15 +161,15 @@
             }
             ?>> User ID
             </option>
-
+            <!-- Sort by first name -->
             <option value="first_name"
             <?php
             if (isset($_GET['sort']) && $_GET['sort'] === 'first_name') {
               echo 'selected';
             }
             ?>> First name
-            </option>
-
+            </option> 
+            <!-- Sort by last name -->
             <option value="last_name"
             <?php
             if (isset($_GET['sort']) && $_GET['sort'] === 'last_name') {
@@ -174,7 +177,7 @@
             }
             ?>> Last name
             </option>
-
+            <!-- Sort by both first name and last name -->
             <option value="full_name"
             <?php
             if (isset($_GET['sort']) && $_GET['sort'] === 'full_name') {
@@ -182,7 +185,7 @@
             }
             ?>> First name and Last name
             </option>
-
+            <!-- Sort by job reference number -->
             <option value="job_reference"
             <?php
             if (isset($_GET['sort']) && $_GET['sort'] === 'job_reference') {
@@ -190,7 +193,7 @@
             }
             ?>> Job Reference
             </option>
-
+            <!-- Sort by EOI status -->
             <option value="status"
             <?php
             if (isset($_GET['sort']) && $_GET['sort'] === 'status') {
@@ -202,8 +205,10 @@
 
           <input type="submit" value="Sort">
         </form>
-
+      <!-- This is the section to choose list EOI method, given job reference along with option to 
+      delete all EOIs by that given job reference -->
       <div class="eoi-manage"> 
+        <!-- Choose listing method -->
         <div class="choose-method">
           <form action="manager.php" method="GET">
             <input type="hidden" name="sort"
@@ -232,7 +237,7 @@
             <input type="submit" value="Go">
           </form>
         </div>
-
+        <!-- Choose a job reference if listed by job reference -->
         <div class="choose-job-ref">
         <?php
         if ((isset($_GET['list_eoi']) && $_GET['list_eoi'] === 'job_reference')) {
@@ -266,10 +271,9 @@
         }
         ?>
         </div>
-
+        <!-- Option to delete all EOIs if we are listing by job reference -->
         <div class="delete-by-job-ref">
         <?php
-          // Option to delete all EOIs by a job reference
           if (($_GET['list_eoi'] ?? '') === 'job_reference' && ($_GET['job_reference'] ?? '') !== '') {
             echo "<form action='manager.php#eoi-table' method='GET' class='delete-eoi'>";
             echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'], ENT_QUOTES, 'UTF-8') . "'>";
@@ -284,6 +288,7 @@
       </div>
 
     <?php
+      // Confirm if the manager wants to delete all EOIs of this job reference
       if (($_GET['confirm_delete_all'] ?? '') === '1') {
         echo "<div class='delete-all-confirm'>";
         echo "<p> ⚠️ Delete <strong>ALL EOIs</strong> of " . htmlspecialchars($_GET['job_reference'], ENT_QUOTES, 'UTF-8') . "? This action cannot be undone. </p>";
@@ -332,6 +337,7 @@
                     . htmlspecialchars($single_eoi['last_name'], ENT_QUOTES, 'UTF-8') . "</td>";
         echo "<td>" . htmlspecialchars($single_eoi['job_reference'], ENT_QUOTES, 'UTF-8') . "</td>";
         $status_class_1 = '';
+        // Give different classes to status to style them with CSS
         if ($single_eoi['status'] === 'NEW') {
           $status_class_1 = 'status-new';
         } elseif ($single_eoi['status'] === 'CURRENT') {
@@ -366,6 +372,7 @@
         echo "</form>";
         echo "</div>";
 
+        // Confirm if the manager wants to delete the chosen EOI
         if (($_GET['confirm_delete'] ?? '') === (string)$single_eoi['eoi_number']) {
           echo "<p> ⚠️ Delete EOI number " . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "? This action cannot be undone. </p>";
           echo "<div class='confirm-box'>";
@@ -457,6 +464,7 @@
             echo "<td>" . htmlspecialchars($single_given_eoi['first_name'], ENT_QUOTES, 'UTF-8') . " " 
                         . htmlspecialchars($single_given_eoi['last_name'], ENT_QUOTES, 'UTF-8') . "</td>";
             echo "<td>" . htmlspecialchars($single_given_eoi['job_reference'], ENT_QUOTES, 'UTF-8') . "</td>";
+            // Give different classes to status to style them with CSS
             $status_class_2 = '';
             if ($single_given_eoi['status'] === 'NEW') {
               $status_class_2 = 'status-new';
@@ -492,6 +500,7 @@
             echo "</form>";
             echo "</div>";
 
+            // Confirm if the manager wants to delete the chosen EOI
             if (($_GET['confirm_delete'] ?? '') === (string)$single_given_eoi['eoi_number']) {
               echo "<p> ⚠️  Delete EOI number " . htmlspecialchars($single_given_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "? This action cannot be undone. </p>";
               echo "<div class='confirm-box'>";
@@ -552,7 +561,7 @@
         echo "<p class='failed-stmt'> Sorry, something went wrong. Please try again later. </p>";
       }
     }
-
+    // Print out a message if there is currently no EOI in either of two methods
     if ((($_GET['list_eoi'] ?? '') === 'all' && $all_eoi && mysqli_num_rows($all_eoi) == 0) ||
        (($_GET['list_eoi'] ?? '') ==='job_reference' && $given_eoi && mysqli_num_rows($given_eoi) == 0)) {
       echo "<p class='no-eoi'> There is currently no EOI. Come back later, manager ! </p>";
