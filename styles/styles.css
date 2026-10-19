@@ -1052,52 +1052,59 @@ mark {
 }
 
 .manager-page button {
-    background-color: transparent;   
-    border: none;  
+    background-color: transparent;  
+    border: none;   
     color: white;                                    
     font-size: 1.2rem;
     cursor: pointer;
     white-space: nowrap;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-left: 0.5rem;
 }
 
-.view-eoi {
+.view-eoi button {
     background-color: #2e7d32;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-    margin-left: 0.5rem;
 }
 
-.change-status {
+.change-status button {
     background-color: #1565c0;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-    margin-left: 0.5rem;
 }
 
-.delete-eoi, .confirm-yes {
+.delete-eoi button, .confirm-yes button {
     background-color: #c00000;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-    margin-left: 0.5rem;
 }
 
-.confirm-no {
+.confirm-no button {
     background-color: #666;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-    margin-left: 0.5rem;
+}
+
+.status-choice button {
+    background-color: #2e7f78; 
+    font-size: 1.5rem;
+}
+
+.status {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    border-radius: 24px;
+    font-weight: bold;
+}
+
+.status-new {
+    background-color: #8ec3f0;
+    border: 2px solid #5a9bd5;
+}
+
+.status-current {
+    background-color: #f5cf5a;
+    border: 2px solid #d4a017;
+}
+
+.status-final {
+    background-color: #8fd19a;
+    border: 2px solid #4caf50;
 }
 
 .manager-page th {
@@ -1115,6 +1122,8 @@ mark {
 .details-page td {
     background-color: #f0e4d0 !important;
 }
+
+
 
 
 

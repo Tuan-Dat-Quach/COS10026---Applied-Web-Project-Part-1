@@ -4,7 +4,7 @@
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete') {
     $deleted_eoi = (int)($_POST['eoi_number'] ?? 0);
-
+    // Delete an EOI according to its EOI number
     if ($deleted_eoi > 0) {
       $stmt = $conn->prepare("DELETE FROM eoi WHERE eoi_number = ?");
       $stmt->bind_param("i", $deleted_eoi);
@@ -14,10 +14,30 @@
     /* Use urlencode to encode the parameters so they can be appropriate URL, and use the
     URL to pass the parameters so that the page can maintain current state after 
     deleting an EOI */
-    $turn_back = "manager.php?list_eoi=" . urlencode($_POST['list_eoi'] ?? '')
-          . "&sort=" . urlencode($_POST['sort'] ?? '')
-          . "&job_reference=" . urlencode($_POST['job_reference'] ?? '');
-    header("Location: " . $turn_back . "#eoi-table");
+    $turn_back_1 = "manager.php?list_eoi=" . urlencode($_POST['list_eoi'] ?? '')
+                 . "&sort=" . urlencode($_POST['sort'] ?? '')
+                 . "&job_reference=" . urlencode($_POST['job_reference'] ?? '');
+    // Return back to the table head
+    header("Location: " . $turn_back_1 . "#eoi-table");
+    exit;
+  }
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'change_status') {
+    $changed_eoi = (int)($_POST['eoi_number'] ?? 0);
+    $new_status = $_POST['new_status'] ?? '';
+  // Update an EOI's status according to its EOI number
+  if ($changed_eoi > 0 && ($new_status === 'NEW' || $new_status === 'CURRENT' || $new_status === 'FINAL')) {
+    $stmt = $conn->prepare("UPDATE eoi SET status = ? WHERE eoi_number = ?");
+    $stmt->bind_param("si", $new_status, $changed_eoi);
+    $stmt->execute();
+    $stmt->close();
+  }
+
+    $turn_back_2 = "manager.php?list_eoi=" . urlencode($_POST['list_eoi'] ?? '')
+                 . "&sort=" . urlencode($_POST['sort'] ?? '')
+                 . "&job_reference=" . urlencode($_POST['job_reference'] ?? '');
+    // Return back to the chosen EOI
+    header("Location: " . $turn_back_2 . "#eoi-" . $changed_eoi);
     exit;
   }
 
@@ -231,6 +251,7 @@
       </div>
 
     <?php
+    // Option to list all EOIs
     if (($_GET['list_eoi'] ?? '')=== 'all' && $all_eoi && mysqli_num_rows($all_eoi) > 0) {
       echo "<div class='table-wrapper' id='eoi-table'>";
       echo "<table>";
@@ -253,7 +274,15 @@
         echo "<td>" . htmlspecialchars($single_eoi['first_name'], ENT_QUOTES, 'UTF-8') . " " 
                     . htmlspecialchars($single_eoi['last_name'], ENT_QUOTES, 'UTF-8') . "</td>";
         echo "<td>" . htmlspecialchars($single_eoi['job_reference'], ENT_QUOTES, 'UTF-8') . "</td>";
-        echo "<td>" . htmlspecialchars($single_eoi['status'], ENT_QUOTES, 'UTF-8') . "</td>";
+        $status_class_1 = '';
+        if ($single_eoi['status'] === 'NEW') {
+          $status_class_1 = 'status-new';
+        } elseif ($single_eoi['status'] === 'CURRENT') {
+          $status_class_1 = 'status-current';
+        } else {
+          $status_class_1 = 'status-final';
+        }
+        echo "<td><span class='status $status_class_1'>" . htmlspecialchars($single_eoi['status'], ENT_QUOTES, 'UTF-8') . "</td>";
         // Action column
         echo "<td>";
         echo "<div class='eoi-action'>";
@@ -263,7 +292,11 @@
         echo "<button type='submit'> <i class='fa-solid fa-eye' aria-hidden='true'> </i> View </button>";
         echo "</form>";
         // Button to change status of an EOI
-        echo "<form action='manager.php' method='GET' class='change-status'>";
+        echo "<form action='manager.php#eoi-" . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "' method='GET' class='change-status'>";
+        echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+        echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+        echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+        echo "<input type='hidden' name='confirm_status' value='" . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "'>";
         echo "<button type='submit'> <i class='fa-solid fa-pen-to-square' aria-hidden='true'> </i> Change Status </button>";
         echo "</form>";
         // Button to delete an EOI, using anchor to maintain the current place
@@ -298,6 +331,34 @@
          
           echo "</div>";
         }
+
+        // Display other status than current status for users to choose from, using foreach to compare
+        if (($_GET['confirm_status'] ?? '') === (string)$single_eoi['eoi_number']) {
+          echo "<p> Change to which status? </p>";
+          echo "<div class='confirm-box'>";
+          foreach (['NEW', 'CURRENT', 'FINAL'] as $status_option) {
+            if ($status_option !== $single_eoi['status']) {
+              echo "<form action='manager.php' method='POST' class='status-choice'>";
+              echo "<input type='hidden' name='action' value='change_status'>";
+              echo "<input type='hidden' name='new_status' value='$status_option'>";
+              echo "<input type='hidden' name='eoi_number' value='" . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "'>";
+              echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+              echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+              echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+              echo "<button type='submit'> $status_option </button>";
+              echo "</form>";
+            }
+          }
+          // Cancel change button
+          echo "<form action='manager.php#eoi-" . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "' method='GET' class='confirm-no'>";
+          echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+          echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+          echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+          echo "<button type='submit'> <i class='fa-solid fa-xmark' aria-hidden='true'> </i> Cancel </button>";
+          echo "</form>";
+
+          echo "</div>";
+        }
         echo "</td>";
         echo "</tr>";
       }
@@ -305,6 +366,8 @@
       echo "</div>";
     } 
 
+    $given_eoi = null;
+    // Option to list all EOIs by a given job reference
     if (($_GET['list_eoi'] ?? '') === 'job_reference' && isset($_GET['job_reference']) && $_GET['job_reference'] !== '') {
       $chosen_job_ref = $_GET['job_reference'];
       $sql_given_eoi = "SELECT user_id, eoi_number, first_name, last_name, job_reference, status FROM eoi
@@ -337,7 +400,15 @@
             echo "<td>" . htmlspecialchars($single_given_eoi['first_name'], ENT_QUOTES, 'UTF-8') . " " 
                         . htmlspecialchars($single_given_eoi['last_name'], ENT_QUOTES, 'UTF-8') . "</td>";
             echo "<td>" . htmlspecialchars($single_given_eoi['job_reference'], ENT_QUOTES, 'UTF-8') . "</td>";
-            echo "<td>" . htmlspecialchars($single_given_eoi['status'], ENT_QUOTES, 'UTF-8') . "</td>";
+            $status_class_2 = '';
+            if ($single_given_eoi['status'] === 'NEW') {
+              $status_class_2 = 'status-new';
+            } elseif ($single_given_eoi['status'] === 'CURRENT') {
+              $status_class_2 = 'status-current';
+            } else {
+              $status_class_2 = 'status-final';
+            }
+            echo "<td><span class='status $status_class_2'>" . htmlspecialchars($single_given_eoi['status'], ENT_QUOTES, 'UTF-8') . "</td>";
             // Action column
             echo "<td>";
             echo "<div class='eoi-action'>";
@@ -347,7 +418,11 @@
             echo "<button type='submit'> <i class='fa-solid fa-eye' aria-hidden='true'> </i> View </button>";
             echo "</form>";
             // Button to change status of an EOI
-            echo "<form action='manager.php' method='GET' class='change-status'>";
+            echo "<form action='manager.php#eoi-" . htmlspecialchars($single_given_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "' method='GET' class='change-status'>";
+            echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+            echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+            echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+            echo "<input type='hidden' name='confirm_status' value='" . htmlspecialchars($single_given_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "'>";
             echo "<button type='submit'> <i class='fa-solid fa-pen-to-square' aria-hidden='true'> </i> Change Status </button>";
             echo "</form>";
             // Button to delete an EOI
@@ -382,6 +457,34 @@
          
               echo "</div>";
             }
+
+            // Display other status than current status for users to choose from, using foreach to compare
+            if (($_GET['confirm_status'] ?? '') === (string)$single_given_eoi['eoi_number']) {
+              echo "<p> Change to which status? </p>";
+              echo "<div class='confirm-box'>";
+              foreach (['NEW', 'CURRENT', 'FINAL'] as $status_option) {
+                if ($status_option !== $single_given_eoi['status']) {
+                  echo "<form action='manager.php' method='POST' class='status-choice'>";
+                  echo "<input type='hidden' name='action' value='change_status'>";
+                  echo "<input type='hidden' name='new_status' value='$status_option'>";
+                  echo "<input type='hidden' name='eoi_number' value='" . htmlspecialchars($single_given_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "'>";
+                  echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+                  echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+                  echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+                  echo "<button type='submit'> $status_option </button>";
+                  echo "</form>";
+                }
+              }
+              // Cancel change button
+              echo "<form action='manager.php#eoi-" . htmlspecialchars($single_given_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "' method='GET' class='confirm-no'>";
+              echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+              echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+              echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
+              echo "<button type='submit'> <i class='fa-solid fa-xmark' aria-hidden='true'> </i> Cancel </button>";
+              echo "</form>";
+
+              echo "</div>";
+            }
             echo "</td>";
             echo "</tr>";
           }
@@ -394,7 +497,7 @@
     }
 
     if ((($_GET['list_eoi'] ?? '') === 'all' && $all_eoi && mysqli_num_rows($all_eoi) == 0) ||
-       (isset($_GET['job_reference']) && $given_eoi && mysqli_num_rows($given_eoi) == 0)) {
+       (($_GET['list_eoi'] ?? '') ==='job_reference' && $given_eoi && mysqli_num_rows($given_eoi) == 0)) {
       echo "<p class='no-eoi'> There is currently no EOI. Come back later, manager ! </p>";
     }
     ?>
