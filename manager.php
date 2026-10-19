@@ -25,19 +25,37 @@
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'change_status') {
     $changed_eoi = (int)($_POST['eoi_number'] ?? 0);
     $new_status = $_POST['new_status'] ?? '';
-  // Update an EOI's status according to its EOI number
-  if ($changed_eoi > 0 && ($new_status === 'NEW' || $new_status === 'CURRENT' || $new_status === 'FINAL')) {
-    $stmt = $conn->prepare("UPDATE eoi SET status = ? WHERE eoi_number = ?");
-    $stmt->bind_param("si", $new_status, $changed_eoi);
-    $stmt->execute();
-    $stmt->close();
-  }
+    // Update an EOI's status according to its EOI number
+    if ($changed_eoi > 0 && ($new_status === 'NEW' || $new_status === 'CURRENT' || $new_status === 'FINAL')) {
+      $stmt = $conn->prepare("UPDATE eoi SET status = ? WHERE eoi_number = ?");
+      $stmt->bind_param("si", $new_status, $changed_eoi);
+      $stmt->execute();
+      $stmt->close();
+    }
 
     $turn_back_2 = "manager.php?list_eoi=" . urlencode($_POST['list_eoi'] ?? '')
                  . "&sort=" . urlencode($_POST['sort'] ?? '')
                  . "&job_reference=" . urlencode($_POST['job_reference'] ?? '');
     // Return back to the chosen EOI
     header("Location: " . $turn_back_2 . "#eoi-" . $changed_eoi);
+    exit;
+  }
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_all') {
+    // Delete all EOIs by a given job reference
+    $deleted_job_ref = $_POST['job_reference'];
+    if ($deleted_job_ref !== '') {
+      $stmt = $conn->prepare("DELETE FROM eoi WHERE job_reference = ?");
+      $stmt->bind_param("s", $deleted_job_ref);
+      $stmt->execute();
+      $stmt->close();
+    }
+
+    $turn_back_3 = "manager.php?list_eoi=" . urlencode($_POST['list_eoi'] ?? '')
+                 . "&sort=" . urlencode($_POST['sort'] ?? '')
+                 . "&job_reference=" . urlencode($_POST['job_reference'] ?? '');
+    // Return back to the chosen EOI
+    header("Location: " . $turn_back_3 . "#eoi-table");
     exit;
   }
 
@@ -321,7 +339,7 @@
         } else {
           $status_class_1 = 'status-final';
         }
-        echo "<td><span class='status $status_class_1'>" . htmlspecialchars($single_eoi['status'], ENT_QUOTES, 'UTF-8') . "</td>";
+        echo "<td> <span class='status $status_class_1'>" . htmlspecialchars($single_eoi['status'], ENT_QUOTES, 'UTF-8') . "</span> </td>";
         // Action column
         echo "<td>";
         echo "<div class='eoi-action'>";
@@ -447,7 +465,7 @@
             } else {
               $status_class_2 = 'status-final';
             }
-            echo "<td><span class='status $status_class_2'>" . htmlspecialchars($single_given_eoi['status'], ENT_QUOTES, 'UTF-8') . "</td>";
+            echo "<td> <span class='status $status_class_2'>" . htmlspecialchars($single_given_eoi['status'], ENT_QUOTES, 'UTF-8') . "</span> </td>";
             // Action column
             echo "<td>";
             echo "<div class='eoi-action'>";
