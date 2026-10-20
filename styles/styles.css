@@ -34,8 +34,8 @@ main {
 #menu {
   display: flex;
   flex-wrap: wrap; /* This allows the text to move down a row when the screen is shrinking, preventing unexpected disappearance */
-  justify-content: flex-start; 
-  gap: 1.5rem 2.5rem;
+  justify-content: flex-start;
+  gap: 1.2rem 2.5rem;
   list-style-type: none; /* This eliminates the bullet points of <ul> */
   /* These two lines remove the default margin and padding of the <ul> list */
   margin: 0; 
@@ -59,13 +59,13 @@ nav a:hover {
 } 
 
 /* This is Media query for the Navigation*/
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   #menu a {
     font-size: 1.5rem;
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
     .navigation {
         flex-direction: column;
         align-items: center;
@@ -78,7 +78,6 @@ nav a:hover {
         width: 100%;
     }
     #menu {
-        justify-content: space-around;
         flex-wrap: wrap;
     }
     #menu a {
@@ -326,7 +325,7 @@ nav a:hover {
 .footer p a {
     color: #c00000;
     overflow-wrap: anywhere;
-    text-underline-offset: 0.5rem;
+    text-underline-offset: 0.4rem;
     font-size: 1.5rem;
 }
 
@@ -1161,7 +1160,7 @@ mark {
 
 
 
-/* This is the section for CSS applied to signup.php */
+/* This is the section for CSS applied to both signup.php and login.php */
 .signup-page h1 {
     text-align: center;
 }
@@ -1180,7 +1179,7 @@ mark {
 }
 
 .signup-row {
-    width: 60%;
+    width: 50%;
     display: flex;
     align-items: center;
     gap: 0.8rem;
@@ -1207,10 +1206,10 @@ mark {
 }
 
 .signup-row label {    
-    width: 170px;
     flex-shrink: 0;       
     text-align: right;
     font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .label-space {
@@ -1240,19 +1239,21 @@ mark {
 
 .signup-page .success {
     width: fit-content;
-    background-color: white;
+    background-color: #e8f5e9; 
     color: #1b5e20;
     border: 2px solid #4caf50;
+    border-left: 4px solid #2e7d32; 
     font-size: 2rem;
 }
 
-.signup-page .success a {
+.signup-page .success a, .signup-page .login-note a {
     color: rgb(47, 17, 218);
     font-weight: bold;
     text-underline-offset: 0.5rem;
+    padding: 0.2rem;
 }
 
-.signup-page .success a:hover {
+.signup-page .success a:hover, .signup-page .login-note a:hover {
     background-color: rgb(183, 183, 183);
 }
 
@@ -1261,11 +1262,26 @@ mark {
     font-size: 1.2rem;
     background-color: #fdeceb;
     color: #b02418;
-    border: 2px solid #b02418;
+    border: 2px solid #e57373;
+    border-left: 2px solid #b02418;
 }
 
 @media (max-width: 600px) {
     .signup-row {
         width: 100%;
     }
+}
+
+.signup-page p:not(.general-footer) {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.signup-page .login-message {
+    width: fit-content;
+    margin: 1.5rem auto;     
+    padding: 0.6rem 1.5rem;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12)
 }

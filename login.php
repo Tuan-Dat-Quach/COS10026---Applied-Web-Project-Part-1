@@ -10,7 +10,7 @@ $message = '';
 $messageType = '';
 
 if (isset($_GET['logout'])) {
-    $message = 'You have logged out successfully.';
+    $message = '✅ You have logged out successfully.';
     $messageType = 'success';
 }
 
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<body class="login-page">
+<body class="signup-page">
 
 <?php include 'header.inc'; ?>
 
@@ -91,6 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if (empty($_SESSION['user_id'])): ?>
 
         <form action="login.php" method="post">
+          <div class="signup-row">
             <label for="username">Username:</label>
             <input
                 type="text"
@@ -100,7 +101,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 autocomplete="username"
                 required
             >
+          </div>
 
+          <div class="signup-row">
             <label for="password">Password:</label>
             <input
                 type="password"
@@ -109,27 +112,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 autocomplete="current-password"
                 required
             >
+          </div>
 
             <button type="submit">Login</button>
         </form>
 
-        <p>Don't have an account?
+        <p class="login-note"> Don't have an account?
             <a href="signup.php">Sign up here</a>
         </p>
 
     <?php else: ?>
 
-        <p>You are logged in as
+        <p class="login-note"> <span aria-hidden='true'> ✅ </span> You have successfully logged in as
             <?= htmlspecialchars($_SESSION['username']) ?>.
         </p>
 
         <?php if ($_SESSION['role'] === 'Manager'): ?>
-            <p><a href="manager.php">Go to Manager Page</a></p>
+            <p class="login-note"><a href="manager.php">Go to Manager Page</a></p>
         <?php else: ?>
-            <p><a href="user.php">Go to User Page</a></p>
+            <p class="login-note"><a href="user.php">Go to User Page</a></p>
         <?php endif; ?>
 
-        <p><a href="logout.php">Logout</a></p>
+        <p class="login-note"><a href="logout.php">Logout</a></p>
 
     <?php endif; ?>
   </main>

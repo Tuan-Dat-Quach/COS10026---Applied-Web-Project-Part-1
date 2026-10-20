@@ -22,7 +22,7 @@
       $error = '⚠️ Username and Password cannot be empty. Please enter again.';
     } elseif (strlen($username) > 50) {
       $error = '⚠️ Username is too long. It must be 50 characters or fewer.';
-    } elseif (strlen($password) < 6) {
+    } elseif (strlen($password) < 8) {
       $error = '⚠️ Password is too short. Password must be at least 6 characters.';
     } elseif ($password !== $confirm) {
       $error = '⚠️ Your confirmed password does not match with the previous.';
