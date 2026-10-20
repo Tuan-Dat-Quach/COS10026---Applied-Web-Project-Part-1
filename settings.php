@@ -2,13 +2,14 @@
 <?php
 $host = "localhost";
 $user = "root";
-$pwd = "";
-$sql_db = "greener_society";
+$password = "";
+$database = "greener_society";
 
-$conn = mysqli_connect($host, $user, $pwd, $sql_db);
+$connect = mysqli_connect($host, $user, $password, $database);
 
-if (!$conn) {
+if (!$connect) {
     die("Database connection failed: " . mysqli_connect_error());
 }
-?>
 
+mysqli_set_charset($connect, "utf8mb4");
+?>
