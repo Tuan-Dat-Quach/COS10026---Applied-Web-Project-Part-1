@@ -317,6 +317,7 @@
     if (($_GET['list_eoi'] ?? '')=== 'all' && $all_eoi && mysqli_num_rows($all_eoi) > 0) {
       echo "<div class='table-wrapper' id='eoi-table'>";
       echo "<table>";
+      echo "<thead>";
       echo "<tr>";
       echo "<th class='cell'> User ID </th>";
       echo "<th class='cell'> EOI number </th>";
@@ -325,6 +326,9 @@
       echo "<th class='cell'> Status </th>";
       echo "<th class='cell'> <span aria-hidden='true'> ✏️ </span> Action </th>";
       echo "</tr>";
+      echo "</thead>";
+
+      echo "<tbody>";
       while ($single_eoi = mysqli_fetch_assoc($all_eoi)) {
         echo "<tr id='eoi-" . htmlspecialchars($single_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "'>";
         if ($single_eoi['user_id'] === NULL) {
@@ -426,6 +430,7 @@
         echo "</td>";
         echo "</tr>";
       }
+      echo "</tbody>";
       echo "</table>";
       echo "</div>";
     } 
@@ -445,6 +450,7 @@
         if ($given_eoi && mysqli_num_rows($given_eoi) > 0) {
           echo "<div class='table-wrapper' id='eoi-table'>";
           echo "<table>";
+          echo "<thead>";
           echo "<tr>";
           echo "<th class='cell'> User ID </th>";
           echo "<th class='cell'> EOI number </th>";
@@ -453,6 +459,9 @@
           echo "<th class='cell'> Status </th>";
           echo "<th class='cell'> <span aria-hidden='true'> ✏️ </span> Action </th>";
           echo "</tr>";
+          echo "</thead>";
+
+          echo "<tbody>";
           while ($single_given_eoi = mysqli_fetch_assoc($given_eoi)) {
             echo "<tr id='eoi-" . htmlspecialchars($single_given_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "'>";
             if ($single_given_eoi['user_id'] === NULL) {
@@ -554,6 +563,7 @@
             echo "</td>";
             echo "</tr>";
           }
+          echo "</tbody>";
           echo "</table>";
           echo "</div>";
         }
