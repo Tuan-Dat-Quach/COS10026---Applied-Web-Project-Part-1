@@ -88,9 +88,15 @@ nav a:hover {
 .index-page nav a[href="index.php"],
 .jobs-page nav a[href="jobs.php"],
 .apply-page nav a[href="apply.php"],
-.about-page nav a[href="about.php"] {
+.about-page nav a[href="about.php"],
+.manager-page nav a[href="manager.php"],
+.manager-page nav a[href="user.php"],
+.signup-page nav a[href="signup.php"],
+.login-page nav a[href="login.php"] {
     border-bottom: 3px solid #276249;
 }
+
+
 
 /* This is the section for CSS applied to index.php */
 
@@ -1161,17 +1167,17 @@ mark {
 
 
 /* This is the section for CSS applied to both signup.php and login.php */
-.signup-page h1 {
+.signup-page h1, .login-page h1 {
     text-align: center;
 }
 
-.signup-page main {
+.signup-page main, .login-page main {
     margin: 0 auto;
     padding: 1rem;
     box-sizing: border-box;
 }
 
-.signup-page form {
+.signup-page form, .login-page form  {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1195,7 +1201,7 @@ mark {
     border-radius: 8px;
 }
 
-.signup-page button {
+.signup-page button, .login-page button {
     padding: 0.7rem;
     font-size: 1.5rem;
     color: white;
@@ -1237,7 +1243,7 @@ mark {
     padding: 0.8rem 1.5rem;
 }
 
-.signup-page .success {
+.signup-page .success, .login-page .success {
     width: fit-content;
     background-color: #e8f5e9; 
     color: #1b5e20;
@@ -1246,18 +1252,24 @@ mark {
     font-size: 2rem;
 }
 
-.signup-page .success a, .signup-page .login-note a {
+.signup-page .success a, 
+.signup-page .login-note a,
+.login-page .success a,
+.login-page .login-note a {
     color: rgb(47, 17, 218);
     font-weight: bold;
     text-underline-offset: 0.5rem;
     padding: 0.2rem;
 }
 
-.signup-page .success a:hover, .signup-page .login-note a:hover {
+.signup-page .success a:hover,
+.signup-page .login-note a:hover,
+.login-page .success a:hover,
+.login-page .success a:hover {
     background-color: rgb(183, 183, 183);
 }
 
-.signup-page .error {
+.signup-page .error, .login-page .error {
     font-weight: bold;
     font-size: 1.2rem;
     background-color: #fdeceb;
@@ -1272,12 +1284,12 @@ mark {
     }
 }
 
-.signup-page p:not(.general-footer) {
+.signup-page p:not(.general-footer), .login-page p:not(.general-footer){
     text-align: center;
     font-size: 1.5rem;
 }
 
-.signup-page .login-message {
+.signup-page .login-message, .login-page .login-message {
     width: fit-content;
     margin: 1.5rem auto;     
     padding: 0.6rem 1.5rem;
