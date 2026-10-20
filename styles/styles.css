@@ -1160,5 +1160,111 @@ mark {
 
 
 
+/* This is the section for CSS applied to signup.php */
+.signup-page h1 {
+    text-align: center;
+}
+
+.signup-page main {
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.signup-page form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.signup-row {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0 auto;
+}
 
 
+.signup-row input {
+    flex: 1;
+    padding: 0.6rem;
+    font-size: 1.1rem;
+    border: 1px solid #666;
+    border-radius: 8px;
+}
+
+.signup-page button {
+    padding: 0.7rem;
+    font-size: 1.5rem;
+    color: white;
+    background-color: #2e7d32;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.signup-row label {    
+    width: 170px;
+    flex-shrink: 0;       
+    text-align: right;
+    font-size: 1.2rem;
+}
+
+.label-space {
+    width: 170px;
+    flex-shrink: 0;
+}
+
+.signup-row .signup-message {
+    flex: 1;
+    margin: 0;
+    padding: 0.6rem;
+    font-size: 1.2rem;
+}
+
+
+.success-row {
+    width: fit-content;
+    min-width: 0;
+    margin: 0 auto;
+}
+
+.success-row .signup-message {
+    flex: none;
+    text-align: center;
+    padding: 0.8rem 1.5rem;
+}
+
+.signup-page .success {
+    width: fit-content;
+    background-color: white;
+    color: #1b5e20;
+    border: 2px solid #4caf50;
+    font-size: 2rem;
+}
+
+.signup-page .success a {
+    color: rgb(47, 17, 218);
+    font-weight: bold;
+    text-underline-offset: 0.5rem;
+}
+
+.signup-page .success a:hover {
+    background-color: rgb(183, 183, 183);
+}
+
+.signup-page .error {
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: #fdeceb;
+    color: #b02418;
+    border: 2px solid #b02418;
+}
+
+@media (max-width: 600px) {
+    .signup-row {
+        width: 100%;
+    }
+}
