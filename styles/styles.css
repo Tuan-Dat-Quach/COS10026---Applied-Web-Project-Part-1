@@ -213,7 +213,7 @@ nav a:hover {
     font-size: 2rem;
 }
 /* This is the CSS for the table itself */
-.table {
+.index-page .table {
     text-align: center;
     border: 2px solid;
     border-collapse: collapse; /* This allows single-line border for the table */
@@ -222,26 +222,26 @@ nav a:hover {
 }
 
 /* This is the CSS for the table header, or the first row */
-th {
+.index-page th {
     padding: 1rem;
     background-color: #03e491;
     border: 2px solid;
 }
 
 /* This is the CSS for table cells */
-td, th:not(.table-header) {
+.index-page td, .index-page th:not(.table-header) {
     padding: 1vw;
     background-color:rgb(243, 232, 232);
     border: 2px solid;
 }
 
 /* This creates hover effecrts for table cells */
-td:hover {
+.index-page td:hover {
     background-color:rgb(215, 231, 172);
     cursor: pointer; 
 }
  
-th:not(.table-header):hover {
+.index-page th:not(.table-header):hover {
     background-color:rgb(215, 231, 172);
     cursor: pointer; 
 }
@@ -313,18 +313,20 @@ th:not(.table-header):hover {
     background-color: rgb(183, 183, 183);
 }
 
-hr {
-    margin: 0px;
-}
-
 /* These 3 sections are CSS for the footer */
 .footer {
     text-align: center;
+}
+
+.footer p {
     font-size: 1.5rem;
 }
 
-footer p a {
+.footer p a {
     color: #c00000;
+    overflow-wrap: anywhere;
+    text-underline-offset: 0.5rem;
+    font-size: 1.5rem;
 }
 
 footer p a:hover {
@@ -333,6 +335,7 @@ footer p a:hover {
 
 hr {
     border: 1px solid;
+    margin: 0;
 }
 
 
@@ -564,6 +567,36 @@ hr {
     .job-details td {
         padding: 9px;
     }
+}
+
+.jobs-page .table {
+    text-align: center;
+    border: 2px solid;
+    border-collapse: collapse; 
+    margin-left: 1.25rem;
+    margin-top: 3rem;
+}
+
+.jobs-page th {
+    padding: 1rem;
+    background-color: #03e491;
+    border: 2px solid;
+}
+
+.jobs-page td, .jobs-page th:not(.table-header) {
+    padding: 1vw;
+    background-color:rgb(243, 232, 232);
+    border: 2px solid;
+}
+
+.jobs-page td:hover {
+    background-color:rgb(215, 231, 172);
+    cursor: pointer; 
+}
+ 
+.jobs-page th:not(.table-header):hover {
+    background-color:rgb(215, 231, 172);
+    cursor: pointer; 
 }
 
 
@@ -801,6 +834,36 @@ textarea {font-size: 20px;}
     }
 }
 
+.about-page .table {
+    text-align: center;
+    border: 2px solid;
+    border-collapse: collapse; 
+    margin-left: 1.25rem;
+    margin-top: 3rem;
+}
+
+.about-page th {
+    padding: 1rem;
+    background-color: #03e491;
+    border: 2px solid;
+}
+
+.about-page td, .about-page th:not(.table-header) {
+    padding: 1vw;
+    background-color:rgb(243, 232, 232);
+    border: 2px solid;
+}
+
+.about-page td:hover {
+    background-color:rgb(215, 231, 172);
+    cursor: pointer; 
+}
+ 
+.about-page th:not(.table-header):hover {
+    background-color:rgb(215, 231, 172);
+    cursor: pointer; 
+}
+
 
 
 /* This is the section for CSS applied to search_result.php */
@@ -835,7 +898,7 @@ mark {
 
 
 
-/* This is the section for CSS applied to manager.php */
+/* This is the section for CSS applied to both manager.php and eoi_details.php */
 
 
 
@@ -843,6 +906,8 @@ mark {
     text-align: center;
     margin-top: 0;
     font-size: 3rem;
+    text-decoration: underline;
+    text-underline-offset: 1rem;
 }
 
 .manager-page h2 {
@@ -856,7 +921,7 @@ mark {
     margin-bottom: 0;
 }
 
-.manager-page p {
+.manager-page p:not(.general-footer) {
     font-size: 2rem;
     margin-top: 0.8rem;
     margin-bottom: 1rem;
@@ -901,3 +966,305 @@ mark {
     }
 }
 
+.eoi-list {
+    font-size: 1.2rem;
+    margin-left: 1rem;
+}
+
+.manager-page input:not(.change-status, .delete-eoi) {
+    padding: 0.5rem 1rem;
+    background-color: #2e7d32;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+.manager-page select {
+    height: 2rem;
+}
+
+.sort-form {
+    margin-bottom: 2rem;
+}
+
+.eoi-manage {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.eoi-manage form {
+    flex: 1;
+    display: inline-block;
+}
+
+@media (max-width: 9px) {
+    .eoi-manage {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.no-eoi {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.manager-page table {
+    text-align: center;
+    border: 2px solid;
+    font-size: 1.5rem;
+    border-collapse: collapse;
+    margin: 1.5rem 1rem;
+}
+
+.table-wrapper-2 table {
+    margin: 1.5rem auto;
+}
+
+.manager-page th, .manager-page td {
+    border: 2px solid;
+    padding: 1.5rem 0.5rem;
+}
+
+.eoi-action, .confirm-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+}
+
+.table-wrapper, .table-wrapper-2 {
+    overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+    .manager-page table {
+        font-size: 1rem;
+    }
+    .manager-page th, .manager-page td {
+        padding: 0.8rem 0.4rem;
+    }
+    .manager-page td input {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+    }
+}
+
+.manager-page button {
+    background-color: transparent;  
+    border: none;   
+    color: white;                                    
+    font-size: 1.2rem;
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-left: 0.5rem;
+}
+
+.view-eoi button {
+    background-color: #2e7d32;
+}
+
+.change-status button {
+    background-color: #1565c0;
+}
+
+.delete-eoi button, .confirm-yes button {
+    background-color: #c00000;
+}
+
+.confirm-no button {
+    background-color: #666;
+}
+
+.status-choice button {
+    background-color: #2e7f78; 
+    font-size: 1.5rem;
+}
+
+.status {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    border-radius: 24px;
+    font-weight: bold;
+}
+
+.status-new {
+    background-color: #8ec3f0;
+    border: 2px solid #5a9bd5;
+}
+
+.status-current {
+    background-color: #f5cf5a;
+    border: 2px solid #d4a017;
+}
+
+.status-final {
+    background-color: #8fd19a;
+    border: 2px solid #4caf50;
+}
+
+.manager-page th {
+    background-color: #dbc382;
+}
+
+.manager-page tr:nth-child(even) td {
+    background-color: #fbf3e8;
+}
+
+.manager-page tr:nth-child(odd) td {
+    background-color: #f0e4d0;
+}
+
+.details-page td {
+    background-color: #f0e4d0 !important;
+}
+
+.delete-by-job-ref {
+    flex: 0 0 auto;
+    margin-left: 1rem;
+}
+
+.delete-by-job-ref form {
+    flex: none;
+}
+
+.delete-by-job-ref button {
+    margin-left: 0;
+}
+
+.delete-all-confirm {
+    text-align: center;
+    margin: 1rem;
+}
+
+.manager-page .delete-all-confirm p {
+    margin: 0.5rem 0 0.8rem;
+}
+
+.delete-all-confirm .confirm-box {
+    justify-content: center;
+    gap: 1rem;
+}
+
+.delete-all-confirm .confirm-box button {
+    margin-left: 0;
+}
+
+
+
+/* This is the section for CSS applied to signup.php */
+.signup-page h1 {
+    text-align: center;
+}
+
+.signup-page main {
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.signup-page form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.signup-row {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0 auto;
+}
+
+
+.signup-row input {
+    flex: 1;
+    padding: 0.6rem;
+    font-size: 1.1rem;
+    border: 1px solid #666;
+    border-radius: 8px;
+}
+
+.signup-page button {
+    padding: 0.7rem;
+    font-size: 1.5rem;
+    color: white;
+    background-color: #2e7d32;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.signup-row label {    
+    width: 170px;
+    flex-shrink: 0;       
+    text-align: right;
+    font-size: 1.2rem;
+}
+
+.label-space {
+    width: 170px;
+    flex-shrink: 0;
+}
+
+.signup-row .signup-message {
+    flex: 1;
+    margin: 0;
+    padding: 0.6rem;
+    font-size: 1.2rem;
+}
+
+
+.success-row {
+    width: fit-content;
+    min-width: 0;
+    margin: 0 auto;
+}
+
+.success-row .signup-message {
+    flex: none;
+    text-align: center;
+    padding: 0.8rem 1.5rem;
+}
+
+.signup-page .success {
+    width: fit-content;
+    background-color: white;
+    color: #1b5e20;
+    border: 2px solid #4caf50;
+    font-size: 2rem;
+}
+
+.signup-page .success a {
+    color: rgb(47, 17, 218);
+    font-weight: bold;
+    text-underline-offset: 0.5rem;
+}
+
+.signup-page .success a:hover {
+    background-color: rgb(183, 183, 183);
+}
+
+.signup-page .error {
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: #fdeceb;
+    color: #b02418;
+    border: 2px solid #b02418;
+}
+
+@media (max-width: 600px) {
+    .signup-row {
+        width: 100%;
+    }
+}

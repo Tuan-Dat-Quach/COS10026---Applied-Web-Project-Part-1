@@ -1,6 +1,6 @@
 <footer class="footer">
 
-    <p>
+    <p class="general-footer">
         <strong>Jira project link:</strong>
         <a target="_blank"
            href="https://cos10026assignmentpart1.atlassian.net/jira/software/projects/SCRUM/summary">
@@ -8,7 +8,7 @@
         </a>
     </p>
 
-    <p>
+    <p class="general-footer">
         <strong>Github Repository link:</strong>
         <a target="_blank"
            href="https://github.com/Tuan-Dat-Quach/COS10026---Applied-Web-Project-Part-1">
@@ -16,7 +16,7 @@
         </a>
     </p>
 
-    <p>
+    <p class="general-footer">
         <strong>Another way to Contact us?</strong>
         Please mail to:
 
@@ -27,7 +27,7 @@
 
     <br>
 
-    <p>
+    <p class="general-footer">
         &copy; 2026 Greener Society. All rights reserved.
     </p>
 

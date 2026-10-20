@@ -58,10 +58,6 @@
 
           // Connect to the database
           require_once "settings.php";
-          $connect = mysqli_connect($host, $user, $pwd, $sql_db);
-          if (!$connect) {
-           die("Connection failed: " . mysqli_connect_error());
-          }
             // Start displaying in search_result.php when the user enters search button
             if (isset($_GET['search'])) {
               $search = trim($_GET['search']);
@@ -76,7 +72,7 @@
                         OR job_reference LIKE ?
                         OR short_description LIKE ?";
                 // Prepare SQL query with placeholder (?)
-                if ($stmt = $connect->prepare($sql)) {
+                if ($stmt = $conn->prepare($sql)) {
                   // Format the ? in sql, using % wildcard to represent any number of characters
                   $keyword = "%" . $search . "%";
                   // Bind values into the placeholders, here with 3 strings
@@ -157,7 +153,7 @@
                 }
               }
             }
-          mysqli_close($connect);
+          mysqli_close($conn);
         ?>
     </div>
     </main>

@@ -30,12 +30,9 @@
 
 <?php
   require_once "settings.php";
-  $connect = mysqli_connect($host, $user, $pwd, $sql_db);
-  if (!$connect) {
-    die("Connection failed: " . mysqli_connect_error());
-  }
+ 
   $sql = "SELECT * FROM jobs";
-  $result = mysqli_query($connect, $sql);
+  $result = mysqli_query($conn, $sql);
 ?>
 
     <main>
@@ -135,7 +132,7 @@
                   } else {
                     echo "<p> There is currently no job position to show. Stay tuned for Updates! </p>";
                   }
-                mysqli_close($connect);
+                mysqli_close($conn);
                 ?>
                 <!-- ASIDE -->
 
