@@ -34,7 +34,8 @@ main {
 #menu {
   display: flex;
   flex-wrap: wrap; /* This allows the text to move down a row when the screen is shrinking, preventing unexpected disappearance */
-  justify-content: space-between; /* This sets equal space between the texts */
+  justify-content: flex-start; 
+  gap: 1.5rem 2.5rem;
   list-style-type: none; /* This eliminates the bullet points of <ul> */
   /* These two lines remove the default margin and padding of the <ul> list */
   margin: 0; 
@@ -48,7 +49,7 @@ main {
   font-weight: bold;
   font-size: 2rem;
   margin-right: 1.5vw;
-  padding-bottom: 0.1rem;
+  padding: 0.3rem 0.6rem;
 }
 
 /* This sets the hover effects for navigation bar */

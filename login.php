@@ -44,13 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['username'] = $account['username'];
                     $_SESSION['role'] = $account['role'];
 
-                    if ($account['role'] === 'manager') {
-                        header('Location: manager.php');
-                        exit;
-                    } else {
-                        header('Location: user.php');
-                        exit;
-                    }
                 } else {
                     $message = 'Incorrect username or password.';
                     $messageType = 'error';
@@ -67,11 +60,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-
-include 'header.inc';
 ?>
 
-<main class="login-container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Greener Society position description page featuring current environmental conservation employment opportunities.">
+    <meta name="keywords" content="Greener Society, environmental jobs, conservation jobs, recruitment, sustainability">
+    <meta name="author" content="TechTide Group">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Greener Society - Position Descriptions </title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="login-page">
+
+<?php include 'header.inc'; ?>
+
+  <main class="login-container">
     <h1>Login</h1>
 
     <?php if ($message !== ''): ?>
@@ -115,7 +123,7 @@ include 'header.inc';
             <?= htmlspecialchars($_SESSION['username']) ?>.
         </p>
 
-        <?php if ($_SESSION['role'] === 'manager'): ?>
+        <?php if ($_SESSION['role'] === 'Manager'): ?>
             <p><a href="manager.php">Go to Manager Page</a></p>
         <?php else: ?>
             <p><a href="user.php">Go to User Page</a></p>
@@ -124,7 +132,9 @@ include 'header.inc';
         <p><a href="logout.php">Logout</a></p>
 
     <?php endif; ?>
-</main>
+  </main>
 
 <?php include 'footer.inc'; ?>
 
+</body>
+</html>
