@@ -27,30 +27,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 WHERE username = ?";
 
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "s", $username);
-        mysqli_stmt_execute($stmt);
 
-        $result = mysqli_stmt_get_result($stmt);
-        $account = mysqli_fetch_assoc($result);
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "s", $username);
 
-        if ($account &&
-            password_verify($password, $account['password'])) {
+            if (mysqli_stmt_execute($stmt)) {
+                $result = mysqli_stmt_get_result($stmt);
+                $account = mysqli_fetch_assoc($result);
 
-            session_regenerate_id(true);
+                if ($account &&
+                    password_verify($password, $account['password'])) {
 
-            $_SESSION['user_id'] = $account['user_id'];
-            $_SESSION['username'] = $account['username'];
-            $_SESSION['role'] = $account['role'];
+                    session_regenerate_id(true);
 
-            $message = 'Login successful! Welcome, '
-                     . $account['username'] . '.';
-            $messageType = 'success';
+                    $_SESSION['user_id'] = $account['user_id'];
+                    $_SESSION['username'] = $account['username'];
+                    $_SESSION['role'] = $account['role'];
+
+                    if ($account['role'] === 'manager') {
+                        header('Location: manager.php');
+                        exit;
+                    } else {
+                        header('Location: user.php');
+                        exit;
+                    }
+                } else {
+                    $message = 'Incorrect username or password.';
+                    $messageType = 'error';
+                }
+            } else {
+                $message = 'Login failed. Please try again.';
+                $messageType = 'error';
+            }
+
+            mysqli_stmt_close($stmt);
         } else {
-            $message = 'Incorrect username or password.';
+            $message = 'Unable to process login at the moment.';
             $messageType = 'error';
         }
-
-        mysqli_stmt_close($stmt);
     }
 }
 
@@ -67,6 +81,7 @@ include 'header.inc';
     <?php endif; ?>
 
     <?php if (empty($_SESSION['user_id'])): ?>
+
         <form action="login.php" method="post">
             <label for="username">Username:</label>
             <input
@@ -89,11 +104,27 @@ include 'header.inc';
 
             <button type="submit">Login</button>
         </form>
+
+        <p>Don't have an account?
+            <a href="signup.php">Sign up here</a>
+        </p>
+
     <?php else: ?>
+
         <p>You are logged in as
             <?= htmlspecialchars($_SESSION['username']) ?>.
         </p>
+
+        <?php if ($_SESSION['role'] === 'manager'): ?>
+            <p><a href="manager.php">Go to Manager Page</a></p>
+        <?php else: ?>
+            <p><a href="user.php">Go to User Page</a></p>
+        <?php endif; ?>
+
+        <p><a href="logout.php">Logout</a></p>
+
     <?php endif; ?>
 </main>
 
 <?php include 'footer.inc'; ?>
+
