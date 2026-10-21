@@ -48,7 +48,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <?php endif; ?>
 
             <li>
-                <a href="logout.php">
+                <a href="?confirm_logout=1">
                     <span aria-hidden="true"> 🚪 </span> Logout
                 </a>
             </li>

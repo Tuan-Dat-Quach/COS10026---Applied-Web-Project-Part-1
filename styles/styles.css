@@ -96,11 +96,47 @@ nav a:hover {
     border-bottom: 3px solid #276249;
 }
 
+.logout-confirm {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem 1.5rem;
+    padding: 0.8rem 1rem;
+    background-color: #fff3e0;
+    border-bottom: 3px solid #e65100;
+}
+
+.logout-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logout {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.logout-confirm button {
+    padding: 0.5rem 1.2rem;
+    font-size: 1.1rem;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.logout-no button { 
+    background-color: #666666; 
+}
+
+.logout-yes button { 
+    background-color: #c00000;
+ }
+
 
 
 /* This is the section for CSS applied to index.php */
-
-
 
 /* This is the CSS for company slogan */
 .slogan {
@@ -1071,7 +1107,7 @@ mark {
     }
 }
 
-.manager-page button {
+.manager-page button:not(.login-button) {
     background-color: transparent;  
     border: none;   
     color: white;                                    
