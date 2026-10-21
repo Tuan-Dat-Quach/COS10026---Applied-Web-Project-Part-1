@@ -1107,8 +1107,7 @@ mark {
     }
 }
 
-.manager-page button:not(.login-button) {
-    background-color: transparent;  
+.manager-page button { 
     border: none;   
     color: white;                                    
     font-size: 1.2rem;
