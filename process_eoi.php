@@ -1,4 +1,16 @@
+
 <?php
+    
+    $host = "localhost";
+    $user = "root";
+    $password = "";
+    $database = "greener_society";
+
+    $conn = mysqli_connect($host, $user, $password, $database);
+
+    if (!$conn) {
+        die("Database connection failed: " . mysql_connect_error());
+    }
 
     function sanitize_input($data){
          $data = trim($data);
@@ -35,7 +47,7 @@
         $email_input = false;
         $pn_input = false;
         $skills_input = false;
-
+        $form_submit = false;
 
         if (empty($job_reference_number)) {
             echo "<p style='color:red;'>Please enter the Job Reference Number (either GS102A, GS204B, or GS305C).</p> <br>";
@@ -141,8 +153,14 @@
             echo "<p><strong>Phone Number:</strong> $phone_number</p>";
             echo "<p><strong>Skills:</strong> " . implode(", ", $skills) . "</p>";
             echo "<p><strong>Other Skills:</strong> $other_skills</p>";
+            $form_submit = true;
         } else {
             echo "<p style='color:red;'><strong>Please go back in fix all errors.</strong></p>";
+        }
+
+        if ($form_submit == true) {
+            INSERT INTO eoi (job_reference, first_name, last_name, date_of_birth, gender, street_address, suburb, state, postcode, email, phone_number, skills, other_skills)
+            VALUES ($job_reference_number, $first_name, $last_name, $date_of_birth, $gender, $street_address, $suburb, $state, $postcode, $email, $phone_number, $skills, $other_skills);
         }
 
     }
