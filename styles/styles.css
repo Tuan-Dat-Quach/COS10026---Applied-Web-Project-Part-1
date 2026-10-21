@@ -634,10 +634,7 @@ textarea {font-size: 20px;}
 
 /* This is the section for CSS applied to about.php */
 
-
-
 /* These are the CSS for the first section */
-
 .about-us {
     display: grid;
     grid-template-columns: repeat(2,1fr); /* This sets a grid layout, dividing the screen into two equal columns */
@@ -904,16 +901,14 @@ mark {
 
 
 
-/* This is the section for CSS applied to both manager.php and eoi_details.php */
-
-
-
+/* This is the section for CSS applied to both manager.php, user.php and eoi_details.php */
 .manager-page h1 {
     text-align: center;
     margin-top: 0;
+    padding-top: 2rem;
     font-size: 3rem;
     text-decoration: underline;
-    text-underline-offset: 1rem;
+    text-underline-offset: 0.8rem;
 }
 
 .manager-page h2 {
@@ -928,14 +923,14 @@ mark {
 }
 
 .manager-page p:not(.general-footer) {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-top: 0.8rem;
     margin-bottom: 1rem;
 }
 
 .statistic {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     align-items: start;
     font-weight: bold;
     margin: 1rem;
@@ -953,23 +948,38 @@ mark {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.total {
-    background-color: #d0f9ef;
+.total, .user-total-eoi {
+    background-color: #fbd5b5;
 }
 
-.new {
-    background-color: #edeeaf;
-}
-
-.available-positions {
+.new, .user-new {
     background-color: #bfdbf6;
 }
 
-@media (max-width: 768px) {
-    .statistic {
-        display: grid;
-        grid-template-columns: 1fr;
-    }
+.available-positions, .user-current {
+    background-color: #edeeaf;
+}
+
+.user-final { 
+    background-color: #cde8cf; 
+}
+
+.manager-page .user-statistic {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    align-items: start;
+    font-weight: bold;
+    margin: 1rem;
+    padding-bottom: 2rem;
+}
+
+.user-total-eoi, .user-new, .user-current, .user-final {
+    box-sizing: border-box;
+    padding: 0 1rem 0.5rem;
+    border: 2px solid;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .eoi-list {
@@ -1007,7 +1017,7 @@ mark {
     display: inline-block;
 }
 
-@media (max-width: 9px) {
+@media (max-width: 768px) {
     .eoi-manage {
         flex-direction: column;
         align-items: flex-start;
@@ -1095,6 +1105,16 @@ mark {
     font-size: 1.5rem;
 }
 
+.withdraw-eoi button {
+    background-color: #e65100;
+}
+
+.manager-page button:disabled, .withdraw-disabled {
+    background-color: #bdbdbd;
+    color: #666;
+    cursor: not-allowed;
+}
+
 .status {
     display: inline-block;
     padding: 0.3rem 0.9rem;
@@ -1162,6 +1182,49 @@ mark {
 
 .delete-all-confirm .confirm-box button {
     margin-left: 0;
+}
+
+.user-profile {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 1rem;
+    padding: 1rem 1.5rem;
+    background-color: #f0e4d0;
+    border: 2px solid;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-avatar {
+    font-size: 4.5rem;
+    color: #2e7d32;
+    line-height: 1;
+}
+
+.profile-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 4rem;
+    margin: 0;
+}
+
+.profile-info dt {
+    font-size: 1rem;
+    color: #555555;
+}
+
+.profile-info dd {
+    margin: 0.2rem 0 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .user-profile {
+        flex-direction: column;
+    }
 }
 
 

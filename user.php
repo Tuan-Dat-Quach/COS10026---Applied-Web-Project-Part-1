@@ -8,12 +8,16 @@
     exit;
   }
   
+  $user_id = (int)$_SESSION['user_id'];
+  $username = $_SESSION['username'] ?? '';
+  $user_role = $_SESSION['role'] ?? '';
+
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'withdraw') {
     $withdrawn_eoi = (int)($_POST['eoi_number'] ?? 0);
     // Delete an EOI according to its EOI number
     if ($withdrawn_eoi > 0) {
-      $stmt = $conn->prepare("DELETE FROM eoi WHERE eoi_number = ?");
-      $stmt->bind_param("i", $withdrawn_eoi);
+      $stmt = $conn->prepare("DELETE FROM eoi WHERE eoi_number = ? AND user_id = ? AND status IN ('NEW', 'CURRENT')");
+      $stmt->bind_param("ii", $withdrawn_eoi, $user_id);
       $stmt->execute();
       $stmt->close();
     }
@@ -27,9 +31,6 @@
     exit;
   }
 
-  $user_id = (int)$_SESSION['user_id'];
-  $username = $_SESSION['username'] ?? '';
-
   // Count this user's EOIs by status
   $total_eoi = 0;
   $new_eoi = 0;
@@ -40,6 +41,7 @@
   $stmt->bind_param("i", $user_id);
   $stmt->execute();
   $result = $stmt->get_result();
+  $stmt->close();
 
   while ($row = mysqli_fetch_assoc($result)) {
     $total_eoi += $row['total'];
@@ -51,6 +53,14 @@
       $final_eoi = $row['total'];
     }
   }
+
+  $latest_eoi = null;
+  $stmt = $conn->prepare("SELECT eoi_number, job_reference, status FROM eoi WHERE user_id = ? ORDER BY eoi_number DESC LIMIT 1");
+  $stmt->bind_param("i", $user_id);
+  $stmt->execute();
+  $latest_result = $stmt->get_result();
+  $latest_eoi = mysqli_fetch_assoc($latest_result);
+  $stmt->close();
 
   // Associative array to prevent SQL injection
   $sort_methods = [
@@ -90,8 +100,52 @@
     <main>
         <h1> My Dashboard </h1>
         <!-- An overview with some statistics: Total EOIs, New EOIs and Available job positions -->
+
+        <h2> My Profile </h2>
+        <section class="user-profile">
+            <div class="profile-avatar" aria-hidden="true">
+                <i class="fa-solid fa-circle-user"></i>
+            </div>
+            <dl class="profile-info">
+              <?php
+                echo "<div>";
+                echo "<dt> Username </dt>";
+                echo "<dd>" . htmlspecialchars($username, ENT_QUOTES, 'UTF-8') . "</dd>";
+                echo "</div>";
+                echo "<div>";
+                echo "<dt> User ID </dt>"; 
+                echo "<dd>" . htmlspecialchars($user_id, ENT_QUOTES, 'UTF-8') . "</dd>";
+                echo "</div>";
+                echo "<div>";
+                echo "<dt> Account type </dt>";
+                echo "<dd>" . htmlspecialchars($user_role, ENT_QUOTES, 'UTF-8') . "</dd>" ;
+                echo "</div>";
+                if ($latest_eoi) {
+                  $latest_class = 'status-final';
+                  if ($latest_eoi['status'] === 'NEW') {
+                    $latest_class = 'status-new';
+                  } elseif ($latest_eoi['status'] === 'CURRENT') {
+                    $latest_class = 'status-current';
+                  }
+                  echo "<div>";
+                  echo "<dt> Latest EOI </dt>";
+                  echo "<dd> #" . htmlspecialchars($latest_eoi['eoi_number'], ENT_QUOTES, 'UTF-8')
+                       . " - " . htmlspecialchars($latest_eoi['job_reference'], ENT_QUOTES, 'UTF-8')
+                       . " - " . "<span class='status $latest_class'>" . htmlspecialchars($latest_eoi['status'], ENT_QUOTES, 'UTF-8') 
+                       . "</span> </dd>";
+                  echo "</div>";
+                } else {
+                  echo "<div>";
+                  echo "<dt> Latest EOI </dt>";
+                  echo "<dd> No EOI yet </dd>";
+                  echo "</div>";
+                }
+              ?>
+            </dl>
+        </section>
+
         <h2> Overview </h2>
-        <section class="statistic">
+        <section class="user-statistic">
             <div class="user-total-eoi">
             <?php
               echo "<h3> <span aria-hidden='true'> 📋 </span> Total EOIs </h3>";
@@ -199,8 +253,12 @@
                 echo "<button type='submit'> <i class='fa-solid fa-rotate-left' aria-hidden='true'> </i> Withdraw </button>";
                 echo "</form>";
               } else {
-                echo "<span> Not available </span>";
+                echo "<button type='button' class='withdraw-disabled' disabled>";
+                echo "<i class='fa-solid fa-lock' aria-hidden='true'> </i> Withdraw";
+                echo "</button>";
               }
+              echo "</div>"; 
+
               // Confirm if the user wants to withdraw the chosen EOI
               if (($_GET['confirm-withdraw'] ?? '') === (string)$eoi['eoi_number']) {
                 echo "<p> ⚠️  Withdraw EOI number " . htmlspecialchars($eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "? This action cannot be undone. </p>";
@@ -215,7 +273,7 @@
                 echo "<input type='hidden' name='action' value='withdraw'>";
                 echo "<input type='hidden' name='eoi_number' value='" . htmlspecialchars($eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "'>";
                 echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
-                echo "<button type='submit'> <i class='fa-solid fa-check' aria-hidden='true'> </i> Yes, delete it </button>";
+                echo "<button type='submit'> <i class='fa-solid fa-check' aria-hidden='true'> </i> Yes, withdraw it </button>";
                 echo "</form>";
                 echo "</div>";
               }
