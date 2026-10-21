@@ -182,7 +182,7 @@
 
         <h2>My Submitted EOIs</h2>
         <!-- Sort field options allowed for the manager, with hidden inputs of list_eoi and job_reference -->
-        <form action="user.php" method="GET" class="sort-form">
+        <form action="user.php#sort" method="GET" class="sort-form">
           <label for="sort" class="eoi-list"> Sort by: </label>
 
           <select name="sort" id="sort">
