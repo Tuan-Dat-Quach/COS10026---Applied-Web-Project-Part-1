@@ -582,6 +582,8 @@
        (($_GET['list_eoi'] ?? '') ==='job_reference' && $given_eoi && mysqli_num_rows($given_eoi) == 0)) {
       echo "<p class='no-eoi'> There is currently no EOI. Come back later, manager ! </p>";
     }
+
+    mysqli_close($conn);
     ?>
     </main>
 

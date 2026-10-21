@@ -54,6 +54,7 @@
     }
   }
 
+  // Get user's latest EOI, sort it by EOI number, order the sorted from top to bottm, then take only the first row
   $latest_eoi = null;
   $stmt = $conn->prepare("SELECT eoi_number, job_reference, status FROM eoi WHERE user_id = ? ORDER BY eoi_number DESC LIMIT 1");
   $stmt->bind_param("i", $user_id);
@@ -99,8 +100,8 @@
 
     <main>
         <h1> My Dashboard </h1>
-        <!-- An overview with some statistics: Total EOIs, New EOIs and Available job positions -->
 
+        <!-- A Profile box including username, user ID, account type and latest EOI -->
         <h2> My Profile </h2>
         <section class="user-profile">
             <div class="profile-avatar" aria-hidden="true">
@@ -108,6 +109,7 @@
             </div>
             <dl class="profile-info">
               <?php
+                // Using description list here, and later add flexbox display in CSS
                 echo "<div>";
                 echo "<dt> Username </dt>";
                 echo "<dd>" . htmlspecialchars($username, ENT_QUOTES, 'UTF-8') . "</dd>";
@@ -120,6 +122,7 @@
                 echo "<dt> Account type </dt>";
                 echo "<dd>" . htmlspecialchars($user_role, ENT_QUOTES, 'UTF-8') . "</dd>" ;
                 echo "</div>";
+                // Display user's latest EOI with its EOI number, Job Reference and current status
                 if ($latest_eoi) {
                   $latest_class = 'status-final';
                   if ($latest_eoi['status'] === 'NEW') {
@@ -129,6 +132,7 @@
                   }
                   echo "<div>";
                   echo "<dt> Latest EOI </dt>";
+                  // Join the information of latest EOI
                   echo "<dd> #" . htmlspecialchars($latest_eoi['eoi_number'], ENT_QUOTES, 'UTF-8')
                        . " - " . htmlspecialchars($latest_eoi['job_reference'], ENT_QUOTES, 'UTF-8')
                        . " - " . "<span class='status $latest_class'>" . htmlspecialchars($latest_eoi['status'], ENT_QUOTES, 'UTF-8') 
@@ -144,6 +148,7 @@
             </dl>
         </section>
 
+        <!-- An overview with some statistics: Total EOIs, New EOIs and Available job positions -->
         <h2> Overview </h2>
         <section class="user-statistic">
             <div class="user-total-eoi">
@@ -245,13 +250,14 @@
               echo "<input type='hidden' name='chosen_eoi_number' value='" . htmlspecialchars($eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "'>";
               echo "<button type='submit'> <i class='fa-solid fa-eye' aria-hidden='true'> </i> View </button>";
               echo "</form>";
-              // Withdraw EOI
+              // Option to withdraw EOI if the current status is NEW or CURRENT
               if ($eoi['status'] == 'NEW' || $eoi['status'] == 'CURRENT') {
                 echo "<form action='user.php#eoi-" . htmlspecialchars($eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "' method='GET' class='withdraw-eoi'>";
                 echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8') . "'>";
                 echo "<input type='hidden' name='confirm-withdraw' value='" . (int)$eoi['eoi_number'] . "'>";
                 echo "<button type='submit'> <i class='fa-solid fa-rotate-left' aria-hidden='true'> </i> Withdraw </button>";
                 echo "</form>";
+              // Disable the option to withdraw EOI if the current status is FINAL
               } else {
                 echo "<button type='button' class='withdraw-disabled' disabled>";
                 echo "<i class='fa-solid fa-lock' aria-hidden='true'> </i> Withdraw";
@@ -286,6 +292,7 @@
           } else {
             echo "<p class='no-eoi'>You have not submitted any EOIs yet.</p>";
           }
+          mysqli_close($conn);
         ?>
     </main>
 

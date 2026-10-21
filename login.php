@@ -136,6 +136,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="login-note"><a href="logout.php">Logout</a></p>
 
     <?php endif; ?>
+
+    <?php mysqli_close($conn); ?>
   </main>
 
 <?php include 'footer.inc'; ?>

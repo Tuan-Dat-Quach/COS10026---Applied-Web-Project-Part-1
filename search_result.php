@@ -111,6 +111,7 @@
                         echo "</table>";
                         echo "<h3> Key Responsibilities </h3>";
                         echo "<ol>";
+                        // Use explode to break the array at newline point
                         $responsibilities = explode("\n", $row['responsibilities']);
                         foreach ($responsibilities as $single_res) {
                         $single_res = trim($single_res);

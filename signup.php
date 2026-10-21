@@ -1,6 +1,6 @@
 <?php
   if (session_status() === PHP_SESSION_NONE) {
-  session_start();
+    session_start();
   }
   require_once 'settings.php';
 
@@ -10,14 +10,17 @@
     exit;
   }
 
+  // Initialize the error messages and successful signup notice
   $error = '';
   $success_signup = false;
 
+  // Get the username, initial password and confirmed password
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
     $confirm = $_POST['confirm'] ?? '';
 
+    // Ensure that all fields are entered, with acceptable length of username and password
     if ($username === '' || $password === '' || $confirm === '') {
       $error = '⚠️ Username and Password cannot be empty. Please enter again.';
     } elseif (strlen($username) > 50) {
@@ -71,6 +74,7 @@
         <h1> Sign Up </h1>
 
         <?php
+        // Successful signup notice
         if ($success_signup) {
           echo "<div class='signup-row success-row'>";
           echo "<p class='signup-message success'>";
@@ -79,6 +83,7 @@
           echo "</div>";
         } else {
           echo "<form action='signup.php' method='POST' novalidate>";
+            // Print out current errors
             if ($error !== '') {
               echo "<div class='signup-row'>";
               echo "<span class='label-space'></span>";
@@ -105,6 +110,7 @@
           echo "<button type='submit'> Sign Up </button>";
           echo "</form>";
         }
+        mysqli_close($conn);
         ?>
     </main>
 
