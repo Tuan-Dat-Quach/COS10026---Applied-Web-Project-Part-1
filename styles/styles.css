@@ -908,7 +908,7 @@ textarea {font-size: 20px;}
 /* This is the section for CSS applied to search_result.php */
 
 
-
+/* This is CSS for result notice */
 .jobs-unfound, .jobs-found, .no-keyword, .failed-stmt {
     font-size: 2rem;
     text-align: center;
@@ -925,6 +925,7 @@ textarea {font-size: 20px;}
     padding-bottom: 2rem;
 }
 
+/* This helps to highlight the searched words if there is matched results */
 mark {
     background: #fff3a3;
     padding: 0 2px;
@@ -938,6 +939,8 @@ mark {
 
 
 /* This is the section for CSS applied to both manager.php, user.php and eoi_details.php */
+
+/* This is CSS section for the headings in those pages */
 .manager-page h1 {
     text-align: center;
     margin-top: 0;
@@ -958,15 +961,17 @@ mark {
     margin-bottom: 0;
 }
 
+/* This CSS applys to <p> in those pages, except for <p> in the footer */
 .manager-page p:not(.general-footer) {
     font-size: 1.5rem;
     margin-top: 0.8rem;
     margin-bottom: 1rem;
 }
 
+/* This CSS sets grid layouut for the overview statistics in manager.php */
 .statistic {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Automatically decide the width of each element */
     align-items: start;
     font-weight: bold;
     margin: 1rem;
@@ -974,6 +979,7 @@ mark {
     padding-bottom: 2rem;
 }
 
+/* This is CSS for each of the overview element in manager.php */
 .total, .new, .available-positions {
     width: 100%;
     box-sizing: border-box;
@@ -984,6 +990,7 @@ mark {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* These are CSS for background colors in both manager.php and user.php */
 .total, .user-total-eoi {
     background-color: #fbd5b5;
 }
@@ -1000,6 +1007,7 @@ mark {
     background-color: #cde8cf; 
 }
 
+/* This is CSS for grid layout in user.php */
 .manager-page .user-statistic {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1010,6 +1018,7 @@ mark {
     padding-bottom: 2rem;
 }
 
+/* This is CSS for each overview elemnent in user.php */
 .user-total-eoi, .user-new, .user-current, .user-final {
     box-sizing: border-box;
     padding: 0 1rem 0.5rem;
@@ -1018,12 +1027,13 @@ mark {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* This is CSS for labels in manager.php */
 .eoi-list {
     font-size: 1.2rem;
     margin-left: 1rem;
 }
 
-.manager-page input:not(.change-status, .delete-eoi) {
+.manager-page input {
     padding: 0.5rem 1rem;
     background-color: #2e7d32;
     border-radius: 8px;

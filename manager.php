@@ -142,7 +142,7 @@
         <h2> Manage </h2>
 
         <!-- Sort field options allowed for the manager, with hidden inputs of list_eoi and job_reference -->
-        <form action="manager.php" method="GET" class="sort-form">
+        <form action="manager.php#sort" method="GET" class="sort-form">
           <input type="hidden" name="list_eoi" 
                  value="<?php echo htmlspecialchars($_GET['list_eoi'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
           <input type="hidden" name="job_reference" 
@@ -216,7 +216,7 @@
       <div class="eoi-manage"> 
         <!-- Choose listing method -->
         <div class="choose-method">
-          <form action="manager.php" method="GET">
+          <form action="manager.php#choose-method" method="GET" id="choose-method">
             <input type="hidden" name="sort"
                    value="<?php echo htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
             <label for="list_eoi" class="eoi-list"> List EOIs: </label>
@@ -247,7 +247,7 @@
         <div class="choose-job-ref">
         <?php
         if ((isset($_GET['list_eoi']) && $_GET['list_eoi'] === 'job_reference')) {
-          echo "<form action='manager.php' method='GET' class='choose-job-ref'>";
+          echo "<form action='manager.php#choose-job-ref' method='GET' class='choose-job-ref' id='choose-job-ref'>";
           echo "<input type='hidden' name='list_eoi' value='job_reference'>";
           $sort_value = htmlspecialchars($_GET['sort'] ?? '', ENT_QUOTES, 'UTF-8');
           echo "<input type='hidden' name='sort' value='$sort_value'>";
