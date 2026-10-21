@@ -3,6 +3,16 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// Use basename function to get filename from the specified path
+$current_page = basename($_SERVER['PHP_SELF']);
+
+// Store the parameters when users choose the logout button and see the confirmation
+$current_parameters = $_GET;
+$current_parameters['confirm_logout'] = '1';
+$logout_url = $current_page . '?' . http_build_query($current_parameters);
+
+$saved_url = htmlspecialchars($logout_url, ENT_QUOTES, 'UTF-8');
 ?>
 
 <nav aria-label="Main navigation">
@@ -48,7 +58,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <?php endif; ?>
 
             <li>
-                <a href="?confirm_logout=1">
+                <a href="<?php echo $saved_url; ?>">
                     <span aria-hidden="true"> 🚪 </span> Logout
                 </a>
             </li>

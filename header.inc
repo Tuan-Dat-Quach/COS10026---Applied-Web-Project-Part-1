@@ -20,7 +20,7 @@ if (isset($_GET['confirm_logout']) && !empty($_SESSION['user_id'])) {
 
   // Cancel button: Reload the current page without the confirm_logout parameter
 
-  echo "<form action='" . htmlspecialchars(basename($_SERVER['PHP_SELF']), ENT_QUOTES, 'UTF-8') . "' method='GET' class='logout-no'>";
+  echo "<form action='$saved_url' method='GET' class='logout-no'>";
   echo "<button type='submit'> <i class='fa-solid fa-xmark' aria-hidden='true'></i> Cancel </button>";
   echo "</form>";
 
@@ -30,7 +30,6 @@ if (isset($_GET['confirm_logout']) && !empty($_SESSION['user_id'])) {
   echo "<button type='submit'> <i class='fa-solid fa-check' aria-hidden='true'></i> Yes, log out </button>";
   echo "</form>";
   echo "</div>";
-
   echo "</div>";
 }
 ?>

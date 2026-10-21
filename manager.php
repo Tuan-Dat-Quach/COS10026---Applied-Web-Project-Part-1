@@ -2,6 +2,12 @@
   session_start();
   require_once "settings.php";
 
+  // Validate so that only logged-in managers can see this page
+  if (!isset($_SESSION['user_id']) || ($_SESSION['role'] ?? '') !== 'Manager') {
+    header("Location: login.php");
+    exit;
+  }
+
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete') {
     $deleted_eoi = (int)($_POST['eoi_number'] ?? 0);
     // Delete an EOI according to its EOI number
