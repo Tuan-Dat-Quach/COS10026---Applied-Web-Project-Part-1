@@ -127,6 +127,7 @@
           echo "<p class='failed-stmt'> Sorry, something went wrong. Please try again later. <p>";
         }
       }
+      mysqli_close($conn);
     ?>
     </main>
 
