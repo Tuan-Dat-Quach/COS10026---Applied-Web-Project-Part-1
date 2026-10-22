@@ -15,7 +15,7 @@
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        $user_id = $_SESSION['user_id']
+        $user_id = $_SESSION['user_id'];
         $job_reference_number = sanitize_input($_POST["Job_Reference_Number"]);
         $first_name = sanitize_input($_POST["First_Name"]);
         $last_name = sanitize_input($_POST["Last_Name"]);
@@ -157,7 +157,7 @@
 
         if ($form_submit == true) {
             INSERT INTO eoi (user_id, job_reference, first_name, last_name, date_of_birth, gender, street_address, suburb, state, postcode, email, phone_number, skills, other_skills, status)
-            VALUES ($user_id, $job_reference_number, $first_name, $last_name, $date_of_birth, $gender, $street_address, $suburb, $state, $postcode, $email, $phone_number, $skills, $other_skills, $status)
+            VALUES ($user_id, $job_reference_number, $first_name, $last_name, $date_of_birth, $gender, $street_address, $suburb, $state, $postcode, $email, $phone_number, $skills, $other_skills, $status);
         }
 
     }
