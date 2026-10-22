@@ -158,10 +158,7 @@
             echo "<p style='color:red;'><strong>Please go back in fix all errors.</strong></p>";
         }
 
-        if ($form_submit == true) {
-            INSERT INTO eoi (job_reference, first_name, last_name, date_of_birth, gender, street_address, suburb, state, postcode, email, phone_number, skills, other_skills)
-            VALUES ($job_reference_number, $first_name, $last_name, $date_of_birth, $gender, $street_address, $suburb, $state, $postcode, $email, $phone_number, $skills, $other_skills);
-        }
+        
 
     }
 
