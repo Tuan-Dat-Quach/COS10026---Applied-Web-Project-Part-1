@@ -4,7 +4,7 @@
     $host = "localhost";
     $user = "root";
     $password = "";
-    $database = "greener_society";
+    $database = "eoi";
 
     $conn = mysqli_connect($host, $user, $password, $database);
 
