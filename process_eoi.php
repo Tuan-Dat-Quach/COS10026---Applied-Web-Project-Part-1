@@ -147,7 +147,7 @@
             echo "<p><strong>Postcode:</strong> $postcode</p>";
             echo "<p><strong>Email:</strong> $email</p>";
             echo "<p><strong>Phone Number:</strong> $phone_number</p>";
-            echo "<p><strong>Skills:</strong> " . implode(",", $skills) . "</p>";
+            echo "<p><strong>Skills:</strong> " . implode(", ", $skills) . "</p>";
             echo "<p><strong>Other Skills:</strong> $other_skills</p>";
             $form_submit = true;
         } else {
