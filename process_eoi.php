@@ -1,11 +1,10 @@
 
 <?php
-    
+    session_start();
+
     require_once 'settings.php';
 
-    if (!$conn) {
-        die("Database connection failed: " . mysql_connect_error());
-    }
+
 
     function sanitize_input($data){
          $data = trim($data);
