@@ -29,7 +29,7 @@
         $phone_number = sanitize_input($_POST["Phone_Number"]);
         $skills = isset($_POST["Skills"]) ? $_POST["Skills"] : [];
         $other_skills = sanitize_input($_POST["Other_Skills"]);
-        $status = "NEW"
+        $status = "NEW";
 
 
         $jrn_input = false;
