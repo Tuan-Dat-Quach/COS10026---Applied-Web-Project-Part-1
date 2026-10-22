@@ -59,7 +59,7 @@
         
         if (empty($first_name)) {
             echo "<p style='color:red;'>Please enter your First Name. <br>";
-        }  elseif (!preg_match("/^[a-zA-z-' ]{1,20}$/",$first_name)) {
+        }  elseif (!preg_match("/^[a-zA-z' ]{1,20}$/",$first_name)) {
             echo "<p style='color:red;'>Please enter a valid First Name. It must only contain letters, spaces and/or ' or -. <br>";
         } else {
             $fn_input = true;
