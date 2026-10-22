@@ -27,7 +27,7 @@
     </style>
 </head>
 
-<body class="search-page">
+<body class="search-page jobs-page">
     <?php include 'header.inc'; ?>
 
     <main>
