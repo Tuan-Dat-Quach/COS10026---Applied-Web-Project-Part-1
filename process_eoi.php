@@ -127,12 +127,6 @@
             $pn_input = true;
         }
 
-        if (empty($skills)) {
-            echo "<p style='color:red;'>Please select the skills you think defines you. <br>";
-        } else {
-            $skills_input = true;
-        }
-
         if ($jrn_input == true && $fn_input == true && $ln_input == true && $dob_input == true && $gender_input == true && $sa_input == true
         && $suburb_input == true && $state_input == true && $postcode_input == true && $email_input == true && $pn_input == true && $skills_input == true) {
             echo "<h2>Your application has been successfully submitted!</h2>";
@@ -147,14 +141,18 @@
             echo "<p><strong>Postcode:</strong> $postcode</p>";
             echo "<p><strong>Email:</strong> $email</p>";
             echo "<p><strong>Phone Number:</strong> $phone_number</p>";
-            echo "<p><strong>Skills:</strong> " . implode(", ", $skills) . "</p>";
             echo "<p><strong>Other Skills:</strong> $other_skills</p>";
             $form_submit = true;
         } else {
             echo "<p style='color:red;'><strong>Please go back in fix all errors.</strong></p>";
         }
 
-        if ($form_submit == true) {INSERT INTO eoi ('user_id', 'job_reference', 'first_name', 'last_name', 'date_of_birth', 'gender', 'street_address', 'suburb', 'state', 'postcode', 'email', 'phone_number', 'skills', 'other_skills', 'status') VALUES ($user_id, $job_reference_number, $first_name, $last_name, $date_of_birth, $gender, $street_address, $suburb, $state, $postcode, $email, $phone_number, $skills, $other_skills, $status);
+        if ($form_submit == true) {
+            $stmt = $conn->prepare("INSERT INTO `eoi` (`user_id`, `job_reference`, `first_name`, `last_name`, `date_of_birth`, `gender`, `street_address`, `suburb`, `state`, `postcode`, `email`, `phone_number`, `other_skills`, `status`)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssssssssssss", $user_id, $job_reference_number, $first_name, $last_name, $date_of_birth, $gender, $street_address, $suburb, $state, $postcode, $email, $phone_number, $other_skills, $status);
+            $stmt->execute();
+            
         }
         
 

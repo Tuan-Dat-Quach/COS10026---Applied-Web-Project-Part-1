@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2026 at 04:14 AM
+-- Generation Time: Oct 23, 2026 at 11:27 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `eoi`
+-- Database: `greener_society`
 --
 
 -- --------------------------------------------------------
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `eoi` (
   `eoi_number` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL REFERENCES users(user_id),
+  `user_id` int(11) DEFAULT NULL,
   `job_reference` char(6) NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
@@ -41,10 +41,18 @@ CREATE TABLE `eoi` (
   `postcode` int(4) NOT NULL,
   `email` text NOT NULL,
   `phone_number` varchar(12) NOT NULL,
-  `skills` set('Loves The Environment','Organization','Punctuality','Hard Working','Resilience','Team Player','Passionate','Leadership','Communication') NOT NULL,
   `other_skills` text DEFAULT NULL,
   `status` enum('NEW','CURRENT','FINAL') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `eoi`
+--
+
+INSERT INTO `eoi` (`eoi_number`, `user_id`, `job_reference`, `first_name`, `last_name`, `date_of_birth`, `gender`, `street_address`, `suburb`, `state`, `postcode`, `email`, `phone_number`, `other_skills`, `status`) VALUES
+(1, 1, 'GS102A', 'Jason', 'Smith', '2003-04-10', 'Male', '23 Tickle Crescent', 'Hampton', 'NT', 3962, 'J.Smith@outlook.com', '0413849762', 'I have extensive experience in volunteering for my local community.', 'NEW'),
+(2, NULL, 'GS305C', 'Ellen', 'Karot', '2007-08-09', 'Female', '72 Knightfox Road', 'Swent', 'TAS', 3682, 'Karot.Ellen@hotmail.com', '0462836972', NULL, 'NEW'),
+(5, 5, 'GS102A', 'Jacob', 'Kent', '2008-10-09', 'Rather Not Say', '32 Pleasant Court', 'Haveton', 'NSW', 3862, 'Jacob.K@gmail.com', '0462184322', NULL, 'NEW');
 
 --
 -- Indexes for dumped tables
@@ -64,12 +72,9 @@ ALTER TABLE `eoi`
 -- AUTO_INCREMENT for table `eoi`
 --
 ALTER TABLE `eoi`
-  MODIFY `eoi_number` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `eoi_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-ALTER TABLE `eoi`
-  DROP `skills`
