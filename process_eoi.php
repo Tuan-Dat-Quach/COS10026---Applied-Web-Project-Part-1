@@ -55,7 +55,7 @@
         
         if (empty($first_name)) {
             echo "<p style='color:red;'>Please enter your First Name. <br>";
-        }  elseif (!preg_match("/^[a-zA-z-' ]{1,20}$/",$first_name)) {
+        }  elseif (!preg_match("/^[a-zA-Z-' ]{1,20}$/",$first_name)) {
             echo "<p style='color:red;'>Please enter a valid First Name. It must only contain letters, spaces and/or ' or -. <br>";
         } else {
             $fn_input = true;
@@ -154,7 +154,7 @@
             echo "<p style='color:red;'><strong>Please go back in fix all errors.</strong></p>";
         }
 
-        $sql = "INSERT INTO eoi (user_id, job_reference, first_name, last_name, date_of_birth, gender, street_address, suburb, state, postcode, email, phone_number, skills, other_skills, status)
+        $sql = "INSERT INTO 'eoi' ('user_id', 'job_reference', 'first_name', 'last_name', 'date_of_birth', 'gender', 'street_address', 'suburb', 'state', 'postcode', 'email', 'phone_number', 'skills', 'other_skills', 'status')
             VALUES ($user_id, $job_reference_number, $first_name, $last_name, $date_of_birth, $gender, $street_address, $suburb, $state, $postcode, $email, $phone_number, $skills, $other_skills, $status)";
 
         if ($conn->query($sql) === TRUE) {
