@@ -79,7 +79,7 @@
             echo "<td rowspan='3'>";
 
             $stmt = $conn->prepare("SELECT s.skill_name FROM eoi_skills es JOIN skills s ON s.skill_id = es.skill_id
-                                    WHERE es.eoi_number = ? ORDER BY s.skill_name");
+                                    WHERE es.eoi_number = ? ORDER BY s.skill_id");
             $stmt->bind_param("i", $chosen_eoi['eoi_number']);
             $stmt->execute();
             $skill_result = $stmt->get_result();
