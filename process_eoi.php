@@ -157,7 +157,7 @@
         $sql = "INSERT INTO 'eoi' ('user_id', 'job_reference', 'first_name', 'last_name', 'date_of_birth', 'gender', 'street_address', 'suburb', 'state', 'postcode', 'email', 'phone_number', 'skills', 'other_skills', 'status')
             VALUES ($user_id, $job_reference_number, $first_name, $last_name, $date_of_birth, $gender, $street_address, $suburb, $state, $postcode, $email, $phone_number, $skills, $other_skills, $status)";
 
-        if ($conn->query($sql) === TRUE) {
+        if ($conn->query($sql) == TRUE) {
             echo "<p><strong>Application submitted successfully!</strong></p>";
         } else {
             echo "Error: " . $conn->error;
