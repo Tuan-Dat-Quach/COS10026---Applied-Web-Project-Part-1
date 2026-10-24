@@ -123,7 +123,7 @@ function task_cell($tasks, $p) {
                 <div class="individual-tasks">
                 <h2 class="about-titles" id="section-title2"> <strong> Member Contributions </strong> </h2>
                 <table class="contribution-table">
-                    <caption> <span aria-hidden="true"> 🖌️ </span> Individual Responsibilities </caption>
+                    
                     <thead>
                         <tr>
                             <th scope="col"> Member </th>
