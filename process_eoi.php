@@ -148,12 +148,16 @@
         }
 
         if ($form_submit == true) {
-            foreach ($skills as )
+            foreach ($skills as $value) {
+                $stmtskills = $conn->prepare("SELECT skill_id FROM skills WHERE skill_name = ?");
+                $stmtskills->bind_param("s", $value);
+                $stmtskills->execute
+            }
 
-            $stmt = $conn->prepare("INSERT INTO `eoi` (`user_id`, `job_reference`, `first_name`, `last_name`, `date_of_birth`, `gender`, `street_address`, `suburb`, `state`, `postcode`, `email`, `phone_number`, `other_skills`, `status`)
+            $stmteoi = $conn->prepare("INSERT INTO `eoi` (`user_id`, `job_reference`, `first_name`, `last_name`, `date_of_birth`, `gender`, `street_address`, `suburb`, `state`, `postcode`, `email`, `phone_number`, `other_skills`, `status`)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("issssssssisiss", $user_id, $job_reference_number, $first_name, $last_name, $date_of_birth, $gender, $street_address, $suburb, $state, $postcode, $email, $phone_number, $other_skills, $status);
-            $stmt->execute();
+            $stmteoi->bind_param("issssssssisiss", $user_id, $job_reference_number, $first_name, $last_name, $date_of_birth, $gender, $street_address, $suburb, $state, $postcode, $email, $phone_number, $other_skills, $status);
+            $stmteoi->execute();
             
         }
         
