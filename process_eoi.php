@@ -148,17 +148,28 @@
         }
 
         if ($form_submit == true) {
-            foreach ($skills as $value) {
+            foreach ($skills as $value[]) {
                 $stmtskills = $conn->prepare("SELECT skill_id FROM skills WHERE skill_name = ?");
                 $stmtskills->bind_param("s", $value);
-                $stmtskills->execute
+                $resultskills = $conn->query($stmtskills);
+                $single_skill = $resultskills->fetch_assoc();
+                $skill_list = $single_skill['skill_id'];
             }
 
             $stmteoi = $conn->prepare("INSERT INTO `eoi` (`user_id`, `job_reference`, `first_name`, `last_name`, `date_of_birth`, `gender`, `street_address`, `suburb`, `state`, `postcode`, `email`, `phone_number`, `other_skills`, `status`)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $stmteoi->bind_param("issssssssisiss", $user_id, $job_reference_number, $first_name, $last_name, $date_of_birth, $gender, $street_address, $suburb, $state, $postcode, $email, $phone_number, $other_skills, $status);
             $stmteoi->execute();
             
+            $sqleoinumber = "SELECT eoi_number FROM eoi ORDER BY eoi_number DESC LIMIT 1";
+            $stmteoinumber = $conn->query($sqleoinumber);
+            $form_eoinumber = $stmteoinumber->fetch();
+
+            foreach ($skill_list) {
+                $stmteoiskills = $conn->prepare("INSERT INTO `eoi_skills` (`eoi_number`, `skill_id`)")
+                $stmteoiskills->bind_param("ii", $form_eoinumber, $skill_list)
+            }
+
         }
         
 
