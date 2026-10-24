@@ -766,14 +766,14 @@ textarea {font-size: 20px;}
 }
 
 /* These CSS set the border and background color for the quotes */
-.TDQ-Quote, .RN-Quote, .JM-Quote {
+.quote {
     border: 5px solid;
     background-color: #ffffff;
     border-radius: 10px;
 }
 
 /* These CSS set the padding particularly for the quotes */
-.TDQ-Quote p, .RN-Quote p, .JM-Quote p {
+.quote p {
     padding: 1vw;
 }
 
