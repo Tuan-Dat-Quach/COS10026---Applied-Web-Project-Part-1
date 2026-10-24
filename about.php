@@ -403,4 +403,4 @@ function getResponsibilities($responsibilities)
 <?php include 'footer.inc'; ?>
 
 </body>
-</html>
+</html> 
