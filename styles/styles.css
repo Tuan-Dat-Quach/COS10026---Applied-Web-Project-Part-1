@@ -378,6 +378,10 @@ hr {
     margin: 0;
 }
 
+.index-page button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+}
 
 
 
@@ -635,7 +639,11 @@ hr {
  
 .jobs-page th:not(.table-header):hover {
     background-color:rgb(215, 231, 172);
+}
 
+.jobs-page button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
 }
 
 
@@ -669,18 +677,22 @@ hr {
 
 .details-fieldset {
     background-color: #fbd5b5;
+    flex: 1 1 25rem;
 }
 
 .gender-fieldset {
     background-color: #bfdbf6;
+    flex: 0.5 1 12rem;
 }
 
 .address-fieldset {
     background-color: #edeeaf;
+    flex: 1 1 25rem;
 }
 
 .contacts-fieldset {
     background-color: #cde8cf;
+    flex: 1 1 100%;
 }
 
 .details-first-name, .details-last-name, .details-birth, 
@@ -697,10 +709,19 @@ hr {
 .apply-page .form-item-skills-fieldset p {
     font-size: 1.2rem
 }
+
 .form-buttons {
     display: flex;
     justify-content: center;
     gap: 2rem;
+}
+
+@media (max-width: 600px) {
+    .form-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
 }
 
 .apply-page input[type='text'], .apply-page select,
@@ -711,10 +732,9 @@ hr {
 }
 
 .apply-page button {
-    width: 15rem;
-    height: 3rem;
-    margin-bottom: 1rem;
-    font-size: 1.2rem
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+    white-space: nowrap;
 }
 
 .apply-page .submit {
@@ -722,6 +742,9 @@ hr {
     color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    width: 15rem;
+    height: 3rem;
+    margin-bottom: 1rem;
 }
 
 .apply-page .submit:hover {
@@ -734,6 +757,9 @@ hr {
     color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    width: 15rem;
+    height: 3rem;
+    margin-bottom: 1rem;
 }
 
 .apply-page .reset:hover {
@@ -756,7 +782,7 @@ hr {
 .form-item-skills-fieldset {
     grid-template-columns: 1fr;
     margin: 1rem;
-    background-color: #e9e5f5;
+    background-color: #fbd5b5;
 }
 
 .apply-page legend {
@@ -1047,6 +1073,11 @@ hr {
     margin-bottom: 8px;
 }
 
+.about-page button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+}
+
 
 
 
@@ -1186,10 +1217,16 @@ mark {
     color: white;
     cursor: pointer;
     margin-left: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.manager-page input:hover {
+    background-color: #1b5e20;
 }
 
 .manager-page select {
     height: 2rem;
+    font-size: 1.2rem;
 }
 
 .sort-form {
@@ -1278,16 +1315,32 @@ mark {
     background-color: #2e7d32;
 }
 
+.view-eoi button:hover {
+    background-color: #1b5e20;
+}
+
 .change-status button {
     background-color: #1565c0;
+}
+
+.change-status button:hover {
+    background-color: #0d47a1;
 }
 
 .delete-eoi button, .confirm-yes button {
     background-color: #c00000;
 }
 
+.delete-eoi button:hover, .confirm-yes button:hover {
+    background-color: #900000;
+}
+
 .confirm-no button {
-    background-color: #666;
+    background-color: #666666;
+}
+
+.confirm-no button:hover {
+    background-color: #444444;
 }
 
 .status-choice button {
@@ -1295,8 +1348,16 @@ mark {
     font-size: 1.5rem;
 }
 
+.status-choice button:hover {
+    background-color: #205b56; 
+}
+
 .withdraw-eoi button {
     background-color: #e65100;
+}
+
+.withdraw-eoi button:hover {
+    background-color: #bf360c;
 }
 
 .manager-page button:disabled, .withdraw-disabled {
@@ -1464,7 +1525,7 @@ mark {
     cursor: pointer;
 }
 
-.signup-page button, .login-page button:hover {
+.signup-page button:hover, .login-page button:hover {
     background-color: #1b5e20;
 }
 

@@ -19,6 +19,7 @@
         .application-banner {
             background-color: lightgoldenrodyellow;
             border: 1px solid #444;
+            padding: 0.5rem;
             text-align: center;
             font-size: 20px;
         }
