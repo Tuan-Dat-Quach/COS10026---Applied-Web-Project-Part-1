@@ -25,7 +25,7 @@ while ($res && $row = mysqli_fetch_assoc($res)) {
     $contrib[$key][$row['project']][] = $row['task'];
 }
 
-// Fun facts: $facts[row_num][member_id] = [emoji, fact]
+// Fun facts: $facts[row_num][member_id] = row
 $facts = [];
 $res = mysqli_query($conn, "SELECT member_id, row_num, emoji, fact FROM fun_facts ORDER BY row_num, member_id");
 while ($res && $row = mysqli_fetch_assoc($res)) {
@@ -33,16 +33,12 @@ while ($res && $row = mysqli_fetch_assoc($res)) {
 }
 $row_classes = [1 => 'first-row', 2 => 'second-row', 3 => 'third-row'];
 
-// Renders the project 1 / project 2 tasks inside a <dl>
-function render_tasks($tasks) {
-    foreach ([1, 2] as $p) {
-        if (!empty($tasks[$p])) {
-            echo '<dd> <strong>Project ' . $p . ':</strong> </dd>' . "\n";
-            foreach ($tasks[$p] as $t) {
-                echo '<dd> - ' . e($t) . ' </dd>' . "\n";
-            }
-        }
-    }
+// Builds a bullet list of tasks for one project
+function task_cell($tasks, $p) {
+    if (empty($tasks[$p])) return '—';
+    $out = '<ul>';
+    foreach ($tasks[$p] as $t) $out .= '<li>' . e($t) . '</li>';
+    return $out . '</ul>';
 }
 ?>
 <!DOCTYPE html>
@@ -61,12 +57,20 @@ function render_tasks($tasks) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
+        /* This is the CSS applied to the 4 headings in about.php */
         .about-titles {
             color: #065747;
             font-size: 3rem;
             text-align: center;
             margin-bottom: 10px;
         }
+
+        /* Member contributions table */
+        .contribution-table { width: 100%; border-collapse: collapse; }
+        .contribution-table th,
+        .contribution-table td { border: 1px solid #065747; padding: 8px; text-align: left; vertical-align: top; }
+        .contribution-table thead th { background: #065747; color: #fff; }
+        .contribution-table ul { margin: 0; padding-left: 1.2rem; }
     </style>
 </head>
 
@@ -108,7 +112,7 @@ function render_tasks($tasks) {
                 </div>
             </section>
 
-            <!-- Section 2: member contributions (Project 1 and 2) from database -->
+            <!-- Section 2: member contributions table (Project 1 and 2) from database -->
             <section class="member-contributions" aria-labelledby="section-title2">
                 <div class="contribution-image">
                 <!-- Source of the image used: https://sparkstrategy.com.au/contribution-vs-attribution-intermediaries/ -->
@@ -119,15 +123,30 @@ function render_tasks($tasks) {
 
                 <div class="individual-tasks">
                 <h2 class="about-titles" id="section-title2"> <strong> Member Contributions </strong> </h2>
-                <h3 style="font-size: 2rem; color:blue; margin-left: 0.5rem;"> <strong> <span aria-hidden="true"> 🖌️ </span> Individual Responsibilities: </strong> </h3>
-                <dl>
-                    <?php foreach ($members as $m): ?>
-                    <dt class="member-name1"> <span aria-hidden="true"> 📌 </span> <?= e($m['name']) ?> </dt>
-                        <?php render_tasks($contrib[$m['id']] ?? []); ?>
-                    <?php endforeach; ?>
-                    <dt style="font-size: 2rem; color: blue; margin: 1rem 0.5rem 1rem 0.5rem;"> <strong> <span aria-hidden="true"> 🤝 </span> All members: </strong> </dt>
-                        <?php render_tasks($contrib['all'] ?? []); ?>
-                </dl>
+                <table class="contribution-table">
+                    <caption> <span aria-hidden="true"> 🖌️ </span> Individual Responsibilities </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col"> Member </th>
+                            <th scope="col"> Project Part 1 </th>
+                            <th scope="col"> Project Part 2 </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($members as $m): ?>
+                        <tr>
+                            <th scope="row"> <span aria-hidden="true"> 📌 </span> <?= e($m['name']) ?> </th>
+                            <td> <?= task_cell($contrib[$m['id']] ?? [], 1) ?> </td>
+                            <td> <?= task_cell($contrib[$m['id']] ?? [], 2) ?> </td>
+                        </tr>
+                        <?php endforeach; ?>
+                        <tr>
+                            <th scope="row"> <span aria-hidden="true"> 🤝 </span> All members </th>
+                            <td> <?= task_cell($contrib['all'] ?? [], 1) ?> </td>
+                            <td> <?= task_cell($contrib['all'] ?? [], 2) ?> </td>
+                        </tr>
+                    </tbody>
+                </table>
                 </div>
             </section>
             <br>
@@ -156,7 +175,7 @@ function render_tasks($tasks) {
                 </div>
             </section>
 
-            <!-- Section 4: fun facts from database -->
+            <!-- Section 4: fun facts table from database -->
             <section class="funfact" aria-labelledby="section-title4">
                 <div class="funfact-image">
                 <!-- Source of the image used: https://stock.adobe.com/search?k=fun+fact&asset_id=194933763 -->
