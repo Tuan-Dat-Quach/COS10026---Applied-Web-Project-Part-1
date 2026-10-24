@@ -1,3 +1,32 @@
+<?php
+require_once 'settings.php';
+
+/* Retrieve the general About Us details and team-member information. */
+$groupDetails = [];
+$groupSql = "SELECT detail_key, detail_value FROM group_details";
+$groupResult = mysqli_query($conn, $groupSql);
+
+if ($groupResult) {
+    while ($detail = mysqli_fetch_assoc($groupResult)) {
+        $groupDetails[$detail['detail_key']] = $detail['detail_value'];
+    }
+}
+
+$members = [];
+$memberSql = "SELECT * FROM team_members ORDER BY id";
+$memberResult = mysqli_query($conn, $memberSql);
+
+if ($memberResult) {
+    while ($member = mysqli_fetch_assoc($memberResult)) {
+        $members[] = $member;
+    }
+}
+
+/* Escape database values before placing them in HTML. */
+function aboutEscape($value) {
+    return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,24 +65,26 @@
                 <h1 class="about-titles" id="section-title1"> <strong> About Us </strong> </h1>
                 <!-- This is the nested list of <ul> and <ol> -->
                 <ul>
-                    <li> Our group's super-duper cool name: <strong id="epic-name"> TechTide </strong> </li>
+                    <li> Our group's super-duper cool name: <strong id="epic-name"><?php echo aboutEscape($groupDetails['group_name'] ?? 'TechTide'); ?></strong> </li>
                     <li> Our group's members and Student IDs:
                         <ol class="student-id">
-                            <li> <span aria-hidden="true"> 👤 </span> Tuan Dat Quach - <strong> 106424486 </strong> </li>
-                            <li> <span aria-hidden="true"> 👤 </span> Ravindu Nethsara - <strong> 105998951 </strong> </li>
-                            <li> <span aria-hidden="true"> 👤 </span> Johnathan Mey - <strong> 105341872 </strong> </li>
+                            <?php foreach ($members as $member): ?>
+                                <li><span aria-hidden="true"> 👤 </span>
+                                    <?php echo aboutEscape($member['name']); ?> -
+                                    <strong><?php echo aboutEscape($member['student_id']); ?></strong>
+                                </li>
+                            <?php endforeach; ?>
                         </ol>
                     </li>
                     <li> Our tutorial class day, time and location:
                         <ol>
-                            <li> Day: Every Thursday (Except for Mid-term Break) <span aria-hidden="true"> 📆 </span> </li>
-                            <li> Time: 12:30 p.m to 14:30 p.m <span aria-hidden="true"> ⏰ </span> </li>
-                            <li> Location: Room BA513, Floor 5 at BA Building <span aria-hidden="true"> 📍 </span> </li>
+                            <li> Day: <?php echo aboutEscape($groupDetails['tutorial_day'] ?? 'Every Thursday (Except for Mid-term Break)'); ?> <span aria-hidden="true"> 📆 </span> </li>
+                            <li> Time: <?php echo aboutEscape($groupDetails['tutorial_time'] ?? '12:30 p.m to 14:30 p.m'); ?> <span aria-hidden="true"> ⏰ </span> </li>
+                            <li> Location: <?php echo aboutEscape($groupDetails['tutorial_location'] ?? 'Room BA513, Floor 5 at BA Building'); ?> <span aria-hidden="true"> 📍 </span> </li>
                         </ol>
                     </li>
-                    <li> Our group number: G05 </li>
-                    <li> Our scenario: An environmental organisation strengthening its online presence to promote conservation projects, community campaigns, 
-                         educational resources, volunteer opportunities and public donations. </li>
+                    <li> Our group number: <?php echo aboutEscape($groupDetails['group_number'] ?? 'G05'); ?> </li>
+                    <li> Our scenario: <?php echo aboutEscape($groupDetails['scenario'] ?? 'An environmental organisation strengthening its online presence to promote conservation projects, community campaigns, educational resources, volunteer opportunities and public donations.'); ?> </li>
                 </ul>
                 </div>
 
@@ -63,7 +94,7 @@
                     <img src=Images/official-group-photo.jpg alt="Group photo of G05 - TideTech">
                     <figcaption id="about-caption1"> <strong> <em> <span aria-hidden="true"> 😎 </span> Our epic group: Ravindu Nethsara, Johnathan Mey and Tuan Dat Quach </em> </strong> </figcaption>
                 </figure>
-                </div>
+                 </div>
             </section>
 
             <!-- This is the second section, displaying member contributions of our group-->
@@ -80,18 +111,24 @@
                 <h3 style="font-size: 2rem; color:blue; margin-left: 0.5rem;"> <strong> <span aria-hidden="true"> 🖌️ </span> Individual Responsibilities: </strong> </h3>
                 <!-- This is a description list used to present member contributions -->
                 <dl>
-                    <dt class="member-name1"> <span aria-hidden="true"> 📌 </span> Tuan Dat Quach </dt>
-                        <dd> - Main content for index.html and about.html </dd>
-                        <dd> - General CSS for pages </dd>
-                    <dt class="member-name1"> <span aria-hidden="true"> 📌 </span> Ravindu Nethsara </dt>
-                        <dd> - Main content for jobs.html </dd>
-                    <dt class="member-name1"> <span aria-hidden="true"> 📌 </span> Johnathan Mey </dt>
-                        <dd> - Main content for apply.html </dd>
-                        <dd> - Assignment Submission </dd>
-                    <dt style="font-size: 2rem; color: blue; margin: 1rem 0.5rem 1rem 0.5rem;"> <strong> <span aria-hidden="true"> 🤝 </span> All members: </strong> </dt> 
-                        <dd> - CSS Style for each individual page </dd>
-                        <dd> - Suggesting ideas </dd>
-                        <dd> - Re-evaluation and finalisation </dd>
+                    <?php foreach ($members as $member): ?>
+                        <dt class="member-name1"><span aria-hidden="true"> 📌 </span> <?php echo aboutEscape($member['name']); ?></dt>
+                        <?php
+                        $responsibilityLines = preg_split('/\\r\\n|\\r|\\n/', (string) ($member['responsibilities'] ?? ''));
+                        foreach ($responsibilityLines as $responsibility):
+                            $responsibility = trim($responsibility);
+                            if ($responsibility !== ''):
+                        ?>
+                            <dd> - <?php echo aboutEscape($responsibility); ?> </dd>
+                        <?php
+                            endif;
+                        endforeach;
+                        ?>
+                    <?php endforeach; ?>
+                    <dt style="font-size: 2rem; color: blue; margin: 1rem 0.5rem 1rem 0.5rem;"> <strong> <span aria-hidden="true"> 🤝 </span> All members: </strong> </dt>
+                    <dd> - CSS style for each individual page </dd>
+                    <dd> - Suggesting ideas </dd>
+                    <dd> - Re-evaluation and finalisation </dd>
                 </dl>
                 </div>
             </section>
@@ -102,24 +139,24 @@
                 <div class="inspiration">
                 <h2 class="about-titles" id="section-title3"> <strong> What Inspires Us </strong> </h2>
                 <br>
-                    <div class="TDQ-Quote">
-                    <h3 class="member-name2"> <span aria-hidden="true"> 👤 </span> Tuan Dat Quach: </h3>
-                    <p> <span aria-hidden="true"> 🇻🇳 </span> "Sâu thẳm trong tim tôi là một niềm đam mê mãnh liệt với những con số, những quy luật và tính logic chặt chẽ."
-                    <p> => English Translation: "Deep from my heart lies a profound passion for numbers, principles and coherent logics." </p>
-                    </div>
+                    <?php foreach ($members as $index => $member): ?>
+                        <div class="member-quote">
+                            <h3 class="member-name2"><span aria-hidden="true"> 👤 </span> <?php echo aboutEscape($member['name']); ?>:</h3>
+                            <p><?php
+                                if ($index === 0) {
+                                    echo '<span aria-hidden="true"> 🇻🇳 </span> ';
+                                } elseif ($index === 1) {
+                                    echo '<span aria-hidden="true"> 🇱🇰 </span> ';
+                                } elseif ($index === 2) {
+                                    echo '<span aria-hidden="true"> 🇯🇵 </span> ';
+                                }
+                                echo aboutEscape($member['quote_original'] ?? '');
+                            ?></p>
+                            <p>=> English Translation: <?php echo aboutEscape($member['quote_translation'] ?? ''); ?></p>
+                        </div>
+                        <br>
+                    <?php endforeach; ?>
                     <br>
-                    <div class="RN-Quote">
-                    <h3 class="member-name2"> <span aria-hidden="true"> 👤 </span> Ravindu Nethsara: </h3>
-                    <p> <span aria-hidden="true"> 🇱🇰 </span> "අද දවස හොඳම දවස කරගන්න." </p>
-                    <p> => English Translation: "Make today your best day." </p>
-                    </div>
-                    <br>
-                    <div class="JM-Quote">
-                    <h3 class="member-name2"> <span aria-hidden="true"> 👤 </span> Johnathan Mey:  </h3>
-                    <p> <span aria-hidden="true"> 🇯🇵 </span> "塵も積もれば山となる." (Chiri mo tsumoreba yama to naru) </p>
-                    <p> => English Translation: "Even dust, when piled up, becomes a mountain." </p>
-                    </div>
-                    <br><br>
                 </div>
 
                 <div class="inspirative-image">
@@ -151,27 +188,28 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td> <strong> Tuan Dat Quach </strong> </td>
-                            <td> <strong> Ravindu Nethsara </strong> </td>
-                            <td> <strong> Johnathan Mey </strong> </td>
-                        </tr>
-                        <tr >
-                            <td class="first-row"> <span aria-hidden="true"> 📚 </span> His favourite subject is Maths, especially when it comes to Probability and Statistics </td> 
-                            <td class="first-row"> <span aria-hidden="true"> 🎧 </span> He is a big fan of listening to music </td> 
-                            <td class="first-row"> <span aria-hidden="true"> ☕️ </span> He works as a barista, but he doesn't like coffee </td> 
+                            <?php foreach ($members as $member): ?>
+                                <td><strong><?php echo aboutEscape($member['name']); ?></strong></td>
+                            <?php endforeach; ?>
                         </tr>
                         <tr>
-                            <td class="second-row"> <span aria-hidden="true"> 🧩 </span> He likes solving puzzles or IQ games, including Minesweeper, Sudoku and match-3 games </td> 
-                            <td class="second-row"> <span aria-hidden="true"> 🤖 </span> He is interested in Artificial Intelligence (AI) </td> 
-                            <td class="second-row"> <span aria-hidden="true"> ✈️ </span> He has never gone overseas or interstate  </td> 
+                            <?php foreach ($members as $member): ?>
+                                <td class="first-row"><span aria-hidden="true"> 📚 </span> <?php echo aboutEscape($member['fun_fact_1'] ?? ''); ?></td>
+                            <?php endforeach; ?>
                         </tr>
                         <tr>
-                            <td class="third-row"> <span aria-hidden="true"> 🎼 </span> He loves playing kalimba, as the only instrument that he's keen on </td> 
-                            <td class="third-row"> <span aria-hidden="true"> ⏰ </span> He can spend a surprisingly long time trying to fix one small coding error </td> 
-                            <td class="third-row"> <span aria-hidden="true"> 🕹️ </span> He loves games, whether it's video, board or card games </td> 
+                            <?php foreach ($members as $member): ?>
+                                <td class="second-row"><span aria-hidden="true"> 🧩 </span> <?php echo aboutEscape($member['fun_fact_2'] ?? ''); ?></td>
+                            <?php endforeach; ?>
+                        </tr>
+                        <tr>
+                            <?php foreach ($members as $member): ?>
+                                <td class="third-row"><span aria-hidden="true"> 🎼 </span> <?php echo aboutEscape($member['fun_fact_3'] ?? ''); ?></td>
+                            <?php endforeach; ?>
                         </tr>
                     </tbody>
                 </table>
+                </div>
                 </div>
             </section>
         </main>
