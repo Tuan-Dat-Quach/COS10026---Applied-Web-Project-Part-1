@@ -1,6 +1,11 @@
 <?php
   session_start();
   require_once "settings.php";
+
+  if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+  }
 ?>
 
 <!DOCTYPE html>
@@ -33,8 +38,12 @@
           $stmt->execute();
           $result = $stmt->get_result();
           $chosen_eoi = mysqli_fetch_assoc($result);
+          $stmt->close();
 
           if ($chosen_eoi) {
+            if ($_SESSION['role'] === 'User' && $chosen_eoi['user_id'] != $_SESSION['user_id']) {
+              $chosen_eoi = null;  
+            }
             echo "<h1> Details for EOI number: " . htmlspecialchars($chosen_eoi['eoi_number'], ENT_QUOTES, 'UTF-8') . "</h1>";
             echo "<div class='table-wrapper-2'>";
             echo "<table>";
@@ -68,14 +77,18 @@
             echo "<td>" . htmlspecialchars($chosen_eoi['first_name'], ENT_QUOTES, 'UTF-8') . "</td>";
             echo "<th rowspan='3'> Skills </th>";
             echo "<td rowspan='3'>";
-            $skills = explode(",", $chosen_eoi['skills']);
-            foreach ($skills as $single_skills) {
-              $single_skills = trim($single_skills);
-              if ($single_skills !== "") {
-                echo htmlspecialchars($single_skills, ENT_QUOTES, 'UTF-8');
-                echo "<br>";
-              }
+
+            $stmt = $conn->prepare("SELECT s.skill_name FROM eoi_skills es JOIN skills s ON s.skill_id = es.skill_id
+                                    WHERE es.eoi_number = ? ORDER BY s.skill_id");
+            $stmt->bind_param("i", $chosen_eoi['eoi_number']);
+            $stmt->execute();
+            $skill_result = $stmt->get_result();
+            
+            while ($skill = mysqli_fetch_assoc($skill_result)) {
+              echo htmlspecialchars($skill['skill_name'], ENT_QUOTES, 'UTF-8') . "<br>";
             }
+            $stmt->close();
+
             echo "</td>";
             echo "</tr>";
 
@@ -93,8 +106,8 @@
             echo "<th> Gender </th>";
             echo "<td>" . htmlspecialchars($chosen_eoi['gender'], ENT_QUOTES, 'UTF-8') . "</td>";
             echo "<th rowspan='3'> Other skills </th>";
-            if ($chosen_eoi['other_skills'] === '') {
-              echo "<td rowspan='3'> Not mentioned </td>";
+            if (empty($chosen_eoi['other_skills'])) {
+              echo "<td rowspan='3'>" . htmlspecialchars(null) . "</td>";
             } else {
               echo "<td rowspan='3'>" . htmlspecialchars($chosen_eoi['other_skills'], ENT_QUOTES, 'UTF-8') . "</td>";
             }
@@ -124,7 +137,7 @@
             echo "<p class='no-eoi'> This EOI cannot be found. </p>";
           }
         } else {
-          echo "<p class='failed-stmt'> Sorry, something went wrong. Please try again later. <p>";
+          echo "<p class='failed-stmt'> Sorry, something went wrong. Please try again later. </p>";
         }
       }
       mysqli_close($conn);

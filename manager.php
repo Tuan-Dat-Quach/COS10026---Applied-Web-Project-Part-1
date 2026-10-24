@@ -452,6 +452,7 @@
         $stmt->bind_param("s", $chosen_job_ref);
         $stmt->execute();
         $given_eoi = $stmt->get_result();
+        $stmt->close();
 
         if ($given_eoi && mysqli_num_rows($given_eoi) > 0) {
           echo "<div class='table-wrapper' id='eoi-table'>";

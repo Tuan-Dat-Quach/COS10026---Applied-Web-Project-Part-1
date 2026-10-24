@@ -50,7 +50,7 @@
             action="process_eoi.php"
             method="post">
 
-
+           
             <!-- Job Reference -->
 
             <div class="job-reference-form">
@@ -196,7 +196,7 @@
                     <input
                         type="text"
                         id="suburb-town"
-                        name="Suburb/Town"
+                        name="Suburb"
                         maxlength="40"
                         placeholder="Enter your suburb or town"
                         required>
