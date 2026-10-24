@@ -1405,3 +1405,64 @@ mark {
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12)
 }
+
+/* ===== Member Contributions section (about.php) ===== */
+.member-contributions {
+    display: block;
+    overflow-x: auto;
+    padding: 1rem;
+}
+
+.contribution-table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.contribution-table th,
+.contribution-table td {
+    border: 1px solid #065747;
+    padding: 12px 14px;
+    text-align: left;
+    vertical-align: top;
+}
+
+/* Column headers */
+.contribution-table thead th {
+    background: #065747;
+    color: #ffffff;
+    font-size: 1.15rem;
+}
+
+/* Member names (first column) */
+.contribution-table tbody th {
+    background: #e6f2ee;
+    color: #065747;
+    width: 18%;
+}
+
+/* Task columns share the remaining width equally */
+.contribution-table td {
+    width: 41%;
+}
+
+/* Alternate row shading for readability */
+.contribution-table tbody tr:nth-child(even) td {
+    background: #f6fbf9;
+}
+
+.contribution-table tbody tr:hover td {
+    background: #d9eee6;
+}
+
+.contribution-table ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.contribution-table li {
+    margin-bottom: 6px;
+}
