@@ -1407,25 +1407,32 @@ mark {
 }
 
 /* ===== Member Contributions section (about.php) ===== */
-.member-contributions {
-    display: block;
+section.member-contributions {
+    display: block !important;
     overflow-x: auto;
-    padding: 1rem;
+    padding: 2rem 5vw;
+}
+
+section.member-contributions .about-titles {
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
 .contribution-table {
     width: 100%;
-    min-width: 600px;
+    max-width: 1200px;
+    min-width: 700px;
+    margin: 0 auto;
     border-collapse: collapse;
     background: #ffffff;
-    font-size: 1rem;
+    font-size: 1.1rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .contribution-table th,
 .contribution-table td {
     border: 1px solid #065747;
-    padding: 12px 14px;
+    padding: 14px 18px;
     text-align: left;
     vertical-align: top;
 }
@@ -1434,7 +1441,8 @@ mark {
 .contribution-table thead th {
     background: #065747;
     color: #ffffff;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
+    text-align: center;
 }
 
 /* Member names (first column) */
@@ -1442,6 +1450,7 @@ mark {
     background: #e6f2ee;
     color: #065747;
     width: 18%;
+    vertical-align: middle;
 }
 
 /* Task columns share the remaining width equally */
@@ -1449,7 +1458,7 @@ mark {
     width: 41%;
 }
 
-/* Alternate row shading for readability */
+/* Alternate row shading and hover */
 .contribution-table tbody tr:nth-child(even) td {
     background: #f6fbf9;
 }
@@ -1460,9 +1469,9 @@ mark {
 
 .contribution-table ul {
     margin: 0;
-    padding-left: 1.2rem;
+    padding-left: 1.3rem;
 }
 
 .contribution-table li {
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
