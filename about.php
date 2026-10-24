@@ -3,26 +3,32 @@ require_once 'settings.php';
 
 function e($v) { return htmlspecialchars($v ?? '', ENT_QUOTES, 'UTF-8'); }
 
-// Group details
+// Group details (single row)
 $group = [];
-$res = mysqli_query($conn, "SELECT detail_key, detail_value FROM group_details");
-while ($res && $row = mysqli_fetch_assoc($res)) {
-    $group[$row['detail_key']] = $row['detail_value'];
+$res = mysqli_query($conn, "SELECT * FROM group_details LIMIT 1");
+if ($res) {
+    $group = mysqli_fetch_assoc($res) ?: [];
 }
 
 // Members
 $members = [];
-$res = mysqli_query($conn, "SELECT * FROM team_members ORDER BY id ASC");
+$res = mysqli_query($conn, "SELECT id, name, student_id, quote_original, quote_translation FROM team_members ORDER BY id ASC");
 while ($res && $row = mysqli_fetch_assoc($res)) {
     $members[] = $row;
 }
 
-// Contributions: $contrib[member_id or 'all'][project][] = task
+// Individual contributions: $contrib[member_id][project][] = task
 $contrib = [];
 $res = mysqli_query($conn, "SELECT member_id, project, task FROM member_contributions ORDER BY project, id");
 while ($res && $row = mysqli_fetch_assoc($res)) {
-    $key = $row['member_id'] === null ? 'all' : $row['member_id'];
-    $contrib[$key][$row['project']][] = $row['task'];
+    $contrib[$row['member_id']][$row['project']][] = $row['task'];
+}
+
+// Shared tasks: $shared[project][] = task
+$shared = [];
+$res = mysqli_query($conn, "SELECT project, task FROM shared_tasks ORDER BY project, id");
+while ($res && $row = mysqli_fetch_assoc($res)) {
+    $shared[$row['project']][] = $row['task'];
 }
 
 // Fun facts: $facts[row_num][member_id] = row
@@ -64,13 +70,6 @@ function task_cell($tasks, $p) {
             text-align: center;
             margin-bottom: 10px;
         }
-
-        /* Member contributions table */
-        .contribution-table { width: 100%; border-collapse: collapse; }
-        .contribution-table th,
-        .contribution-table td { border: 1px solid #065747; padding: 8px; text-align: left; vertical-align: top; }
-        .contribution-table thead th { background: #065747; color: #fff; }
-        .contribution-table ul { margin: 0; padding-left: 1.2rem; }
     </style>
 </head>
 
@@ -142,8 +141,8 @@ function task_cell($tasks, $p) {
                         <?php endforeach; ?>
                         <tr>
                             <th scope="row"> <span aria-hidden="true"> 🤝 </span> All members </th>
-                            <td> <?= task_cell($contrib['all'] ?? [], 1) ?> </td>
-                            <td> <?= task_cell($contrib['all'] ?? [], 2) ?> </td>
+                            <td> <?= task_cell($shared, 1) ?> </td>
+                            <td> <?= task_cell($shared, 2) ?> </td>
                         </tr>
                     </tbody>
                 </table>
@@ -157,9 +156,9 @@ function task_cell($tasks, $p) {
                 <h2 class="about-titles" id="section-title3"> <strong> What Inspires Us </strong> </h2>
                 <br>
                     <?php foreach ($members as $m): ?>
-                    <div class="<?= e($m['quote_class']) ?>">
+                    <div class="quote">
                     <h3 class="member-name2"> <span aria-hidden="true"> 👤 </span> <?= e($m['name']) ?>: </h3>
-                    <p> <span aria-hidden="true"> <?= e($m['flag']) ?> </span> "<?= e($m['quote_original']) ?>" </p>
+                    <p> "<?= e($m['quote_original']) ?>" </p>
                     <p> => English Translation: "<?= e($m['quote_translation']) ?>" </p>
                     </div>
                     <br>
