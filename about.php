@@ -111,19 +111,10 @@ function task_cell($tasks, $p) {
                 </div>
             </section>
 
-            <!-- Section 2: member contributions table (Project 1 and 2) from database -->
+                        <!-- Section 2: member contributions table (Project 1 and 2) from database -->
             <section class="member-contributions" aria-labelledby="section-title2">
-                <div class="contribution-image">
-                <!-- Source of the image used: https://sparkstrategy.com.au/contribution-vs-attribution-intermediaries/ -->
-                <figure>
-                    <img src="Images/description_image3.png" alt="description image for contribution">
-                </figure>
-                </div>
-
-                <div class="individual-tasks">
                 <h2 class="about-titles" id="section-title2"> <strong> Member Contributions </strong> </h2>
                 <table class="contribution-table">
-                    
                     <thead>
                         <tr>
                             <th scope="col"> Member </th>
@@ -132,21 +123,20 @@ function task_cell($tasks, $p) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($members as $m): ?>
+                        <?php foreach ($team_members as $member): ?>
                         <tr>
-                            <th scope="row"> <span aria-hidden="true"> 📌 </span> <?= e($m['name']) ?> </th>
-                            <td> <?= task_cell($contrib[$m['id']] ?? [], 1) ?> </td>
-                            <td> <?= task_cell($contrib[$m['id']] ?? [], 2) ?> </td>
+                            <th scope="row"> <span aria-hidden="true"> 📌 </span> <?= escape_html($member['name']) ?> </th>
+                            <td> <?= build_task_list_html($contributions_by_member[$member['id']] ?? [], 1) ?> </td>
+                            <td> <?= build_task_list_html($contributions_by_member[$member['id']] ?? [], 2) ?> </td>
                         </tr>
                         <?php endforeach; ?>
                         <tr>
                             <th scope="row"> <span aria-hidden="true"> 🤝 </span> All members </th>
-                            <td> <?= task_cell($shared, 1) ?> </td>
-                            <td> <?= task_cell($shared, 2) ?> </td>
+                            <td> <?= build_task_list_html($shared_tasks_by_project, 1) ?> </td>
+                            <td> <?= build_task_list_html($shared_tasks_by_project, 2) ?> </td>
                         </tr>
                     </tbody>
                 </table>
-                </div>
             </section>
             <br>
 
