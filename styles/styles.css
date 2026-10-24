@@ -720,35 +720,7 @@ textarea {font-size: 20px;}
     font-size: 1.6rem;
 }
 
-/* These are the CSS for the second section */
 
-.member-contributions {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    align-items: center;
-    background-color: #E7DDC8;
-}
-
-/* This is for the illustrative image of the second section */
-.contribution-image img{
-    width: 100%;
-    height: auto;
-}
-
-.individual-tasks {
-    font-size: 1.6rem;
-    margin-left: 0.5rem;
-}
-
-.individual-tasks dd {
-    margin-left: 2.5vw;
-}
-
-/* This helps to highlight the team members' name in this section */
-.member-name1 {
-    margin-top: 15px;
-    font-weight: bold;
-}
 
 /* These are the CSS for the third section */
 
@@ -1407,71 +1379,76 @@ mark {
 }
 
 /* ===== Member Contributions section (about.php) ===== */
-section.member-contributions {
-    display: block !important;
+.about-page section.member-contributions {
+    display: block;
     overflow-x: auto;
     padding: 2rem 5vw;
+    background-color: #E7DDC8;
 }
 
-section.member-contributions .about-titles {
+.about-page section.member-contributions .about-titles {
     text-align: center;
     margin-bottom: 1.5rem;
 }
 
-.contribution-table {
+.about-page .contribution-table {
     width: 100%;
     max-width: 1200px;
     min-width: 700px;
     margin: 0 auto;
     border-collapse: collapse;
     background: #ffffff;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.contribution-table th,
-.contribution-table td {
+.about-page .contribution-table th,
+.about-page .contribution-table td {
     border: 1px solid #065747;
     padding: 14px 18px;
     text-align: left;
     vertical-align: top;
+    cursor: default;
 }
 
 /* Column headers */
-.contribution-table thead th {
+.about-page .contribution-table thead th {
     background: #065747;
     color: #ffffff;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     text-align: center;
 }
 
 /* Member names (first column) */
-.contribution-table tbody th {
+.about-page .contribution-table tbody th {
     background: #e6f2ee;
     color: #065747;
     width: 18%;
     vertical-align: middle;
+    text-align: center;
 }
 
 /* Task columns share the remaining width equally */
-.contribution-table td {
+.about-page .contribution-table td {
     width: 41%;
+    background: #ffffff;
 }
 
 /* Alternate row shading and hover */
-.contribution-table tbody tr:nth-child(even) td {
+.about-page .contribution-table tbody tr:nth-child(even) td {
     background: #f6fbf9;
 }
 
-.contribution-table tbody tr:hover td {
+.about-page .contribution-table tbody tr:hover td,
+.about-page .contribution-table tbody tr:hover th {
     background: #d9eee6;
 }
 
-.contribution-table ul {
+.about-page .contribution-table ul {
     margin: 0;
     padding-left: 1.3rem;
 }
 
-.contribution-table li {
+.about-page .contribution-table li {
     margin-bottom: 8px;
 }
