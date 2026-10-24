@@ -88,7 +88,7 @@ $fun_fact_row_classes = [1 => 'first-row', 2 => 'second-row', 3 => 'third-row'];
             <!-- Section 1: group details from database -->
             <section class="about-us" aria-labelledby="section-title1">
                 <div class="about-group">
-                <h1 class="about-titles" id="section-title1"> <strong> About Us </strong> </h1>
+                <h1 class="about-titles" id="section-title1">  About Us </h1>
                 <ul>
                     <li> Our group's super-duper cool name: <strong id="epic-name"> <?= escape_html($group_details['group_name'] ?? '') ?> </strong> </li>
                     <li> Our group's members and Student IDs:
@@ -120,13 +120,13 @@ $fun_fact_row_classes = [1 => 'first-row', 2 => 'second-row', 3 => 'third-row'];
 
             <!-- Section 2: member contributions table (Project 1 and 2) from database -->
             <section class="member-contributions" aria-labelledby="section-title2">
-                <h2 class="about-titles" id="section-title2"> <strong> Member Contributions </strong> </h2>
+                <h2 class="about-titles" id="section-title2"> Member Contributions </h2>
                 <table class="contribution-table">
                     <thead>
                         <tr>
-                            <th scope="col"> Member </th>
-                            <th scope="col"> Project Part 1 </th>
-                            <th scope="col"> Project Part 2 </th>
+                            <th scope="col" class="table-header"> Member </th>
+                            <th scope="col" class="table-header"> Project Part 1 </th>
+                            <th scope="col" class="table-header"> Project Part 2 </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -150,7 +150,7 @@ $fun_fact_row_classes = [1 => 'first-row', 2 => 'second-row', 3 => 'third-row'];
             <!-- Section 3: quotes from database -->
             <section class="individual-quotes" aria-labelledby="section-title3">
                 <div class="inspiration">
-                <h2 class="about-titles" id="section-title3"> <strong> What Inspires Us </strong> </h2>
+                <h2 class="about-titles" id="section-title3"> What Inspires Us </h2>
                 <br>
                     <?php foreach ($team_members as $member): ?>
                     <div class="quote">
@@ -181,7 +181,7 @@ $fun_fact_row_classes = [1 => 'first-row', 2 => 'second-row', 3 => 'third-row'];
                 </div>
 
                 <div class="member-secret">
-                <h2 class="about-titles" id="section-title4"> <strong> Finally... Our thrilling secrets! </strong> </h2> <br>
+                <h2 class="about-titles" id="section-title4"> Finally... Our thrilling secrets! </h2> <br>
                 <table>
                     <caption> <span aria-hidden="true"> 🧐 </span> These are things that help you to know more about us </caption>
                     <thead>
