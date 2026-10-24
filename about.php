@@ -1,30 +1,48 @@
 <?php
-require_once 'settings.php'; // your database connection file
+require_once 'settings.php';
 
-// Fetch group details as key => value
+function e($v) { return htmlspecialchars($v ?? '', ENT_QUOTES, 'UTF-8'); }
+
+// Group details
 $group = [];
-$result = mysqli_query($conn, "SELECT detail_key, detail_value FROM group_details");
-if ($result) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $group[$row['detail_key']] = $row['detail_value'];
-    }
+$res = mysqli_query($conn, "SELECT detail_key, detail_value FROM group_details");
+while ($res && $row = mysqli_fetch_assoc($res)) {
+    $group[$row['detail_key']] = $row['detail_value'];
 }
 
-// Fetch team members
+// Members
 $members = [];
-$result = mysqli_query($conn, "SELECT * FROM team_members ORDER BY id ASC");
-if ($result) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $members[] = $row;
-    }
+$res = mysqli_query($conn, "SELECT * FROM team_members ORDER BY id ASC");
+while ($res && $row = mysqli_fetch_assoc($res)) {
+    $members[] = $row;
 }
 
-// Quote section classes and flags (by member order)
-$quote_classes = ['TDQ-Quote', 'RN-Quote', 'JM-Quote'];
-$flags = ['🇻🇳', '🇱🇰', '🇯🇵'];
+// Contributions: $contrib[member_id or 'all'][project][] = task
+$contrib = [];
+$res = mysqli_query($conn, "SELECT member_id, project, task FROM member_contributions ORDER BY project, id");
+while ($res && $row = mysqli_fetch_assoc($res)) {
+    $key = $row['member_id'] === null ? 'all' : $row['member_id'];
+    $contrib[$key][$row['project']][] = $row['task'];
+}
 
-function e($value) {
-    return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
+// Fun facts: $facts[row_num][member_id] = [emoji, fact]
+$facts = [];
+$res = mysqli_query($conn, "SELECT member_id, row_num, emoji, fact FROM fun_facts ORDER BY row_num, member_id");
+while ($res && $row = mysqli_fetch_assoc($res)) {
+    $facts[$row['row_num']][$row['member_id']] = $row;
+}
+$row_classes = [1 => 'first-row', 2 => 'second-row', 3 => 'third-row'];
+
+// Renders the project 1 / project 2 tasks inside a <dl>
+function render_tasks($tasks) {
+    foreach ([1, 2] as $p) {
+        if (!empty($tasks[$p])) {
+            echo '<dd> <strong>Project ' . $p . ':</strong> </dd>' . "\n";
+            foreach ($tasks[$p] as $t) {
+                echo '<dd> - ' . e($t) . ' </dd>' . "\n";
+            }
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -43,7 +61,6 @@ function e($value) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* This is the CSS applied to the 4 headings in about.php */
         .about-titles {
             color: #065747;
             font-size: 3rem;
@@ -58,11 +75,10 @@ function e($value) {
 <?php include 'header.inc'; ?>
 
         <main>
-            <!-- This is the first section of about.php, including group name, tutorial class day and time and the group photo -->
+            <!-- Section 1: group details from database -->
             <section class="about-us" aria-labelledby="section-title1">
                 <div class="about-group">
                 <h1 class="about-titles" id="section-title1"> <strong> About Us </strong> </h1>
-                <!-- This is the nested list of <ul> and <ol> -->
                 <ul>
                     <li> Our group's super-duper cool name: <strong id="epic-name"> <?= e($group['group_name'] ?? '') ?> </strong> </li>
                     <li> Our group's members and Student IDs:
@@ -84,7 +100,6 @@ function e($value) {
                 </ul>
                 </div>
 
-                <!-- This is the group photo, along with a caption -->
                 <div class="group-photo">
                 <figure>
                     <img src="Images/official-group-photo.jpg" alt="Group photo of G05 - TideTech">
@@ -93,7 +108,7 @@ function e($value) {
                 </div>
             </section>
 
-            <!-- This is the second section, displaying member contributions of our group-->
+            <!-- Section 2: member contributions (Project 1 and 2) from database -->
             <section class="member-contributions" aria-labelledby="section-title2">
                 <div class="contribution-image">
                 <!-- Source of the image used: https://sparkstrategy.com.au/contribution-vs-attribution-intermediaries/ -->
@@ -105,34 +120,27 @@ function e($value) {
                 <div class="individual-tasks">
                 <h2 class="about-titles" id="section-title2"> <strong> Member Contributions </strong> </h2>
                 <h3 style="font-size: 2rem; color:blue; margin-left: 0.5rem;"> <strong> <span aria-hidden="true"> 🖌️ </span> Individual Responsibilities: </strong> </h3>
-                <!-- This is a description list used to present member contributions -->
                 <dl>
                     <?php foreach ($members as $m): ?>
                     <dt class="member-name1"> <span aria-hidden="true"> 📌 </span> <?= e($m['name']) ?> </dt>
-                        <?php foreach (explode(';', $m['responsibilities']) as $task): ?>
-                            <?php if (trim($task) !== ''): ?>
-                        <dd> - <?= e(trim($task)) ?> </dd>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
+                        <?php render_tasks($contrib[$m['id']] ?? []); ?>
                     <?php endforeach; ?>
                     <dt style="font-size: 2rem; color: blue; margin: 1rem 0.5rem 1rem 0.5rem;"> <strong> <span aria-hidden="true"> 🤝 </span> All members: </strong> </dt>
-                        <dd> - CSS Style for each individual page </dd>
-                        <dd> - Suggesting ideas </dd>
-                        <dd> - Re-evaluation and finalisation </dd>
+                        <?php render_tasks($contrib['all'] ?? []); ?>
                 </dl>
                 </div>
             </section>
             <br>
 
-            <!-- This is the third section, stating individual quotes that inspire each of us -->
+            <!-- Section 3: quotes from database -->
             <section class="individual-quotes" aria-labelledby="section-title3">
                 <div class="inspiration">
                 <h2 class="about-titles" id="section-title3"> <strong> What Inspires Us </strong> </h2>
                 <br>
-                    <?php foreach ($members as $i => $m): ?>
-                    <div class="<?= e($quote_classes[$i] ?? '') ?>">
+                    <?php foreach ($members as $m): ?>
+                    <div class="<?= e($m['quote_class']) ?>">
                     <h3 class="member-name2"> <span aria-hidden="true"> 👤 </span> <?= e($m['name']) ?>: </h3>
-                    <p> <span aria-hidden="true"> <?= $flags[$i] ?? '' ?> </span> "<?= e($m['quote_original']) ?>" </p>
+                    <p> <span aria-hidden="true"> <?= e($m['flag']) ?> </span> "<?= e($m['quote_original']) ?>" </p>
                     <p> => English Translation: "<?= e($m['quote_translation']) ?>" </p>
                     </div>
                     <br>
@@ -148,7 +156,7 @@ function e($value) {
                 </div>
             </section>
 
-            <!-- This is the final section, revealing some fun facts about the group members -->
+            <!-- Section 4: fun facts from database -->
             <section class="funfact" aria-labelledby="section-title4">
                 <div class="funfact-image">
                 <!-- Source of the image used: https://stock.adobe.com/search?k=fun+fact&asset_id=194933763 -->
@@ -157,14 +165,13 @@ function e($value) {
                 </figure>
                 </div>
 
-                <!-- This is a table used to present fun facts about the team members -->
                 <div class="member-secret">
                 <h2 class="about-titles" id="section-title4"> <strong> Finally... Our thrilling secrets! </strong> </h2> <br>
                 <table>
                     <caption> <span aria-hidden="true"> 🧐 </span> These are things that help you to know more about us </caption>
                     <thead>
                         <tr>
-                            <th colspan="3" class="table-header"> <span aria-hidden="true"> 🔍 </span> FUN FACTS ABOUT EACH MEMBER </th>
+                            <th colspan="<?= count($members) ?>" class="table-header"> <span aria-hidden="true"> 🔍 </span> FUN FACTS ABOUT EACH MEMBER </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -173,21 +180,15 @@ function e($value) {
                             <td> <strong> <?= e($m['name']) ?> </strong> </td>
                             <?php endforeach; ?>
                         </tr>
+                        <?php foreach ($facts as $rn => $rowFacts): ?>
                         <tr>
-                            <td class="first-row"> <span aria-hidden="true"> 📚 </span> His favourite subject is Maths, especially when it comes to Probability and Statistics </td>
-                            <td class="first-row"> <span aria-hidden="true"> 🎧 </span> He is a big fan of listening to music </td>
-                            <td class="first-row"> <span aria-hidden="true"> ☕️ </span> He works as a barista, but he doesn't like coffee </td>
+                            <?php foreach ($members as $m): $f = $rowFacts[$m['id']] ?? null; ?>
+                            <td class="<?= e($row_classes[$rn] ?? '') ?>">
+                                <?php if ($f): ?><span aria-hidden="true"> <?= e($f['emoji']) ?> </span> <?= e($f['fact']) ?><?php endif; ?>
+                            </td>
+                            <?php endforeach; ?>
                         </tr>
-                        <tr>
-                            <td class="second-row"> <span aria-hidden="true"> 🧩 </span> He likes solving puzzles or IQ games, including Minesweeper, Sudoku and match-3 games </td>
-                            <td class="second-row"> <span aria-hidden="true"> 🤖 </span> He is interested in Artificial Intelligence (AI) </td>
-                            <td class="second-row"> <span aria-hidden="true"> ✈️ </span> He has never gone overseas or interstate </td>
-                        </tr>
-                        <tr>
-                            <td class="third-row"> <span aria-hidden="true"> 🎼 </span> He loves playing kalimba, as the only instrument that he's keen on </td>
-                            <td class="third-row"> <span aria-hidden="true"> ⏰ </span> He can spend a surprisingly long time trying to fix one small coding error </td>
-                            <td class="third-row"> <span aria-hidden="true"> 🕹️ </span> He loves games, whether it's video, board or card games </td>
-                        </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
                 </div>
