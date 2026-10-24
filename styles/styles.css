@@ -644,24 +644,126 @@ hr {
 
 
 
-input {font-size: 20px;}
+.apply-page input, .apply-page select, .apply-page option, .apply-page textarea {
+    font-size: 1.2rem;
+}
 
-select {font-size: 20px;}
+.job-reference-form {
+    margin: 1rem;
+}
 
-option {font-size: 20px;}
+.application-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
 
-textarea {font-size: 20px;}
+.details-fieldset, .gender-fieldset, .address-fieldset, .contacts-fieldset {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    box-sizing: border-box;
+}
 
-.form-buttons {text-align: center;}
+.details-fieldset {
+    background-color: #fbd5b5;
+}
 
-.form-buttons input {margin: 0 8px;}
+.gender-fieldset {
+    background-color: #bfdbf6;
+}
 
-.application-grid {display: grid;
-                   grid-template-columns: auto auto;
-                   gap: 10px;
-                }
+.address-fieldset {
+    background-color: #edeeaf;
+}
 
-.form-item-skills-fieldset {grid-column: 1 / span 2;}
+.contacts-fieldset {
+    background-color: #cde8cf;
+}
+
+.details-first-name, .details-last-name, .details-birth, 
+.male, .female, .rather-not-say, .street, .suburb, .state, 
+.postcode, .email, .phone-number {
+    margin-bottom: 1rem;
+}
+
+.apply-page label {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.apply-page .form-item-skills-fieldset p {
+    font-size: 1.2rem
+}
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.apply-page input[type='text'], .apply-page select,
+.apply-page input[type='email'], .apply-page input[type='tel'],
+.apply-page input[type='date'] {
+    width: 15rem;
+    height: 2rem;
+}
+
+.apply-page button {
+    width: 15rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem
+}
+
+.apply-page .submit {
+    background-color: #2e7d32;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.apply-page .submit:hover {
+    background-color: #1b5e20;
+    cursor: pointer;
+}
+
+.apply-page .reset {
+    background-color: #e65100;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.apply-page .reset:hover {
+    background-color: #be360c;
+    cursor: pointer;
+}
+
+.apply-page .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.apply-page .other-skills {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+
+.form-item-skills-fieldset {
+    grid-template-columns: 1fr;
+    margin: 1rem;
+    background-color: #e9e5f5;
+}
+
+.apply-page legend {
+    font-size: 1.5rem;
+    text-align: center;
+     margin-bottom: 0.5rem;
+}
 
 
 
@@ -1360,6 +1462,10 @@ mark {
     border: none;
     border-radius: 8px;
     cursor: pointer;
+}
+
+.signup-page button, .login-page button:hover {
+    background-color: #1b5e20;
 }
 
 .signup-row label {    
