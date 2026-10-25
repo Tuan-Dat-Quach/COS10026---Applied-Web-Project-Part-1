@@ -122,8 +122,7 @@
                         pattern="[A-Za-z '\-]+"
                         placeholder="Enter your first name"
                         title="Use letters, spaces, apostrophes and hyphens only."
-                        value="
-                        <?php
+                        value="<?php
                           if (isset($form_data['First_Name'])) {
                             echo htmlspecialchars($form_data['First_Name'], ENT_QUOTES, 'UTF-8');
                           }
@@ -144,8 +143,7 @@
                         pattern="[A-Za-z '\-]+"
                         placeholder="Enter your last name"
                         title="Use letters, spaces, apostrophes and hyphens only."
-                        value="
-                        <?php
+                        value="<?php
                           if (isset($form_data['Last_Name'])) {
                             echo htmlspecialchars($form_data['Last_Name'], ENT_QUOTES, 'UTF-8');
                           }
@@ -162,8 +160,7 @@
                         type="date"
                         id="date-of-birth"
                         name="Date_of_Birth"
-                        value="
-                        <?php
+                        value="<?php
                           if (isset($form_data['Date_of_Birth'])) {
                             echo htmlspecialchars($form_data['Date_of_Birth'], ENT_QUOTES, 'UTF-8');
                           }
@@ -191,8 +188,7 @@
                         type="radio"
                         id="male"
                         name="Gender"
-                        value="Male"
-                        <?php
+                        value="Male"<?php
                           if (isset($form_data['Gender']) && $form_data['Gender'] === 'Male') {
                             echo "checked";
                           }
@@ -209,8 +205,7 @@
                         type="radio"
                         id="female"
                         name="Gender"
-                        value="Female"
-                        <?php
+                        value="Female"<?php
                           if (isset($form_data['Gender']) && $form_data['Gender'] === 'Female') {
                             echo "checked";
                           }
@@ -227,8 +222,7 @@
                         type="radio"
                         id="rather-not-say"
                         name="Gender"
-                        value="Rather Not Say"
-                        <?php
+                        value="Rather Not Say"<?php
                           if (isset($form_data['Gender']) && $form_data['Gender'] === 'Rather Not Say') {
                             echo "checked";
                           }
@@ -258,8 +252,7 @@
                         name="Street_Address"
                         maxlength="40"
                         placeholder="Enter your street address"
-                        value="
-                        <?php
+                        value="<?php
                           if (isset($form_data['Street_Address'])) {
                             echo htmlspecialchars($form_data['Street_Address'], ENT_QUOTES, 'UTF-8');
                           }
@@ -278,8 +271,7 @@
                         name="Suburb"
                         maxlength="40"
                         placeholder="Enter your suburb or town"
-                        value="
-                        <?php
+                        value="<?php
                           if (isset($form_data['Suburb'])) {
                             echo htmlspecialchars($form_data['Suburb'], ENT_QUOTES, 'UTF-8');
                           }
@@ -370,8 +362,7 @@
                         pattern="[0-9]{4}"
                         placeholder="e.g. 3000"
                         title="Enter exactly 4 digits."
-                        value="
-                        <?php
+                        value="<?php
                           if (isset($form_data['Postcode'])) {
                             echo htmlspecialchars($form_data['Postcode'], ENT_QUOTES, 'UTF-8');
                           }
@@ -401,8 +392,7 @@
                         name="Email"
                         placeholder="e.g. example@email.com"
                         title="Enter a valid email address."
-                        value="
-                        <?php
+                        value="<?php
                           if (isset($form_data['Email'])) {
                             echo htmlspecialchars($form_data['Email'], ENT_QUOTES, 'UTF-8');
                           }
@@ -422,8 +412,7 @@
                         pattern="[0-9]{8,12}"
                         placeholder="e.g. 0412345678"
                         title="Enter a phone number containing 8 to 12 digits."
-                        value="
-                        <?php
+                        value="<?php
                           if (isset($form_data['Phone_Number'])) {
                             echo htmlspecialchars($form_data['Phone_Number'], ENT_QUOTES, 'UTF-8');
                           }
@@ -604,15 +593,11 @@
                         id="other-skills"
                         name="Other_Skills"
                         rows="6"
-                        placeholder="Tell us about any other skills you have.">
-
-                    <?php
+                        placeholder="Tell us about any other skills you have."><?php
                       if (isset($form_data['Other_Skills'])) {
                         echo htmlspecialchars($form_data['Other_Skills'], ENT_QUOTES, 'UTF-8');
                       }
-                    ?>
-
-                    </textarea>
+                    ?></textarea>
                   </div>
 
                 </fieldset>

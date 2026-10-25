@@ -94,6 +94,7 @@
   <main>
     <?php
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Take the inputs and sanitize them
         $user_id = $_SESSION['user_id'] ?? null;
         $job_reference_number = sanitize_input($_POST["Job_Reference_Number"] ?? "");
         $first_name = sanitize_input($_POST["First_Name"] ?? "");
@@ -106,7 +107,7 @@
         $postcode = sanitize_input($_POST["Postcode"] ?? "");
         $email = sanitize_input($_POST["Email"] ?? "");
         $phone_number = sanitize_input($_POST["Phone_Number"] ?? "");
-
+        // Sanitize the skills input and forward them to an array
         $skills = $_POST["Skills"] ?? [];
         if (!is_array($skills)) {
             $skills = [];
@@ -117,9 +118,9 @@
 
         $other_skills = sanitize_input($_POST["Other_Skills"] ?? "");
         $status = "NEW";
-
+        // Initialize the array storing error messages
         $error_messages = [];
-
+        // Select Job Reference number from jobs table dynamically
         $allowed_job_references = [];
 
         $result = mysqli_query($conn, "SELECT job_reference FROM jobs");
@@ -129,7 +130,7 @@
                 $allowed_job_references[] = $row['job_reference'];
             }
         }
-
+        // Validate each input, check if they are empty or inappropriate
         if (empty($job_reference_number)) {
             $error_messages[] = "Please enter the Job Reference Number.";
         } elseif (!in_array($job_reference_number, $allowed_job_references, true)) {
@@ -151,7 +152,7 @@
         if (empty($date_of_birth)) {
             $error_messages[] = "Please enter your Date of Birth.";
         } 
-
+        // Check if the gender is in the allowed array
         $allowed_gender = ['Male', 'Female', 'Rather Not Say'];
 
         if (empty($gender)) {
@@ -171,7 +172,7 @@
         } elseif (!preg_match("/^.{1,40}$/",$suburb)) {
             $error_messages[] = "Please enter a valid Suburb.";
         } 
-
+        // Check if the state is in the allowed array
         $allowed_state = ['VIC', 'NSW', 'QLD', 'NT', 'WA', 'SA', 'TAS', 'ACT'];
 
         if (empty($state)) {
@@ -191,7 +192,7 @@
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $error_messages[] = "Please enter a valid Email.";
         } 
-
+        // Check if the skills are in the allowed array
         $skills_valid = true;
 
         $allowed_skills = ['Loves The Environment', 'Organization', 'Punctuality', 'Hard Working', 
@@ -214,7 +215,7 @@
         } elseif (!preg_match("/^[0-9]{8,12}$/",$phone_number)) {
             $error_messages[] = "Please enter a valid Phone Number. It must only contain numbers and be 8-12 digits in length.";
         } 
-
+        // Begin INSERT if there is no error message
         if (empty($error_messages)) {
 
             $stmteoi = $conn->prepare("INSERT INTO `eoi` (`user_id`, `job_reference`, `first_name`, `last_name`, `date_of_birth`, 
@@ -222,11 +223,11 @@
                                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $stmteoi->bind_param("isssssssssssss", $user_id, $job_reference_number, $first_name, $last_name, $date_of_birth, 
                                  $gender, $street_address, $suburb, $state, $postcode, $email, $phone_number, $other_skills, $status);
-
+            // Use $conn->insert_id to take the auto-increment value, which is EOI number
             if ($stmteoi->execute()) {
                 $form_eoinumber = $conn->insert_id;
                 $stmteoi->close();
-            
+                // Select matched skill ids
                 foreach ($skills as $value) {
                     $stmtskills = $conn->prepare("SELECT skill_id FROM skills WHERE skill_name = ?");
                     $stmtskills->bind_param("s", $value);
@@ -234,7 +235,7 @@
                     $resultskills = $stmtskills->get_result();
                     $single_skill = $resultskills->fetch_assoc();
                     $stmtskills->close();
-
+                    // Validate and insert into eoi_skills table with generated EOI number and matched skills
                     if ($single_skill) {
                         $skill_id = $single_skill['skill_id'];
                         $stmteoiskills = $conn->prepare("INSERT INTO eoi_skills (eoi_number, skill_id)
@@ -244,10 +245,9 @@
                         $stmteoiskills->close();
                     }
                 }
-
+                // Display the table including user's inputs once every input is valid
                 echo "<h1> Application Submission </h1>";
-                echo "<p> Your application has been successfully submitted! </p>";
-                echo "<p> Your EOI number is: <strong>" . (int)$form_eoinumber . "</strong> </p>";
+                echo "<p class='validated-eoi'> 🎉 Your application has been successfully submitted! Your EOI number is: <strong>" . (int)$form_eoinumber . "</strong> </p>";
                 echo "<table>";
                 echo "<tr>";
                 echo "<th> Job Reference Number: </th>";
@@ -303,10 +303,10 @@
                 echo "<th> Phone Number: </th>";
                 echo "<td> $phone_number </td>";
                 echo "</tr>";
-
+                // Use implode to add break line between the skills
                 echo "<tr>";
                 echo "<th> Skills: </th>";
-                echo "<td>" . implode(", ", $skills) . "</td>";
+                echo "<td>" . implode("<br>", $skills) . "</td>";
                 echo "</tr>";
 
                 echo "<tr>";
@@ -314,18 +314,22 @@
                 echo "<td> $other_skills </td>";
                 echo "</tr>";
                 echo "</table>";
-
+                echo "<p class='go-back-apply'> <strong> Go back to </strong> <a href='apply.php'> Apply page </a> </p>";
+                // Remove the previously saved form data if there are
                 unset($_SESSION['form_data']);
             } else {
                 $error_messages[] = "Unable to submit your application.";
                 $stmteoi->close();
             }
         } else {
+            // Saved the form data if there are errors
             $_SESSION['form_data'] = $_POST;
+            // Print out the error messages as unordered list
             echo "<ul class='error-list'>";
             foreach ($error_messages as $message) { 
                 echo "<li>" . htmlspecialchars($message, ENT_QUOTES, 'UTF-8') . "</li>";
             }
+            // Notice with link to go back to apply page
             echo "</ul>";
             echo "<p class='error-eoi'> <strong> ⚠️ Please go back to <a href='apply.php'> Apply page </a> and fix all errors. </strong> </p>";
         }
