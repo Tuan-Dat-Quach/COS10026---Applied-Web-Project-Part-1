@@ -98,7 +98,7 @@ CREATE TABLE `group_details` (
   `tutorial_time` varchar(50) NOT NULL,
   `tutorial_location` varchar(100) NOT NULL,
   `group_number` varchar(10) NOT NULL,
-  `scenario` text NOT NULL
+  `scenario` text NOT NULL,
   `group_photo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -106,7 +106,7 @@ CREATE TABLE `group_details` (
 -- Dumping data for table `group_details`
 --
 
-INSERT INTO `group_details` (`id`, `group_name`, `tutorial_day`, `tutorial_time`, `tutorial_location`, `group_number`, `scenario`) VALUES
+INSERT INTO `group_details` (`id`, `group_name`, `tutorial_day`, `tutorial_time`, `tutorial_location`, `group_number`, `scenario`, `group_photo`) VALUES
 (1, 'TechTide', 'Every Thursday (Except for Mid-term Break)', '12:30 p.m to 14:30 p.m', 'Room BA513, Floor 5 at BA Building', 'G05', 'An environmental organisation strengthening its online presence to promote conservation projects, community campaigns, educational resources, volunteer opportunities and public donations.', 'Images/official-group-photo.jpg');
 
 -- --------------------------------------------------------

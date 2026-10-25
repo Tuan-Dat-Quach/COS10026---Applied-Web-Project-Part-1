@@ -140,7 +140,7 @@ $fun_fact_row_classes = [1 => 'first-row', 2 => 'second-row', 3 => 'third-row'];
                 <?php if (!empty($group_details['group_photo'])): ?>
                 <figure>
                     <img src="<?= escape_html($group_details['group_photo']) ?>" alt="<?= escape_html($group_photo_alt_text) ?>">
-                    <figcaption id="about-caption1"> <strong> <em> <span aria-hidden="true"> 😎 </span> <?= escape_html($group_photo_caption) ?> </em> </strong> </figcaption>
+                    <figcaption id="about-caption1"> <strong> <span aria-hidden="true"> 😎 </span> <?= escape_html($group_photo_caption) ?> </strong> </figcaption>
                 </figure>
                 <?php endif; ?>
                 </div>
