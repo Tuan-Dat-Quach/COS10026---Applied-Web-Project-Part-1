@@ -49,9 +49,9 @@
 
         <div class="application-banner">
 
-            <h1>Join Greener Society</h1>
+            <h1> <span aria-hidden="true"> 🌱 </span> Join Greener Society</h1>
 
-            <p>
+            <p class="apply-introduction">
                 Thank you for considering a career with Greener Society.
                 We look forward to receiving your application.
             </p>
