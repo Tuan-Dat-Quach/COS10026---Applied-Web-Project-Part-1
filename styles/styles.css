@@ -85,6 +85,7 @@ nav a:hover {
     }
 }
 
+/* CSS to help user know which page they are at */
 .index-page nav a[href="index.php"],
 .jobs-page nav a[href="jobs.php"],
 .apply-page nav a[href="apply.php"],
@@ -96,6 +97,7 @@ nav a:hover {
     border-bottom: 3px solid #276249;
 }
 
+/* These are CSS for logout confirmation in header.inc */
 .logout-confirm {
     display: flex;
     flex-wrap: wrap;
@@ -378,6 +380,7 @@ hr {
     margin: 0;
 }
 
+/* CSS for the confirming buttons when logging out */
 .index-page button {
     font-size: 1.2rem;
     padding: 0.8rem 1.2rem;
@@ -613,6 +616,8 @@ hr {
     }
 }
 
+
+/* These are CSS for tables in jobs.php */
 .jobs-page .table {
     text-align: center;
     border: 2px solid;
@@ -651,7 +656,7 @@ hr {
 /* This is the section for CSS applied to apply.php */
 
 
-
+/* Font-size for input, select, option and textarea */
 .apply-page input, .apply-page select, .apply-page option, .apply-page textarea {
     font-size: 1.2rem;
 }
@@ -660,12 +665,14 @@ hr {
     margin: 1rem;
 }
 
+/* Flexbox layout for the first 4 fieldsets */
 .application-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
 }
 
+/* Flexbox layout in each fieldset */
 .details-fieldset, .gender-fieldset, .address-fieldset, .contacts-fieldset {
     margin: 1rem;
     display: flex;
@@ -675,6 +682,7 @@ hr {
     box-sizing: border-box;
 }
 
+/* Background color and flex width for each fieldset */
 .details-fieldset {
     background-color: #fbd5b5;
     flex: 1 1 25rem;
@@ -695,27 +703,32 @@ hr {
     flex: 1 1 100%;
 }
 
+/* Margin-bottom for some inputs */
 .details-first-name, .details-last-name, .details-birth, 
 .male, .female, .rather-not-say, .street, .suburb, .state, 
 .postcode, .email, .phone-number {
     margin-bottom: 1rem;
 }
 
+/* Font-size and margin for the labels */
 .apply-page label {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
 }
 
+/* Font-size for the <p> in skills */
 .apply-page .form-item-skills-fieldset p {
     font-size: 1.2rem
 }
 
+/* Buttons in apply.php */
 .form-buttons {
     display: flex;
     justify-content: center;
     gap: 2rem;
 }
 
+/* Media queries for buttons */
 @media (max-width: 600px) {
     .form-buttons {
         flex-direction: column;
@@ -724,6 +737,7 @@ hr {
     }
 }
 
+/* Width and height for some inputs */
 .apply-page input[type='text'], .apply-page select,
 .apply-page input[type='email'], .apply-page input[type='tel'],
 .apply-page input[type='date'] {
@@ -731,12 +745,14 @@ hr {
     height: 2rem;
 }
 
+/* Font-size, padding, and white-space control for the buttons */
 .apply-page button {
     font-size: 1.2rem;
     padding: 0.8rem 1.2rem;
     white-space: nowrap;
 }
 
+/* These are CSS for submit button */
 .apply-page .submit {
     background-color: #2e7d32;
     color: white;
@@ -752,6 +768,7 @@ hr {
     cursor: pointer;
 }
 
+/* These are CSS for reset button */
 .apply-page .reset {
     background-color: #e65100;
     color: white;
@@ -767,24 +784,28 @@ hr {
     cursor: pointer;
 }
 
+/* Flexbox layout for skills area */
 .apply-page .skills-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
 }
 
+/* Flexbox layout for other skills area */
 .apply-page .other-skills {
     display: flex;
     flex-direction: column;
     margin: 1rem 0;
 }
 
+/* Set both skills and other skills area as a column in the fieldset */
 .form-item-skills-fieldset {
     grid-template-columns: 1fr;
     margin: 1rem;
     background-color: #fbd5b5;
 }
 
+/* CSS for the legend in each fieldset */
 .apply-page legend {
     font-size: 1.5rem;
     text-align: center;
@@ -970,6 +991,7 @@ hr {
     }
 }
 
+/* These are CSS for Fun-facts table in about.php */
 .about-page .table {
     text-align: center;
     border: 2px solid;
@@ -1203,12 +1225,13 @@ mark {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* This is CSS for labels in manager.php */
+/* This is CSS for labels */
 .eoi-list {
     font-size: 1.2rem;
     margin-left: 1rem;
 }
 
+/* These are CSS for the inputs */
 .manager-page input {
     padding: 0.5rem 1rem;
     background-color: #2e7d32;
@@ -1224,6 +1247,7 @@ mark {
     background-color: #1b5e20;
 }
 
+/* CSS for select input */
 .manager-page select {
     height: 2rem;
     font-size: 1.2rem;
@@ -1233,6 +1257,7 @@ mark {
     margin-bottom: 2rem;
 }
 
+/* Flexbox display for EOI listing methods and the delete EOIs by a job reference button */
 .eoi-manage {
     display: flex;
     align-items: center;
@@ -1245,6 +1270,7 @@ mark {
     display: inline-block;
 }
 
+/* Media queries for EOI listing methods */
 @media (max-width: 768px) {
     .eoi-manage {
         flex-direction: column;
@@ -1258,6 +1284,7 @@ mark {
     font-weight: bold;
 }
 
+/* These are CSS for the main table */
 .manager-page table {
     text-align: center;
     border: 2px solid;
@@ -1275,6 +1302,7 @@ mark {
     padding: 1.5rem 0.5rem;
 }
 
+/* CSS for the confirm box in action column */
 .eoi-action, .confirm-box {
     display: flex;
     align-items: center;
@@ -1282,10 +1310,12 @@ mark {
     gap: 0.5rem;
 }
 
+/* Set scrolling for manager*/
 .table-wrapper, .table-wrapper-2 {
     overflow-x: auto;
 }
 
+/* Media queries for the table */
 @media (max-width: 768px) {
     .manager-page table {
         font-size: 1rem;
@@ -1299,6 +1329,7 @@ mark {
     }
 }
 
+/* These are CSS for all buttons */
 .manager-page button { 
     border: none;   
     color: white;                                    
@@ -1311,6 +1342,7 @@ mark {
     margin-left: 0.5rem;
 }
 
+/* These multiple CSS set both original and hover color for buttons */
 .view-eoi button {
     background-color: #2e7d32;
 }
@@ -1366,6 +1398,7 @@ mark {
     cursor: not-allowed;
 }
 
+/* These are CSS for the status column */
 .status {
     display: inline-block;
     padding: 0.3rem 0.9rem;
@@ -1388,6 +1421,7 @@ mark {
     border: 2px solid #4caf50;
 }
 
+/* These are CSS for colors in the table rows */
 .manager-page th {
     background-color: #dbc382;
 }
@@ -1404,6 +1438,7 @@ mark {
     background-color: #f0e4d0 !important;
 }
 
+/* These are CSS for the button to delete EOI by a job reference */
 .delete-by-job-ref {
     flex: 0 0 auto;
     margin-left: 1rem;
@@ -1417,6 +1452,7 @@ mark {
     margin-left: 0;
 }
 
+/* Confirmation for deleting all EOIs of a job reference */
 .delete-all-confirm {
     text-align: center;
     margin: 1rem;
@@ -1435,6 +1471,7 @@ mark {
     margin-left: 0;
 }
 
+/* These are CSS for the user profile in user.php */
 .user-profile {
     display: flex;
     width: fit-content;
@@ -1481,16 +1518,20 @@ mark {
 
 
 /* This is the section for CSS applied to both signup.php and login.php */
+
+/* CSS for the h1 */
 .signup-page h1, .login-page h1 {
     text-align: center;
 }
 
+/* CSS for the main element */
 .signup-page main, .login-page main {
     margin: 0 auto;
     padding: 1rem;
     box-sizing: border-box;
 }
 
+/* CSS for the form element */
 .signup-page form, .login-page form  {
     display: flex;
     flex-direction: column;
@@ -1498,6 +1539,7 @@ mark {
     gap: 0.8rem;
 }
 
+/* CSS for each row in the form */
 .signup-row {
     width: 50%;
     display: flex;
@@ -1506,7 +1548,7 @@ mark {
     margin: 0 auto;
 }
 
-
+/* CSS for the inputs */
 .signup-row input {
     flex: 1;
     padding: 0.6rem;
@@ -1515,6 +1557,7 @@ mark {
     border-radius: 8px;
 }
 
+/* CSS for the buttons */
 .signup-page button, .login-page button {
     padding: 0.7rem;
     font-size: 1.5rem;
@@ -1529,6 +1572,7 @@ mark {
     background-color: #1b5e20;
 }
 
+/* CSS for the labels */
 .signup-row label {    
     flex-shrink: 0;       
     text-align: right;
@@ -1541,13 +1585,13 @@ mark {
     flex-shrink: 0;
 }
 
+/* These are CSS for the confirming text for sign up */
 .signup-row .signup-message {
     flex: 1;
     margin: 0;
     padding: 0.6rem;
     font-size: 1.2rem;
 }
-
 
 .success-row {
     width: fit-content;
@@ -1587,6 +1631,7 @@ mark {
     background-color: rgb(183, 183, 183);
 }
 
+/* These are CSS for error confirmation texts */
 .signup-page .error, .login-page .error {
     font-weight: bold;
     font-size: 1.2rem;
@@ -1602,6 +1647,7 @@ mark {
     }
 }
 
+/* CSS for the <p> in signup.php and login.php, except their footer */
 .signup-page p:not(.general-footer), .login-page p:not(.general-footer){
     text-align: center;
     font-size: 1.5rem;
