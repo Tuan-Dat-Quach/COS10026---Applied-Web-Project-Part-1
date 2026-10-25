@@ -19,6 +19,7 @@
         .application-banner {
             background-color: lightgoldenrodyellow;
             border: 1px solid #444;
+            padding: 0.5rem;
             text-align: center;
             font-size: 20px;
         }
@@ -84,7 +85,7 @@
                         <strong>Your Details</strong>
                     </legend>
 
-
+                  <div class="details-first-name">
                     <label for="first-name">
                         First Name
                     </label>
@@ -98,8 +99,9 @@
                         placeholder="Enter your first name"
                         title="Use letters, spaces, apostrophes and hyphens only."
                         required>
+                  </div>
 
-
+                  <div class="details-last-name">
                     <label for="last-name">
                         Last Name
                     </label>
@@ -113,8 +115,9 @@
                         placeholder="Enter your last name"
                         title="Use letters, spaces, apostrophes and hyphens only."
                         required>
+                  </div>
 
-
+                  <div class="details-birth">
                     <label for="date-of-birth">
                         Date of Birth
                     </label>
@@ -124,6 +127,7 @@
                         id="date-of-birth"
                         name="Date_of_Birth"
                         required>
+                  </div>
 
                 </fieldset>
 
@@ -136,33 +140,42 @@
                         <strong>Gender</strong>
                     </legend>
 
-                    <label>
-                        <input
-                            type="radio"
-                            id="male"
-                            name="Gender"
-                            value="Male"
-                            required>
-                        Male
+                  <div class="male">
+                    <label for="male"> 
+                        Male 
                     </label>
 
-                    <label>
-                        <input
-                            type="radio"
-                            id="female"
-                            name="Gender"
-                            value="Female">
-                        Female
+                    <input
+                        type="radio"
+                        id="male"
+                        name="Gender"
+                        value="Male"
+                        required>
+                  </div>
+
+                  <div class="female">
+                    <label for="female"> 
+                        Female 
+                    </label>
+                        
+                    <input
+                        type="radio"
+                        id="female"
+                        name="Gender"
+                        value="Female">
+                  </div>
+
+                  <div class="rather-not-say">
+                    <label for="rather-not-say"> 
+                        Rather Not Say 
                     </label>
 
-                    <label>
-                        <input
-                            type="radio"
-                            id="rather-not-say"
-                            name="Gender"
-                            value="Rather Not Say">
-                        Rather Not Say
-                    </label>
+                    <input
+                        type="radio"
+                        id="rather-not-say"
+                        name="Gender"
+                        value="Rather Not Say">
+                  </div>
 
                 </fieldset>
 
@@ -175,7 +188,7 @@
                         <strong>Your Address</strong>
                     </legend>
 
-
+                  <div class="street">
                     <label for="street-address">
                         Street Address
                     </label>
@@ -187,8 +200,9 @@
                         maxlength="40"
                         placeholder="Enter your street address"
                         required>
+                  </div> 
 
-
+                  <div class="suburb">
                     <label for="suburb-town">
                         Suburb/Town
                     </label>
@@ -200,8 +214,9 @@
                         maxlength="40"
                         placeholder="Enter your suburb or town"
                         required>
+                  </div> 
 
-
+                  <div class="state">
                     <label for="state">
                         State
                     </label>
@@ -222,8 +237,9 @@
                         <option value="ACT">ACT</option>
 
                     </select>
+                  </div> 
 
-
+                  <div class="postcode">
                     <label for="postcode">
                         Postcode
                     </label>
@@ -236,6 +252,7 @@
                         placeholder="e.g. 3000"
                         title="Enter exactly 4 digits."
                         required>
+                  </div> 
 
                 </fieldset>
 
@@ -248,7 +265,7 @@
                         <strong>Contacts</strong>
                     </legend>
 
-
+                  <div class="email">
                     <label for="email">
                         Email
                     </label>
@@ -260,8 +277,9 @@
                         placeholder="e.g. example@email.com"
                         title="Enter a valid email address."
                         required>
+                  </div>
 
-
+                  <div class="phone-number">
                     <label for="phone-number">
                         Phone Number
                     </label>
@@ -274,10 +292,11 @@
                         placeholder="e.g. 0412345678"
                         title="Enter a phone number containing 8 to 12 digits."
                         required>
+                  </div>
 
                 </fieldset>
-
-
+            </div>
+            
                 <!-- SKILLS -->
 
                 <fieldset class="form-item-skills-fieldset">
@@ -386,7 +405,7 @@
 
                     </div>
 
-
+                  <div class="other-skills">
                     <label for="other-skills">
                         <strong>Other Skills</strong>
                     </label>
@@ -396,27 +415,26 @@
                         name="Other_Skills"
                         rows="6"
                         placeholder="Tell us about any other skills you have."></textarea>
+                  </div>
 
                 </fieldset>
-
-            </div>
 
 
             <!-- FORM BUTTONS -->
 
             <div class="form-buttons">
 
-                <input
-                    type="submit"
-                    id="submit"
-                    name="submit"
-                    value="Submit Application">
+                <button type='submit' class="submit"> 
+                    <i class='fa-solid fa-check' aria-hidden='true'> 
+                    </i> 
+                    Submit Application
+                </button>
 
-                <input
-                    type="reset"
-                    id="reset"
-                    name="reset"
-                    value="Reset Application">
+                <button type='reset' class="reset"> 
+                    <i class='fa-solid fa-rotate-left' aria-hidden='true'> 
+                    </i> 
+                    Reset Application
+                </button>
 
             </div>
 

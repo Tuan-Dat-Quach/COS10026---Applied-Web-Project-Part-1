@@ -280,12 +280,10 @@ nav a:hover {
 /* This creates hover effecrts for table cells */
 .index-page td:hover {
     background-color:rgb(215, 231, 172);
-    cursor: pointer; 
 }
  
 .index-page th:not(.table-header):hover {
     background-color:rgb(215, 231, 172);
-    cursor: pointer; 
 }
 
 @media (max-width: 768px) {
@@ -380,6 +378,10 @@ hr {
     margin: 0;
 }
 
+.index-page button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+}
 
 
 
@@ -633,12 +635,15 @@ hr {
 
 .jobs-page td:hover {
     background-color:rgb(215, 231, 172);
-    cursor: pointer; 
 }
  
 .jobs-page th:not(.table-header):hover {
     background-color:rgb(215, 231, 172);
-    cursor: pointer; 
+}
+
+.jobs-page button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
 }
 
 
@@ -647,24 +652,144 @@ hr {
 
 
 
-input {font-size: 20px;}
+.apply-page input, .apply-page select, .apply-page option, .apply-page textarea {
+    font-size: 1.2rem;
+}
 
-select {font-size: 20px;}
+.job-reference-form {
+    margin: 1rem;
+}
 
-option {font-size: 20px;}
+.application-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
 
-textarea {font-size: 20px;}
+.details-fieldset, .gender-fieldset, .address-fieldset, .contacts-fieldset {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    box-sizing: border-box;
+}
 
-.form-buttons {text-align: center;}
+.details-fieldset {
+    background-color: #fbd5b5;
+    flex: 1 1 25rem;
+}
 
-.form-buttons input {margin: 0 8px;}
+.gender-fieldset {
+    background-color: #bfdbf6;
+    flex: 0.5 1 12rem;
+}
 
-.application-grid {display: grid;
-                   grid-template-columns: auto auto;
-                   gap: 10px;
-                }
+.address-fieldset {
+    background-color: #edeeaf;
+    flex: 1 1 25rem;
+}
 
-.form-item-skills-fieldset {grid-column: 1 / span 2;}
+.contacts-fieldset {
+    background-color: #cde8cf;
+    flex: 1 1 100%;
+}
+
+.details-first-name, .details-last-name, .details-birth, 
+.male, .female, .rather-not-say, .street, .suburb, .state, 
+.postcode, .email, .phone-number {
+    margin-bottom: 1rem;
+}
+
+.apply-page label {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.apply-page .form-item-skills-fieldset p {
+    font-size: 1.2rem
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+@media (max-width: 600px) {
+    .form-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+.apply-page input[type='text'], .apply-page select,
+.apply-page input[type='email'], .apply-page input[type='tel'],
+.apply-page input[type='date'] {
+    width: 15rem;
+    height: 2rem;
+}
+
+.apply-page button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+    white-space: nowrap;
+}
+
+.apply-page .submit {
+    background-color: #2e7d32;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    width: 15rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+}
+
+.apply-page .submit:hover {
+    background-color: #1b5e20;
+    cursor: pointer;
+}
+
+.apply-page .reset {
+    background-color: #e65100;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    width: 15rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+}
+
+.apply-page .reset:hover {
+    background-color: #be360c;
+    cursor: pointer;
+}
+
+.apply-page .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.apply-page .other-skills {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+
+.form-item-skills-fieldset {
+    grid-template-columns: 1fr;
+    margin: 1rem;
+    background-color: #fbd5b5;
+}
+
+.apply-page legend {
+    font-size: 1.5rem;
+    text-align: center;
+     margin-bottom: 0.5rem;
+}
 
 
 
@@ -797,7 +922,7 @@ textarea {font-size: 20px;}
     padding: 10px; 
     font-weight: bold;
     font-size: 1.4rem;
-    color:rgb(12, 12, 210)
+    color:rgb(12, 12, 210);
 }
 
 .first-row {
@@ -867,13 +992,92 @@ textarea {font-size: 20px;}
 
 .about-page td:hover {
     background-color:rgb(215, 231, 172);
-    cursor: pointer; 
 }
  
 .about-page th:not(.table-header):hover {
-    background-color:rgb(215, 231, 172);
-    cursor: pointer; 
+    background-color:rgb(215, 231, 172); 
 }
+
+/* ===== Member Contributions section (about.php) ===== */
+.about-page section.member-contributions {
+    display: block;
+    overflow-x: auto;
+    padding: 2rem 5vw;
+    background-color: #E7DDC8;
+}
+
+.about-page section.member-contributions .about-titles {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.about-page .contribution-table {
+    width: 100%;
+    max-width: 1200px;
+    min-width: 700px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 1.3rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.about-page .contribution-table th,
+.about-page .contribution-table td {
+    border: 1px solid #065747;
+    padding: 14px 18px;
+    text-align: left;
+    vertical-align: top;
+    cursor: default;
+}
+
+/* Column headers */
+.about-page .contribution-table thead th {
+    background: #065747;
+    color: #ffffff;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+/* Member names (first column) */
+.about-page .contribution-table tbody th {
+    background: #e6f2ee;
+    color: #065747;
+    width: 18%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Task columns share the remaining width equally */
+.about-page .contribution-table td {
+    width: 41%;
+    background: #ffffff;
+}
+
+/* Alternate row shading and hover */
+.about-page .contribution-table tbody tr:nth-child(even) td {
+    background: #f6fbf9;
+}
+
+.about-page .contribution-table tbody tr:hover td,
+.about-page .contribution-table tbody tr:hover th {
+    background: #d9eee6;
+}
+
+.about-page .contribution-table ul {
+    margin: 0;
+    padding-left: 1.3rem;
+}
+
+.about-page .contribution-table li {
+    margin-bottom: 8px;
+}
+
+.about-page button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+}
+
 
 
 
@@ -1013,10 +1217,16 @@ mark {
     color: white;
     cursor: pointer;
     margin-left: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.manager-page input:hover {
+    background-color: #1b5e20;
 }
 
 .manager-page select {
     height: 2rem;
+    font-size: 1.2rem;
 }
 
 .sort-form {
@@ -1105,16 +1315,32 @@ mark {
     background-color: #2e7d32;
 }
 
+.view-eoi button:hover {
+    background-color: #1b5e20;
+}
+
 .change-status button {
     background-color: #1565c0;
+}
+
+.change-status button:hover {
+    background-color: #0d47a1;
 }
 
 .delete-eoi button, .confirm-yes button {
     background-color: #c00000;
 }
 
+.delete-eoi button:hover, .confirm-yes button:hover {
+    background-color: #900000;
+}
+
 .confirm-no button {
-    background-color: #666;
+    background-color: #666666;
+}
+
+.confirm-no button:hover {
+    background-color: #444444;
 }
 
 .status-choice button {
@@ -1122,8 +1348,16 @@ mark {
     font-size: 1.5rem;
 }
 
+.status-choice button:hover {
+    background-color: #205b56; 
+}
+
 .withdraw-eoi button {
     background-color: #e65100;
+}
+
+.withdraw-eoi button:hover {
+    background-color: #bf360c;
 }
 
 .manager-page button:disabled, .withdraw-disabled {
@@ -1291,6 +1525,10 @@ mark {
     cursor: pointer;
 }
 
+.signup-page button:hover, .login-page button:hover {
+    background-color: #1b5e20;
+}
+
 .signup-row label {    
     flex-shrink: 0;       
     text-align: right;
@@ -1345,7 +1583,7 @@ mark {
 .signup-page .success a:hover,
 .signup-page .login-note a:hover,
 .login-page .success a:hover,
-.login-page .success a:hover {
+.login-page .login-note a:hover {
     background-color: rgb(183, 183, 183);
 }
 
@@ -1375,80 +1613,5 @@ mark {
     padding: 0.6rem 1.5rem;
     text-align: center;
     border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12)
-}
-
-/* ===== Member Contributions section (about.php) ===== */
-.about-page section.member-contributions {
-    display: block;
-    overflow-x: auto;
-    padding: 2rem 5vw;
-    background-color: #E7DDC8;
-}
-
-.about-page section.member-contributions .about-titles {
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
-
-.about-page .contribution-table {
-    width: 100%;
-    max-width: 1200px;
-    min-width: 700px;
-    margin: 0 auto;
-    border-collapse: collapse;
-    background: #ffffff;
-    font-size: 1.3rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.about-page .contribution-table th,
-.about-page .contribution-table td {
-    border: 1px solid #065747;
-    padding: 14px 18px;
-    text-align: left;
-    vertical-align: top;
-    cursor: default;
-}
-
-/* Column headers */
-.about-page .contribution-table thead th {
-    background: #065747;
-    color: #ffffff;
-    font-size: 1.4rem;
-    text-align: center;
-}
-
-/* Member names (first column) */
-.about-page .contribution-table tbody th {
-    background: #e6f2ee;
-    color: #065747;
-    width: 18%;
-    vertical-align: middle;
-    text-align: center;
-}
-
-/* Task columns share the remaining width equally */
-.about-page .contribution-table td {
-    width: 41%;
-    background: #ffffff;
-}
-
-/* Alternate row shading and hover */
-.about-page .contribution-table tbody tr:nth-child(even) td {
-    background: #f6fbf9;
-}
-
-.about-page .contribution-table tbody tr:hover td,
-.about-page .contribution-table tbody tr:hover th {
-    background: #d9eee6;
-}
-
-.about-page .contribution-table ul {
-    margin: 0;
-    padding-left: 1.3rem;
-}
-
-.about-page .contribution-table li {
-    margin-bottom: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
