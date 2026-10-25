@@ -217,7 +217,7 @@ INSERT INTO `skills` (`skill_id`, `skill_name`) VALUES
 (9, 'Communication'),
 (4, 'Hard Working'),
 (8, 'Leadership'),
-(1, 'Loves the Environment'),
+(1, 'Loves The Environment'),
 (2, 'Organization'),
 (7, 'Passionate'),
 (3, 'Punctuality'),

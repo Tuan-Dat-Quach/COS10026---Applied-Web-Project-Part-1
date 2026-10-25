@@ -711,9 +711,14 @@ hr {
 }
 
 /* Font-size and margin for the labels */
-.apply-page label {
+.apply-page label:not(.gender-option) {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
+}
+
+.apply-page label.gender-option {
+    font-size: 1.2rem;
+    margin-bottom: 0;
 }
 
 /* Font-size for the <p> in skills */
@@ -741,8 +746,27 @@ hr {
 .apply-page input[type='text'], .apply-page select,
 .apply-page input[type='email'], .apply-page input[type='tel'],
 .apply-page input[type='date'] {
-    width: 15rem;
+    width: 20rem;
     height: 2rem;
+}
+
+@media (max-width: 600px) {
+    .apply-page input[type='text'], .apply-page select,
+    .apply-page input[type='email'], .apply-page input[type='tel'],
+    .apply-page input[type='date'] {
+        width: 15rem;
+    } 
+}
+
+.apply-page input[type='radio'] {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 0;
+}
+
+.gender-flex {
+    display: flex;
+    align-items: center;
 }
 
 /* Font-size, padding, and white-space control for the buttons */

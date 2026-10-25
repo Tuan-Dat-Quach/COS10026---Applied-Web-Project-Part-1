@@ -54,8 +54,8 @@
 
         <form id="form"
             action="process_eoi.php"
-            method="post">
-
+            method="post" 
+            novalidate >
            
             <!-- Job Reference, using PHP to take Job Reference numbers from jobs table for maintainability -->
 
@@ -153,8 +153,8 @@
                         <strong>Gender</strong>
                     </legend>
 
-                  <div class="male">
-                    <label for="male"> 
+                  <div class="male gender-flex">
+                    <label for="male" class="gender-option"> 
                         Male 
                     </label>
 
@@ -166,8 +166,8 @@
                         required>
                   </div>
 
-                  <div class="female">
-                    <label for="female"> 
+                  <div class="female gender-flex">
+                    <label for="female" class="gender-option"> 
                         Female 
                     </label>
                         
@@ -178,8 +178,8 @@
                         value="Female">
                   </div>
 
-                  <div class="rather-not-say">
-                    <label for="rather-not-say"> 
+                  <div class="rather-not-say gender-flex">
+                    <label for="rather-not-say" class="gender-option"> 
                         Rather Not Say 
                     </label>
 
@@ -331,8 +331,7 @@
                                 type="checkbox"
                                 id="loves-environment"
                                 name="Skills[]"
-                                value="Loves The Environment"
-                                required>
+                                value="Loves The Environment">
                             Loves The Environment
                         </label>
 

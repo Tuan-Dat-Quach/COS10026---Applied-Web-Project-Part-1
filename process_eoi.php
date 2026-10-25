@@ -60,7 +60,7 @@
         die("Could not set up the required tables.");
     }
 
-    $default_skills = ['Loves the Environment', 'Organization', 'Punctuality', 'Hard Working',
+    $default_skills = ['Loves The Environment', 'Organization', 'Punctuality', 'Hard Working',
                    'Resilience', 'Team Player', 'Passionate', 'Leadership', 'Communication'];
 
     foreach ($default_skills as $skill_name) {
@@ -193,7 +193,7 @@
 
         $skills_valid = true;
 
-        $allowed_skills = ['Loves the Environment', 'Organization', 'Punctuality', 'Hard Working', 
+        $allowed_skills = ['Loves The Environment', 'Organization', 'Punctuality', 'Hard Working', 
                          'Resilience', 'Team Player', 'Passionate', 'Leadership', 'Communication'];
             
         foreach ($skills as $skill) {
