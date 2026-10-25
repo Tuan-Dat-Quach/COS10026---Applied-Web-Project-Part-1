@@ -1686,3 +1686,50 @@ mark {
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
+
+
+
+/* This is the section for CSS applied to process_eoi.php */
+
+.process-page {
+    margin: 0;
+    padding: 0;
+}
+
+.process-page main {
+    margin: 0;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+
+.process-page h1 {
+    margin-top: 0;
+}
+
+.process-page p.error-eoi {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: red;
+}
+
+.process-page .error-list {
+    width: fit-content;
+    margin: 0 auto;
+    padding-left: 1.5rem;
+}
+
+.process-page li {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+.process-page table {
+    margin: 1rem auto;
+}
+
+.process-page a[href='apply.php'] {
+    color:rgb(12, 12, 210);
+    text-underline-offset: 0.5rem;
+}

@@ -2,19 +2,20 @@
 <?php
     session_start();
     require_once 'settings.php';
-
+    // Block direct URL access
     if ($_SERVER["REQUEST_METHOD"] !== "POST" || !isset($_POST["Job_Reference_Number"])) {
         header("Location: apply.php");
         exit;
     }
-
+    // Sanitise input with trim, stripslashes and htmlspecialchars
     function sanitize_input($data){
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;
     }
-
+    /* Create tables skills, eoi and eoi_skills if they do not exist, with eoi_skills
+    along with its inserted contents */
     $create_skills_sql = "CREATE TABLE IF NOT EXISTS skills (
         skill_id INT(11) NOT NULL AUTO_INCREMENT,
         skill_name VARCHAR(50) NOT NULL,
@@ -59,7 +60,7 @@
         !mysqli_query($conn, $create_eoi_skills_sql)) {
         die("Could not set up the required tables.");
     }
-
+    // Use INSERT IGNORE INTO to prevent duplicate data
     $default_skills = ['Loves The Environment', 'Organization', 'Punctuality', 'Hard Working',
                    'Resilience', 'Team Player', 'Passionate', 'Leadership', 'Communication'];
 
@@ -80,13 +81,13 @@
     <meta name="author" content="TechTide Group">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Greener Society - Position Descriptions</title>
+    <title>Greener Society - Submit Application</title>
 
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<body class="apply-page">
+<body class="process-page">
 
 <?php include 'header.inc'; ?>
 
@@ -94,17 +95,17 @@
     <?php
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user_id = $_SESSION['user_id'] ?? null;
-        $job_reference_number = sanitize_input($_POST["Job_Reference_Number"]);
-        $first_name = sanitize_input($_POST["First_Name"]);
-        $last_name = sanitize_input($_POST["Last_Name"]);
-        $date_of_birth = sanitize_input($_POST["Date_of_Birth"]);
-        $gender = sanitize_input($_POST["Gender"]);
-        $street_address = sanitize_input($_POST["Street_Address"]);
-        $suburb = sanitize_input($_POST["Suburb"]);
-        $state = sanitize_input($_POST["State"]);
-        $postcode = sanitize_input($_POST["Postcode"]);
-        $email = sanitize_input($_POST["Email"]);
-        $phone_number = sanitize_input($_POST["Phone_Number"]);
+        $job_reference_number = sanitize_input($_POST["Job_Reference_Number"] ?? "");
+        $first_name = sanitize_input($_POST["First_Name"] ?? "");
+        $last_name = sanitize_input($_POST["Last_Name"] ?? "");
+        $date_of_birth = sanitize_input($_POST["Date_of_Birth"] ?? "");
+        $gender = sanitize_input($_POST["Gender"] ?? "");
+        $street_address = sanitize_input($_POST["Street_Address"] ?? "");
+        $suburb = sanitize_input($_POST["Suburb"] ?? "");
+        $state = sanitize_input($_POST["State"] ?? "");
+        $postcode = sanitize_input($_POST["Postcode"] ?? "");
+        $email = sanitize_input($_POST["Email"] ?? "");
+        $phone_number = sanitize_input($_POST["Phone_Number"] ?? "");
 
         $skills = $_POST["Skills"] ?? [];
         if (!is_array($skills)) {
@@ -130,65 +131,65 @@
         }
 
         if (empty($job_reference_number)) {
-            $error_messages[] = "<p> Please enter the Job Reference Number (either GS102A, GS204B, or GS305C). </p> <br>";
+            $error_messages[] = "Please enter the Job Reference Number.";
         } elseif (!in_array($job_reference_number, $allowed_job_references, true)) {
-            $error_messages[] = "<p> Please enter the correct Job Reference Number (GS102A, GS204B, or GS305C, it is case-sensitive). </p> <br>";
+            $error_messages[] = "Please enter a valid Job Reference Number (it is case-sensitive).";
         } 
         
         if (empty($first_name)) {
-            $error_messages[] = "<p> Please enter your First Name. </p> <br>";
+            $error_messages[] = "Please enter your First Name.";
         } elseif (!preg_match("/^[a-zA-Z-' ]{1,20}$/",$first_name)) {
-            $error_messages[] = "<p> Please enter a valid First Name. It must only contain letters, spaces and/or ' or -. </p> <br>";
+            $error_messages[] = "Please enter a valid First Name. It must only contain letters, spaces and/or ' or -.";
         } 
 
         if (empty($last_name)) {
-            $error_messages[] = "<p> Please enter your Last Name.</p> <br>";
+            $error_messages[] = "Please enter your Last Name.";
         } elseif (!preg_match("/^[a-zA-Z-' ]{1,20}$/",$last_name)) {
-            $error_messages[] = "<p> Please enter a valid Last Name. It must only contain letters, spaces and/or ' or -. </p> <br>";
+            $error_messages[] = "Please enter a valid Last Name. It must only contain letters, spaces and/or ' or -.";
         } 
 
         if (empty($date_of_birth)) {
-            $error_messages[] = "<p> Please enter your Date of Birth. </p> <br>";
+            $error_messages[] = "Please enter your Date of Birth.";
         } 
 
         $allowed_gender = ['Male', 'Female', 'Rather Not Say'];
 
         if (empty($gender)) {
-            $error_messages[] = "<p> Please select your preferred Gender. </p> <br>";
+            $error_messages[] = "Please select your gender.";
         } elseif (!in_array($gender, $allowed_gender, true)) {
-            $error_messages[] = "<p> Please select valid gender only. </p> <br>";
+            $error_messages[] = "Please select valid gender only.";
         }
 
         if (empty($street_address)) {
-            $error_messages[] = "<p> Please enter your Street Address. </p> <br>";
+            $error_messages[] = "Please enter your Street Address.";
         } elseif (!preg_match("/^.{1,40}$/",$street_address)) {
-            $error_messages[] = "<p> Please enter a valid Street Address. </p> <br>";
+            $error_messages[] = "Please enter a valid Street Address.";
         } 
 
         if (empty($suburb)) {
-            $error_messages[] = "<p> Please enter your Suburb. </p> <br>";
+            $error_messages[] = "Please enter your Suburb.";
         } elseif (!preg_match("/^.{1,40}$/",$suburb)) {
-            $error_messages[] = "<p> Please enter a valid Suburb. </p> <br>";
+            $error_messages[] = "Please enter a valid Suburb.";
         } 
 
         $allowed_state = ['VIC', 'NSW', 'QLD', 'NT', 'WA', 'SA', 'TAS', 'ACT'];
 
         if (empty($state)) {
-            $error_messages[] = "<p> Please select your State. </p> <br>";
+            $error_messages[] = "Please select your State.";
         } elseif (!in_array($state, $allowed_state, true)) {
-            $error_messages[] = "<p> Please select valid state only. </p> <br>";
+            $error_messages[] = "Please select valid state only.";
         }
 
         if (empty($postcode)) {
-            $error_messages[] = "<p> Please enter your Postcode. </p> <br>";
+            $error_messages[] = "Please enter your Postcode.";
         } elseif (!preg_match("/^[0-9]{4}$/",$postcode)) {
-            $error_messages[] = "<p> Please enter a valid Postcode. It must only contain numbers and be exactly 4 digits in length. </p> <br>";
+            $error_messages[] = "Please enter a valid Postcode. It must only contain numbers and be exactly 4 digits in length.";
         } 
 
         if (empty($email)) {
-            $error_messages[] = "<p> Please enter your Email. </p> <br>";
+            $error_messages[] = "Please enter your Email.";
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $error_messages[] = "<p> Please enter a valid Email. </p> <br>";
+            $error_messages[] = "Please enter a valid Email.";
         } 
 
         $skills_valid = true;
@@ -203,15 +204,15 @@
         }
 
         if (empty($skills)) {
-            $error_messages[] = "<p> Please select at least one skill. </p> <br>";
+            $error_messages[] = "Please select at least one skill.";
         } elseif (!$skills_valid) {
-            $error_messages[] = "<p> Please select valid skills only. </p> <br>";
+            $error_messages[] = "Please select valid skills only.";
         }
 
         if (empty($phone_number)) {
-            $error_messages[] = "<p> Please enter your Phone Number. </p> <br>";
+            $error_messages[] = "Please enter your Phone Number.";
         } elseif (!preg_match("/^[0-9]{8,12}$/",$phone_number)) {
-            $error_messages[] = "<p> Please enter a valid Phone Number. It must only contain numbers and be 8-12 digits in length. </p> <br>";
+            $error_messages[] = "Please enter a valid Phone Number. It must only contain numbers and be 8-12 digits in length.";
         } 
 
         if (empty($error_messages)) {
@@ -313,15 +314,20 @@
                 echo "<td> $other_skills </td>";
                 echo "</tr>";
                 echo "</table>";
+
+                unset($_SESSION['form_data']);
             } else {
                 $error_messages[] = "Unable to submit your application.";
                 $stmteoi->close();
             }
         } else {
+            $_SESSION['form_data'] = $_POST;
+            echo "<ul class='error-list'>";
             foreach ($error_messages as $message) { 
-                echo $message;
+                echo "<li>" . htmlspecialchars($message, ENT_QUOTES, 'UTF-8') . "</li>";
             }
-            echo "<p> <strong> Please go back in fix all errors. </strong> </p>";
+            echo "</ul>";
+            echo "<p class='error-eoi'> <strong> ⚠️ Please go back to <a href='apply.php'> Apply page </a> and fix all errors. </strong> </p>";
         }
     }
 

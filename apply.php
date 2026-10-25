@@ -1,5 +1,12 @@
 <?php
     require_once 'settings.php';
+    session_start();
+
+    $form_data = [];
+
+    if (isset($_SESSION['form_data'])) {
+        $form_data = $_SESSION['form_data'];
+    }
 
     $job_reference_result = mysqli_query($conn, "SELECT job_reference FROM jobs");
 ?>
@@ -73,13 +80,17 @@
                     <option value=""> Please Select a Job </option>
 
                     <?php
-                      if ($job_reference_result) {
-                        while ($job_row = mysqli_fetch_assoc($job_reference_result)) {
-                          echo "<option value='" . htmlspecialchars($job_row['job_reference'], ENT_QUOTES, 'UTF-8') .
-                                            "'>" . htmlspecialchars($job_row['job_reference'], ENT_QUOTES, 'UTF-8') .
-                               "</option>";
+                    if ($job_reference_result) {
+                      while ($job_row = mysqli_fetch_assoc($job_reference_result)) {
+                        echo "<option value='" . htmlspecialchars($job_row['job_reference'], ENT_QUOTES, 'UTF-8') . "'";
+
+                        if (isset($form_data['Job_Reference_Number']) && $form_data['Job_Reference_Number'] === $job_row['job_reference']) {
+                          echo " selected";
                         }
+
+                        echo ">" . htmlspecialchars($job_row['job_reference'], ENT_QUOTES, 'UTF-8') . "</option>";
                       }
+                    }
                     ?>
                 </select>
             </div>
@@ -111,6 +122,12 @@
                         pattern="[A-Za-z '\-]+"
                         placeholder="Enter your first name"
                         title="Use letters, spaces, apostrophes and hyphens only."
+                        value="
+                        <?php
+                          if (isset($form_data['First_Name'])) {
+                            echo htmlspecialchars($form_data['First_Name'], ENT_QUOTES, 'UTF-8');
+                          }
+                        ?>"
                         required>
                   </div>
 
@@ -127,6 +144,12 @@
                         pattern="[A-Za-z '\-]+"
                         placeholder="Enter your last name"
                         title="Use letters, spaces, apostrophes and hyphens only."
+                        value="
+                        <?php
+                          if (isset($form_data['Last_Name'])) {
+                            echo htmlspecialchars($form_data['Last_Name'], ENT_QUOTES, 'UTF-8');
+                          }
+                        ?>"
                         required>
                   </div>
 
@@ -139,6 +162,12 @@
                         type="date"
                         id="date-of-birth"
                         name="Date_of_Birth"
+                        value="
+                        <?php
+                          if (isset($form_data['Date_of_Birth'])) {
+                            echo htmlspecialchars($form_data['Date_of_Birth'], ENT_QUOTES, 'UTF-8');
+                          }
+                        ?>"
                         required>
                   </div>
 
@@ -163,7 +192,12 @@
                         id="male"
                         name="Gender"
                         value="Male"
-                        required>
+                        <?php
+                          if (isset($form_data['Gender']) && $form_data['Gender'] === 'Male') {
+                            echo "checked";
+                          }
+                        ?>
+                        >
                   </div>
 
                   <div class="female gender-flex">
@@ -175,7 +209,13 @@
                         type="radio"
                         id="female"
                         name="Gender"
-                        value="Female">
+                        value="Female"
+                        <?php
+                          if (isset($form_data['Gender']) && $form_data['Gender'] === 'Female') {
+                            echo "checked";
+                          }
+                        ?>
+                        >
                   </div>
 
                   <div class="rather-not-say gender-flex">
@@ -187,7 +227,13 @@
                         type="radio"
                         id="rather-not-say"
                         name="Gender"
-                        value="Rather Not Say">
+                        value="Rather Not Say"
+                        <?php
+                          if (isset($form_data['Gender']) && $form_data['Gender'] === 'Rather Not Say') {
+                            echo "checked";
+                          }
+                        ?>
+                        >
                   </div>
 
                 </fieldset>
@@ -212,6 +258,12 @@
                         name="Street_Address"
                         maxlength="40"
                         placeholder="Enter your street address"
+                        value="
+                        <?php
+                          if (isset($form_data['Street_Address'])) {
+                            echo htmlspecialchars($form_data['Street_Address'], ENT_QUOTES, 'UTF-8');
+                          }
+                        ?>"
                         required>
                   </div> 
 
@@ -226,6 +278,12 @@
                         name="Suburb"
                         maxlength="40"
                         placeholder="Enter your suburb or town"
+                        value="
+                        <?php
+                          if (isset($form_data['Suburb'])) {
+                            echo htmlspecialchars($form_data['Suburb'], ENT_QUOTES, 'UTF-8');
+                          }
+                        ?>"
                         required>
                   </div> 
 
@@ -240,14 +298,62 @@
                         required>
 
                         <option value="">Please Select</option>
-                        <option value="VIC">VIC</option>
-                        <option value="NSW">NSW</option>
-                        <option value="QLD">QLD</option>
-                        <option value="NT">NT</option>
-                        <option value="WA">WA</option>
-                        <option value="SA">SA</option>
-                        <option value="TAS">TAS</option>
-                        <option value="ACT">ACT</option>
+                        <option value="VIC"
+                        <?php
+                          if (isset($form_data['State']) && $form_data['State'] === 'VIC') {
+                            echo "selected";
+                          }
+                        ?>> VIC
+                        </option>
+                        <option value="NSW"
+                        <?php
+                          if (isset($form_data['State']) && $form_data['State'] === 'NSW') {
+                            echo "selected";
+                          }
+                        ?>> NSW
+                        </option>
+                        <option value="QLD"
+                        <?php
+                          if (isset($form_data['State']) && $form_data['State'] === 'QLD') {
+                            echo "selected";
+                          }
+                        ?>> QLD
+                        </option>
+                        <option value="NT"
+                        <?php
+                          if (isset($form_data['State']) && $form_data['State'] === 'NT') {
+                            echo "selected";
+                          }
+                        ?>> NT
+                        </option>
+                        <option value="WA"
+                        <?php
+                          if (isset($form_data['State']) && $form_data['State'] === 'WA') {
+                            echo "selected";
+                          }
+                        ?>> WA
+                        </option>
+                        <option value="SA"
+                        <?php
+                          if (isset($form_data['State']) && $form_data['State'] === 'SA') {
+                            echo "selected";
+                          }
+                        ?>> SA
+                        </option>
+                        <option value="TAS"
+                        <?php
+                          if (isset($form_data['State']) && $form_data['State'] === 'TAS') {
+                            echo "selected";
+                          }
+                        ?>> TAS
+                        </option>
+                        <option value="ACT"
+                        <?php
+                          if (isset($form_data['State']) && $form_data['State'] === 'ACT') {
+                            echo "selected";
+                          }
+                        ?>> ACT
+                        </option>
 
                     </select>
                   </div> 
@@ -264,6 +370,12 @@
                         pattern="[0-9]{4}"
                         placeholder="e.g. 3000"
                         title="Enter exactly 4 digits."
+                        value="
+                        <?php
+                          if (isset($form_data['Postcode'])) {
+                            echo htmlspecialchars($form_data['Postcode'], ENT_QUOTES, 'UTF-8');
+                          }
+                        ?>"
                         required>
                   </div> 
 
@@ -289,6 +401,12 @@
                         name="Email"
                         placeholder="e.g. example@email.com"
                         title="Enter a valid email address."
+                        value="
+                        <?php
+                          if (isset($form_data['Email'])) {
+                            echo htmlspecialchars($form_data['Email'], ENT_QUOTES, 'UTF-8');
+                          }
+                        ?>"
                         required>
                   </div>
 
@@ -304,6 +422,12 @@
                         pattern="[0-9]{8,12}"
                         placeholder="e.g. 0412345678"
                         title="Enter a phone number containing 8 to 12 digits."
+                        value="
+                        <?php
+                          if (isset($form_data['Phone_Number'])) {
+                            echo htmlspecialchars($form_data['Phone_Number'], ENT_QUOTES, 'UTF-8');
+                          }
+                        ?>"
                         required>
                   </div>
 
@@ -331,7 +455,13 @@
                                 type="checkbox"
                                 id="loves-environment"
                                 name="Skills[]"
-                                value="Loves The Environment">
+                                value="Loves The Environment"
+                                <?php
+                                  if (isset($form_data['Skills']) && is_array($form_data['Skills']) && 
+                                  in_array('Loves The Environment', $form_data['Skills'], true)) {
+                                    echo "checked";
+                                  }
+                                ?>>
                             Loves The Environment
                         </label>
 
@@ -341,7 +471,13 @@
                                 type="checkbox"
                                 id="organization"
                                 name="Skills[]"
-                                value="Organization">
+                                value="Organization"
+                                <?php
+                                  if (isset($form_data['Skills']) && is_array($form_data['Skills']) && 
+                                  in_array('Organization', $form_data['Skills'], true)) {
+                                    echo "checked";
+                                  }
+                                ?>>
                             Organization
                         </label>
 
@@ -351,7 +487,13 @@
                                 type="checkbox"
                                 id="punctuality"
                                 name="Skills[]"
-                                value="Punctuality">
+                                value="Punctuality"
+                                <?php
+                                  if (isset($form_data['Skills']) && is_array($form_data['Skills']) && 
+                                  in_array('Punctuality', $form_data['Skills'], true)) {
+                                    echo "checked";
+                                  }
+                                ?>>
                             Punctuality
                         </label>
 
@@ -361,7 +503,13 @@
                                 type="checkbox"
                                 id="hard-working"
                                 name="Skills[]"
-                                value="Hard Working">
+                                value="Hard Working"
+                                <?php
+                                  if (isset($form_data['Skills']) && is_array($form_data['Skills']) && 
+                                  in_array('Hard Working', $form_data['Skills'], true)) {
+                                    echo "checked";
+                                  }
+                                ?>>
                             Hard Working
                         </label>
 
@@ -371,7 +519,13 @@
                                 type="checkbox"
                                 id="resilience"
                                 name="Skills[]"
-                                value="Resilience">
+                                value="Resilience"
+                                <?php
+                                  if (isset($form_data['Skills']) && is_array($form_data['Skills']) && 
+                                  in_array('Resilience', $form_data['Skills'], true)) {
+                                    echo "checked";
+                                  }
+                                ?>>
                             Resilience
                         </label>
 
@@ -381,7 +535,13 @@
                                 type="checkbox"
                                 id="team-player"
                                 name="Skills[]"
-                                value="Team Player">
+                                value="Team Player"
+                                <?php
+                                  if (isset($form_data['Skills']) && is_array($form_data['Skills']) && 
+                                  in_array('Team Player', $form_data['Skills'], true)) {
+                                    echo "checked";
+                                  }
+                                ?>>
                             Team Player
                         </label>
 
@@ -391,7 +551,13 @@
                                 type="checkbox"
                                 id="passionate"
                                 name="Skills[]"
-                                value="Passionate">
+                                value="Passionate"
+                                <?php
+                                  if (isset($form_data['Skills']) && is_array($form_data['Skills']) && 
+                                  in_array('Passionate', $form_data['Skills'], true)) {
+                                    echo "checked";
+                                  }
+                                ?>>
                             Passionate
                         </label>
 
@@ -401,7 +567,13 @@
                                 type="checkbox"
                                 id="leadership"
                                 name="Skills[]"
-                                value="Leadership">
+                                value="Leadership"
+                                <?php
+                                  if (isset($form_data['Skills']) && is_array($form_data['Skills']) && 
+                                  in_array('Leadership', $form_data['Skills'], true)) {
+                                    echo "checked";
+                                  }
+                                ?>>
                             Leadership
                         </label>
 
@@ -411,7 +583,13 @@
                                 type="checkbox"
                                 id="communication"
                                 name="Skills[]"
-                                value="Communication">
+                                value="Communication"
+                                <?php
+                                  if (isset($form_data['Skills']) && is_array($form_data['Skills']) && 
+                                  in_array('Communication', $form_data['Skills'], true)) {
+                                    echo "checked";
+                                  }
+                                ?>>
                             Communication
                         </label>
 
@@ -426,7 +604,15 @@
                         id="other-skills"
                         name="Other_Skills"
                         rows="6"
-                        placeholder="Tell us about any other skills you have."></textarea>
+                        placeholder="Tell us about any other skills you have.">
+
+                    <?php
+                      if (isset($form_data['Other_Skills'])) {
+                        echo htmlspecialchars($form_data['Other_Skills'], ENT_QUOTES, 'UTF-8');
+                      }
+                    ?>
+
+                    </textarea>
                   </div>
 
                 </fieldset>
