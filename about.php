@@ -18,6 +18,21 @@ function build_task_list_html($tasks_by_project, $project_number) {
     return $list_html . '</ul>';
 }
 
+// Joins names into a readable sentence: "A", "A and B" or "A, B and C"
+function build_member_names_sentence($member_names) {
+    $name_count = count($member_names);
+
+    if ($name_count === 0) {
+        return '';
+    }
+    if ($name_count === 1) {
+        return $member_names[0];
+    }
+
+    $last_member_name = array_pop($member_names);
+    return implode(', ', $member_names) . ' and ' . $last_member_name;
+}
+
 // Group details (single row)
 $group_details = [];
 $group_query_result = mysqli_query($conn, "SELECT * FROM group_details LIMIT 1");
@@ -31,6 +46,17 @@ $members_query_result = mysqli_query($conn, "SELECT id, name, student_id, quote_
 while ($members_query_result && $member_row = mysqli_fetch_assoc($members_query_result)) {
     $team_members[] = $member_row;
 }
+
+// Group photo caption, built from the member names in the database
+$member_names = array_column($team_members, 'name');
+$member_names_sentence = build_member_names_sentence($member_names);
+$group_photo_caption = 'Our epic group';
+if ($member_names_sentence !== '') {
+    $group_photo_caption .= ': ' . $member_names_sentence;
+}
+
+// Group photo alt text, built from the group number and name
+$group_photo_alt_text = 'Group photo of ' . ($group_details['group_number'] ?? '') . ' - ' . ($group_details['group_name'] ?? '');
 
 // Individual contributions: $contributions_by_member[member_id][project_number][] = task
 $contributions_by_member = [];
@@ -85,7 +111,7 @@ $fun_fact_row_classes = [1 => 'first-row', 2 => 'second-row', 3 => 'third-row'];
 <?php include 'header.inc'; ?>
 
         <main>
-            <!-- Section 1: group details from database -->
+            <!-- Section 1: group details and group photo from database -->
             <section class="about-us" aria-labelledby="section-title1">
                 <div class="about-group">
                 <h1 class="about-titles" id="section-title1"> <strong> About Us </strong> </h1>
@@ -111,10 +137,12 @@ $fun_fact_row_classes = [1 => 'first-row', 2 => 'second-row', 3 => 'third-row'];
                 </div>
 
                 <div class="group-photo">
+                <?php if (!empty($group_details['group_photo'])): ?>
                 <figure>
-                    <img src="Images/official-group-photo.jpg" alt="Group photo of G05 - TideTech">
-                    <figcaption id="about-caption1"> <strong> <em> <span aria-hidden="true"> 😎 </span> Our epic group: Ravindu Nethsara, Johnathan Mey and Tuan Dat Quach </em> </strong> </figcaption>
+                    <img src="<?= escape_html($group_details['group_photo']) ?>" alt="<?= escape_html($group_photo_alt_text) ?>">
+                    <figcaption id="about-caption1"> <strong> <em> <span aria-hidden="true"> 😎 </span> <?= escape_html($group_photo_caption) ?> </em> </strong> </figcaption>
                 </figure>
+                <?php endif; ?>
                 </div>
             </section>
 
