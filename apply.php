@@ -1,3 +1,8 @@
+<?php
+    require_once 'settings.php';
+
+    $job_reference_result = mysqli_query($conn, "SELECT job_reference FROM jobs");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,23 +57,31 @@
             method="post">
 
            
-            <!-- Job Reference -->
+            <!-- Job Reference, using PHP to take Job Reference numbers from jobs table for maintainability -->
 
             <div class="job-reference-form">
 
                 <label for="job-reference">
-                    <strong>Job Reference Number</strong>
+                    <strong> Job Reference Number </strong>
                 </label>
 
-                <input
-                    type="text"
+                <select
                     id="job-reference"
                     name="Job_Reference_Number"
-                    pattern="GS102A|GS204B|GS305C"
-                    placeholder="e.g. GS102A"
-                    title="Enter GS102A, GS204B or GS305C."
                     required>
 
+                    <option value=""> Please Select a Job </option>
+
+                    <?php
+                      if ($job_reference_result) {
+                        while ($job_row = mysqli_fetch_assoc($job_reference_result)) {
+                          echo "<option value='" . htmlspecialchars($job_row['job_reference'], ENT_QUOTES, 'UTF-8') .
+                                            "'>" . htmlspecialchars($job_row['job_reference'], ENT_QUOTES, 'UTF-8') .
+                               "</option>";
+                        }
+                      }
+                    ?>
+                </select>
             </div>
 
 
