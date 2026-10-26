@@ -93,7 +93,8 @@ nav a:hover {
 .manager-page nav a[href="manager.php"],
 .manager-page nav a[href="user.php"],
 .signup-page nav a[href="signup.php"],
-.login-page nav a[href="login.php"] {
+.login-page nav a[href="login.php"],
+.process-page nav a[href="apply.php"] {
     border-bottom: 3px solid #276249;
 }
 
@@ -1465,6 +1466,11 @@ mark {
     background-color: #f0e4d0;
 }
 
+/* REASON WHY WE NEED !important HERE: 
+This is to override the interleaved CSS color of the two previous CSS codes,
+as we want to use interleaved colored rows for manager.php and user.php, but single
+color for the <td> in eoi_details.php 
+*/
 .details-page td {
     background-color: #f0e4d0 !important;
 }
