@@ -262,8 +262,7 @@ nav a:hover {
     text-align: center;
     border: 2px solid;
     border-collapse: collapse; /* This allows single-line border for the table */
-    margin-left: 1.25rem;
-    margin-top: 3rem;
+    margin: 1.25rem;
 }
 
 /* This is the CSS for the table header, or the first row */
@@ -422,12 +421,15 @@ hr {
 }
 
 .search_bar input[type="submit"] {
+    font-size: 1.2rem;
     padding: 0.5rem 1.2rem;
     background-color: #2e7d32;
     border-radius: 8px;
     text-align: center;
     color: white;
     cursor: pointer;
+    width: 6rem;
+    height: 3rem;
 }
 
 .search_bar h2 {
@@ -444,16 +446,17 @@ hr {
 /* Page heading */
 .jobs-heading {
     text-align: center;
-    font-size: 45px;
-    margin-bottom: 15px;
+    font-size: 3rem;
+    margin-bottom: 1rem;
     margin-top: 0;
+    padding-top: 1rem;
 }
 
 /* Introduction text */
 .jobs-introduction {
     text-align: center;
-    font-size: 20px;
-    margin-bottom: 35px;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
     line-height: 1.6;
 }
 
@@ -586,34 +589,29 @@ hr {
 @media (max-width: 768px) {
 
     .jobs-container {
-        padding: 0 15px;
-        margin: 25px auto;
+        padding: 0 1rem;
+        margin: 0;
     }
 
     .jobs-heading {
-        font-size: 34px;
+        font-size: 2rem;
     }
 
     .jobs-introduction {
-        font-size: 17px;
+        font-size: 1.2rem;
+        padding-top: 0;
     }
 
     .job-section {
-        padding: 20px;
+        padding: 1.25rem;
     }
 
     .job-section h2 {
-        font-size: 24px;
+        font-size: 1.5rem;
     }
 
     .job-details {
-        font-size: 14px;
-    }
-
-
-    .job-details th,
-    .job-details td {
-        padding: 9px;
+        font-size: 1rem;
     }
 }
 
@@ -923,7 +921,7 @@ hr {
 
 /* These CSS set the padding particularly for the quotes */
 .quote p {
-    padding: 1vw;
+    padding: 0.5rem 1rem;
 }
 
 /* This is for the illustrative image of the third section */
@@ -1362,7 +1360,7 @@ mark {
 }
 
 /* These are CSS for all buttons */
-.manager-page button { 
+.manager-page button, .signup-page button, .login-page button { 
     border: none;   
     color: white;                                    
     font-size: 1.2rem;
@@ -1580,6 +1578,7 @@ color for the <td> in eoi_details.php
 .signup-row {
     width: 50%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 0.8rem;
     margin: 0 auto;
@@ -1595,7 +1594,8 @@ color for the <td> in eoi_details.php
 }
 
 /* CSS for the buttons */
-.signup-page button, .login-page button {
+.signup-page button:not(.confirm-yes, .confirm-no),
+.login-page button:not(.confirm-yes, .confirm-no) {
     padding: 0.7rem;
     font-size: 1.5rem;
     color: white;
@@ -1605,7 +1605,8 @@ color for the <td> in eoi_details.php
     cursor: pointer;
 }
 
-.signup-page button:hover, .login-page button:hover {
+.signup-page button:hover:not(.confirm-yes, .confirm-no),
+.login-page button:hover:not(.confirm-yes, .confirm-no) {
     background-color: #1b5e20;
 }
 

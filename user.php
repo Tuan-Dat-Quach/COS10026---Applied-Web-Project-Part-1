@@ -224,7 +224,7 @@
             echo "<th class='cell'> EOI Number </th>";
             echo "<th class='cell'> Job Reference </th>";
             echo "<th class='cell'> Status </th>";
-            echo "<th class='cell'> <span aria-hidden='true'> ✏️ </span> Action </th>";
+            echo "<th class='cell'> <span aria-hidden='true'> 🖍️ </span> Action </th>";
             echo "</tr>";
             echo "</thead>";
 

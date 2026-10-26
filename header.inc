@@ -36,13 +36,13 @@ if (isset($_GET['confirm_logout']) && !empty($_SESSION['user_id'])) {
   if (isset($_GET['job_reference'])) {
     echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'], ENT_QUOTES, 'UTF-8') . "'>";
   }
-  echo "<button type='submit'> <i class='fa-solid fa-xmark' aria-hidden='true'></i> Cancel </button>";
+  echo "<button type='submit' class='confirm-no'> <i class='fa-solid fa-xmark' aria-hidden='true'></i> Cancel </button>";
   echo "</form>";
 
   // Confirm button: Go to logout.php
 
   echo "<form action='logout.php' method='GET' class='logout-yes'>";
-  echo "<button type='submit'> <i class='fa-solid fa-check' aria-hidden='true'></i> Yes, log out </button>";
+  echo "<button type='submit' class='confirm-yes'> <i class='fa-solid fa-check' aria-hidden='true'></i> Yes, log out </button>";
   echo "</form>";
   echo "</div>";
   echo "</div>";
