@@ -11,8 +11,8 @@
     <p class="general-footer">
         <strong>Github Repository link:</strong>
         <a target="_blank"
-           href="https://github.com/Tuan-Dat-Quach/COS10026---Applied-Web-Project-Part-1">
-            <strong>https://github.com/Tuan-Dat-Quach/COS10026---Applied-Web-Project-Part-1</strong>
+           href="https://github.com/Tuan-Dat-Quach/COS10026---Applied-Web-Project-Part-2.git">
+            <strong>https://github.com/Tuan-Dat-Quach/COS10026---Applied-Web-Project-Part-2.git</strong>
         </a>
     </p>
 
