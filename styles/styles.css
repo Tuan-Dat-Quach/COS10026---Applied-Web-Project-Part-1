@@ -798,8 +798,8 @@ hr {
 
 /* These are CSS for reset button */
 .apply-page .reset {
-    background-color: #e65100;
-    color: white;
+    background-color: #ff955c;
+    color: black;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
     width: 15rem;
@@ -808,7 +808,7 @@ hr {
 }
 
 .apply-page .reset:hover {
-    background-color: #be360c;
+    background-color: #e8753f;
     cursor: pointer;
 }
 
@@ -1415,11 +1415,13 @@ mark {
 }
 
 .withdraw-eoi button {
-    background-color: #e65100;
+    background-color: #ff955c;
+    color: black;
 }
 
 .withdraw-eoi button:hover {
-    background-color: #bf360c;
+    background-color: #e8753f;
+    color: black;
 }
 
 .manager-page button:disabled, .withdraw-disabled {
