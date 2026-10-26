@@ -1715,6 +1715,7 @@ mark {
     font-size: 3rem;
 }
 
+/* CSS for error messages */
 .process-page p.error-eoi {
     text-align: center;
     font-size: 1.5rem;
@@ -1729,23 +1730,27 @@ mark {
     margin-bottom: 1rem;
 }
 
+/* CSS for successfully submitted eoi */
 .process-page p.validated-eoi {
     text-align: center;
     font-size: 2rem;
     margin: 0 0.5rem;
 }
 
+/* CSS for error list */
 .process-page .error-list {
     width: fit-content;
     margin: 0 auto;
     padding-left: 1.5rem;
 }
 
+/* CSS for the <li> in error list */
 .process-page li {
     font-size: 1.2rem;
     margin-bottom: 1rem;
 }
 
+/* These are CSS for the table */
 .process-page table {
     border-collapse: collapse;
     margin: 1rem auto;

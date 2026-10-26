@@ -20,7 +20,22 @@ if (isset($_GET['confirm_logout']) && !empty($_SESSION['user_id'])) {
 
   // Cancel button: Reload the current page without the confirm_logout parameter
 
-  echo "<form action='$saved_url' method='GET' class='logout-no'>";
+  echo "<form action='" . htmlspecialchars(basename($_SERVER['PHP_SELF']), ENT_QUOTES, 'UTF-8') . "' method='GET' class='logout-no'>";
+
+  // Preserve the current sorting option
+  if (isset($_GET['sort'])) {
+    echo "<input type='hidden' name='sort' value='" . htmlspecialchars($_GET['sort'], ENT_QUOTES, 'UTF-8') . "'>";
+  }
+
+  // Preserve the EOI listing option
+  if (isset($_GET['list_eoi'])) {
+    echo "<input type='hidden' name='list_eoi' value='" . htmlspecialchars($_GET['list_eoi'], ENT_QUOTES, 'UTF-8') . "'>";
+  }
+
+  // Preserve the selected job reference
+  if (isset($_GET['job_reference'])) {
+    echo "<input type='hidden' name='job_reference' value='" . htmlspecialchars($_GET['job_reference'], ENT_QUOTES, 'UTF-8') . "'>";
+  }
   echo "<button type='submit'> <i class='fa-solid fa-xmark' aria-hidden='true'></i> Cancel </button>";
   echo "</form>";
 
